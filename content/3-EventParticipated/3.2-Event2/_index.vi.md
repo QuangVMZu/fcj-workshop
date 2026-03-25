@@ -3,7 +3,6 @@ title: "Event 2 - AWS re:Invent Recap HCMC"
 date: 2026-02-04
 weight: 2
 chapter: false
-pre: " <b> 3.2. </b> "
 ---
 
 # AWS re:Invent Recap HCMC
