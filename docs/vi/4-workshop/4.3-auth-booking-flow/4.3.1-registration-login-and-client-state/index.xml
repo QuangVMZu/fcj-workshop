@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Đăng ký, đăng nhập và trạng thái xác thực phía client on Báo cáo thực tập</title>
-    <link>http://localhost:1313/fcj-workshop/vi/4-workshop/4.3-auth-booking-flow/4.3.1-registration-login-and-client-state/</link>
+    <link>https://quangvmzu.github.io/fcj-workshop/vi/4-workshop/4.3-auth-booking-flow/4.3.1-registration-login-and-client-state/</link>
     <description>Recent content in Đăng ký, đăng nhập và trạng thái xác thực phía client on Báo cáo thực tập</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/fcj-workshop/vi/4-workshop/4.3-auth-booking-flow/4.3.1-registration-login-and-client-state/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://quangvmzu.github.io/fcj-workshop/vi/4-workshop/4.3-auth-booking-flow/4.3.1-registration-login-and-client-state/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

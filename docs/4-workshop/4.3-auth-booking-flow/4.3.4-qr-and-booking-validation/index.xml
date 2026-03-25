@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>QR and Booking Validation on Internship Report</title>
-    <link>http://localhost:1313/fcj-workshop/4-workshop/4.3-auth-booking-flow/4.3.4-qr-and-booking-validation/</link>
+    <link>https://quangvmzu.github.io/fcj-workshop/4-workshop/4.3-auth-booking-flow/4.3.4-qr-and-booking-validation/</link>
     <description>Recent content in QR and Booking Validation on Internship Report</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/fcj-workshop/4-workshop/4.3-auth-booking-flow/4.3.4-qr-and-booking-validation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://quangvmzu.github.io/fcj-workshop/4-workshop/4.3-auth-booking-flow/4.3.4-qr-and-booking-validation/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
