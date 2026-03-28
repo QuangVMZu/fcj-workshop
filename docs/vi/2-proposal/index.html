@@ -15,21 +15,21 @@
     <title>Proposal :: Báo cáo thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1774705112" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1774705112" rel="stylesheet">
-    <link href="../../css/hybrid.css?1774705112" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1774705112" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1774705112" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1774705112" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1774705112" rel="stylesheet">
-    <link href="../../css/theme.css?1774705112" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1774705112" rel="stylesheet">
+    <link href="../../css/nucleus.css?1774706685" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1774706685" rel="stylesheet">
+    <link href="../../css/hybrid.css?1774706685" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1774706685" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1774706685" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1774706685" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1774706685" rel="stylesheet">
+    <link href="../../css/theme.css?1774706685" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1774706685" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1774705112" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1774706685" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1774705112"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1774706685"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1774705112"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1774705112"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1774706685"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1774706685"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1774705112"></script>
+<script type="text/javascript" src="../../js/search.js?1774706685"></script>
  
   </div>
 
@@ -1068,12 +1068,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#1-executive-summary">1. Executive Summary</a></li>
-        <li><a href="#2-problem-statement">2. Problem Statement</a></li>
-        <li><a href="#3-solution-architecture">3. Solution Architecture</a></li>
-        <li><a href="#4-technical-implementation">4. Technical Implementation</a></li>
+        <li><a href="#1-tóm-tắt-điều-hành-executive-summary">1. Tóm tắt điều hành (Executive Summary)</a></li>
+        <li><a href="#2-vấn-đề-problem-statement">2. Vấn đề (Problem Statement)</a></li>
+        <li><a href="#3-kiến-trúc-hệ-thống-solution-architecture">3. Kiến trúc hệ thống (Solution Architecture)</a></li>
+        <li><a href="#4-triển-khai-kỹ-thuật-technical-implementation">4. Triển khai kỹ thuật (Technical Implementation)</a></li>
         <li><a href="#5-timeline--milestones">5. Timeline &amp; Milestones</a></li>
-        <li><a href="#6-budget-estimation">6. Budget Estimation</a></li>
+        <li><a href="#6-ước-tính-chi-phí-budget-estimation">6. Ước tính chi phí (Budget Estimation)</a></li>
         <li><a href="#7-risk-assessment">7. Risk Assessment</a></li>
         <li><a href="#8-expected-outcomes">8. Expected Outcomes</a></li>
       </ul>
@@ -1105,48 +1105,48 @@
 
 	<h1 id="ev-charging-station-management-system">EV Charging Station Management System</h1>
 <h1 id="nền-tảng-full-stack-cho-vận-hành-trạm-sạc-và-thanh-toán-số">Nền tảng Full-Stack cho vận hành trạm sạc và thanh toán số</h1>
-<h3 id="1-executive-summary">1. Executive Summary</h3>
-<p>Hệ thống EV Charging Station Management System là một nền tảng full-stack được thiết kế để hỗ trợ toàn bộ vòng đời vận hành của dịch vụ sạc xe điện, bao gồm cả <strong>backend xử lý nghiệp vụ</strong> và <strong>frontend tương tác người dùng</strong>.</p>
-<p>Hệ thống quản lý các quy trình cốt lõi như tìm kiếm trạm sạc, đặt lịch theo khung giờ, xác nhận booking, theo dõi phiên sạc, tạo hóa đơn, xử lý thanh toán và quản lý vi phạm người dùng trong một nền tảng thống nhất.</p>
-<p>Ở phía backend, hệ thống được xây dựng trên Spring Boot và tích hợp với hạ tầng cloud. Ở phía frontend, hệ thống cung cấp giao diện web theo từng vai trò (driver, staff, admin), đảm bảo trải nghiệm người dùng xuyên suốt.</p>
-<p>Frontend giao tiếp với backend thông qua một lớp API chuẩn hóa sử dụng Axios và JWT, bao gồm các domain như authentication, station, booking, charging session, payment, notification và reporting.</p>
-<p>Hệ thống tích hợp VNPay cho thanh toán, AWS S3 và CloudFront cho frontend, Amazon RDS cho database, AWS Map cho bản đồ và SMTP cho gửi email.</p>
-<p>Giải pháp này giúp các đơn vị vận hành trạm sạc số hóa quy trình, tăng hiệu suất sử dụng trạm, cải thiện trải nghiệm khách hàng và sẵn sàng mở rộng trong tương lai.</p>
+<h3 id="1-tóm-tắt-điều-hành-executive-summary">1. Tóm tắt điều hành (Executive Summary)</h3>
+<p>Hệ thống EV Charging Station Management System là một nền tảng full-stack được thiết kế nhằm hỗ trợ toàn bộ vòng đời vận hành của dịch vụ sạc xe điện, bao gồm cả <strong>xử lý nghiệp vụ backend</strong> và <strong>tương tác người dùng frontend</strong>.</p>
+<p>Hệ thống quản lý các quy trình cốt lõi như tìm kiếm trạm sạc, đặt lịch theo khung giờ, xác nhận booking, theo dõi phiên sạc, tạo hóa đơn, xử lý thanh toán và quản lý tuân thủ người dùng trong một kiến trúc thống nhất.</p>
+<p>Ở phía backend, hệ thống được xây dựng trên Spring Boot và tích hợp với hạ tầng cloud. Ở phía frontend, hệ thống cung cấp ứng dụng web theo vai trò (driver, staff, admin) với các luồng nghiệp vụ rõ ràng.</p>
+<p>Frontend giao tiếp với backend thông qua lớp API chuẩn hóa sử dụng Axios và JWT, bao phủ nhiều domain như authentication, station discovery, booking, charging session, payment, notification và reporting.</p>
+<p>Hệ thống tích hợp VNPay cho thanh toán, AWS S3 và CloudFront cho hosting frontend, Amazon RDS cho lưu trữ dữ liệu, AWS Map cho bản đồ và SMTP cho gửi email.</p>
+<p>Giải pháp giúp các đơn vị vận hành trạm sạc số hóa quy trình, nâng cao hiệu quả, chuẩn hóa hệ thống và mang lại trải nghiệm người dùng xuyên suốt.</p>
 <hr>
-<h3 id="2-problem-statement">2. Problem Statement</h3>
+<h3 id="2-vấn-đề-problem-statement">2. Vấn đề (Problem Statement)</h3>
 <h4 id="vấn-đề-hiện-tại">Vấn đề hiện tại</h4>
-<p>Khi số lượng xe điện tăng nhanh, các đơn vị vận hành phải đối mặt với nhiều thách thức cả về backend lẫn frontend:</p>
+<p>Khi số lượng xe điện tăng nhanh, các đơn vị vận hành phải đối mặt với nhiều thách thức:</p>
 <ul>
 <li>Thiếu khả năng hiển thị trạng thái slot theo thời gian thực</li>
-<li>Quy trình booking và check-in chưa tối ưu</li>
+<li>Quy trình booking và phiên sạc chưa tối ưu</li>
 <li>Chậm trễ trong tạo hóa đơn và đối soát thanh toán</li>
-<li>Khó kiểm soát vi phạm người dùng (overstay, misuse)</li>
-<li>Hệ thống frontend và backend chưa tích hợp chặt chẽ</li>
+<li>Khó kiểm soát vi phạm (overstay, misuse)</li>
+<li>Frontend và backend chưa tích hợp chặt chẽ</li>
 <li>Trải nghiệm người dùng không đồng nhất giữa các vai trò</li>
 <li>Phụ thuộc nhiều vào localStorage/sessionStorage</li>
 <li>API chưa được chuẩn hóa</li>
 </ul>
 <h4 id="vấn-đề-phía-frontend">Vấn đề phía frontend</h4>
 <ul>
-<li>Logic nghiệp vụ nằm trực tiếp trong page → khó tái sử dụng</li>
+<li>Logic nghiệp vụ nằm trong page → khó tái sử dụng</li>
 <li>Gọi API không đồng nhất</li>
-<li>Chưa có cơ chế quản lý server state (React Query/SWR)</li>
-<li>Bundle lớn, polling nhiều → ảnh hưởng performance</li>
-<li>Navigation chưa nhất quán (mix redirect và SPA)</li>
+<li>Thiếu quản lý server state</li>
+<li>Bundle lớn, polling nhiều → giảm hiệu năng</li>
+<li>Navigation chưa nhất quán</li>
 </ul>
-<p>Nếu không có kiến trúc full-stack chuẩn hóa, hệ thống sẽ khó mở rộng, khó maintain và dễ phát sinh lỗi.</p>
+<p>Nếu không có kiến trúc full-stack chuẩn hóa, hệ thống sẽ khó mở rộng, khó bảo trì và dễ phát sinh lỗi.</p>
 <hr>
 <h4 id="giải-pháp">Giải pháp</h4>
-<p>Giải pháp đề xuất là một <strong>nền tảng full-stack thống nhất</strong>, bao gồm:</p>
+<p>Giải pháp đề xuất là một <strong>nền tảng full-stack thống nhất</strong>:</p>
 <ul>
 <li>Backend trung tâm xử lý toàn bộ nghiệp vụ</li>
 <li>Frontend theo kiến trúc role-based + domain-based</li>
-<li>Lớp API chuẩn hóa giữa frontend và backend</li>
+<li>API layer chuẩn hóa</li>
 <li>Tách module theo domain (auth, booking, charging, payment&hellip;)</li>
-<li>Giảm phụ thuộc vào browser storage</li>
+<li>Giảm phụ thuộc browser storage</li>
 <li>Tối ưu hiệu năng frontend</li>
 </ul>
-<p>Các chức năng chính:</p>
+<p>Chức năng chính:</p>
 <ul>
 <li>Authentication và phân quyền</li>
 <li>Booking và quản lý slot</li>
@@ -1155,28 +1155,28 @@
 <li>Loyalty và compliance</li>
 <li>Hosting frontend qua S3 + CloudFront</li>
 <li>API routing qua Nginx</li>
-<li>Map integration qua AWS Map</li>
+<li>Tích hợp bản đồ AWS Map</li>
 <li>Background jobs</li>
 </ul>
 <hr>
 <h4 id="lợi-ích">Lợi ích</h4>
 <ul>
 <li><strong>Tăng hiệu suất sử dụng trạm</strong></li>
-<li><strong>Cải thiện UX</strong></li>
+<li><strong>Cải thiện trải nghiệm người dùng</strong></li>
 <li><strong>Giảm technical debt</strong></li>
-<li><strong>Dễ mở rộng</strong></li>
-<li><strong>Dễ maintain</strong></li>
-<li><strong>Tăng độ ổn định hệ thống</strong></li>
+<li><strong>Dễ mở rộng hệ thống</strong></li>
+<li><strong>Dễ bảo trì</strong></li>
+<li><strong>Tăng độ ổn định</strong></li>
 </ul>
 <hr>
-<h3 id="3-solution-architecture">3. Solution Architecture</h3>
+<h3 id="3-kiến-trúc-hệ-thống-solution-architecture">3. Kiến trúc hệ thống (Solution Architecture)</h3>
 <p>Hệ thống sử dụng kiến trúc <strong>full-stack nhiều lớp</strong>, tách biệt rõ:</p>
 <ul>
 <li>Frontend</li>
 <li>Backend</li>
 <li>Database</li>
 </ul>
-<p>Người dùng truy cập frontend qua CloudFront (S3). Frontend gọi API qua Axios (JWT). Nginx route request vào backend Spring Boot. Dữ liệu lưu trên RDS SQL Server.</p>
+<p>Người dùng truy cập frontend qua CloudFront (S3). Frontend gọi API qua Axios (JWT). Nginx định tuyến request vào backend Spring Boot. Dữ liệu lưu trên Amazon RDS SQL Server.</p>
 <p><img src="../../images/2-Proposal/aws-ev-architecture.png" alt="EV Charging System Architecture"></p>
 <table>
   <thead>
@@ -1228,7 +1228,7 @@
       </tr>
       <tr>
           <td>Business Layer</td>
-          <td>Service</td>
+          <td>Service Interfaces</td>
       </tr>
       <tr>
           <td>Persistence Layer</td>
@@ -1248,7 +1248,7 @@
       </tr>
       <tr>
           <td>Email Notification</td>
-          <td>SMTP</td>
+          <td>SMTP + Thymeleaf</td>
       </tr>
       <tr>
           <td>Background Jobs</td>
@@ -1258,35 +1258,28 @@
 </table>
 <hr>
 <h4 id="kiến-trúc-frontend">Kiến trúc Frontend</h4>
-<p>Frontend hiện tại tổ chức theo:</p>
 <ul>
-<li>Pages theo role (driver, staff, admin)</li>
-<li>Components (UI + business)</li>
-<li>API layer</li>
+<li>Pages theo role</li>
+<li>Components tái sử dụng</li>
+<li>API layer chuẩn hóa</li>
 <li>Layouts theo role</li>
-<li>Routing có bảo vệ</li>
-</ul>
-<p>Hiện trạng:</p>
-<ul>
-<li>Vẫn theo kiểu page-based</li>
-<li>Business logic nằm trong page</li>
+<li>Routing có phân quyền</li>
 </ul>
 <p>Hướng cải tiến:</p>
 <ul>
-<li>Chuyển sang <strong>feature-based architecture</strong></li>
-<li>Dùng <strong>React Query</strong></li>
+<li>Feature-based architecture</li>
+<li>React Query</li>
 <li>Chuẩn hóa API</li>
-<li>Lazy loading theo role</li>
+<li>Lazy loading</li>
 </ul>
 <hr>
 <h4 id="kiến-trúc-backend">Kiến trúc Backend</h4>
-<p>Backend theo layered architecture:</p>
 <ul>
 <li>Controller → Service → Repository</li>
 </ul>
-<p>Module:</p>
+<p>Modules:</p>
 <ul>
-<li>Auth</li>
+<li>Authentication</li>
 <li>Booking</li>
 <li>Charging Session</li>
 <li>Payment</li>
@@ -1295,25 +1288,25 @@
 <li>Notification</li>
 </ul>
 <hr>
-<h3 id="4-technical-implementation">4. Technical Implementation</h3>
+<h3 id="4-triển-khai-kỹ-thuật-technical-implementation">4. Triển khai kỹ thuật (Technical Implementation)</h3>
 <h4 id="workflow-engine">Workflow Engine</h4>
 <p>Hệ thống sử dụng rule-based:</p>
 <ul>
-<li>Slot phải available mới được đặt</li>
+<li>Slot phải available</li>
 <li>Giới hạn slot liên tiếp</li>
 <li>Booking → QR</li>
 <li>Charging → invoice</li>
 <li>Payment → VNPay</li>
-<li>Violation → grouping</li>
+<li>Violation → xử lý</li>
 </ul>
-<p>Frontend hỗ trợ:</p>
+<p>Frontend:</p>
 <ul>
-<li>Validate booking</li>
+<li>Validate flow</li>
 <li>Simulate SOC</li>
-<li>Quản lý flow nhiều bước</li>
+<li>Multi-step workflow</li>
 </ul>
 <hr>
-<h4 id="technical-requirements">Technical Requirements</h4>
+<h4 id="yêu-cầu-kỹ-thuật">Yêu cầu kỹ thuật</h4>
 <ul>
 <li>Frontend: React + Axios + JWT</li>
 <li>Backend: Spring Boot</li>
@@ -1325,7 +1318,7 @@
 <hr>
 <h3 id="5-timeline--milestones">5. Timeline &amp; Milestones</h3>
 <ul>
-<li>Week 7-8: Setup core system</li>
+<li>Week 7-8: Setup hệ thống</li>
 <li>Week 8: Booking + session</li>
 <li>Week 9: Payment + map</li>
 <li>Week 10: Loyalty + compliance</li>
@@ -1333,8 +1326,111 @@
 <li>Week 12: Deploy</li>
 </ul>
 <hr>
-<h3 id="6-budget-estimation">6. Budget Estimation</h3>
-<p>(Giữ nguyên như file gốc) :contentReference[oaicite:0]{index=0}</p>
+<h3 id="6-ước-tính-chi-phí-budget-estimation">6. Ước tính chi phí (Budget Estimation)</h3>
+<p>Chi phí hạ tầng được ước tính dựa trên kiến trúc AWS đã đề xuất, bao gồm:</p>
+<ul>
+<li>Amazon S3 (lưu trữ frontend)</li>
+<li>CloudFront (CDN)</li>
+<li>EC2 (backend)</li>
+<li>RDS SQL Server (database)</li>
+<li>Route 53 (DNS)</li>
+<li>Amazon SES (email)</li>
+<li>AWS Map (bản đồ)</li>
+</ul>
+<p>Hệ thống sử dụng mô hình <strong>pay-as-you-go</strong>, chi phí phụ thuộc vào mức sử dụng thực tế.</p>
+<hr>
+<h4 id="giả-định">Giả định</h4>
+<ul>
+<li>1 region</li>
+<li>1 EC2 chạy 24/7 (730 giờ/tháng)</li>
+<li>1 RDS instance (Single-AZ)</li>
+<li>~10,000 email/tháng</li>
+<li>Traffic ở mức MVP</li>
+<li>Chưa có autoscaling / load balancer</li>
+</ul>
+<hr>
+<h4 id="chi-phí-ước-tính-hàng-tháng">Chi phí ước tính hàng tháng</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Service</th>
+          <th>Cấu hình</th>
+          <th>Chi phí (USD/tháng)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>EC2</td>
+          <td>t3.small</td>
+          <td>~15.18</td>
+      </tr>
+      <tr>
+          <td>RDS SQL Server</td>
+          <td>db.t3.small</td>
+          <td>~26.28</td>
+      </tr>
+      <tr>
+          <td>CloudFront</td>
+          <td>Free tier</td>
+          <td>0.00</td>
+      </tr>
+      <tr>
+          <td>Route 53</td>
+          <td>Hosted zone</td>
+          <td>~0.50</td>
+      </tr>
+      <tr>
+          <td>Amazon SES</td>
+          <td>10,000 email</td>
+          <td>~1.00</td>
+      </tr>
+      <tr>
+          <td>AWS Map</td>
+          <td>Free tier</td>
+          <td>0.00</td>
+      </tr>
+      <tr>
+          <td><strong>Tổng (MVP)</strong></td>
+          <td></td>
+          <td><strong>~42.96 USD/tháng</strong></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h4 id="nâng-cấp-tuỳ-chọn">Nâng cấp (tuỳ chọn)</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Service</th>
+          <th>Nâng cấp</th>
+          <th>Chi phí</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CloudFront</td>
+          <td>Pro plan</td>
+          <td>+15 USD</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Tổng nâng cấp:</strong> ~57.96 USD/tháng</p>
+<hr>
+<h4 id="chi-phí-biến-đổi">Chi phí biến đổi</h4>
+<ul>
+<li>S3 storage</li>
+<li>RDS storage &amp; backup</li>
+<li>Data transfer</li>
+<li>Domain</li>
+<li>Phí VNPay</li>
+</ul>
+<hr>
+<h4 id="tổng-kết">Tổng kết</h4>
+<ul>
+<li><strong>~43 USD/tháng (MVP)</strong></li>
+<li><strong>~58 USD/tháng (Production nhẹ)</strong></li>
+</ul>
+<p>Đây là mức chi phí thấp, phù hợp cho giai đoạn triển khai ban đầu và có thể mở rộng trong tương lai.</p>
 <hr>
 <h3 id="7-risk-assessment">7. Risk Assessment</h3>
 <h4 id="rủi-ro-frontend">Rủi ro frontend</h4>
@@ -1348,7 +1444,7 @@
 <h4 id="giảm-thiểu">Giảm thiểu</h4>
 <ul>
 <li>React Query</li>
-<li>API chuẩn hóa</li>
+<li>Chuẩn hóa API</li>
 <li>Lazy loading</li>
 <li>Giảm polling</li>
 <li>Tối ưu state</li>
@@ -2135,19 +2231,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1774705112"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1774705112"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1774705112"></script>
-    <script src="../../js/jquery.sticky.js?1774705112"></script>
-    <script src="../../js/featherlight.min.js?1774705112"></script>
-    <script src="../../js/highlight.pack.js?1774705112"></script>
+    <script src="../../js/clipboard.min.js?1774706685"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1774706685"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1774706685"></script>
+    <script src="../../js/jquery.sticky.js?1774706685"></script>
+    <script src="../../js/featherlight.min.js?1774706685"></script>
+    <script src="../../js/highlight.pack.js?1774706685"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1774705112"></script>
-    <script src="../../js/learn.js?1774705112"></script>
-    <script src="../../js/hugo-learn.js?1774705112"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1774706685"></script>
+    <script src="../../js/learn.js?1774706685"></script>
+    <script src="../../js/hugo-learn.js?1774706685"></script>
 
-    <link href="../../mermaid/mermaid.css?1774705112" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1774705112"></script>
+    <link href="../../mermaid/mermaid.css?1774706685" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1774706685"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

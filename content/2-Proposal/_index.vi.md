@@ -10,61 +10,61 @@ pre: " <b> 2. </b> "
 
 # Nền tảng Full-Stack cho vận hành trạm sạc và thanh toán số
 
-### 1. Executive Summary
+### 1. Tóm tắt điều hành (Executive Summary)
 
-Hệ thống EV Charging Station Management System là một nền tảng full-stack được thiết kế để hỗ trợ toàn bộ vòng đời vận hành của dịch vụ sạc xe điện, bao gồm cả **backend xử lý nghiệp vụ** và **frontend tương tác người dùng**.
+Hệ thống EV Charging Station Management System là một nền tảng full-stack được thiết kế nhằm hỗ trợ toàn bộ vòng đời vận hành của dịch vụ sạc xe điện, bao gồm cả **xử lý nghiệp vụ backend** và **tương tác người dùng frontend**.
 
-Hệ thống quản lý các quy trình cốt lõi như tìm kiếm trạm sạc, đặt lịch theo khung giờ, xác nhận booking, theo dõi phiên sạc, tạo hóa đơn, xử lý thanh toán và quản lý vi phạm người dùng trong một nền tảng thống nhất.
+Hệ thống quản lý các quy trình cốt lõi như tìm kiếm trạm sạc, đặt lịch theo khung giờ, xác nhận booking, theo dõi phiên sạc, tạo hóa đơn, xử lý thanh toán và quản lý tuân thủ người dùng trong một kiến trúc thống nhất.
 
-Ở phía backend, hệ thống được xây dựng trên Spring Boot và tích hợp với hạ tầng cloud. Ở phía frontend, hệ thống cung cấp giao diện web theo từng vai trò (driver, staff, admin), đảm bảo trải nghiệm người dùng xuyên suốt.
+Ở phía backend, hệ thống được xây dựng trên Spring Boot và tích hợp với hạ tầng cloud. Ở phía frontend, hệ thống cung cấp ứng dụng web theo vai trò (driver, staff, admin) với các luồng nghiệp vụ rõ ràng.
 
-Frontend giao tiếp với backend thông qua một lớp API chuẩn hóa sử dụng Axios và JWT, bao gồm các domain như authentication, station, booking, charging session, payment, notification và reporting.
+Frontend giao tiếp với backend thông qua lớp API chuẩn hóa sử dụng Axios và JWT, bao phủ nhiều domain như authentication, station discovery, booking, charging session, payment, notification và reporting.
 
-Hệ thống tích hợp VNPay cho thanh toán, AWS S3 và CloudFront cho frontend, Amazon RDS cho database, AWS Map cho bản đồ và SMTP cho gửi email.
+Hệ thống tích hợp VNPay cho thanh toán, AWS S3 và CloudFront cho hosting frontend, Amazon RDS cho lưu trữ dữ liệu, AWS Map cho bản đồ và SMTP cho gửi email.
 
-Giải pháp này giúp các đơn vị vận hành trạm sạc số hóa quy trình, tăng hiệu suất sử dụng trạm, cải thiện trải nghiệm khách hàng và sẵn sàng mở rộng trong tương lai.
+Giải pháp giúp các đơn vị vận hành trạm sạc số hóa quy trình, nâng cao hiệu quả, chuẩn hóa hệ thống và mang lại trải nghiệm người dùng xuyên suốt.
 
 ---
 
-### 2. Problem Statement
+### 2. Vấn đề (Problem Statement)
 
 #### Vấn đề hiện tại
 
-Khi số lượng xe điện tăng nhanh, các đơn vị vận hành phải đối mặt với nhiều thách thức cả về backend lẫn frontend:
+Khi số lượng xe điện tăng nhanh, các đơn vị vận hành phải đối mặt với nhiều thách thức:
 
 - Thiếu khả năng hiển thị trạng thái slot theo thời gian thực
-- Quy trình booking và check-in chưa tối ưu
+- Quy trình booking và phiên sạc chưa tối ưu
 - Chậm trễ trong tạo hóa đơn và đối soát thanh toán
-- Khó kiểm soát vi phạm người dùng (overstay, misuse)
-- Hệ thống frontend và backend chưa tích hợp chặt chẽ
+- Khó kiểm soát vi phạm (overstay, misuse)
+- Frontend và backend chưa tích hợp chặt chẽ
 - Trải nghiệm người dùng không đồng nhất giữa các vai trò
 - Phụ thuộc nhiều vào localStorage/sessionStorage
 - API chưa được chuẩn hóa
 
 #### Vấn đề phía frontend
 
-- Logic nghiệp vụ nằm trực tiếp trong page → khó tái sử dụng
+- Logic nghiệp vụ nằm trong page → khó tái sử dụng
 - Gọi API không đồng nhất
-- Chưa có cơ chế quản lý server state (React Query/SWR)
-- Bundle lớn, polling nhiều → ảnh hưởng performance
-- Navigation chưa nhất quán (mix redirect và SPA)
+- Thiếu quản lý server state
+- Bundle lớn, polling nhiều → giảm hiệu năng
+- Navigation chưa nhất quán
 
-Nếu không có kiến trúc full-stack chuẩn hóa, hệ thống sẽ khó mở rộng, khó maintain và dễ phát sinh lỗi.
+Nếu không có kiến trúc full-stack chuẩn hóa, hệ thống sẽ khó mở rộng, khó bảo trì và dễ phát sinh lỗi.
 
 ---
 
 #### Giải pháp
 
-Giải pháp đề xuất là một **nền tảng full-stack thống nhất**, bao gồm:
+Giải pháp đề xuất là một **nền tảng full-stack thống nhất**:
 
 - Backend trung tâm xử lý toàn bộ nghiệp vụ
 - Frontend theo kiến trúc role-based + domain-based
-- Lớp API chuẩn hóa giữa frontend và backend
+- API layer chuẩn hóa
 - Tách module theo domain (auth, booking, charging, payment...)
-- Giảm phụ thuộc vào browser storage
+- Giảm phụ thuộc browser storage
 - Tối ưu hiệu năng frontend
 
-Các chức năng chính:
+Chức năng chính:
 
 - Authentication và phân quyền
 - Booking và quản lý slot
@@ -73,7 +73,7 @@ Các chức năng chính:
 - Loyalty và compliance
 - Hosting frontend qua S3 + CloudFront
 - API routing qua Nginx
-- Map integration qua AWS Map
+- Tích hợp bản đồ AWS Map
 - Background jobs
 
 ---
@@ -81,15 +81,15 @@ Các chức năng chính:
 #### Lợi ích
 
 - **Tăng hiệu suất sử dụng trạm**
-- **Cải thiện UX**
+- **Cải thiện trải nghiệm người dùng**
 - **Giảm technical debt**
-- **Dễ mở rộng**
-- **Dễ maintain**
-- **Tăng độ ổn định hệ thống**
+- **Dễ mở rộng hệ thống**
+- **Dễ bảo trì**
+- **Tăng độ ổn định**
 
 ---
 
-### 3. Solution Architecture
+### 3. Kiến trúc hệ thống (Solution Architecture)
 
 Hệ thống sử dụng kiến trúc **full-stack nhiều lớp**, tách biệt rõ:
 
@@ -97,7 +97,7 @@ Hệ thống sử dụng kiến trúc **full-stack nhiều lớp**, tách biệt
 - Backend
 - Database
 
-Người dùng truy cập frontend qua CloudFront (S3). Frontend gọi API qua Axios (JWT). Nginx route request vào backend Spring Boot. Dữ liệu lưu trên RDS SQL Server.
+Người dùng truy cập frontend qua CloudFront (S3). Frontend gọi API qua Axios (JWT). Nginx định tuyến request vào backend Spring Boot. Dữ liệu lưu trên Amazon RDS SQL Server.
 
 ![EV Charging System Architecture](/images/2-Proposal/aws-ev-architecture.png)
 
@@ -113,48 +113,40 @@ Người dùng truy cập frontend qua CloudFront (S3). Frontend gọi API qua A
 | Backend Framework | Spring Boot 3.5.6 |
 | Programming Language | Java 17 |
 | API Layer | REST Controllers |
-| Business Layer | Service |
+| Business Layer | Service Interfaces |
 | Persistence Layer | JPA + Hibernate |
 | Database | Amazon RDS for SQL Server |
 | Authentication | JWT + OAuth2 |
 | Payment Gateway | VNPay |
-| Email Notification | SMTP |
+| Email Notification | SMTP + Thymeleaf |
 | Background Jobs | Scheduler + Async |
 
 ---
 
 #### Kiến trúc Frontend
 
-Frontend hiện tại tổ chức theo:
-
-- Pages theo role (driver, staff, admin)
-- Components (UI + business)
-- API layer
+- Pages theo role
+- Components tái sử dụng
+- API layer chuẩn hóa
 - Layouts theo role
-- Routing có bảo vệ
-
-Hiện trạng:
-- Vẫn theo kiểu page-based
-- Business logic nằm trong page
+- Routing có phân quyền
 
 Hướng cải tiến:
 
-- Chuyển sang **feature-based architecture**
-- Dùng **React Query**
+- Feature-based architecture
+- React Query
 - Chuẩn hóa API
-- Lazy loading theo role
+- Lazy loading
 
 ---
 
 #### Kiến trúc Backend
 
-Backend theo layered architecture:
-
 - Controller → Service → Repository
 
-Module:
+Modules:
 
-- Auth
+- Authentication
 - Booking
 - Charging Session
 - Payment
@@ -164,28 +156,28 @@ Module:
 
 ---
 
-### 4. Technical Implementation
+### 4. Triển khai kỹ thuật (Technical Implementation)
 
 #### Workflow Engine
 
 Hệ thống sử dụng rule-based:
 
-- Slot phải available mới được đặt
+- Slot phải available
 - Giới hạn slot liên tiếp
 - Booking → QR
 - Charging → invoice
 - Payment → VNPay
-- Violation → grouping
+- Violation → xử lý
 
-Frontend hỗ trợ:
+Frontend:
 
-- Validate booking
+- Validate flow
 - Simulate SOC
-- Quản lý flow nhiều bước
+- Multi-step workflow
 
 ---
 
-#### Technical Requirements
+#### Yêu cầu kỹ thuật
 
 - Frontend: React + Axios + JWT
 - Backend: Spring Boot
@@ -198,7 +190,7 @@ Frontend hỗ trợ:
 
 ### 5. Timeline & Milestones
 
-- Week 7-8: Setup core system
+- Week 7-8: Setup hệ thống
 - Week 8: Booking + session
 - Week 9: Payment + map
 - Week 10: Loyalty + compliance
@@ -207,9 +199,73 @@ Frontend hỗ trợ:
 
 ---
 
-### 6. Budget Estimation
+### 6. Ước tính chi phí (Budget Estimation)
 
-(Giữ nguyên như file gốc) :contentReference[oaicite:0]{index=0}
+Chi phí hạ tầng được ước tính dựa trên kiến trúc AWS đã đề xuất, bao gồm:
+
+- Amazon S3 (lưu trữ frontend)
+- CloudFront (CDN)
+- EC2 (backend)
+- RDS SQL Server (database)
+- Route 53 (DNS)
+- Amazon SES (email)
+- AWS Map (bản đồ)
+
+Hệ thống sử dụng mô hình **pay-as-you-go**, chi phí phụ thuộc vào mức sử dụng thực tế.
+
+---
+
+#### Giả định
+
+- 1 region
+- 1 EC2 chạy 24/7 (730 giờ/tháng)
+- 1 RDS instance (Single-AZ)
+- ~10,000 email/tháng
+- Traffic ở mức MVP
+- Chưa có autoscaling / load balancer
+
+---
+
+#### Chi phí ước tính hàng tháng
+
+| Service | Cấu hình | Chi phí (USD/tháng) |
+|--------|---------|--------------------|
+| EC2 | t3.small | ~15.18 |
+| RDS SQL Server | db.t3.small | ~26.28 |
+| CloudFront | Free tier | 0.00 |
+| Route 53 | Hosted zone | ~0.50 |
+| Amazon SES | 10,000 email | ~1.00 |
+| AWS Map | Free tier | 0.00 |
+| **Tổng (MVP)** |  | **~42.96 USD/tháng** |
+
+---
+
+#### Nâng cấp (tuỳ chọn)
+
+| Service | Nâng cấp | Chi phí |
+|--------|--------|--------|
+| CloudFront | Pro plan | +15 USD |
+
+**Tổng nâng cấp:** ~57.96 USD/tháng
+
+---
+
+#### Chi phí biến đổi
+
+- S3 storage
+- RDS storage & backup
+- Data transfer
+- Domain
+- Phí VNPay
+
+---
+
+#### Tổng kết
+
+- **~43 USD/tháng (MVP)**
+- **~58 USD/tháng (Production nhẹ)**
+
+Đây là mức chi phí thấp, phù hợp cho giai đoạn triển khai ban đầu và có thể mở rộng trong tương lai.
 
 ---
 
@@ -226,7 +282,7 @@ Frontend hỗ trợ:
 #### Giảm thiểu
 
 - React Query
-- API chuẩn hóa
+- Chuẩn hóa API
 - Lazy loading
 - Giảm polling
 - Tối ưu state

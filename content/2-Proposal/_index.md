@@ -210,7 +210,58 @@ Frontend complements this by:
 
 ### 6. Budget Estimation
 
-(giữ nguyên như file gốc)
+The infrastructure cost is estimated based on the proposed AWS architecture, including **Amazon S3, CloudFront, EC2, RDS (SQL Server), Route 53, Amazon SES, and AWS Map (Location Service)**.
+
+The pricing follows a **pay-as-you-go model**, allowing the system to scale with usage. The following estimation reflects a **Minimum Viable Product (MVP)** deployment.
+
+#### Assumptions
+
+- Single AWS region
+- One EC2 instance running continuously (730 hours/month)
+- One RDS SQL Server instance (Single-AZ)
+- Moderate traffic usage
+- ~10,000 emails/month
+- AWS Map usage within free tier
+- No auto-scaling or load balancer included
+
+#### Estimated Monthly Cost
+
+| Service | Configuration | Cost (USD/month) |
+|--------|--------------|------------------|
+| EC2 | t3.small | ~15.18 |
+| RDS SQL Server | db.t3.small | ~26.28 |
+| CloudFront | Free tier | 0.00 |
+| Route 53 | Hosted zone | ~0.50 |
+| Amazon SES | 10,000 emails | ~1.00 |
+| AWS Map | Free tier | 0.00 |
+| **Total (MVP)** |  | **~42.96 USD/month** |
+
+#### Optional Upgrade
+
+| Service | Upgrade | Additional Cost |
+|--------|--------|----------------|
+| CloudFront | Pro plan | +15.00 USD |
+
+**Total with upgrade:** ~57.96 USD/month
+
+#### Variable Costs
+
+Additional costs may vary depending on usage:
+
+- Amazon S3 storage
+- RDS storage and backup
+- Data transfer (CloudFront / EC2)
+- Domain registration
+- VNPay transaction fees
+
+#### Summary
+
+The system can operate at a low initial cost of approximately:
+
+- **~43 USD/month (MVP)**
+- **~58 USD/month (enhanced configuration)**
+
+This cost-efficient setup supports early deployment while allowing scalability for future growth.
 
 ---
 
