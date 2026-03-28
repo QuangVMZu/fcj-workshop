@@ -21,9 +21,9 @@ chapter: false
 
 &emsp; **Class:** FCJ - FPTU
 
-&emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
+&emsp; **Internship Company:** Bootcamp - First Cloud AI Journey @ AWS Study Group
 
-&emsp; **Internship Position:** FCJ Cloud Intern
+&emsp; **Internship Position:** First Cloud AI Journey Intern
 
 &emsp; **Internship Duration:** From 12/01/2026 to 18/04/2026
 

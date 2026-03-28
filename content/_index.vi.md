@@ -21,9 +21,9 @@ chapter: false
 
 &emsp; **Lớp:** FCJ - FPTU
 
-&emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Vietnam
+&emsp; **Công ty thực tập:** Bootcamp - First Cloud AI Journey @ AWS Study Group
 
-&emsp; **Vị trí thực tập:** FCJ Cloud Intern
+&emsp; **Vị trí thực tập:** First Cloud AI Journey Intern
 
 &emsp; **Thời gian thực tập:** Từ ngày 12/01/2026 đến 18/04/2026
 
