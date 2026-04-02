@@ -15,21 +15,21 @@
     <title>Proposal :: Internship Report</title>
 
     
-    <link href="../css/nucleus.css?1774706685" rel="stylesheet">
-    <link href="../css/fontawesome-all.min.css?1774706685" rel="stylesheet">
-    <link href="../css/hybrid.css?1774706685" rel="stylesheet">
-    <link href="../css/featherlight.min.css?1774706685" rel="stylesheet">
-    <link href="../css/perfect-scrollbar.min.css?1774706685" rel="stylesheet">
-    <link href="../css/auto-complete.css?1774706685" rel="stylesheet">
-    <link href="../css/atom-one-dark-reasonable.css?1774706685" rel="stylesheet">
-    <link href="../css/theme.css?1774706685" rel="stylesheet">
-    <link href="../css/hugo-theme.css?1774706685" rel="stylesheet">
+    <link href="../css/nucleus.css?1775119855" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1775119855" rel="stylesheet">
+    <link href="../css/hybrid.css?1775119855" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1775119855" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1775119855" rel="stylesheet">
+    <link href="../css/auto-complete.css?1775119855" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1775119855" rel="stylesheet">
+    <link href="../css/theme.css?1775119855" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1775119855" rel="stylesheet">
     
-    <link href="../css/theme-workshop.css?1774706685" rel="stylesheet">
+    <link href="../css/theme-workshop.css?1775119855" rel="stylesheet">
     
     
 
-    <script src="../js/jquery-3.3.1.min.js?1774706685"></script>
+    <script src="../js/jquery-3.3.1.min.js?1775119855"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1774706685"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1774706685"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1775119855"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1775119855"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1774706685"></script>
+<script type="text/javascript" src="../js/search.js?1775119855"></script>
  
   </div>
 
@@ -1066,18 +1066,37 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#1-executive-summary">1. Executive Summary</a></li>
+    <li><a href="#2-problem-statement">2. Problem Statement</a>
       <ul>
-        <li><a href="#1-executive-summary">1. Executive Summary</a></li>
-        <li><a href="#2-problem-statement">2. Problem Statement</a></li>
-        <li><a href="#3-solution-architecture">3. Solution Architecture</a></li>
-        <li><a href="#4-technical-implementation">4. Technical Implementation</a></li>
-        <li><a href="#5-timeline--milestones">5. Timeline &amp; Milestones</a></li>
-        <li><a href="#6-budget-estimation">6. Budget Estimation</a></li>
-        <li><a href="#7-risk-assessment">7. Risk Assessment</a></li>
-        <li><a href="#8-expected-outcomes">8. Expected Outcomes</a></li>
+        <li><a href="#current-issues">Current Issues</a></li>
+        <li><a href="#frontend-issues">Frontend Issues</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#benefits">Benefits</a></li>
       </ul>
     </li>
+    <li><a href="#3-solution-architecture">3. Solution Architecture</a>
+      <ul>
+        <li><a href="#main-flow">Main Flow</a></li>
+        <li><a href="#key-characteristics">Key Characteristics</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-architecture-justification">4. Architecture Justification</a>
+      <ul>
+        <li><a href="#design-rationale">Design Rationale</a></li>
+        <li><a href="#trade-offs">Trade-offs</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-technical-implementation">5. Technical Implementation</a></li>
+    <li><a href="#6-timeline">6. Timeline</a></li>
+    <li><a href="#7-budget-estimation">7. Budget Estimation</a>
+      <ul>
+        <li><a href="#assumptions">Assumptions</a></li>
+        <li><a href="#estimated-cost">Estimated Cost</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-risk-assessment">8. Risk Assessment</a></li>
+    <li><a href="#9-expected-outcomes">9. Expected Outcomes</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1104,360 +1123,229 @@
 
 
 	<h1 id="ev-charging-station-management-system">EV Charging Station Management System</h1>
-<h1 id="smart-full-stack-platform-for-ev-charging-operations-and-digital-payments">Smart Full-Stack Platform for EV Charging Operations and Digital Payments</h1>
-<h3 id="1-executive-summary">1. Executive Summary</h3>
-<p>The EV Charging Station Management System is a full-stack platform designed to support the complete operational lifecycle of electric vehicle charging services, covering both <strong>backend operations</strong> and <strong>frontend user interaction layers</strong>.</p>
-<p>The system manages core processes such as station discovery, time-slot scheduling, booking confirmation, charging session tracking, invoice generation, payment processing, and driver compliance handling within a unified architecture.</p>
-<p>On the backend side, the platform is built using Spring Boot and integrated with cloud-based infrastructure. On the frontend side, it provides a role-based web application supporting drivers, staff, and administrators with tailored interfaces and workflows.</p>
-<p>The frontend communicates with the backend through a standardized API layer using Axios with JWT authentication, covering multiple domains such as authentication, station discovery, booking, charging session, invoice/payment, notification, and reporting.</p>
-<p>The platform integrates with VNPay for payments, AWS S3 and CloudFront for frontend hosting and delivery, Amazon RDS for SQL Server for data persistence, AWS Map for geolocation services, and SMTP-based services for notifications.</p>
-<p>This solution enables EV charging operators to digitize operations, improve efficiency, standardize workflows, and deliver a seamless end-to-end user experience.</p>
+<h1 id="a-full-stack-platform-for-charging-operations-and-digital-payments">A Full-Stack Platform for Charging Operations and Digital Payments</h1>
 <hr>
-<h3 id="2-problem-statement">2. Problem Statement</h3>
-<h4 id="whats-the-problem">What&rsquo;s the Problem?</h4>
-<p>As EV adoption grows, operators face increasing complexity not only in backend operations but also in frontend user flows and system integration.</p>
-<p>Key challenges include:</p>
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<p>The <strong>EV Charging Station Management System</strong> is a full-stack platform designed to digitize, standardize, and optimize the entire operation of EV charging services in the context of rapidly growing electric vehicle adoption.</p>
+<p>The system provides an end-to-end integrated solution that enables users to locate charging stations, book time slots, monitor charging sessions in real time, make payments, and receive notifications seamlessly. At the same time, it supports operators in managing charging resources, monitoring violations, tracking performance, and ensuring regulatory compliance.</p>
+<p>From a technical perspective, the system is built on a modern full-stack architecture. The frontend serves as the role-based user interface (driver, staff, admin), while the backend handles all business logic, ensuring data consistency and integrity.</p>
+<p>The system is deployed on AWS with the following core components:</p>
 <ul>
-<li>Limited visibility into real-time slot availability</li>
-<li>Inefficient booking and session workflows</li>
-<li>Delays in billing and payment reconciliation</li>
-<li>Weak enforcement of operational policies</li>
-<li>Fragmented frontend-backend integration</li>
-<li>Inconsistent user experience across roles</li>
-<li>Heavy dependency on browser storage for workflow handling</li>
-<li>Lack of standardized API integration across frontend modules</li>
+<li>Amazon S3 + CloudFront (with WAF) for fast and secure frontend delivery</li>
+<li>Application Load Balancer + EC2 Auto Scaling for a scalable and highly available backend</li>
+<li>Amazon RDS SQL Server (Single-AZ) for data storage</li>
+<li>NAT Gateway for outbound internet access from private subnets</li>
+<li>Amazon SES for email notifications</li>
+<li>AWS Location Service for maps and geolocation</li>
+<li>AWS Systems Manager (SSM) + IAM for secure access without public IP</li>
 </ul>
-<p>On the frontend side, additional technical issues arise:</p>
+<p>This solution helps operators:</p>
 <ul>
-<li>Business logic scattered across page components</li>
-<li>Inconsistent API calling patterns</li>
-<li>Lack of centralized server-state management</li>
-<li>Performance bottlenecks due to polling and large bundles</li>
-<li>Navigation inconsistencies and hard page reloads</li>
-</ul>
-<p>Without a unified full-stack architecture, the system becomes difficult to scale, maintain, and extend.</p>
-<hr>
-<h4 id="the-solution">The Solution</h4>
-<p>The proposed solution is a <strong>full-stack EV charging management platform</strong> that standardizes both backend and frontend architecture.</p>
-<p>It provides:</p>
-<ul>
-<li>Centralized backend for operational logic and data processing</li>
-<li>Role-based frontend architecture for driver, staff, and admin workflows</li>
-<li>Unified API communication layer between frontend and backend</li>
-<li>Structured domain-based modules (auth, booking, charging, payment, etc.)</li>
-<li>Reduced reliance on browser storage through better state management</li>
-<li>Improved performance through modular frontend architecture</li>
-</ul>
-<p>Key capabilities include:</p>
-<ul>
-<li>User authentication and role-based authorization</li>
-<li>Booking and slot reservation workflows</li>
-<li>Charging session lifecycle management</li>
-<li>Invoice generation and billing</li>
-<li>VNPay payment integration</li>
-<li>Loyalty and compliance management</li>
-<li>Cloud-based frontend delivery via S3 + CloudFront</li>
-<li>API routing via Nginx</li>
-<li>Map integration via AWS Map</li>
-<li>Automated scheduling and background processing</li>
+<li>Optimize charging station utilization</li>
+<li>Reduce operational costs through automation</li>
+<li>Improve user experience</li>
+<li>Standardize systems and reduce technical debt</li>
+<li>Scale efficiently as demand grows</li>
 </ul>
 <hr>
-<h4 id="benefits-and-return-on-investment">Benefits and Return on Investment</h4>
-<p>The full-stack platform delivers both technical and business value:</p>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h3 id="current-issues">Current Issues</h3>
 <ul>
-<li><strong>Higher station utilization</strong> through optimized booking workflows</li>
-<li><strong>Improved UX</strong> with consistent frontend behavior and faster interactions</li>
-<li><strong>Reduced technical debt</strong> through standardized architecture</li>
-<li><strong>Operational efficiency</strong> via automation and integration</li>
-<li><strong>Scalability</strong> across multiple stations and increasing users</li>
-<li><strong>Better maintainability</strong> with domain-based frontend and backend modules</li>
-<li><strong>Improved reliability</strong> by reducing client-side dependency on session/local storage</li>
+<li>No real-time slot visibility</li>
+<li>Inefficient booking and charging workflow</li>
+<li>Slow invoicing and payment processing</li>
+<li>Difficulty in violation monitoring</li>
+<li>Lack of synchronization between frontend and backend</li>
+</ul>
+<h3 id="frontend-issues">Frontend Issues</h3>
+<ul>
+<li>Scattered business logic</li>
+<li>Non-standardized APIs</li>
+<li>Poor performance</li>
 </ul>
 <hr>
-<h3 id="3-solution-architecture">3. Solution Architecture</h3>
-<p>The platform follows a <strong>full-stack layered architecture</strong> with clear separation between frontend, backend, and data layers.</p>
-<p>End users access the frontend via CloudFront, which serves static assets from Amazon S3. The frontend communicates with backend APIs through a centralized Axios client with JWT authentication. API requests are routed via Nginx to the Spring Boot backend. Data is stored in Amazon RDS for SQL Server.</p>
+<h3 id="solution">Solution</h3>
+<ul>
+<li>Centralize all business logic in the backend</li>
+<li>Role-based and domain-based frontend architecture</li>
+<li>Standardized APIs using JWT</li>
+<li>Domain-driven modularization</li>
+</ul>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Authentication (JWT + Google OAuth)</li>
+<li>Booking / Charging / Payment</li>
+<li>Email notifications (SES)</li>
+<li>Map integration (AWS Location Service)</li>
+</ul>
+<hr>
+<h3 id="benefits">Benefits</h3>
+<ul>
+<li><strong>Improved performance</strong></li>
+<li><strong>Better user experience (UX)</strong></li>
+<li><strong>Scalability</strong></li>
+<li><strong>Higher system stability</strong></li>
+</ul>
+<hr>
+<h2 id="3-solution-architecture">3. Solution Architecture</h2>
+<ul>
+<li><strong>Edge Layer:</strong> Route 53, CloudFront, WAF</li>
+<li><strong>Application Layer:</strong> ALB + EC2 Auto Scaling (Multi-AZ)</li>
+<li><strong>Data Layer:</strong> RDS SQL Server (private, Single-AZ)</li>
+<li><strong>Support Services:</strong> IAM, SSM, Secrets Manager, CloudWatch</li>
+</ul>
+<h3 id="main-flow">Main Flow</h3>
+<ol>
+<li>User → Route 53</li>
+<li>CloudFront → S3</li>
+<li>Frontend → ALB</li>
+<li>ALB → EC2</li>
+<li>EC2 → RDS</li>
+<li>EC2 → SES / NAT Gateway</li>
+</ol>
+<h3 id="key-characteristics">Key Characteristics</h3>
+<ul>
+<li>EC2 instances run in private subnets (no public IP)</li>
+<li>Outbound traffic goes through NAT Gateway</li>
+<li>Secure access via SSM (no SSH required)</li>
+<li>Credentials managed by Secrets Manager</li>
+</ul>
 <p><img src="../images/2-Proposal/aws-ev-architecture.png" alt="EV Charging System Architecture"></p>
-<table>
-  <thead>
-      <tr>
-          <th>Component</th>
-          <th>Service / Technology</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Frontend Framework</td>
-          <td>React (Vite)</td>
-      </tr>
-      <tr>
-          <td>Frontend Hosting</td>
-          <td>Amazon S3</td>
-      </tr>
-      <tr>
-          <td>CDN Delivery</td>
-          <td>Amazon CloudFront</td>
-      </tr>
-      <tr>
-          <td>State Management</td>
-          <td>Redux (Auth) + Local State</td>
-      </tr>
-      <tr>
-          <td>API Communication</td>
-          <td>Axios + Interceptors</td>
-      </tr>
-      <tr>
-          <td>Map Integration</td>
-          <td>AWS Map</td>
-      </tr>
-      <tr>
-          <td>Reverse Proxy</td>
-          <td>Nginx</td>
-      </tr>
-      <tr>
-          <td>Backend Framework</td>
-          <td>Spring Boot 3.5.6</td>
-      </tr>
-      <tr>
-          <td>Programming Language</td>
-          <td>Java 17</td>
-      </tr>
-      <tr>
-          <td>API Layer</td>
-          <td>REST Controllers</td>
-      </tr>
-      <tr>
-          <td>Business Layer</td>
-          <td>Service Interfaces</td>
-      </tr>
-      <tr>
-          <td>Persistence Layer</td>
-          <td>JPA + Hibernate</td>
-      </tr>
-      <tr>
-          <td>Database</td>
-          <td>Amazon RDS for SQL Server</td>
-      </tr>
-      <tr>
-          <td>Authentication</td>
-          <td>JWT + OAuth2</td>
-      </tr>
-      <tr>
-          <td>Payment Gateway</td>
-          <td>VNPay</td>
-      </tr>
-      <tr>
-          <td>Email Notification</td>
-          <td>SMTP + Thymeleaf</td>
-      </tr>
-      <tr>
-          <td>Background Jobs</td>
-          <td>Scheduler + Async</td>
-      </tr>
-  </tbody>
-</table>
 <hr>
-<h4 id="frontend-architecture">Frontend Architecture</h4>
-<p>The frontend is structured using a <strong>role-based and domain-oriented approach</strong>:</p>
+<h2 id="4-architecture-justification">4. Architecture Justification</h2>
+<h3 id="design-rationale">Design Rationale</h3>
+<p><strong>1. CloudFront + S3</strong></p>
 <ul>
-<li><strong>Pages layer</strong>: divided by roles (driver, staff, admin)</li>
-<li><strong>Components layer</strong>: reusable UI + business components</li>
-<li><strong>API layer</strong>: domain-based API modules with shared Axios instance</li>
-<li><strong>Layouts</strong>: separate shells for public users and internal users</li>
-<li><strong>Routing</strong>: protected routes with role-based access control</li>
+<li>Reduce latency</li>
+<li>Accelerate frontend delivery</li>
+<li>Offload backend traffic</li>
 </ul>
-<p>Current architecture follows a <strong>layered page-based approach</strong>, with business logic still partially embedded in pages.</p>
-<p>Future direction:</p>
+<p><strong>2. ALB + Auto Scaling Group</strong></p>
 <ul>
-<li>Transition to <strong>feature-based modules</strong></li>
-<li>Introduce <strong>React Query for server state</strong></li>
-<li>Standardize API layer and response handling</li>
-<li>Apply lazy loading and code splitting</li>
+<li>High availability</li>
+<li>Automatic scaling</li>
+<li>Stateless backend design</li>
+</ul>
+<p><strong>3. EC2</strong></p>
+<ul>
+<li>Well-suited for Spring Boot</li>
+<li>High flexibility and control</li>
+</ul>
+<p><strong>4. RDS Single-AZ</strong></p>
+<ul>
+<li>Cost-efficient</li>
+<li>Easy to upgrade later</li>
+</ul>
+<p><strong>5. NAT Gateway</strong></p>
+<ul>
+<li>Secure outbound access</li>
+<li>No need for public IPs</li>
+</ul>
+<p><strong>6. SSM + IAM</strong></p>
+<ul>
+<li>No SSH required</li>
+<li>Secure access management</li>
+</ul>
+<p><strong>7. Secrets Manager</strong></p>
+<ul>
+<li>Secure credential storage</li>
+</ul>
+<p><strong>8. CloudWatch + CloudTrail</strong></p>
+<ul>
+<li>Monitoring and auditing</li>
 </ul>
 <hr>
-<h4 id="backend-architecture">Backend Architecture</h4>
-<p>The backend follows a standard layered architecture:</p>
+<h3 id="trade-offs">Trade-offs</h3>
 <ul>
-<li>Controller → Service → Repository</li>
-<li>Domain modules:
-<ul>
-<li>Authentication</li>
-<li>Booking</li>
-<li>Charging Session</li>
-<li>Payment</li>
-<li>Loyalty</li>
-<li>Compliance</li>
-<li>Notification</li>
-</ul>
-</li>
+<li>No Multi-AZ database (lower availability)</li>
+<li>EC2 requires manual management</li>
+<li>NAT Gateway cost is relatively high</li>
 </ul>
 <hr>
-<h3 id="4-technical-implementation">4. Technical Implementation</h3>
-<h4 id="workflow-engine-approach">Workflow Engine Approach</h4>
-<p>The system uses a <strong>rule-based workflow engine</strong> instead of AI:</p>
+<h2 id="5-technical-implementation">5. Technical Implementation</h2>
 <ul>
-<li>Slot must be available before booking</li>
-<li>Max consecutive slot rules enforced</li>
-<li>Booking confirmation generates QR</li>
-<li>Charging session tracked and billed automatically</li>
-<li>Payment validated via VNPay</li>
-<li>Violations grouped and escalated</li>
-</ul>
-<p>Frontend complements this by:</p>
-<ul>
-<li>Managing booking flow and validation UI</li>
-<li>Simulating charging progress (SOC) during session</li>
-<li>Handling multi-step workflows (booking → charging → payment)</li>
+<li>React + Axios + JWT</li>
+<li>Spring Boot</li>
+<li>RDS SQL Server</li>
+<li>AWS Cloud</li>
+<li>VNPay integration</li>
+<li>Amazon SES</li>
 </ul>
 <hr>
-<h4 id="technical-requirements">Technical Requirements</h4>
+<h2 id="6-timeline">6. Timeline</h2>
 <ul>
-<li><strong>Frontend</strong>: React + Vite, Axios, JWT, role-based routing</li>
-<li><strong>Backend</strong>: Spring Boot, REST API, security</li>
-<li><strong>Database</strong>: Amazon RDS SQL Server</li>
-<li><strong>Cloud</strong>: AWS S3, CloudFront, EC2, Map</li>
-<li><strong>Payment</strong>: VNPay</li>
-<li><strong>Notification</strong>: SMTP</li>
-<li><strong>State Management</strong>: Redux (auth) + future React Query</li>
+<li>Week 7–8: System setup and architecture design</li>
+<li>Week 8: Booking &amp; charging session implementation</li>
+<li>Week 9: Payment and map integration</li>
+<li>Week 10: Loyalty &amp; compliance features</li>
+<li>Week 11: Testing &amp; optimization</li>
+<li>Week 12: Deployment</li>
 </ul>
 <hr>
-<h3 id="5-timeline--milestones">5. Timeline &amp; Milestones</h3>
+<h2 id="7-budget-estimation">7. Budget Estimation</h2>
+<p>Includes:</p>
 <ul>
-<li><strong>Week 7-8</strong>: Core backend + frontend structure setup</li>
-<li><strong>Week 8</strong>: Booking + session workflows</li>
-<li><strong>Week 9</strong>: Payment + notification + map integration</li>
-<li><strong>Week 10</strong>: Loyalty + compliance + admin features</li>
-<li><strong>Week 11</strong>: Testing + optimization</li>
-<li><strong>Week 12</strong>: Deployment + go-live</li>
+<li>S3 + CloudFront</li>
+<li>EC2 (Auto Scaling)</li>
+<li>RDS SQL Server</li>
+<li>Route 53</li>
+<li>SES</li>
+<li>NAT Gateway</li>
 </ul>
-<hr>
-<h3 id="6-budget-estimation">6. Budget Estimation</h3>
-<p>The infrastructure cost is estimated based on the proposed AWS architecture, including <strong>Amazon S3, CloudFront, EC2, RDS (SQL Server), Route 53, Amazon SES, and AWS Map (Location Service)</strong>.</p>
-<p>The pricing follows a <strong>pay-as-you-go model</strong>, allowing the system to scale with usage. The following estimation reflects a <strong>Minimum Viable Product (MVP)</strong> deployment.</p>
-<h4 id="assumptions">Assumptions</h4>
+<h3 id="assumptions">Assumptions</h3>
 <ul>
-<li>Single AWS region</li>
-<li>One EC2 instance running continuously (730 hours/month)</li>
-<li>One RDS SQL Server instance (Single-AZ)</li>
-<li>Moderate traffic usage</li>
-<li>~10,000 emails/month</li>
-<li>AWS Map usage within free tier</li>
-<li>No auto-scaling or load balancer included</li>
+<li>Single region</li>
+<li>2 EC2 instances</li>
+<li>1 RDS instance</li>
+<li>1 NAT Gateway</li>
 </ul>
-<h4 id="estimated-monthly-cost">Estimated Monthly Cost</h4>
+<h3 id="estimated-cost">Estimated Cost</h3>
 <table>
   <thead>
       <tr>
           <th>Service</th>
-          <th>Configuration</th>
           <th>Cost (USD/month)</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>EC2</td>
-          <td>t3.small</td>
-          <td>~15.18</td>
+          <td>~30</td>
       </tr>
       <tr>
-          <td>RDS SQL Server</td>
-          <td>db.t3.small</td>
-          <td>~26.28</td>
+          <td>RDS</td>
+          <td>~26</td>
       </tr>
       <tr>
-          <td>CloudFront</td>
-          <td>Free tier</td>
-          <td>0.00</td>
+          <td>NAT Gateway</td>
+          <td>~32–35</td>
       </tr>
       <tr>
           <td>Route 53</td>
-          <td>Hosted zone</td>
-          <td>~0.50</td>
+          <td>~0.5</td>
       </tr>
       <tr>
-          <td>Amazon SES</td>
-          <td>10,000 emails</td>
-          <td>~1.00</td>
+          <td>SES</td>
+          <td>~1</td>
       </tr>
       <tr>
-          <td>AWS Map</td>
-          <td>Free tier</td>
-          <td>0.00</td>
-      </tr>
-      <tr>
-          <td><strong>Total (MVP)</strong></td>
-          <td></td>
-          <td><strong>~42.96 USD/month</strong></td>
+          <td><strong>Total</strong></td>
+          <td><strong>~90 USD</strong></td>
       </tr>
   </tbody>
 </table>
-<h4 id="optional-upgrade">Optional Upgrade</h4>
-<table>
-  <thead>
-      <tr>
-          <th>Service</th>
-          <th>Upgrade</th>
-          <th>Additional Cost</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>CloudFront</td>
-          <td>Pro plan</td>
-          <td>+15.00 USD</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Total with upgrade:</strong> ~57.96 USD/month</p>
-<h4 id="variable-costs">Variable Costs</h4>
-<p>Additional costs may vary depending on usage:</p>
-<ul>
-<li>Amazon S3 storage</li>
-<li>RDS storage and backup</li>
-<li>Data transfer (CloudFront / EC2)</li>
-<li>Domain registration</li>
-<li>VNPay transaction fees</li>
-</ul>
-<h4 id="summary">Summary</h4>
-<p>The system can operate at a low initial cost of approximately:</p>
-<ul>
-<li><strong>~43 USD/month (MVP)</strong></li>
-<li><strong>~58 USD/month (enhanced configuration)</strong></li>
-</ul>
-<p>This cost-efficient setup supports early deployment while allowing scalability for future growth.</p>
 <hr>
-<h3 id="7-risk-assessment">7. Risk Assessment</h3>
-<h4 id="additional-frontend-risks">Additional Frontend Risks</h4>
+<h2 id="8-risk-assessment">8. Risk Assessment</h2>
 <ul>
-<li>Over-reliance on localStorage/sessionStorage</li>
-<li>Inconsistent API usage across modules</li>
-<li>Large bundle size and performance issues</li>
-<li>Polling overload on backend</li>
-<li>Navigation inconsistency</li>
-</ul>
-<h4 id="mitigation">Mitigation</h4>
-<ul>
-<li>Introduce React Query</li>
-<li>Standardize API layer</li>
-<li>Implement lazy loading</li>
-<li>Reduce polling frequency</li>
-<li>Improve state management strategy</li>
+<li>Non-standardized APIs</li>
+<li>Frontend performance limitations</li>
 </ul>
 <hr>
-<h3 id="8-expected-outcomes">8. Expected Outcomes</h3>
-<h4 id="technical-improvements">Technical Improvements</h4>
+<h2 id="9-expected-outcomes">9. Expected Outcomes</h2>
 <ul>
-<li>Full-stack integration between frontend and backend</li>
-<li>Improved system performance and UX</li>
-<li>Reduced coupling and better modularization</li>
-<li>More reliable and scalable architecture</li>
-</ul>
-<h4 id="long-term-value">Long-term Value</h4>
-<ul>
-<li>Ready for microservices evolution</li>
-<li>Support mobile apps and external integrations</li>
-<li>Enable analytics and optimization</li>
-<li>Strong foundation for EV ecosystem expansion</li>
+<li>Scalable system</li>
+<li>Stable performance</li>
+<li>Production-ready platform</li>
 </ul>
 
 
@@ -2225,19 +2113,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1774706685"></script>
-    <script src="../js/perfect-scrollbar.min.js?1774706685"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1774706685"></script>
-    <script src="../js/jquery.sticky.js?1774706685"></script>
-    <script src="../js/featherlight.min.js?1774706685"></script>
-    <script src="../js/highlight.pack.js?1774706685"></script>
+    <script src="../js/clipboard.min.js?1775119855"></script>
+    <script src="../js/perfect-scrollbar.min.js?1775119855"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1775119855"></script>
+    <script src="../js/jquery.sticky.js?1775119855"></script>
+    <script src="../js/featherlight.min.js?1775119855"></script>
+    <script src="../js/highlight.pack.js?1775119855"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1774706685"></script>
-    <script src="../js/learn.js?1774706685"></script>
-    <script src="../js/hugo-learn.js?1774706685"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1775119855"></script>
+    <script src="../js/learn.js?1775119855"></script>
+    <script src="../js/hugo-learn.js?1775119855"></script>
 
-    <link href="../mermaid/mermaid.css?1774706685" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1774706685"></script>
+    <link href="../mermaid/mermaid.css?1775119855" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1775119855"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

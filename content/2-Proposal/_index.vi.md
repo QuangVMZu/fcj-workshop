@@ -1,10 +1,11 @@
 ---
+
 title: "Proposal"
 date: 2026-03-24
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
----
+--------------------
 
 # EV Charging Station Management System
 
@@ -12,17 +13,29 @@ pre: " <b> 2. </b> "
 
 ### 1. Tóm tắt điều hành (Executive Summary)
 
-Hệ thống EV Charging Station Management System là một nền tảng full-stack được thiết kế nhằm hỗ trợ toàn bộ vòng đời vận hành của dịch vụ sạc xe điện, bao gồm cả **xử lý nghiệp vụ backend** và **tương tác người dùng frontend**.
+EV Charging Station Management System là một nền tảng full-stack được thiết kế nhằm số hóa, chuẩn hóa và tối ưu toàn bộ quy trình vận hành dịch vụ sạc xe điện trong bối cảnh nhu cầu sử dụng EV đang tăng nhanh.
 
-Hệ thống quản lý các quy trình cốt lõi như tìm kiếm trạm sạc, đặt lịch theo khung giờ, xác nhận booking, theo dõi phiên sạc, tạo hóa đơn, xử lý thanh toán và quản lý tuân thủ người dùng trong một kiến trúc thống nhất.
+Hệ thống cung cấp một giải pháp tích hợp end-to-end, cho phép người dùng tìm kiếm trạm sạc, đặt lịch theo khung giờ, theo dõi trạng thái phiên sạc theo thời gian thực, thực hiện thanh toán và nhận thông báo một cách liền mạch. Đồng thời, hệ thống hỗ trợ đội ngũ vận hành quản lý tài nguyên trạm sạc, kiểm soát vi phạm, theo dõi hiệu suất và đảm bảo tuân thủ quy định.
 
-Ở phía backend, hệ thống được xây dựng trên Spring Boot và tích hợp với hạ tầng cloud. Ở phía frontend, hệ thống cung cấp ứng dụng web theo vai trò (driver, staff, admin) với các luồng nghiệp vụ rõ ràng.
+Về mặt kỹ thuật, hệ thống được xây dựng theo kiến trúc full-stack hiện đại, trong đó frontend đóng vai trò giao diện tương tác theo từng vai trò (driver, staff, admin), còn backend chịu trách nhiệm xử lý toàn bộ logic nghiệp vụ, đảm bảo tính nhất quán và toàn vẹn dữ liệu.
 
-Frontend giao tiếp với backend thông qua lớp API chuẩn hóa sử dụng Axios và JWT, bao phủ nhiều domain như authentication, station discovery, booking, charging session, payment, notification và reporting.
+Hệ thống được triển khai trên nền tảng AWS với các thành phần chính:
 
-Hệ thống tích hợp VNPay cho thanh toán, AWS S3 và CloudFront cho hosting frontend, Amazon RDS cho lưu trữ dữ liệu, AWS Map cho bản đồ và SMTP cho gửi email.
+* Amazon S3 + CloudFront (WAF) cho phân phối frontend nhanh và an toàn
+* Application Load Balancer + EC2 Auto Scaling cho backend có khả năng mở rộng và chịu tải cao
+* Amazon RDS SQL Server (Single-AZ) cho lưu trữ dữ liệu
+* NAT Gateway cho outbound Internet access từ private subnet
+* Amazon SES cho gửi email thông báo
+* AWS Location Service cho bản đồ và định vị
+* AWS Systems Manager (SSM) + IAM cho truy cập an toàn không cần public IP
 
-Giải pháp giúp các đơn vị vận hành trạm sạc số hóa quy trình, nâng cao hiệu quả, chuẩn hóa hệ thống và mang lại trải nghiệm người dùng xuyên suốt.
+Giải pháp này giúp các đơn vị vận hành:
+
+* Tối ưu hóa việc sử dụng trạm sạc
+* Giảm chi phí vận hành thông qua tự động hóa
+* Nâng cao trải nghiệm người dùng
+* Chuẩn hóa hệ thống và giảm technical debt
+* Sẵn sàng mở rộng khi quy mô hệ thống tăng trưởng
 
 ---
 
@@ -30,277 +43,192 @@ Giải pháp giúp các đơn vị vận hành trạm sạc số hóa quy trình
 
 #### Vấn đề hiện tại
 
-Khi số lượng xe điện tăng nhanh, các đơn vị vận hành phải đối mặt với nhiều thách thức:
+* Không hiển thị slot realtime
+* Booking & charging chưa tối ưu
+* Chậm invoice & payment
+* Khó kiểm soát vi phạm
+* Frontend/backend thiếu đồng bộ
 
-- Thiếu khả năng hiển thị trạng thái slot theo thời gian thực
-- Quy trình booking và phiên sạc chưa tối ưu
-- Chậm trễ trong tạo hóa đơn và đối soát thanh toán
-- Khó kiểm soát vi phạm (overstay, misuse)
-- Frontend và backend chưa tích hợp chặt chẽ
-- Trải nghiệm người dùng không đồng nhất giữa các vai trò
-- Phụ thuộc nhiều vào localStorage/sessionStorage
-- API chưa được chuẩn hóa
+#### Vấn đề frontend
 
-#### Vấn đề phía frontend
-
-- Logic nghiệp vụ nằm trong page → khó tái sử dụng
-- Gọi API không đồng nhất
-- Thiếu quản lý server state
-- Bundle lớn, polling nhiều → giảm hiệu năng
-- Navigation chưa nhất quán
-
-Nếu không có kiến trúc full-stack chuẩn hóa, hệ thống sẽ khó mở rộng, khó bảo trì và dễ phát sinh lỗi.
+* Logic phân tán
+* API không chuẩn
+* Performance kém
 
 ---
 
 #### Giải pháp
 
-Giải pháp đề xuất là một **nền tảng full-stack thống nhất**:
+* Backend xử lý toàn bộ business logic
+* Frontend role-based + domain-based
+* API chuẩn hóa JWT
+* Modular hóa theo domain
 
-- Backend trung tâm xử lý toàn bộ nghiệp vụ
-- Frontend theo kiến trúc role-based + domain-based
-- API layer chuẩn hóa
-- Tách module theo domain (auth, booking, charging, payment...)
-- Giảm phụ thuộc browser storage
-- Tối ưu hiệu năng frontend
+Chức năng:
 
-Chức năng chính:
-
-- Authentication và phân quyền
-- Booking và quản lý slot
-- Quản lý phiên sạc
-- Tạo hóa đơn và thanh toán VNPay
-- Loyalty và compliance
-- Hosting frontend qua S3 + CloudFront
-- API routing qua Nginx
-- Tích hợp bản đồ AWS Map
-- Background jobs
+* Auth (JWT + Google OAuth)
+* Booking / Charging / Payment
+* Email (SES)
+* Map (AWS Location)
 
 ---
 
 #### Lợi ích
 
-- **Tăng hiệu suất sử dụng trạm**
-- **Cải thiện trải nghiệm người dùng**
-- **Giảm technical debt**
-- **Dễ mở rộng hệ thống**
-- **Dễ bảo trì**
-- **Tăng độ ổn định**
+* **Tăng hiệu suất**
+* **UX tốt hơn**
+* **Dễ mở rộng**
+* **Stable hơn**
 
 ---
 
 ### 3. Kiến trúc hệ thống (Solution Architecture)
 
-Hệ thống sử dụng kiến trúc **full-stack nhiều lớp**, tách biệt rõ:
+* Edge: Route 53, CloudFront, WAF
+* App: ALB + EC2 ASG (multi-AZ)
+* Data: RDS SQL Server (private, single-AZ)
+* Support: IAM, SSM, Secrets Manager, CloudWatch
 
-- Frontend
-- Backend
-- Database
+Luồng chính:
 
-Người dùng truy cập frontend qua CloudFront (S3). Frontend gọi API qua Axios (JWT). Nginx định tuyến request vào backend Spring Boot. Dữ liệu lưu trên Amazon RDS SQL Server.
+1. User → Route 53
+2. CloudFront → S3
+3. Frontend → ALB
+4. ALB → EC2
+5. EC2 → RDS
+6. EC2 → SES / NAT
+
+Đặc điểm:
+
+* EC2 private (không public IP)
+* Outbound qua NAT Gateway
+* Secure access qua SSM
+* Secrets quản lý bằng Secrets Manager
 
 ![EV Charging System Architecture](/images/2-Proposal/aws-ev-architecture.png)
 
-| Component | Service / Technology |
-| --------------------- | -------------------------- |
-| Frontend Framework | React (Vite) |
-| Frontend Hosting | Amazon S3 |
-| CDN Delivery | Amazon CloudFront |
-| State Management | Redux (Auth) + Local State |
-| API Communication | Axios + Interceptors |
-| Map Integration | AWS Map |
-| Reverse Proxy | Nginx |
-| Backend Framework | Spring Boot 3.5.6 |
-| Programming Language | Java 17 |
-| API Layer | REST Controllers |
-| Business Layer | Service Interfaces |
-| Persistence Layer | JPA + Hibernate |
-| Database | Amazon RDS for SQL Server |
-| Authentication | JWT + OAuth2 |
-| Payment Gateway | VNPay |
-| Email Notification | SMTP + Thymeleaf |
-| Background Jobs | Scheduler + Async |
+---
+
+### 4. Architecture Justification
+
+#### Lý do chọn kiến trúc
+
+**1. CloudFront + S3**
+
+* Giảm latency
+* Tăng tốc frontend
+* Giảm tải backend
+
+**2. ALB + ASG**
+
+* High Availability
+* Auto scaling
+* Stateless backend
+
+**3. EC2**
+
+* Phù hợp Spring Boot
+* Dễ kiểm soát
+
+**4. RDS Single-AZ**
+
+* Tiết kiệm chi phí
+* Upgrade sau
+
+**5. NAT Gateway**
+
+* Outbound secure
+* Không cần public IP
+
+**6. SSM + IAM**
+
+* Không cần SSH
+* Secure access
+
+**7. Secrets Manager**
+
+* Bảo mật credentials
+
+**8. CloudWatch + CloudTrail**
+
+* Monitoring + audit
 
 ---
 
-#### Kiến trúc Frontend
+#### Trade-offs
 
-- Pages theo role
-- Components tái sử dụng
-- API layer chuẩn hóa
-- Layouts theo role
-- Routing có phân quyền
-
-Hướng cải tiến:
-
-- Feature-based architecture
-- React Query
-- Chuẩn hóa API
-- Lazy loading
+* Không Multi-AZ DB
+* EC2 cần manage
+* NAT cost cao
 
 ---
 
-#### Kiến trúc Backend
+### 5. Triển khai kỹ thuật
 
-- Controller → Service → Repository
-
-Modules:
-
-- Authentication
-- Booking
-- Charging Session
-- Payment
-- Loyalty
-- Compliance
-- Notification
+* React + Axios + JWT
+* Spring Boot
+* RDS SQL Server
+* AWS Cloud
+* VNPay
+* SES
 
 ---
 
-### 4. Triển khai kỹ thuật (Technical Implementation)
+### 6. Timeline
 
-#### Workflow Engine
-
-Hệ thống sử dụng rule-based:
-
-- Slot phải available
-- Giới hạn slot liên tiếp
-- Booking → QR
-- Charging → invoice
-- Payment → VNPay
-- Violation → xử lý
-
-Frontend:
-
-- Validate flow
-- Simulate SOC
-- Multi-step workflow
+* Week 7–8: Thiết lập hệ thống và kiến trúc
+* Week 8: Booking & Charging session
+* Week 9: Thanh toán & Tích hợp bản đồ
+* Week 10: Loyalty & Compliance
+* Week 11: Kiểm thử & Tối ưu hóa
+* Week 12: Deployment
 
 ---
 
-#### Yêu cầu kỹ thuật
+### 7. Ước tính chi phí (Budget Estimation)
 
-- Frontend: React + Axios + JWT
-- Backend: Spring Boot
-- Database: RDS SQL Server
-- Cloud: AWS
-- Payment: VNPay
-- Notification: SMTP
+Bao gồm:
 
----
-
-### 5. Timeline & Milestones
-
-- Week 7-8: Setup hệ thống
-- Week 8: Booking + session
-- Week 9: Payment + map
-- Week 10: Loyalty + compliance
-- Week 11: Testing
-- Week 12: Deploy
-
----
-
-### 6. Ước tính chi phí (Budget Estimation)
-
-Chi phí hạ tầng được ước tính dựa trên kiến trúc AWS đã đề xuất, bao gồm:
-
-- Amazon S3 (lưu trữ frontend)
-- CloudFront (CDN)
-- EC2 (backend)
-- RDS SQL Server (database)
-- Route 53 (DNS)
-- Amazon SES (email)
-- AWS Map (bản đồ)
-
-Hệ thống sử dụng mô hình **pay-as-you-go**, chi phí phụ thuộc vào mức sử dụng thực tế.
+* S3 + CloudFront
+* EC2 (ASG)
+* RDS SQL Server
+* Route 53
+* SES
+* NAT Gateway
 
 ---
 
 #### Giả định
 
-- 1 region
-- 1 EC2 chạy 24/7 (730 giờ/tháng)
-- 1 RDS instance (Single-AZ)
-- ~10,000 email/tháng
-- Traffic ở mức MVP
-- Chưa có autoscaling / load balancer
+* 1 region
+* 2 EC2
+* 1 RDS
+* 1 NAT Gateway
 
 ---
 
-#### Chi phí ước tính hàng tháng
+#### Chi phí
 
-| Service | Cấu hình | Chi phí (USD/tháng) |
-|--------|---------|--------------------|
-| EC2 | t3.small | ~15.18 |
-| RDS SQL Server | db.t3.small | ~26.28 |
-| CloudFront | Free tier | 0.00 |
-| Route 53 | Hosted zone | ~0.50 |
-| Amazon SES | 10,000 email | ~1.00 |
-| AWS Map | Free tier | 0.00 |
-| **Tổng (MVP)** |  | **~42.96 USD/tháng** |
-
----
-
-#### Nâng cấp (tuỳ chọn)
-
-| Service | Nâng cấp | Chi phí |
-|--------|--------|--------|
-| CloudFront | Pro plan | +15 USD |
-
-**Tổng nâng cấp:** ~57.96 USD/tháng
+| Service     | Cost        |
+| ----------- | ----------- |
+| EC2         | ~30         |
+| RDS         | ~26         |
+| NAT Gateway | ~32–35      |
+| Route 53    | ~0.5        |
+| SES         | ~1          |
+| **Total**   | **~90 USD** |
 
 ---
 
-#### Chi phí biến đổi
+### 8. Risk Assessment
 
-- S3 storage
-- RDS storage & backup
-- Data transfer
-- Domain
-- Phí VNPay
+* API chưa chuẩn
+* Performance frontend
 
 ---
 
-#### Tổng kết
+### 9. Expected Outcomes
 
-- **~43 USD/tháng (MVP)**
-- **~58 USD/tháng (Production nhẹ)**
-
-Đây là mức chi phí thấp, phù hợp cho giai đoạn triển khai ban đầu và có thể mở rộng trong tương lai.
-
----
-
-### 7. Risk Assessment
-
-#### Rủi ro frontend
-
-- Phụ thuộc localStorage
-- API không đồng nhất
-- Bundle lớn
-- Polling nhiều
-- Navigation lỗi
-
-#### Giảm thiểu
-
-- React Query
-- Chuẩn hóa API
-- Lazy loading
-- Giảm polling
-- Tối ưu state
-
----
-
-### 8. Expected Outcomes
-
-#### Cải thiện kỹ thuật
-
-- Full-stack integration
-- UX tốt hơn
-- Code sạch hơn
-- Dễ mở rộng
-
-#### Giá trị dài hạn
-
-- Sẵn sàng microservices
-- Hỗ trợ mobile
-- Phân tích dữ liệu
-- Mở rộng hệ sinh thái EV
+* Scalable
+* Stable
+* Production-ready

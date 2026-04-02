@@ -8,295 +8,224 @@ pre: " <b> 2. </b> "
 
 # EV Charging Station Management System
 
-# Smart Full-Stack Platform for EV Charging Operations and Digital Payments
-
-### 1. Executive Summary
-
-The EV Charging Station Management System is a full-stack platform designed to support the complete operational lifecycle of electric vehicle charging services, covering both **backend operations** and **frontend user interaction layers**.
-
-The system manages core processes such as station discovery, time-slot scheduling, booking confirmation, charging session tracking, invoice generation, payment processing, and driver compliance handling within a unified architecture.
-
-On the backend side, the platform is built using Spring Boot and integrated with cloud-based infrastructure. On the frontend side, it provides a role-based web application supporting drivers, staff, and administrators with tailored interfaces and workflows.
-
-The frontend communicates with the backend through a standardized API layer using Axios with JWT authentication, covering multiple domains such as authentication, station discovery, booking, charging session, invoice/payment, notification, and reporting.
-
-The platform integrates with VNPay for payments, AWS S3 and CloudFront for frontend hosting and delivery, Amazon RDS for SQL Server for data persistence, AWS Map for geolocation services, and SMTP-based services for notifications.
-
-This solution enables EV charging operators to digitize operations, improve efficiency, standardize workflows, and deliver a seamless end-to-end user experience.
+# A Full-Stack Platform for Charging Operations and Digital Payments
 
 ---
 
-### 2. Problem Statement
+## 1. Executive Summary
 
-#### What's the Problem?
+The **EV Charging Station Management System** is a full-stack platform designed to digitize, standardize, and optimize the entire operation of EV charging services in the context of rapidly growing electric vehicle adoption.
 
-As EV adoption grows, operators face increasing complexity not only in backend operations but also in frontend user flows and system integration.
+The system provides an end-to-end integrated solution that enables users to locate charging stations, book time slots, monitor charging sessions in real time, make payments, and receive notifications seamlessly. At the same time, it supports operators in managing charging resources, monitoring violations, tracking performance, and ensuring regulatory compliance.
 
-Key challenges include:
+From a technical perspective, the system is built on a modern full-stack architecture. The frontend serves as the role-based user interface (driver, staff, admin), while the backend handles all business logic, ensuring data consistency and integrity.
 
-- Limited visibility into real-time slot availability
-- Inefficient booking and session workflows
-- Delays in billing and payment reconciliation
-- Weak enforcement of operational policies
-- Fragmented frontend-backend integration
-- Inconsistent user experience across roles
-- Heavy dependency on browser storage for workflow handling
-- Lack of standardized API integration across frontend modules
+The system is deployed on AWS with the following core components:
 
-On the frontend side, additional technical issues arise:
+- Amazon S3 + CloudFront (with WAF) for fast and secure frontend delivery
+- Application Load Balancer + EC2 Auto Scaling for a scalable and highly available backend
+- Amazon RDS SQL Server (Single-AZ) for data storage
+- NAT Gateway for outbound internet access from private subnets
+- Amazon SES for email notifications
+- AWS Location Service for maps and geolocation
+- AWS Systems Manager (SSM) + IAM for secure access without public IP
 
-- Business logic scattered across page components
-- Inconsistent API calling patterns
-- Lack of centralized server-state management
-- Performance bottlenecks due to polling and large bundles
-- Navigation inconsistencies and hard page reloads
+This solution helps operators:
 
-Without a unified full-stack architecture, the system becomes difficult to scale, maintain, and extend.
-
----
-
-#### The Solution
-
-The proposed solution is a **full-stack EV charging management platform** that standardizes both backend and frontend architecture.
-
-It provides:
-
-- Centralized backend for operational logic and data processing
-- Role-based frontend architecture for driver, staff, and admin workflows
-- Unified API communication layer between frontend and backend
-- Structured domain-based modules (auth, booking, charging, payment, etc.)
-- Reduced reliance on browser storage through better state management
-- Improved performance through modular frontend architecture
-
-Key capabilities include:
-
-- User authentication and role-based authorization
-- Booking and slot reservation workflows
-- Charging session lifecycle management
-- Invoice generation and billing
-- VNPay payment integration
-- Loyalty and compliance management
-- Cloud-based frontend delivery via S3 + CloudFront
-- API routing via Nginx
-- Map integration via AWS Map
-- Automated scheduling and background processing
+- Optimize charging station utilization
+- Reduce operational costs through automation
+- Improve user experience
+- Standardize systems and reduce technical debt
+- Scale efficiently as demand grows
 
 ---
 
-#### Benefits and Return on Investment
+## 2. Problem Statement
 
-The full-stack platform delivers both technical and business value:
+### Current Issues
 
-- **Higher station utilization** through optimized booking workflows
-- **Improved UX** with consistent frontend behavior and faster interactions
-- **Reduced technical debt** through standardized architecture
-- **Operational efficiency** via automation and integration
-- **Scalability** across multiple stations and increasing users
-- **Better maintainability** with domain-based frontend and backend modules
-- **Improved reliability** by reducing client-side dependency on session/local storage
+- No real-time slot visibility
+- Inefficient booking and charging workflow
+- Slow invoicing and payment processing
+- Difficulty in violation monitoring
+- Lack of synchronization between frontend and backend
+
+### Frontend Issues
+
+- Scattered business logic
+- Non-standardized APIs
+- Poor performance
 
 ---
 
-### 3. Solution Architecture
+### Solution
 
-The platform follows a **full-stack layered architecture** with clear separation between frontend, backend, and data layers.
+- Centralize all business logic in the backend
+- Role-based and domain-based frontend architecture
+- Standardized APIs using JWT
+- Domain-driven modularization
 
-End users access the frontend via CloudFront, which serves static assets from Amazon S3. The frontend communicates with backend APIs through a centralized Axios client with JWT authentication. API requests are routed via Nginx to the Spring Boot backend. Data is stored in Amazon RDS for SQL Server.
+**Key Features:**
+
+- Authentication (JWT + Google OAuth)
+- Booking / Charging / Payment
+- Email notifications (SES)
+- Map integration (AWS Location Service)
+
+---
+
+### Benefits
+
+- **Improved performance**
+- **Better user experience (UX)**
+- **Scalability**
+- **Higher system stability**
+
+---
+
+## 3. Solution Architecture
+
+- **Edge Layer:** Route 53, CloudFront, WAF
+- **Application Layer:** ALB + EC2 Auto Scaling (Multi-AZ)
+- **Data Layer:** RDS SQL Server (private, Single-AZ)
+- **Support Services:** IAM, SSM, Secrets Manager, CloudWatch
+
+### Main Flow
+
+1. User → Route 53  
+2. CloudFront → S3  
+3. Frontend → ALB  
+4. ALB → EC2  
+5. EC2 → RDS  
+6. EC2 → SES / NAT Gateway  
+
+### Key Characteristics
+
+- EC2 instances run in private subnets (no public IP)
+- Outbound traffic goes through NAT Gateway
+- Secure access via SSM (no SSH required)
+- Credentials managed by Secrets Manager
 
 ![EV Charging System Architecture](/images/2-Proposal/aws-ev-architecture.png)
 
-| Component | Service / Technology |
-| --------------------- | -------------------------- |
-| Frontend Framework | React (Vite) |
-| Frontend Hosting | Amazon S3 |
-| CDN Delivery | Amazon CloudFront |
-| State Management | Redux (Auth) + Local State |
-| API Communication | Axios + Interceptors |
-| Map Integration | AWS Map |
-| Reverse Proxy | Nginx |
-| Backend Framework | Spring Boot 3.5.6 |
-| Programming Language | Java 17 |
-| API Layer | REST Controllers |
-| Business Layer | Service Interfaces |
-| Persistence Layer | JPA + Hibernate |
-| Database | Amazon RDS for SQL Server |
-| Authentication | JWT + OAuth2 |
-| Payment Gateway | VNPay |
-| Email Notification | SMTP + Thymeleaf |
-| Background Jobs | Scheduler + Async |
+---
+
+## 4. Architecture Justification
+
+### Design Rationale
+
+**1. CloudFront + S3**
+
+- Reduce latency
+- Accelerate frontend delivery
+- Offload backend traffic
+
+**2. ALB + Auto Scaling Group**
+
+- High availability
+- Automatic scaling
+- Stateless backend design
+
+**3. EC2**
+
+- Well-suited for Spring Boot
+- High flexibility and control
+
+**4. RDS Single-AZ**
+
+- Cost-efficient
+- Easy to upgrade later
+
+**5. NAT Gateway**
+
+- Secure outbound access
+- No need for public IPs
+
+**6. SSM + IAM**
+
+- No SSH required
+- Secure access management
+
+**7. Secrets Manager**
+
+- Secure credential storage
+
+**8. CloudWatch + CloudTrail**
+
+- Monitoring and auditing
 
 ---
 
-#### Frontend Architecture
+### Trade-offs
 
-The frontend is structured using a **role-based and domain-oriented approach**:
-
-- **Pages layer**: divided by roles (driver, staff, admin)
-- **Components layer**: reusable UI + business components
-- **API layer**: domain-based API modules with shared Axios instance
-- **Layouts**: separate shells for public users and internal users
-- **Routing**: protected routes with role-based access control
-
-Current architecture follows a **layered page-based approach**, with business logic still partially embedded in pages.
-
-Future direction:
-
-- Transition to **feature-based modules**
-- Introduce **React Query for server state**
-- Standardize API layer and response handling
-- Apply lazy loading and code splitting
+- No Multi-AZ database (lower availability)
+- EC2 requires manual management
+- NAT Gateway cost is relatively high
 
 ---
 
-#### Backend Architecture
+## 5. Technical Implementation
 
-The backend follows a standard layered architecture:
-
-- Controller → Service → Repository
-- Domain modules:
-  - Authentication
-  - Booking
-  - Charging Session
-  - Payment
-  - Loyalty
-  - Compliance
-  - Notification
+- React + Axios + JWT
+- Spring Boot
+- RDS SQL Server
+- AWS Cloud
+- VNPay integration
+- Amazon SES
 
 ---
 
-### 4. Technical Implementation
+## 6. Timeline
 
-#### Workflow Engine Approach
-
-The system uses a **rule-based workflow engine** instead of AI:
-
-- Slot must be available before booking
-- Max consecutive slot rules enforced
-- Booking confirmation generates QR
-- Charging session tracked and billed automatically
-- Payment validated via VNPay
-- Violations grouped and escalated
-
-Frontend complements this by:
-
-- Managing booking flow and validation UI
-- Simulating charging progress (SOC) during session
-- Handling multi-step workflows (booking → charging → payment)
+- Week 7–8: System setup and architecture design
+- Week 8: Booking & charging session implementation
+- Week 9: Payment and map integration
+- Week 10: Loyalty & compliance features
+- Week 11: Testing & optimization
+- Week 12: Deployment
 
 ---
 
-#### Technical Requirements
+## 7. Budget Estimation
 
-- **Frontend**: React + Vite, Axios, JWT, role-based routing
-- **Backend**: Spring Boot, REST API, security
-- **Database**: Amazon RDS SQL Server
-- **Cloud**: AWS S3, CloudFront, EC2, Map
-- **Payment**: VNPay
-- **Notification**: SMTP
-- **State Management**: Redux (auth) + future React Query
+Includes:
 
----
+- S3 + CloudFront
+- EC2 (Auto Scaling)
+- RDS SQL Server
+- Route 53
+- SES
+- NAT Gateway
 
-### 5. Timeline & Milestones
+### Assumptions
 
-- **Week 7-8**: Core backend + frontend structure setup
-- **Week 8**: Booking + session workflows
-- **Week 9**: Payment + notification + map integration
-- **Week 10**: Loyalty + compliance + admin features
-- **Week 11**: Testing + optimization
-- **Week 12**: Deployment + go-live
+- Single region
+- 2 EC2 instances
+- 1 RDS instance
+- 1 NAT Gateway
 
----
+### Estimated Cost
 
-### 6. Budget Estimation
-
-The infrastructure cost is estimated based on the proposed AWS architecture, including **Amazon S3, CloudFront, EC2, RDS (SQL Server), Route 53, Amazon SES, and AWS Map (Location Service)**.
-
-The pricing follows a **pay-as-you-go model**, allowing the system to scale with usage. The following estimation reflects a **Minimum Viable Product (MVP)** deployment.
-
-#### Assumptions
-
-- Single AWS region
-- One EC2 instance running continuously (730 hours/month)
-- One RDS SQL Server instance (Single-AZ)
-- Moderate traffic usage
-- ~10,000 emails/month
-- AWS Map usage within free tier
-- No auto-scaling or load balancer included
-
-#### Estimated Monthly Cost
-
-| Service | Configuration | Cost (USD/month) |
-|--------|--------------|------------------|
-| EC2 | t3.small | ~15.18 |
-| RDS SQL Server | db.t3.small | ~26.28 |
-| CloudFront | Free tier | 0.00 |
-| Route 53 | Hosted zone | ~0.50 |
-| Amazon SES | 10,000 emails | ~1.00 |
-| AWS Map | Free tier | 0.00 |
-| **Total (MVP)** |  | **~42.96 USD/month** |
-
-#### Optional Upgrade
-
-| Service | Upgrade | Additional Cost |
-|--------|--------|----------------|
-| CloudFront | Pro plan | +15.00 USD |
-
-**Total with upgrade:** ~57.96 USD/month
-
-#### Variable Costs
-
-Additional costs may vary depending on usage:
-
-- Amazon S3 storage
-- RDS storage and backup
-- Data transfer (CloudFront / EC2)
-- Domain registration
-- VNPay transaction fees
-
-#### Summary
-
-The system can operate at a low initial cost of approximately:
-
-- **~43 USD/month (MVP)**
-- **~58 USD/month (enhanced configuration)**
-
-This cost-efficient setup supports early deployment while allowing scalability for future growth.
+| Service     | Cost (USD/month) |
+|------------|------------------|
+| EC2         | ~30              |
+| RDS         | ~26              |
+| NAT Gateway | ~32–35           |
+| Route 53    | ~0.5             |
+| SES         | ~1               |
+| **Total**   | **~90 USD**      |
 
 ---
 
-### 7. Risk Assessment
+## 8. Risk Assessment
 
-#### Additional Frontend Risks
-
-- Over-reliance on localStorage/sessionStorage
-- Inconsistent API usage across modules
-- Large bundle size and performance issues
-- Polling overload on backend
-- Navigation inconsistency
-
-#### Mitigation
-
-- Introduce React Query
-- Standardize API layer
-- Implement lazy loading
-- Reduce polling frequency
-- Improve state management strategy
+- Non-standardized APIs
+- Frontend performance limitations
 
 ---
 
-### 8. Expected Outcomes
+## 9. Expected Outcomes
 
-#### Technical Improvements
-
-- Full-stack integration between frontend and backend
-- Improved system performance and UX
-- Reduced coupling and better modularization
-- More reliable and scalable architecture
-
-#### Long-term Value
-
-- Ready for microservices evolution
-- Support mobile apps and external integrations
-- Enable analytics and optimization
-- Strong foundation for EV ecosystem expansion
+- Scalable system
+- Stable performance
+- Production-ready platform
