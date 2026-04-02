@@ -64,7 +64,7 @@ Giải pháp này giúp các đơn vị vận hành:
 * API chuẩn hóa JWT
 * Modular hóa theo domain
 
-Chức năng:
+#### Chức năng:
 
 * Auth (JWT + Google OAuth)
 * Booking / Charging / Payment
@@ -89,7 +89,7 @@ Chức năng:
 * Data: RDS SQL Server (private, single-AZ)
 * Support: IAM, SSM, Secrets Manager, CloudWatch
 
-Luồng chính:
+#### Luồng chính:
 
 1. User → Route 53
 2. CloudFront → S3
@@ -98,7 +98,7 @@ Luồng chính:
 5. EC2 → RDS
 6. EC2 → SES / NAT
 
-Đặc điểm:
+#### Đặc điểm:
 
 * EC2 private (không public IP)
 * Outbound qua NAT Gateway
@@ -187,7 +187,7 @@ Luồng chính:
 
 ### 7. Ước tính chi phí (Budget Estimation)
 
-Bao gồm:
+#### Bao gồm:
 
 * S3 + CloudFront
 * EC2 (ASG)

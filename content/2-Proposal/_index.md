@@ -65,7 +65,7 @@ This solution helps operators:
 - Standardized APIs using JWT
 - Domain-driven modularization
 
-**Key Features:**
+### Key Features
 
 - Authentication (JWT + Google OAuth)
 - Booking / Charging / Payment
@@ -188,7 +188,7 @@ This solution helps operators:
 
 ## 7. Budget Estimation
 
-Includes:
+### Includes
 
 - S3 + CloudFront
 - EC2 (Auto Scaling)
