@@ -106,7 +106,7 @@ This solution helps operators:
 - Secure access via SSM (no SSH required)
 - Credentials managed by Secrets Manager
 
-![EV Charging System Architecture](/images/2-Proposal/aws-ev-architecture.png)
+![EV Charging System Architecture](/images/2-Proposal/sodo-v1.png)
 
 ---
 

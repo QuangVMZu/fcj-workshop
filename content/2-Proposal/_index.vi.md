@@ -64,7 +64,7 @@ Giải pháp này giúp các đơn vị vận hành:
 * API chuẩn hóa JWT
 * Modular hóa theo domain
 
-#### Chức năng:
+#### Chức năng
 
 * Auth (JWT + Google OAuth)
 * Booking / Charging / Payment
@@ -105,7 +105,7 @@ Giải pháp này giúp các đơn vị vận hành:
 * Secure access qua SSM
 * Secrets quản lý bằng Secrets Manager
 
-![EV Charging System Architecture](/images/2-Proposal/aws-ev-architecture.png)
+![EV Charging System Architecture](/images/2-Proposal/sodo-v1.png)
 
 ---
 
