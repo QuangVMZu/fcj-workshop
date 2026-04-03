@@ -15,21 +15,21 @@
     <title>Proposal :: Báo cáo thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1775194157" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1775194157" rel="stylesheet">
-    <link href="../../css/hybrid.css?1775194157" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1775194157" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1775194157" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1775194157" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1775194157" rel="stylesheet">
-    <link href="../../css/theme.css?1775194157" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1775194157" rel="stylesheet">
+    <link href="../../css/nucleus.css?1775194713" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775194713" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775194713" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775194713" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775194713" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775194713" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775194713" rel="stylesheet">
+    <link href="../../css/theme.css?1775194713" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775194713" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1775194157" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1775194713" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1775194157"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1775194713"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1775194157"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1775194157"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1775194713"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775194713"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1775194157"></script>
+<script type="text/javascript" src="../../js/search.js?1775194713"></script>
  
   </div>
 
@@ -1075,8 +1075,8 @@
         <li><a href="#5-triển-khai-kỹ-thuật">5. Triển khai kỹ thuật</a></li>
         <li><a href="#6-timeline">6. Timeline</a></li>
         <li><a href="#7-ước-tính-chi-phí-budget-estimation">7. Ước tính chi phí (Budget Estimation)</a></li>
-        <li><a href="#8-risk-assessment">8. Risk Assessment</a></li>
-        <li><a href="#9-expected-outcomes">9. Expected Outcomes</a></li>
+        <li><a href="#8-đánh-giá-rủi-ro">8. Đánh giá rủi ro</a></li>
+        <li><a href="#9-kết-quả-mong-đợi">9. Kết quả mong đợi</a></li>
       </ul>
     </li>
   </ul>
@@ -1151,7 +1151,7 @@
 <li>Backend xử lý toàn bộ business logic</li>
 <li>Frontend role-based + domain-based</li>
 <li>API chuẩn hóa JWT</li>
-<li>Modular hóa theo domain</li>
+<li>Mô-đun hóa theo domain</li>
 </ul>
 <h4 id="chức-năng">Chức năng</h4>
 <ul>
@@ -1166,7 +1166,7 @@
 <li><strong>Tăng hiệu suất</strong></li>
 <li><strong>UX tốt hơn</strong></li>
 <li><strong>Dễ mở rộng</strong></li>
-<li><strong>Stable hơn</strong></li>
+<li><strong>Ổn định hơn</strong></li>
 </ul>
 <hr>
 <h3 id="3-kiến-trúc-hệ-thống-solution-architecture">3. Kiến trúc hệ thống (Solution Architecture)</h3>
@@ -1189,8 +1189,8 @@
 <ul>
 <li>EC2 private (không public IP)</li>
 <li>Outbound qua NAT Gateway</li>
-<li>Secure access qua SSM</li>
-<li>Secrets quản lý bằng Secrets Manager</li>
+<li>Truy cập an toàn qua SSM</li>
+<li>Quản lý bí mật bằng Secrets Manager</li>
 </ul>
 <p><img src="../../images/2-Proposal/AWS-architecture.png" alt="EV Charging System Architecture"></p>
 <hr>
@@ -1198,15 +1198,15 @@
 <h4 id="lý-do-chọn-kiến-trúc">Lý do chọn kiến trúc</h4>
 <p><strong>1. CloudFront + S3</strong></p>
 <ul>
-<li>Giảm latency</li>
+<li>Giảm độ trễ</li>
 <li>Tăng tốc frontend</li>
 <li>Giảm tải backend</li>
 </ul>
 <p><strong>2. ALB + ASG</strong></p>
 <ul>
-<li>High Availability</li>
-<li>Auto scaling</li>
-<li>Stateless backend</li>
+<li>Độ sẵn sàng cao</li>
+<li>Tự động mở rộng quy mô</li>
+<li>Hệ thống phụ trợ không trạng thái</li>
 </ul>
 <p><strong>3. EC2</strong></p>
 <ul>
@@ -1220,28 +1220,28 @@
 </ul>
 <p><strong>5. NAT Gateway</strong></p>
 <ul>
-<li>Outbound secure</li>
+<li>Đi ra an toàn</li>
 <li>Không cần public IP</li>
 </ul>
 <p><strong>6. SSM + IAM</strong></p>
 <ul>
 <li>Không cần SSH</li>
-<li>Secure access</li>
+<li>Truy cập an toàn</li>
 </ul>
 <p><strong>7. Secrets Manager</strong></p>
 <ul>
-<li>Bảo mật credentials</li>
+<li>Bảo mật thông tin xác thực</li>
 </ul>
 <p><strong>8. CloudWatch + CloudTrail</strong></p>
 <ul>
-<li>Monitoring + audit</li>
+<li>Giám sát + kiểm toán</li>
 </ul>
 <hr>
 <h4 id="trade-offs">Trade-offs</h4>
 <ul>
 <li>Không Multi-AZ DB</li>
 <li>EC2 cần manage</li>
-<li>NAT cost cao</li>
+<li>NAT chi phí cao</li>
 </ul>
 <hr>
 <h3 id="5-triển-khai-kỹ-thuật">5. Triển khai kỹ thuật</h3>
@@ -1277,7 +1277,7 @@
 <hr>
 <h4 id="giả-định">Giả định</h4>
 <ul>
-<li>1 region</li>
+<li>1 region (ap-southeast-1)</li>
 <li>2 EC2</li>
 <li>1 RDS</li>
 <li>1 NAT Gateway</li>
@@ -1287,8 +1287,8 @@
 <table>
   <thead>
       <tr>
-          <th>Service</th>
-          <th>Cost</th>
+          <th>Dịch vụ</th>
+          <th>Chi phí</th>
       </tr>
   </thead>
   <tbody>
@@ -1313,23 +1313,23 @@
           <td>~1</td>
       </tr>
       <tr>
-          <td><strong>Total</strong></td>
+          <td><strong>Tổng</strong></td>
           <td><strong>~90 USD</strong></td>
       </tr>
   </tbody>
 </table>
 <hr>
-<h3 id="8-risk-assessment">8. Risk Assessment</h3>
+<h3 id="8-đánh-giá-rủi-ro">8. Đánh giá rủi ro</h3>
 <ul>
 <li>API chưa chuẩn</li>
-<li>Performance frontend</li>
+<li>Giao diện hiệu suất</li>
 </ul>
 <hr>
-<h3 id="9-expected-outcomes">9. Expected Outcomes</h3>
+<h3 id="9-kết-quả-mong-đợi">9. Kết quả mong đợi</h3>
 <ul>
-<li>Scalable</li>
-<li>Stable</li>
-<li>Production-ready</li>
+<li>Có khả năng mở rộng</li>
+<li>Ổn định</li>
+<li>Sẵn sàng cho sản xuất</li>
 </ul>
 
 
@@ -2097,19 +2097,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1775194157"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1775194157"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1775194157"></script>
-    <script src="../../js/jquery.sticky.js?1775194157"></script>
-    <script src="../../js/featherlight.min.js?1775194157"></script>
-    <script src="../../js/highlight.pack.js?1775194157"></script>
+    <script src="../../js/clipboard.min.js?1775194713"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775194713"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775194713"></script>
+    <script src="../../js/jquery.sticky.js?1775194713"></script>
+    <script src="../../js/featherlight.min.js?1775194713"></script>
+    <script src="../../js/highlight.pack.js?1775194713"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1775194157"></script>
-    <script src="../../js/learn.js?1775194157"></script>
-    <script src="../../js/hugo-learn.js?1775194157"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775194713"></script>
+    <script src="../../js/learn.js?1775194713"></script>
+    <script src="../../js/hugo-learn.js?1775194713"></script>
 
-    <link href="../../mermaid/mermaid.css?1775194157" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1775194157"></script>
+    <link href="../../mermaid/mermaid.css?1775194713" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775194713"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

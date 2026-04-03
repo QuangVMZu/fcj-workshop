@@ -62,7 +62,7 @@ Giải pháp này giúp các đơn vị vận hành:
 * Backend xử lý toàn bộ business logic
 * Frontend role-based + domain-based
 * API chuẩn hóa JWT
-* Modular hóa theo domain
+* Mô-đun hóa theo domain
 
 #### Chức năng
 
@@ -78,7 +78,7 @@ Giải pháp này giúp các đơn vị vận hành:
 * **Tăng hiệu suất**
 * **UX tốt hơn**
 * **Dễ mở rộng**
-* **Stable hơn**
+* **Ổn định hơn**
 
 ---
 
@@ -102,8 +102,8 @@ Giải pháp này giúp các đơn vị vận hành:
 
 * EC2 private (không public IP)
 * Outbound qua NAT Gateway
-* Secure access qua SSM
-* Secrets quản lý bằng Secrets Manager
+* Truy cập an toàn qua SSM
+* Quản lý bí mật bằng Secrets Manager
 
 ![EV Charging System Architecture](/images/2-Proposal/AWS-architecture.png)
 
@@ -115,15 +115,15 @@ Giải pháp này giúp các đơn vị vận hành:
 
 **1. CloudFront + S3**
 
-* Giảm latency
+* Giảm độ trễ
 * Tăng tốc frontend
 * Giảm tải backend
 
 **2. ALB + ASG**
 
-* High Availability
-* Auto scaling
-* Stateless backend
+* Độ sẵn sàng cao
+* Tự động mở rộng quy mô
+* Hệ thống phụ trợ không trạng thái
 
 **3. EC2**
 
@@ -137,21 +137,21 @@ Giải pháp này giúp các đơn vị vận hành:
 
 **5. NAT Gateway**
 
-* Outbound secure
+* Đi ra an toàn
 * Không cần public IP
 
 **6. SSM + IAM**
 
 * Không cần SSH
-* Secure access
+* Truy cập an toàn
 
 **7. Secrets Manager**
 
-* Bảo mật credentials
+* Bảo mật thông tin xác thực
 
 **8. CloudWatch + CloudTrail**
 
-* Monitoring + audit
+* Giám sát + kiểm toán
 
 ---
 
@@ -159,7 +159,7 @@ Giải pháp này giúp các đơn vị vận hành:
 
 * Không Multi-AZ DB
 * EC2 cần manage
-* NAT cost cao
+* NAT chi phí cao
 
 ---
 
@@ -200,7 +200,7 @@ Giải pháp này giúp các đơn vị vận hành:
 
 #### Giả định
 
-* 1 region
+* 1 region (ap-southeast-1)
 * 2 EC2
 * 1 RDS
 * 1 NAT Gateway
@@ -209,26 +209,26 @@ Giải pháp này giúp các đơn vị vận hành:
 
 #### Chi phí
 
-| Service     | Cost        |
+| Dịch vụ     | Chi phí     |
 | ----------- | ----------- |
 | EC2         | ~30         |
 | RDS         | ~26         |
 | NAT Gateway | ~32–35      |
 | Route 53    | ~0.5        |
 | SES         | ~1          |
-| **Total**   | **~90 USD** |
+| **Tổng**   | **~90 USD** |
 
 ---
 
-### 8. Risk Assessment
+### 8. Đánh giá rủi ro
 
 * API chưa chuẩn
-* Performance frontend
+* Giao diện hiệu suất
 
 ---
 
-### 9. Expected Outcomes
+### 9. Kết quả mong đợi
 
-* Scalable
-* Stable
-* Production-ready
+* Có khả năng mở rộng
+* Ổn định
+* Sẵn sàng cho sản xuất
