@@ -17,6 +17,8 @@ The session provided insights into:
 - Cloud architecture trends
 - Real-world best practices from industry experts
 
+![AWS re:Invent Recap HCMC](/images/3-EventParticipated/sk.jpg)
+
 ---
 
 ## Key Themes & Learnings

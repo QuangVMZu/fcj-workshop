@@ -1,46 +1,83 @@
----
+﻿---
 title: "Workshop"
-date: 2025-10-13
+date: 2026-04-04
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# Workshop: Luồng full-stack của hệ thống quản lý trạm sạc xe điện
+# Workshop thực hành AWS cho nền tảng quản lý trạm sạc xe điện
+
+![Tong quan kien truc workshop AWS](/images/2-Proposal/AWS-architecture.png)
 
 ## Tổng quan
 
-Section Workshop này mô tả **luồng hệ thống end-to-end thực tế** của EV Charging Station Management System trên cả React frontend, Spring Boot backend, và các tích hợp xung quanh như storage, notification, payment, và bản đồ. Đây không còn là một tutorial AWS generic. Nó là tài liệu walkthrough kỹ thuật về cách sản phẩm hiện tại vận hành từ lúc người dùng đăng nhập cho đến khi booking được sạc, thanh toán, và trong một số trường hợp bị xử lý vi phạm.
+Chương này là tài liệu workshop thực hành cho kiến trúc AWS đứng sau EV Charging Station Management System. Tài liệu không hướng dẫn chạy ứng dụng local. Thay vào đó, nó giải thích cách các dịch vụ AWS trong môi trường triển khai nhận traffic, chạy backend, lưu dữ liệu, bảo vệ secret và hỗ trợ vận hành.
 
-Nội dung được tổ chức theo đúng trình tự runtime đang được triển khai:
+## Cách sử dụng workshop
 
-1. người dùng đăng ký, xác thực OTP và đăng nhập,
-2. frontend tải station, slot availability và vehicle context,
-3. backend tạo và xác nhận booking,
-4. staff hoặc driver-facing flow khởi động và dừng charging session,
-5. invoice và payment logic chốt luồng thương mại,
-6. loyalty và compliance logic hoàn tất kết quả vận hành.
+- Đi theo đúng thứ tự các phần, từ edge services đến observability.
+- Thay các giá trị mẫu như `${APP_DOMAIN}` và `${DB_INSTANCE_ID}` bằng thông tin của môi trường thật.
+- Các ví dụ CLI dùng cú pháp `bash`. Nếu bạn dùng PowerShell, hãy điều chỉnh phần dấu nháy cho phù hợp.
+- Nên thao tác trên môi trường không phải production khi thử Route 53, CloudFront invalidation hoặc RDS failover.
+- Hãy đọc mỗi phần theo hai lượt: lượt đầu để hiểu flow, lượt sau để làm theo command và bước kiểm tra.
 
-## Phạm vi full-stack
+## Các dịch vụ được dùng trong kiến trúc này
 
-- **Frontend**: React routing, protected routes, API wrappers, local state, Redux, `localStorage` và `sessionStorage`
-- **Backend**: Spring Boot monolith với controllers, services, repositories, schedulers, events và async notifications
-- **Tích hợp**: JWT auth, OTP verification, VNPay, SMTP email, AWS S3, AWS Location và cấu hình media/storage như Cloudinary khi được bật
+- **Edge và phân phối frontend**: Amazon Route 53, Amazon CloudFront, AWS WAF, Amazon S3, Amazon Location Service
+- **Tầng chạy ứng dụng**: Amazon VPC, Internet Gateway, NAT Gateway, Application Load Balancer, Amazon EC2, EC2 Auto Scaling
+- **Tầng dữ liệu**: Amazon RDS với bố cục primary và standby
+- **Vận hành và bảo mật**: AWS Systems Manager, IAM instance profile, AWS Secrets Manager, AWS KMS
+- **Quan sát và giao tiếp**: Amazon CloudWatch, AWS CloudTrail, Amazon SES, các bản ghi DNS email trong Route 53
 
-![EV Charging System Architecture](/images/4-Workshop/ev-achi.png)
+## Các dịch vụ không xuất hiện trong sơ đồ này
 
-## Mục tiêu workshop
+- **API Gateway**: Không dùng trong thiết kế này vì traffic công khai đi vào qua CloudFront rồi tới Application Load Balancer.
+- **Lambda**: Không được thể hiện. Backend đang được mô hình hóa bằng các EC2 instance chạy lâu dài.
+- **ECS / EKS**: Không được thể hiện. Container orchestration nằm ngoài phạm vi của kiến trúc hiện tại.
+- **DynamoDB**: Không được thể hiện. Dữ liệu chính được mô hình hóa dưới dạng quan hệ trong Amazon RDS.
+- **EventBridge / SQS / SNS**: Không được thể hiện. Sơ đồ tập trung vào luồng request đồng bộ và tích hợp trực tiếp giữa các dịch vụ.
+- **Cognito**: Không được thể hiện. Đường truy cập admin đang dùng IAM và AWS Systems Manager.
 
-* Giải thích hành trình người dùng thực tế từ lúc xem trạm sạc đến lúc thanh toán thành công
-* Ánh xạ các thao tác của frontend vào controller và transaction của backend
-* Làm rõ các trạng thái quan trọng của booking, session, invoice, loyalty và violation
-* Ghi nhận trung thực các giới hạn hiện tại của implementation
+## Biến môi trường dùng chung trong lab
+
+```bash
+export AWS_REGION=ap-southeast-1
+export APP_DOMAIN=app.example.com
+export HOSTED_ZONE_ID=Z123456789EXAMPLE
+export STATIC_BUCKET=ev-prod-frontend
+export CLOUDFRONT_DIST_ID=E123ABC456DEF
+export PLACE_INDEX_NAME=ev-place-index
+export ALB_NAME=ev-app-alb
+export TARGET_GROUP_ARN=arn:aws:elasticloadbalancing:ap-southeast-1:123456789012:targetgroup/ev-app-tg/abc123
+export ASG_NAME=ev-app-asg
+export INSTANCE_ID=i-0123456789abcdef0
+export APP_PORT=8080
+export DB_INSTANCE_ID=ev-prod-rds
+export DB_PORT=1433
+export DB_SECRET_ID=ev/prod/database
+export LOG_GROUP=/aws/ec2/ev-app
+export SES_IDENTITY=example.com
+export SES_SENDER=no-reply@example.com
+export SES_RECIPIENT=ops@example.com
+```
+
+## Quyền AWS nên có
+
+- Quyền đọc và thay đổi Route 53 cho các bước xác thực DNS
+- Quyền với CloudFront và S3 để kiểm tra luồng phân phối frontend
+- Quyền đọc EC2, ELBv2, Auto Scaling và VPC để kiểm tra tầng ứng dụng
+- Quyền đọc RDS, và chỉ cấp quyền reboot có kiểm soát ở môi trường được cho phép
+- Quyền với SSM, Secrets Manager, IAM, KMS, CloudWatch, CloudTrail và SES để thao tác vận hành
 
 ## Nội dung
 
-1. [Giới thiệu](4.1-introduction/)
-2. [Điều kiện tiên quyết](4.2-prerequisites/)
-3. [Luồng xác thực và đặt chỗ](4.3-auth-booking-flow/)
-4. [Thực thi phiên sạc](4.4-charging-session-execution/)
-5. [Hóa đơn, thanh toán, điểm thưởng và vi phạm](4.5-payment-loyalty-violation/)
-6. [Xác thực, kết quả, giới hạn và tổng kết](4.6-validation-results-cleanup/)
+1. [Tổng quan](4.1-overview/)
+2. [Phân phối biên và yêu cầu dữ liệu bản đồ](4.2-edge-delivery-and-geospatial-requests/)
+3. [Điều phối ứng dụng riêng tư và tầng tính toán](4.3-private-application-routing-and-compute/)
+4. [Độ bền dữ liệu quan hệ và cô lập mạng](4.4-relational-data-resilience-and-network-isolation/)
+5. [Truy cập vận hành và quản trị bí mật](4.5-operational-access-and-secret-governance/)
+6. [Giám sát, kiểm toán và gửi email](4.6-monitoring-audit-and-email-delivery/)
+
+
+

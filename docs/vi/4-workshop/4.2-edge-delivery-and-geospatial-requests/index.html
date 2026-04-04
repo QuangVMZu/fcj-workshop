@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/fcj-workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=fcj-workshop/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.156.0">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="vminhquang05@gmail.com" />
+
+    <link rel="icon" href="../../../images/favicon.png" type="image/png">
+
+    <title>Phân phối biên và yêu cầu dữ liệu bản đồ :: Báo cáo thực tập</title>
+
+    
+    <link href="../../../css/nucleus.css?1775313721" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1775313721" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1775313721" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1775313721" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1775313721" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1775313721" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1775313721" rel="stylesheet">
+    <link href="../../../css/theme.css?1775313721" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1775313721" rel="stylesheet">
+    
+    <link href="../../../css/theme-workshop.css?1775313721" rel="stylesheet">
+    
+    
+
+    <script src="../../../js/jquery-3.3.1.min.js?1775313721"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+
+  </head>
+  <body class="" data-url="../../../vi/4-workshop/4.2-edge-delivery-and-geospatial-requests/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+   
+  
+  
+  
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="../../../vi/">
+  <svg
+    id="Layer_1"
+    data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 60 30"
+    width="30%"
+  >
+    <defs>
+      <style>
+        .cls-1 {
+          fill: #fff;
+        }
+        .cls-2 {
+          fill: #f90;
+          fill-rule: evenodd;
+        }
+      </style>
+    </defs>
+    <title>AWS-Logo_White-Color</title>
+    <path
+      class="cls-1"
+      d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"
+    ></path>
+  </svg>
+</a>
+</div>
+     <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../../js/lunr.min.js?1775313721"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1775313721"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/\/vi";
+    
+</script>
+<script type="text/javascript" src="../../../js/search.js?1775313721"></script>
+ 
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+                
+<li
+  data-nav-id="/vi/1-worklog/"
+  title="Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/">
+     <b> 1. </b> Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/"
+  title="Worklog Tuần 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.1-week1/">
+     <b> 1.1. </b> Worklog Tuần 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/"
+  title="Worklog Tuần 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.2-week2/">
+     <b> 1.2. </b> Worklog Tuần 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/"
+  title="Worklog Tuần 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.3-week3/">
+     <b> 1.3. </b> Worklog Tuần 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/"
+  title="Worklog Tuần 4"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.4-week4/">
+     <b> 1.4. </b> Worklog Tuần 4 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/"
+  title="Worklog Tuần 5"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.5-week5/">
+     <b> 1.5. </b> Worklog Tuần 5 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/"
+  title="Worklog Tuần 6"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.6-week6/">
+     <b> 1.6. </b> Worklog Tuần 6 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/"
+  title="Worklog Tuần 7"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.7-week7/">
+     <b> 1.7. </b> Worklog Tuần 7 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/"
+  title="Worklog Tuần 8"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.8-week8/">
+     <b> 1.8. </b> Worklog Tuần 8 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/"
+  title="Worklog Tuần 9"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.9-week9/">
+     <b> 1.9. </b> Worklog Tuần 9 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.10-week10/"
+  title="Week 10 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.10-week10/">
+     <b> 1.10. </b> Week 10 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.11-week11/"
+  title="Week 11 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.11-week11/">
+     <b> 1.11. </b> Week 11 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.12-week12/"
+  title="Week 12 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.12-week12/">
+     <b> 1.12. </b> Week 12 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.13-week13/"
+  title="Week 13 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.13-week13/">
+     <b> 1.13. </b> Week 13 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/vi/2-proposal/"
+  title="Proposal"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/2-proposal/">
+     <b> 2. </b> Proposal 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+            
+<li
+  data-nav-id="/vi/3-eventparticipated/"
+  title="Sự kiện đã tham gia"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/3-eventparticipated/">
+     <b> 3. </b> Sự kiện đã tham gia 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/vi/3-eventparticipated/3.1-event1/"
+  title="Event 1 - Building Full-Stack Observability on AWS with Datadog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/3-eventparticipated/3.1-event1/">
+     <b> 3.1. </b> Event 1 - Building Full-Stack Observability on AWS with Datadog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/3-eventparticipated/3.2-event2/"
+  title="Event 2 - AWS re:Invent Recap HCMC"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/3-eventparticipated/3.2-event2/">
+     <b> 3.2. </b> Event 2 - AWS re:Invent Recap HCMC 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/vi/4-workshop/"
+  title="Workshop"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/">
+     <b> 4. </b> Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/vi/4-workshop/4.1-overview/"
+  title="Tổng quan"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.1-overview/">
+     <b> 4.1. </b> Tổng quan 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.2-edge-delivery-and-geospatial-requests/"
+  title="Phân phối biên và yêu cầu dữ liệu bản đồ"
+  class="dd-item 
+        
+        active
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.2-edge-delivery-and-geospatial-requests/">
+     <b> 4.2. </b> Phân phối biên và yêu cầu dữ liệu bản đồ 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.3-private-application-routing-and-compute/"
+  title="Điều phối ứng dụng riêng tư và tầng tính toán"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.3-private-application-routing-and-compute/">
+     <b> 4.3. </b> Điều phối ứng dụng riêng tư và tầng tính toán 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.4-relational-data-resilience-and-network-isolation/"
+  title="Độ bền dữ liệu quan hệ và cô lập mạng"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.4-relational-data-resilience-and-network-isolation/">
+     <b> 4.4. </b> Độ bền dữ liệu quan hệ và cô lập mạng 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.5-operational-access-and-secret-governance/"
+  title="Truy cập vận hành và quản trị bí mật"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.5-operational-access-and-secret-governance/">
+     <b> 4.5. </b> Truy cập vận hành và quản trị bí mật 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.6-monitoring-audit-and-email-delivery/"
+  title="Giám sát, kiểm toán và gửi email"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.6-monitoring-audit-and-email-delivery/">
+     <b> 4.6. </b> Giám sát, kiểm toán và gửi email 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/vi/5-feedback/"
+  title="Tự Đánh Giá"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-feedback/">
+     <b> 5. </b> Tự Đánh Giá 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+            
+<li
+  data-nav-id="/vi/6-sharingfeedback/"
+  title="Chia Sẻ Và Đánh Giá"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/6-sharingfeedback/">
+     <b> 6. </b> Chia Sẻ Và Đánh Giá 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"
+            ><i class='fab fa-facebook'></i> AWS Study Group</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+     
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = '/' + this.options[this.selectedIndex].dataset.path;">
+                       
+                <option
+                  id="en"
+                  value="/4-workshop/4.2-edge-delivery-and-geospatial-requests/"
+                  data-path="fcj-workshop/4-workshop/4.2-edge-delivery-and-geospatial-requests/"
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="/vi/4-workshop/4.2-edge-delivery-and-geospatial-requests/"
+                  data-path="fcj-workshop/vi/4-workshop/4.2-edge-delivery-and-geospatial-requests/"
+                  selected
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><div class="menu-footer-block">
+    <b>Workshop</b><br>
+    <img
+        src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0"
+        alt="Workshop counter"
+        title="Workshop counter"
+        loading="lazy"
+    >
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.2rem;">
+    <b><a href="https://cloudjourney.awsstudygroup.com/" style="color:inherit; text-decoration:none;">Cloud Journey</a></b><br>
+    <img
+        src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0"
+        alt="Cloud Journey counter"
+        title="Cloud Journey counter"
+        loading="lazy"
+    >
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.75rem;">
+    <b>Last Updated</b><br>
+    <i><span id="lastUpdated" style="color:orange;"></span></i>
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.75rem;">
+    <b>Team</b><br>
+    <i><a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud Journey</a></i>
+</div>
+
+<script>
+    (function () {
+        var lastUpdated = document.getElementById('lastUpdated');
+        if (!lastUpdated) {
+            return;
+        }
+
+        var today = new Date();
+        lastUpdated.textContent = today.toLocaleDateString('en-GB');
+    })();
+</script>
+</section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../../vi/'>Báo cáo thực tập</a> > <a href='../../../vi/4-workshop/'>Workshop</a> > Phân phối biên và yêu cầu dữ liệu bản đồ
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#tổng-quan">Tổng quan</a></li>
+    <li><a href="#các-dịch-vụ-aws-trong-phần-này">Các dịch vụ AWS trong phần này</a>
+      <ul>
+        <li><a href="#amazon-route-53">Amazon Route 53</a></li>
+        <li><a href="#amazon-cloudfront">Amazon CloudFront</a></li>
+        <li><a href="#aws-waf">AWS WAF</a></li>
+        <li><a href="#amazon-s3">Amazon S3</a></li>
+        <li><a href="#amazon-location-service">Amazon Location Service</a></li>
+      </ul>
+    </li>
+    <li><a href="#luồng-aws-từng-bước">Luồng AWS từng bước</a></li>
+    <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-kiểm-tra-hosted-zone">1. Kiểm tra hosted zone</a></li>
+        <li><a href="#2-tạo-hoặc-cập-nhật-bản-ghi-dns-của-ứng-dụng">2. Tạo hoặc cập nhật bản ghi DNS của ứng dụng</a></li>
+        <li><a href="#3-triển-khai-frontend-asset-lên-s3">3. Triển khai frontend asset lên S3</a></li>
+        <li><a href="#4-xóa-cache-cloudfront-sau-khi-deploy">4. Xóa cache CloudFront sau khi deploy</a></li>
+        <li><a href="#5-thử-một-truy-vấn-tìm-kiếm-với-location-service">5. Thử một truy vấn tìm kiếm với Location Service</a></li>
+      </ul>
+    </li>
+    <li><a href="#ví-dụ-cấu-hình">Ví dụ cấu hình</a>
+      <ul>
+        <li><a href="#s3-bucket-policy-private-cho-cloudfront-oac">S3 bucket policy private cho CloudFront OAC</a></li>
+      </ul>
+    </li>
+    <li><a href="#những-gì-cần-xác-minh">Những gì cần xác minh</a></li>
+    <li><a href="#lỗi-thường-gặp">Lỗi thường gặp</a></li>
+    <li><a href="#ghi-chú--giả-định">Ghi chú / Giả định</a></li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Phân phối biên và yêu cầu dữ liệu bản đồ
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="thực-hành-phân-phối-biên-và-yêu-cầu-dữ-liệu-bản-đồ">Thực hành phân phối biên và yêu cầu dữ liệu bản đồ</h1>
+<h2 id="tổng-quan">Tổng quan</h2>
+<ul>
+<li>Phần này tập trung vào lớp edge hướng công khai của nền tảng.</li>
+<li>Nó giải thích cách DNS, CDN caching, WAF filtering, S3 origin access và request tới Location Service hoạt động cùng nhau.</li>
+<li>Đây là điểm bắt đầu phù hợp khi frontend chậm, domain không resolve hoặc dữ liệu bản đồ bị thiếu.</li>
+</ul>
+<h2 id="các-dịch-vụ-aws-trong-phần-này">Các dịch vụ AWS trong phần này</h2>
+<h3 id="amazon-route-53">Amazon Route 53</h3>
+<p><img src="../../../images/4-Workshop/route53.jpg" alt="Amazon Route 53 DNS"></p>
+<ul>
+<li>Phân giải domain công khai và chuyển người dùng đến điểm truy cập phù hợp.</li>
+<li>Là bước đầu tiên trong luồng request.</li>
+</ul>
+<h3 id="amazon-cloudfront">Amazon CloudFront</h3>
+<p><img src="../../../images/4-Workshop/cloudfront.jpg" alt="Amazon CloudFront Distribution"></p>
+<ul>
+<li>Phân phối frontend asset đã cache với độ trễ thấp.</li>
+<li>Giảm số lần truy vấn về origin (S3).</li>
+</ul>
+<h3 id="aws-waf">AWS WAF</h3>
+<ul>
+<li>Lọc các request HTTP/HTTPS đầu vào.</li>
+<li>Bảo vệ hệ thống trước các tấn công phổ biến ngay tại edge.</li>
+</ul>
+<h3 id="amazon-s3">Amazon S3</h3>
+<ul>
+<li>Lưu trữ các file frontend (HTML, JS, CSS).</li>
+<li>Là origin cho CloudFront thông qua cơ chế Origin Access Control.</li>
+</ul>
+<h3 id="amazon-location-service">Amazon Location Service</h3>
+<p><img src="../../../images/4-Workshop/location-service.png" alt="Amazon Location Service"></p>
+<ul>
+<li>Xử lý các yêu cầu liên quan đến bản đồ và dữ liệu địa lý.</li>
+<li>Hoạt động tách biệt với luồng phân phối static asset.</li>
+</ul>
+<h2 id="luồng-aws-từng-bước">Luồng AWS từng bước</h2>
+<ol>
+<li>Người dùng mở <code>${APP_DOMAIN}</code> trên trình duyệt.
+Dịch vụ: Amazon Route 53.
+Điều xảy ra: Route 53 phân giải hostname công khai tới CloudFront distribution.
+Tại sao quan trọng: Nếu DNS sai, các dịch vụ AWS phía sau sẽ không được truy cập đúng.</li>
+<li>CloudFront nhận HTTPS request.
+Dịch vụ: Amazon CloudFront và AWS WAF.
+Điều xảy ra: WAF rule kiểm tra request trước khi distribution phục vụ nội dung.
+Tại sao quan trọng: Traffic xấu hoặc bất thường có thể bị chặn ngay tại edge.</li>
+<li>CloudFront kiểm tra file có nằm trong cache hay không.
+Dịch vụ: Amazon CloudFront và Amazon S3.
+Điều xảy ra: Nếu có cache thì trả ngay; nếu cache miss thì lấy từ S3.
+Tại sao quan trọng: Cache hit giúp giảm độ trễ và giảm tải cho origin bucket.</li>
+<li>S3 chỉ trả object thông qua đường CloudFront đã được cho phép.
+Dịch vụ: Amazon S3 và CloudFront Origin Access Control.
+Điều xảy ra: Bucket vẫn private, còn CloudFront là bên đọc được ủy quyền.
+Tại sao quan trọng: Người dùng không thể bỏ qua CloudFront để truy cập trực tiếp vào S3.</li>
+<li>Frontend sau đó gửi request lấy dữ liệu địa lý.
+Dịch vụ: Amazon Location Service.
+Điều xảy ra: Trình duyệt hoặc mã frontend gọi place index và map API.
+Tại sao quan trọng: Luồng map được tách khỏi luồng phân phối static asset.</li>
+<li>Frontend tiếp tục gọi backend API qua tầng ứng dụng.
+Dịch vụ: Application Load Balancer ở phần tiếp theo.
+Điều xảy ra: Traffic động rời lớp edge và đi vào compute stack private.
+Tại sao quan trọng: Static traffic và dynamic traffic có thể được tối ưu riêng.</li>
+</ol>
+<h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
+<h3 id="1-kiểm-tra-hosted-zone">1. Kiểm tra hosted zone</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws route53 list-hosted-zones --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-tạo-hoặc-cập-nhật-bản-ghi-dns-của-ứng-dụng">2. Tạo hoặc cập nhật bản ghi DNS của ứng dụng</h3>
+<p>Tạo file <code>route53-app-record.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Comment&#34;</span>: <span style="color:#e6db74">&#34;Point app subdomain to CloudFront&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Changes&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;app.example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;CNAME&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;d111111abcdef8.cloudfront.net&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Áp dụng thay đổi và chờ trạng thái đồng bộ:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CHANGE_ID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>aws route53 change-resource-record-sets <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --hosted-zone-id <span style="color:#e6db74">${</span>HOSTED_ZONE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch file://route53-app-record.json <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;ChangeInfo.Id&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output text<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>aws route53 wait resource-record-sets-changed --id <span style="color:#e6db74">${</span>CHANGE_ID<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="3-triển-khai-frontend-asset-lên-s3">3. Triển khai frontend asset lên S3</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 sync ./dist s3://<span style="color:#e6db74">${</span>STATIC_BUCKET<span style="color:#e6db74">}</span> --delete
+</span></span></code></pre></div><h3 id="4-xóa-cache-cloudfront-sau-khi-deploy">4. Xóa cache CloudFront sau khi deploy</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudfront create-invalidation <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --distribution-id <span style="color:#e6db74">${</span>CLOUDFRONT_DIST_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --paths <span style="color:#e6db74">&#34;/*&#34;</span>
+</span></span></code></pre></div><h3 id="5-thử-một-truy-vấn-tìm-kiếm-với-location-service">5. Thử một truy vấn tìm kiếm với Location Service</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws location search-place-index-for-text <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --index-name <span style="color:#e6db74">${</span>PLACE_INDEX_NAME<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --text <span style="color:#e6db74">&#34;EV charging station&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h2 id="ví-dụ-cấu-hình">Ví dụ cấu hình</h2>
+<h3 id="s3-bucket-policy-private-cho-cloudfront-oac">S3 bucket policy private cho CloudFront OAC</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;AllowCloudFrontServicePrincipalReadOnly&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Service&#34;</span>: <span style="color:#e6db74">&#34;cloudfront.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;s3:GetObject&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:s3:::ev-prod-frontend/*&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;AWS:SourceArn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:cloudfront::123456789012:distribution/E123ABC456DEF&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ý nghĩa của cấu hình này:</p>
+<ul>
+<li>Bucket S3 vẫn giữ trạng thái private.</li>
+<li>Chỉ CloudFront distribution được chỉ định mới có quyền đọc object.</li>
+<li>Người dùng buộc phải đi qua CloudFront, nơi WAF có thể kiểm tra traffic.</li>
+</ul>
+<h2 id="những-gì-cần-xác-minh">Những gì cần xác minh</h2>
+<ul>
+<li>DNS resolve về đúng CloudFront distribution.</li>
+<li>Bucket S3 không public read.</li>
+<li>Sau mỗi lần deploy đều có CloudFront invalidation.</li>
+<li>Chức năng tìm kiếm bản đồ hoạt động qua Amazon Location Service.</li>
+<li>WAF đã được gắn với CloudFront distribution trong môi trường mục tiêu.</li>
+</ul>
+<h2 id="lỗi-thường-gặp">Lỗi thường gặp</h2>
+<ul>
+<li>Cập nhật nội dung S3 nhưng quên invalidate CloudFront.</li>
+<li>Mở public bucket S3 thay vì dùng OAC.</li>
+<li>Trỏ Route 53 đến sai CloudFront domain.</li>
+<li>Chẩn đoán lỗi map ở backend trong khi nguyên nhân thật nằm ở cấu hình Amazon Location.</li>
+</ul>
+<h2 id="ghi-chú--giả-định">Ghi chú / Giả định</h2>
+<ul>
+<li>Sơ đồ thể hiện Amazon Location Service là đường tích hợp cho frontend, nhưng không ghi rõ map style hay place index cụ thể.</li>
+<li>Trong môi trường production, Route 53 có thể dùng alias thay vì CNAME. Ví dụ ở đây dùng CNAME để dễ hiểu.</li>
+<li>Sơ đồ không có API Gateway hay Lambda ở lớp edge. Request động được chuyển xuống tầng ứng dụng dùng ALB.</li>
+</ul>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../../vi/4-workshop/4.1-overview/" title="Tổng quan"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../../vi/4-workshop/4.3-private-application-routing-and-compute/" title="Điều phối ứng dụng riêng tư và tầng tính toán" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../js/clipboard.min.js?1775313721"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1775313721"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775313721"></script>
+    <script src="../../../js/jquery.sticky.js?1775313721"></script>
+    <script src="../../../js/featherlight.min.js?1775313721"></script>
+    <script src="../../../js/highlight.pack.js?1775313721"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1775313721"></script>
+    <script src="../../../js/learn.js?1775313721"></script>
+    <script src="../../../js/hugo-learn.js?1775313721"></script>
+
+    <link href="../../../mermaid/mermaid.css?1775313721" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1775313721"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+<script>
+  (function () {
+    function getTarget(hash) {
+      if (!hash || hash.charAt(0) !== "#") {
+        return null;
+      }
+
+      var id = hash.slice(1);
+      return document.getElementById(id) || document.getElementById(decodeURIComponent(id));
+    }
+
+    function getFixedOffset() {
+      var topBar = document.getElementById("top-bar");
+      var topBarHeight = topBar ? topBar.getBoundingClientRect().height : 0;
+      return Math.ceil(topBarHeight) + 16;
+    }
+
+    function scrollToHash(hash, pushToHistory) {
+      var target = getTarget(hash);
+
+      if (!target) {
+        return false;
+      }
+
+      var top = window.pageYOffset + target.getBoundingClientRect().top - getFixedOffset();
+      window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: "auto" });
+
+      if (pushToHistory) {
+        history.pushState({}, document.title, window.location.pathname + hash);
+      }
+
+      return true;
+    }
+
+    document.addEventListener(
+      "click",
+      function (event) {
+        var link = event.target.closest("a[href^='#']");
+
+        if (!link) {
+          return;
+        }
+
+        var href = link.getAttribute("href");
+
+        if (!href || href === "#") {
+          return;
+        }
+
+        if (!scrollToHash(href, true)) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      },
+      true,
+    );
+
+    jQuery(function () {
+      
+      jQuery(window).off("hashchange");
+      jQuery("body").off("click", "a");
+
+      if (window.location.hash) {
+        window.requestAnimationFrame(function () {
+          scrollToHash(window.location.hash, false);
+        });
+      }
+    });
+
+    window.addEventListener("load", function () {
+      if (window.location.hash) {
+        window.requestAnimationFrame(function () {
+          scrollToHash(window.location.hash, false);
+        });
+      }
+    });
+
+    window.addEventListener("hashchange", function () {
+      scrollToHash(window.location.hash, false);
+    });
+  })();
+</script>
+
+  </body>
+</html>
+

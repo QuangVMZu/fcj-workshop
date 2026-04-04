@@ -17,6 +17,8 @@ Sự kiện mang đến cái nhìn tổng quan về:
 - Xu hướng kiến trúc cloud hiện đại
 - Best practices từ thực tế triển khai hệ thống
 
+![AWS re:Invent Recap HCMC](/images/3-EventParticipated/sk.jpg)
+
 ---
 
 ## Chủ đề và kiến thức nổi bật

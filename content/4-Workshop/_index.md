@@ -1,46 +1,83 @@
----
+﻿---
 title: "Workshop"
-date: 2025-10-13
+date: 2026-04-04
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# Workshop: EV Charging Station Management Full-Stack Flow
+# Hands-on AWS Workshop for the EV Charging Platform
+
+![AWS Workshop Architecture Overview](/images/2-Proposal/AWS-architecture.png)
 
 ## Overview
 
-This Workshop section documents the **actual end-to-end system flow** of the EV Charging Station Management System across the React frontend, the Spring Boot backend, and the supporting integrations around storage, notifications, payments, and maps. It is no longer an AWS-generic tutorial. It is a technical walkthrough of how the current product behaves from the moment a user signs in until a booking is charged, paid, and possibly penalized.
+This chapter is a hands-on workshop guide for the AWS architecture behind the EV Charging Station Management System. It does not teach local application setup. Instead, it explains how the deployed AWS services receive traffic, run the backend, store data, protect secrets, and support operations.
 
-The content is organized around the implemented runtime sequence:
+## How to Use This Workshop
 
-1. users register, verify OTP, and log in,
-2. the frontend loads stations, slot availability, and vehicle context,
-3. the backend creates and confirms bookings,
-4. staff or driver-facing flows start and stop charging sessions,
-5. invoice and payment logic settle the commercial flow,
-6. loyalty and compliance logic finalize the operational outcome.
+- Follow the sections in order from edge services to observability.
+- Replace placeholder values such as `${APP_DOMAIN}` and `${DB_INSTANCE_ID}` with your own environment values.
+- The CLI examples use `bash` syntax. If you use PowerShell, adapt quoting accordingly.
+- Prefer a non-production account for experiments such as Route 53 changes, CloudFront invalidations, or RDS failover tests.
+- Read each section in two passes: first for the flow, then for the commands and verification steps.
 
-## Full-stack scope
+## Services Used in This Architecture
 
-- **Frontend**: React routing, protected routes, API wrappers, local state, Redux, `localStorage`, and `sessionStorage`
-- **Backend**: Spring Boot monolith with controllers, services, repositories, schedulers, events, and async notifications
-- **Integrations**: JWT auth, OTP verification, VNPay, SMTP email, AWS S3, AWS Location, and media/storage configuration such as Cloudinary when enabled
+- **Edge and frontend delivery**: Amazon Route 53, Amazon CloudFront, AWS WAF, Amazon S3, Amazon Location Service
+- **Application runtime**: Amazon VPC, Internet Gateway, NAT Gateway, Application Load Balancer, Amazon EC2, EC2 Auto Scaling
+- **Data layer**: Amazon RDS in a primary and standby layout
+- **Operations and security**: AWS Systems Manager, IAM instance profile, AWS Secrets Manager, AWS KMS
+- **Observability and communication**: Amazon CloudWatch, AWS CloudTrail, Amazon SES, Route 53 email DNS records
 
-![EV Charging System Architecture](/images/4-Workshop/ev-achi.png)
+## Services Not Shown in This Diagram
 
-## Workshop objectives
+- **API Gateway**: Not used here because public application traffic enters through CloudFront and then the Application Load Balancer.
+- **Lambda**: Not shown. The backend is modeled as long-running EC2 instances.
+- **ECS / EKS**: Not shown. Container orchestration is outside the scope of this design.
+- **DynamoDB**: Not shown. Persistent data is modeled as relational data in Amazon RDS.
+- **EventBridge / SQS / SNS**: Not shown. The diagram emphasizes synchronous request flow and direct service integrations.
+- **Cognito**: Not shown. The visible admin path uses IAM and AWS Systems Manager rather than a user pool.
 
-* Explain the real driver journey from station discovery to payment success
-* Map frontend user actions to backend controllers and service transactions
-* Clarify important status transitions for bookings, sessions, invoices, loyalty, and violations
-* Document implementation realities and known limitations honestly
+## Shared Lab Variables
+
+```bash
+export AWS_REGION=ap-southeast-1
+export APP_DOMAIN=app.example.com
+export HOSTED_ZONE_ID=Z123456789EXAMPLE
+export STATIC_BUCKET=ev-prod-frontend
+export CLOUDFRONT_DIST_ID=E123ABC456DEF
+export PLACE_INDEX_NAME=ev-place-index
+export ALB_NAME=ev-app-alb
+export TARGET_GROUP_ARN=arn:aws:elasticloadbalancing:ap-southeast-1:123456789012:targetgroup/ev-app-tg/abc123
+export ASG_NAME=ev-app-asg
+export INSTANCE_ID=i-0123456789abcdef0
+export APP_PORT=8080
+export DB_INSTANCE_ID=ev-prod-rds
+export DB_PORT=1433
+export DB_SECRET_ID=ev/prod/database
+export LOG_GROUP=/aws/ec2/ev-app
+export SES_IDENTITY=example.com
+export SES_SENDER=no-reply@example.com
+export SES_RECIPIENT=ops@example.com
+```
+
+## Recommended AWS Access
+
+- Route 53 read and change permissions for DNS validation tasks
+- CloudFront and S3 permissions for frontend deployment checks
+- EC2, ELBv2, Auto Scaling, and VPC read permissions for application runtime inspection
+- RDS read permissions, and controlled reboot permissions only in approved environments
+- SSM, Secrets Manager, IAM, KMS, CloudWatch, CloudTrail, and SES read permissions for operations work
 
 ## Content
 
-1. [Introduction](4.1-introduction/)
-2. [Prerequisites](4.2-prerequisites/)
-3. [Authentication and Booking Flow](4.3-auth-booking-flow/)
-4. [Charging Session Execution](4.4-charging-session-execution/)
-5. [Invoice, Payment, Loyalty, and Violation Handling](4.5-payment-loyalty-violation/)
-6. [Validation, Results, Limitations, and Cleanup](4.6-validation-results-cleanup/)
+1. [Overview](4.1-overview/)
+2. [Edge Delivery and Geospatial Requests](4.2-edge-delivery-and-geospatial-requests/)
+3. [Private Application Routing and Compute](4.3-private-application-routing-and-compute/)
+4. [Relational Data Resilience and Network Isolation](4.4-relational-data-resilience-and-network-isolation/)
+5. [Operational Access and Secret Governance](4.5-operational-access-and-secret-governance/)
+6. [Monitoring, Audit, and Email Delivery](4.6-monitoring-audit-and-email-delivery/)
+
+
+
