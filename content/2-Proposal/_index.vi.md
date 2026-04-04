@@ -109,7 +109,7 @@ Giải pháp này giúp các đơn vị vận hành:
 
 ---
 
-### 4. Architecture Justification
+### 4. Chứng minh kiến trúc (Architecture Justification)
 
 #### Lý do chọn kiến trúc
 
@@ -155,7 +155,7 @@ Giải pháp này giúp các đơn vị vận hành:
 
 ---
 
-#### Trade-offs
+#### Sự đánh đổi
 
 * Không Multi-AZ DB
 * EC2 cần manage
@@ -174,7 +174,7 @@ Giải pháp này giúp các đơn vị vận hành:
 
 ---
 
-### 6. Timeline
+### 6. Dòng thời gian
 
 * Week 7–8: Thiết lập hệ thống và kiến trúc
 * Week 8: Booking & Charging session
