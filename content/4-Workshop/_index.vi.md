@@ -39,6 +39,14 @@ Chương này là tài liệu workshop thực hành cho kiến trúc AWS đứng
 - **EventBridge / SQS / SNS**: Không được thể hiện. Sơ đồ tập trung vào luồng request đồng bộ và tích hợp trực tiếp giữa các dịch vụ.
 - **Cognito**: Không được thể hiện. Đường truy cập admin đang dùng IAM và AWS Systems Manager.
 
+## Chương này bao quát điều gì trong thực tế
+
+- Nó giải thích cách một request từ trình duyệt đi vào AWS, tải frontend, rồi chuyển tiếp sang backend API.
+- Nó làm rõ ranh giới giữa lớp public và các tầng application, data nằm trong private network.
+- Nó cho thấy đội vận hành có thể vào môi trường mà không cần mở SSH ra internet.
+- Nó nhấn mạnh các dịch vụ hỗ trợ khiến runtime đủ mức production như secret management, audit logging, metrics và outbound email.
+- Nó cố ý tập trung vào kiến trúc AWS đã triển khai để người đọc hiểu được runtime behavior, failure domain và trách nhiệm vận hành theo từng lớp.
+
 ## Biến môi trường dùng chung trong lab
 
 ```bash
@@ -78,6 +86,5 @@ export SES_RECIPIENT=ops@example.com
 4. [Độ bền dữ liệu quan hệ và cô lập mạng](4.4-relational-data-resilience-and-network-isolation/)
 5. [Truy cập vận hành và quản trị bí mật](4.5-operational-access-and-secret-governance/)
 6. [Giám sát, kiểm toán và gửi email](4.6-monitoring-audit-and-email-delivery/)
-
-
+7. [Phân tích kiến trúc workshop chuyên sâu](4.7-workshop-architecture-deep-dive/)
 

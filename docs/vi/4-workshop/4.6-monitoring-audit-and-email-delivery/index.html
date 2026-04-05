@@ -15,21 +15,21 @@
     <title>Giám sát, kiểm toán và gửi email :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1775386388" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1775386388" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1775386388" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1775386388" rel="stylesheet">
+    <link href="../../../css/theme.css?1775386388" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1775386388" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1775386388" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1775386388"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1775386388"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1775386388"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../../js/search.js?1775386388"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Phân tích kiến trúc workshop chuyên sâu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Phân tích kiến trúc workshop chuyên sâu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -779,6 +797,7 @@
       </ul>
     </li>
     <li><a href="#vì-sao-thiết-kế-này-dùng-tích-hợp-aws-trực-tiếp">Vì sao thiết kế này dùng tích hợp AWS trực tiếp</a></li>
+    <li><a href="#logic-nội-bộ-và-mô-hình-vận-hành">Logic nội bộ và mô hình vận hành</a></li>
     <li><a href="#luồng-aws-từng-bước">Luồng AWS từng bước</a></li>
     <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
       <ul>
@@ -794,6 +813,7 @@
         <li><a href="#ví-dụ-các-bản-ghi-route-53-cho-thiết-lập-ses-domain">Ví dụ các bản ghi Route 53 cho thiết lập SES domain</a></li>
       </ul>
     </li>
+    <li><a href="#best-practices-và-hướng-cải-thiện">Best practices và hướng cải thiện</a></li>
     <li><a href="#những-gì-cần-xác-minh">Những gì cần xác minh</a></li>
     <li><a href="#lỗi-thường-gặp">Lỗi thường gặp</a></li>
     <li><a href="#ghi-chú--giả-định">Ghi chú / Giả định</a></li>
@@ -869,6 +889,14 @@
 <li>Sơ đồ hiển thị trực tiếp CloudWatch và CloudTrail, nên observability được xây dựng trên bộ công cụ native của AWS.</li>
 <li>Email được gửi trực tiếp qua Amazon SES thay vì qua một dịch vụ messaging hay event bus riêng.</li>
 <li>EventBridge, SQS và SNS không xuất hiện trong kiến trúc, nên workshop này không giả định có pipeline notification theo kiểu event-driven.</li>
+</ul>
+<h2 id="logic-nội-bộ-và-mô-hình-vận-hành">Logic nội bộ và mô hình vận hành</h2>
+<ul>
+<li>CloudWatch trả lời câu hỏi workload đang làm gì trong runtime thông qua log, metric và các tín hiệu vận hành.</li>
+<li>CloudTrail trả lời câu hỏi môi trường AWS đã thay đổi như thế nào bằng cách ghi lại control-plane activity.</li>
+<li>SES cung cấp đường giao tiếp outbound được quản lý để ứng dụng không phải tự vận hành SMTP stack.</li>
+<li>Route 53 hỗ trợ mô hình trust cho email bằng cách lưu các DNS record xác minh quyền sở hữu domain và cải thiện deliverability.</li>
+<li>Vì đây là các dịch vụ cross-cutting, sự cố ở phần này thường giải thích được triệu chứng xuất hiện ở lớp khác, ngay cả khi request path của người dùng nhìn bề ngoài vẫn còn hoạt động.</li>
 </ul>
 <h2 id="luồng-aws-từng-bước">Luồng AWS từng bước</h2>
 <ol>
@@ -997,7 +1025,15 @@ Tại sao quan trọng: Nếu DNS record không đúng, SES sẽ không verify i
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws route53 change-resource-record-sets <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --hosted-zone-id <span style="color:#e6db74">${</span>HOSTED_ZONE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --change-batch file://ses-identity-records.json
-</span></span></code></pre></div><h2 id="những-gì-cần-xác-minh">Những gì cần xác minh</h2>
+</span></span></code></pre></div><h2 id="best-practices-và-hướng-cải-thiện">Best practices và hướng cải thiện</h2>
+<ul>
+<li>Dùng structured application log để việc tìm kiếm, lọc và rà soát sự cố dễ dàng hơn theo thời gian.</li>
+<li>Xác định retention rõ ràng cho application log, audit log và dữ liệu liên quan đến bảo mật thay vì dùng mặc định.</li>
+<li>Hãy xem CloudTrail là một phần của governance baseline, không chỉ là công cụ hỗ trợ debug.</li>
+<li>Cần có alarm routing và owner rõ ràng để mọi alarm quan trọng đều có đường phản ứng thực tế.</li>
+<li>Nếu khối lượng notification hoặc độ phức tạp của retry tăng lên, EventBridge, SQS hoặc SNS có thể được dùng để tách email và các side effect khác khỏi synchronous request path.</li>
+</ul>
+<h2 id="những-gì-cần-xác-minh">Những gì cần xác minh</h2>
 <ul>
 <li>Log của ứng dụng đã vào đúng CloudWatch log group.</li>
 <li>CloudTrail ghi lại hành động của admin và các thay đổi hạ tầng.</li>
@@ -1464,9 +1500,6 @@ Tại sao quan trọng: Nếu DNS record không đúng, SES sẽ không verify i
             
         
                     
-            
-        
-                    
                         
             
             
@@ -1474,6 +1507,25 @@ Tại sao quan trọng: Nếu DNS record không đúng, SES sẽ không verify i
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1514,7 +1566,7 @@ Tại sao quan trọng: Nếu DNS record không đúng, SES sẽ không verify i
 			<a class="nav nav-prev" href="../../../vi/4-workshop/4.5-operational-access-and-secret-governance/" title="Truy cập vận hành và quản trị bí mật"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../../vi/5-feedback/" title="Tự Đánh Giá" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../../vi/4-workshop/4.7-workshop-architecture-deep-dive/" title="Phân tích kiến trúc workshop chuyên sâu" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1524,19 +1576,19 @@ Tại sao quan trọng: Nếu DNS record không đúng, SES sẽ không verify i
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../../js/clipboard.min.js?1775386388"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1775386388"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775386388"></script>
+    <script src="../../../js/jquery.sticky.js?1775386388"></script>
+    <script src="../../../js/featherlight.min.js?1775386388"></script>
+    <script src="../../../js/highlight.pack.js?1775386388"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../../js/learn.js?1775326934"></script>
-    <script src="../../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1775386388"></script>
+    <script src="../../../js/learn.js?1775386388"></script>
+    <script src="../../../js/hugo-learn.js?1775386388"></script>
 
-    <link href="../../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../../mermaid/mermaid.css?1775386388" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1775386388"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

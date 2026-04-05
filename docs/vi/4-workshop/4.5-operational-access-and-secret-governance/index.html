@@ -15,21 +15,21 @@
     <title>Truy cập vận hành và quản trị bí mật :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1775386388" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1775386388" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1775386388" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1775386388" rel="stylesheet">
+    <link href="../../../css/theme.css?1775386388" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1775386388" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1775386388" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1775386388"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1775386388"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1775386388"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../../js/search.js?1775386388"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Phân tích kiến trúc workshop chuyên sâu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Phân tích kiến trúc workshop chuyên sâu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -780,12 +798,13 @@
     </li>
     <li><a href="#vì-sao-thiết-kế-này-dùng-ssm-và-iam">Vì sao thiết kế này dùng SSM và IAM</a></li>
     <li><a href="#luồng-aws-từng-bước">Luồng AWS từng bước</a></li>
+    <li><a href="#hành-vi-request-và-response">Hành vi request và response</a></li>
     <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
       <ul>
         <li><a href="#1-mở-phiên-ssm-vào-private-instance">1. Mở phiên SSM vào private instance</a></li>
         <li><a href="#2-xác-minh-iam-instance-profile-đang-được-gắn">2. Xác minh IAM instance profile đang được gắn</a></li>
         <li><a href="#3-đọc-giá-trị-secret">3. Đọc giá trị secret</a></li>
-        <li><a href="#4-liệt-kê-alias-kms-để-tìm-khóa-mã-hóa-secret">4. Liệt kê alias KMS để tìm khóa mã hóa secret</a></li>
+        <li><a href="#4-liệt-kê-alias-kms">4. Liệt kê alias KMS</a></li>
       </ul>
     </li>
     <li><a href="#ví-dụ-cấu-hình">Ví dụ cấu hình</a>
@@ -793,6 +812,9 @@
         <li><a href="#quyền-tối-thiểu-cho-instance-role-trong-kiến-trúc-này">Quyền tối thiểu cho instance-role trong kiến trúc này</a></li>
       </ul>
     </li>
+    <li><a href="#key-logic--rules">Key Logic / Rules</a></li>
+    <li><a href="#lưu-ý-về-vận-hành-và-bảo-mật">Lưu ý về vận hành và bảo mật</a></li>
+    <li><a href="#best-practices">Best practices</a></li>
     <li><a href="#những-gì-cần-xác-minh">Những gì cần xác minh</a></li>
     <li><a href="#lỗi-thường-gặp">Lỗi thường gặp</a></li>
     <li><a href="#ghi-chú--giả-định">Ghi chú / Giả định</a></li>
@@ -827,6 +849,7 @@
 <li>Phần này giải thích cách operator và application instance truy cập môi trường mà không cần public server.</li>
 <li>Nội dung tập trung vào AWS Systems Manager, IAM instance profile, AWS Secrets Manager và AWS KMS.</li>
 <li>Đây là phần nên xem trước khi xử lý tình huống admin không vào được private EC2 hoặc ứng dụng không đọc được secret.</li>
+<li>Ở góc nhìn vận hành thực tế, đây là phần mô tả cách con người và máy được cấp trust mà không phải quay về hardcoded credential hoặc public SSH.</li>
 </ul>
 <h2 id="các-dịch-vụ-aws-trong-phần-này">Các dịch vụ AWS trong phần này</h2>
 <h3 id="aws-systems-manager-ssm">AWS Systems Manager (SSM)</h3>
@@ -834,40 +857,46 @@
 <ul>
 <li>Cung cấp truy cập có kiểm soát cho operator vào EC2 trong private subnet.</li>
 <li>Không cần mở SSH hay public IP.</li>
+<li>Có thể hỗ trợ session tương tác, chạy lệnh và các workflow vận hành chuẩn hóa.</li>
 </ul>
 <h3 id="iam-instance-profile">IAM Instance Profile</h3>
 <p><img src="../../../images/4-Workshop/iam-instance-profile.png" alt="IAM Instance Profile"></p>
 <ul>
 <li>Cấp danh tính cho EC2 instance.</li>
 <li>Cho phép ứng dụng truy cập AWS service mà không cần hardcode credential.</li>
+<li>Cung cấp temporary credential được AWS tự xoay vòng.</li>
 </ul>
 <h3 id="aws-secrets-manager">AWS Secrets Manager</h3>
 <ul>
 <li>Lưu trữ các thông tin nhạy cảm như connection string, API key.</li>
 <li>Cho phép ứng dụng lấy secret một cách an toàn trong runtime.</li>
+<li>Tách vòng đời của secret khỏi vòng đời deploy ứng dụng.</li>
 </ul>
 <h3 id="aws-kms">AWS KMS</h3>
 <ul>
 <li>Mã hóa và bảo vệ secret.</li>
 <li>Kiểm soát quyền truy cập key thông qua IAM.</li>
+<li>Biến bài toán mã hóa thành trách nhiệm của managed service thay vì để ứng dụng tự giải quyết.</li>
 </ul>
 <h3 id="amazon-ec2">Amazon EC2</h3>
 <p><img src="../../../images/4-Workshop/ec2-iam-role.png" alt="EC2 Instance IAM Role"></p>
 <ul>
 <li>Sử dụng IAM role và lấy secret trong runtime.</li>
 <li>Là nơi thực thi application một cách an toàn.</li>
+<li>Dùng machine identity để truy cập Secrets Manager, CloudWatch, SES và các AWS API khác.</li>
 </ul>
 <h2 id="vì-sao-thiết-kế-này-dùng-ssm-và-iam">Vì sao thiết kế này dùng SSM và IAM</h2>
 <ul>
 <li>Sơ đồ thể hiện admin access đi qua Systems Manager thay vì SSH public qua internet.</li>
 <li>Các EC2 instance dùng IAM role gắn kèm, nên ứng dụng không cần giữ AWS key dài hạn trong file.</li>
-<li>Đường truy cập được thể hiện là truy cập vận hành cho admin, không phải xác thực người dùng cuối. Cognito không xuất hiện trong thiết kế này.</li>
+<li>Đường truy cập được thể hiện là truy cập vận hành và machine identity, không phải xác thực người dùng cuối.</li>
+<li>Thiết kế này giúp quyền truy cập có thể audit, thu hồi và đồng bộ với trust model của AWS.</li>
 </ul>
 <h2 id="luồng-aws-từng-bước">Luồng AWS từng bước</h2>
 <ol>
 <li>Operator cần shell access hoặc run-command access vào một EC2 instance private.
 Dịch vụ: AWS Systems Manager.
-Điều xảy ra: Operator khởi tạo một phiên SSM tới instance mục tiêu.
+Điều xảy ra: Operator khởi tạo một phiên SSM tới instance mục tiêu qua control plane của AWS.
 Tại sao quan trọng: Không cần bastion host hay mở public SSH.</li>
 <li>Instance xác thực bằng danh tính máy.
 Dịch vụ: IAM instance profile.
@@ -886,6 +915,13 @@ Dịch vụ: IAM, CloudWatch, SES.
 Điều xảy ra: Role của instance cho phép các thao tác AWS khác mà workload cần.
 Tại sao quan trọng: Một danh tính máy duy nhất có thể phục vụ nhiều tích hợp nhưng vẫn giữ được kiểm soát quyền.</li>
 </ol>
+<h2 id="hành-vi-request-và-response">Hành vi request và response</h2>
+<ul>
+<li>Operator request đi vào SSM và sẽ tạo session thành công hoặc thất bại tùy theo trạng thái đăng ký và IAM.</li>
+<li>Application request đi tới Secrets Manager và sẽ nhận secret hoặc lỗi do quyền, region hoặc naming.</li>
+<li>Yêu cầu giải mã đi qua KMS một cách ngầm định trong secret flow và chỉ thành công khi IAM policy cùng key policy khớp nhau.</li>
+<li>Runtime hoặc nhận được cấu hình để tiếp tục chạy an toàn, hoặc lộ ra sớm lỗi policy hay cấu hình.</li>
+</ul>
 <h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
 <h3 id="1-mở-phiên-ssm-vào-private-instance">1. Mở phiên SSM vào private instance</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ssm start-session <span style="color:#ae81ff">\
@@ -901,9 +937,16 @@ Tại sao quan trọng: Một danh tính máy duy nhất có thể phục vụ n
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws secretsmanager get-secret-value <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --secret-id <span style="color:#e6db74">${</span>DB_SECRET_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
-</span></span></code></pre></div><h3 id="4-liệt-kê-alias-kms-để-tìm-khóa-mã-hóa-secret">4. Liệt kê alias KMS để tìm khóa mã hóa secret</h3>
+</span></span></code></pre></div><h3 id="4-liệt-kê-alias-kms">4. Liệt kê alias KMS</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws kms list-aliases --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
-</span></span></code></pre></div><h2 id="ví-dụ-cấu-hình">Ví dụ cấu hình</h2>
+</span></span></code></pre></div><p>Cách đọc các lệnh này:</p>
+<ul>
+<li>Một phiên SSM thành công là bằng chứng cho thấy cả management plane lẫn việc đăng ký instance đều đúng.</li>
+<li>Nếu thiếu ARN của instance profile thì đó thường là nguyên nhân cho lỗi đọc secret, ghi log hoặc gọi SES.</li>
+<li>Lỗi đọc secret thường đến từ IAM, sai secret ID hoặc thiếu quyền KMS.</li>
+<li>Việc liệt kê alias KMS giúp kiểm tra ranh giới mã hóa có thực sự tồn tại trong môi trường hay không.</li>
+</ul>
+<h2 id="ví-dụ-cấu-hình">Ví dụ cấu hình</h2>
 <h3 id="quyền-tối-thiểu-cho-instance-role-trong-kiến-trúc-này">Quyền tối thiểu cho instance-role trong kiến trúc này</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
@@ -929,6 +972,30 @@ Tại sao quan trọng: Một danh tính máy duy nhất có thể phục vụ n
 <li>Instance ghi log và gửi email được.</li>
 <li>Không cần lưu static AWS key trên máy chủ.</li>
 </ul>
+<h2 id="key-logic--rules">Key Logic / Rules</h2>
+<ul>
+<li>Truy cập quản trị đi qua SSM, tránh phải mở public SSH hay dùng bastion trong thiết kế này.</li>
+<li>Secret được tách ra khỏi application server và lưu trong managed service.</li>
+<li>IAM role thực thi nguyên tắc least privilege cho machine identity.</li>
+<li>Encryption được coi là năng lực managed của nền tảng chứ không phải key store do ứng dụng tự sở hữu.</li>
+<li>Instance profile trong sơ đồ được dùng để đọc secret, ghi log và gửi email.</li>
+<li>Trong production, phạm vi resource của IAM nên chặt hơn nhiều so với ví dụ đơn giản trong workshop.</li>
+</ul>
+<h2 id="lưu-ý-về-vận-hành-và-bảo-mật">Lưu ý về vận hành và bảo mật</h2>
+<ul>
+<li>Tách rõ quyền của operator và quyền của workload để human access và machine access không bị lẫn vào nhau.</li>
+<li>Bật Session Manager logging để truy vết khi cho phép interactive access.</li>
+<li>Dùng naming convention nhất quán cho secret theo môi trường, workload và mục đích sử dụng.</li>
+<li>Rà soát kỹ phạm vi của KMS key policy khi dùng customer-managed key.</li>
+<li>Cân nhắc dùng VPC endpoint cho SSM, Secrets Manager và CloudWatch nếu môi trường cần giảm phụ thuộc vào NAT trong control-plane access.</li>
+</ul>
+<h2 id="best-practices">Best practices</h2>
+<ul>
+<li>Thay wildcard bằng ARN cụ thể của secret và key trong production.</li>
+<li>Tài liệu hóa workload nào được giải mã secret nào và vì sao.</li>
+<li>Xoay vòng secret theo chu kỳ phù hợp với risk profile của môi trường.</li>
+<li>Xem lỗi lấy secret là tín hiệu vận hành quan trọng, không chỉ là lỗi của ứng dụng.</li>
+</ul>
 <h2 id="những-gì-cần-xác-minh">Những gì cần xác minh</h2>
 <ul>
 <li>EC2 instance mục tiêu đã được đăng ký trong Systems Manager.</li>
@@ -941,14 +1008,16 @@ Tại sao quan trọng: Một danh tính máy duy nhất có thể phục vụ n
 <ul>
 <li>Gắn role cho EC2 nhưng quên cấp <code>secretsmanager:GetSecretValue</code>.</li>
 <li>Có quyền Secrets Manager nhưng thiếu <code>kms:Decrypt</code> khi dùng customer-managed KMS key.</li>
-<li>Nhầm rằng xác thực người dùng cuối nằm ở đây trong khi sơ đồ chỉ thể hiện đường truy cập cho operator.</li>
+<li>Nhầm rằng xác thực người dùng cuối nằm ở đây trong khi sơ đồ chỉ thể hiện đường truy cập cho operator và machine identity.</li>
 <li>Quay lại hard-coded credential vì naming convention của secret chưa rõ ràng.</li>
+<li>Giữ nguyên IAM policy quá rộng từ giai đoạn workshop sang môi trường trưởng thành hơn.</li>
 </ul>
 <h2 id="ghi-chú--giả-định">Ghi chú / Giả định</h2>
 <ul>
 <li>Sơ đồ không ghi cụ thể chế độ SSM nào, nhưng Session Manager là cách hiểu trực tiếp nhất cho truy cập tương tác.</li>
-<li>Luồng xoay vòng secret không được thể hiện, nên workshop này tập trung vào retrieval và thiết kế quyền.</li>
-<li>Cognito và các dịch vụ định danh người dùng khác không xuất hiện trong sơ đồ kiến trúc.</li>
+<li>Secret rotation và KMS key rotation policy không được thể hiện.</li>
+<li>Không có identity provider riêng hay workflow engine chi tiết cho admin trong sơ đồ, nên tài liệu tập trung vào các AWS control đang nhìn thấy được.</li>
+<li>Trong môi trường siết chặt hơn, có thể dùng VPC endpoint cho SSM, Secrets Manager và CloudWatch để giảm phụ thuộc vào NAT đối với control-plane traffic.</li>
 </ul>
 
 
@@ -1399,6 +1468,22 @@ Tại sao quan trọng: Một danh tính máy duy nhất có thể phục vụ n
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1456,19 +1541,19 @@ Tại sao quan trọng: Một danh tính máy duy nhất có thể phục vụ n
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../../js/clipboard.min.js?1775386388"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1775386388"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775386388"></script>
+    <script src="../../../js/jquery.sticky.js?1775386388"></script>
+    <script src="../../../js/featherlight.min.js?1775386388"></script>
+    <script src="../../../js/highlight.pack.js?1775386388"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../../js/learn.js?1775326934"></script>
-    <script src="../../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1775386388"></script>
+    <script src="../../../js/learn.js?1775386388"></script>
+    <script src="../../../js/hugo-learn.js?1775386388"></script>
 
-    <link href="../../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../../mermaid/mermaid.css?1775386388" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1775386388"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

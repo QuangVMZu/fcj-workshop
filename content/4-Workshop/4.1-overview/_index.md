@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Overview"
 date: 2026-04-04
 weight: 1
@@ -37,6 +37,13 @@ pre: " <b> 4.1. </b> "
 | Audit | AWS CloudTrail | Records AWS API activity | EventBridge audit fan-out |
 | Email | Amazon SES | Sends transactional email | SNS email delivery |
 
+## How to Read This Diagram
+
+- Read the diagram from left to right for the main request flow, starting at the user and ending at the application, data, and support services.
+- Read it from top to bottom to understand trust boundaries: the edge layer is public-facing, the application layer mixes public entry with private runtime, and the data layer is intentionally isolated.
+- Treat the observability and security services as a supporting control plane. They do not always sit directly in the user request path, but they are essential for safe production operations.
+- If a service is not shown in the diagram, treat it as out of scope or only an implied dependency, not a confirmed deployed component.
+
 ## End-to-End AWS Flow
 
 1. A user resolves `${APP_DOMAIN}` through Amazon Route 53.
@@ -63,6 +70,14 @@ pre: " <b> 4.1. </b> "
 8. Operators administer the environment through Systems Manager and audit activities in CloudTrail.
    Services: AWS Systems Manager and AWS CloudTrail.
    Why it matters: Operations remain traceable and do not require public SSH access.
+
+## Operational Interpretation
+
+- Route 53 and CloudFront define the public web entry path, so problems at this layer usually appear as DNS, TLS, cache, or static-delivery failures.
+- ALB and EC2 define the synchronous backend path, so `4xx`, `5xx`, target health, or scale-related issues usually belong to the application tier.
+- Amazon RDS defines the transactional system of record, so connection, failover, and consistency concerns belong to the data tier.
+- Systems Manager, Secrets Manager, KMS, CloudWatch, CloudTrail, and SES form the operational support layer that keeps the environment manageable, observable, and auditable.
+- API Gateway, Lambda, and asynchronous services such as SQS or EventBridge are useful comparison points, but they are not part of the currently documented runtime path.
 
 ## Hands-on Baseline Checks
 

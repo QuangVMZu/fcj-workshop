@@ -1,0 +1,2665 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/fcj-workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=fcj-workshop/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.156.0">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="vminhquang05@gmail.com" />
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>Workshop Architecture Deep Dive :: Internship Report</title>
+
+    
+    <link href="../../css/nucleus.css?1775386387" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775386387" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775386387" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775386387" rel="stylesheet">
+    <link href="../../css/theme.css?1775386387" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775386387" rel="stylesheet">
+    
+    <link href="../../css/theme-workshop.css?1775386387" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1775386387"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+
+  </head>
+  <body class="" data-url="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+   
+  
+  
+  
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="../../">
+  <svg
+    id="Layer_1"
+    data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 60 30"
+    width="30%"
+  >
+    <defs>
+      <style>
+        .cls-1 {
+          fill: #fff;
+        }
+        .cls-2 {
+          fill: #f90;
+          fill-rule: evenodd;
+        }
+      </style>
+    </defs>
+    <title>AWS-Logo_White-Color</title>
+    <path
+      class="cls-1"
+      d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"
+    ></path>
+  </svg>
+</a>
+</div>
+     <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1775386387"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775386387"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1775386387"></script>
+ 
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+                
+<li
+  data-nav-id="/1-worklog/"
+  title="Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/">
+     <b> 1. </b> Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/1-worklog/1.1-week1/"
+  title="Week 1 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.1-week1/">
+     <b> 1.1. </b> Week 1 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.2-week2/"
+  title="Week 2 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.2-week2/">
+     <b> 1.2. </b> Week 2 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.3-week3/"
+  title="Week 3 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.3-week3/">
+     <b> 1.3. </b> Week 3 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.4-week4/"
+  title="Week 4 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.4-week4/">
+     <b> 1.4. </b> Week 4 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.5-week5/"
+  title="Week 5 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.5-week5/">
+     <b> 1.5. </b> Week 5 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.6-week6/"
+  title="Week 6 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.6-week6/">
+     <b> 1.6. </b> Week 6 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.7-week7/"
+  title="Week 7 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.7-week7/">
+     <b> 1.7. </b> Week 7 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.8-week8/"
+  title="Week 8 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.8-week8/">
+     <b> 1.8. </b> Week 8 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.9-week9/"
+  title="Week 9 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.9-week9/">
+     <b> 1.9. </b> Week 9 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.10-week10/"
+  title="Week 10 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.10-week10/">
+     <b> 1.10. </b> Week 10 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.11-week11/"
+  title="Week 11 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.11-week11/">
+     <b> 1.11. </b> Week 11 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.12-week12/"
+  title="Week 13 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.12-week12/">
+     <b> 1.13. </b> Week 13 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.13-week13/"
+  title="Week 13 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.13-week13/">
+     <b> 1.13. </b> Week 13 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/2-proposal/"
+  title="Proposal"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../2-proposal/">
+     <b> 2. </b> Proposal 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+            
+<li
+  data-nav-id="/3-eventparticipated/"
+  title="Events Participated"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../3-eventparticipated/">
+     <b> 3. </b> Events Participated 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/3-eventparticipated/3.1-event1/"
+  title="Event 1 - Building Full-Stack Observability on AWS with Datadog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../3-eventparticipated/3.1-event1/">
+     <b> 3.1. </b> Event 1 - Building Full-Stack Observability on AWS with Datadog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/3-eventparticipated/3.2-event2/"
+  title="Event 2 - AWS re:Invent Recap HCMC"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../3-eventparticipated/3.2-event2/">
+     <b> 3.2. </b> Event 2 - AWS re:Invent Recap HCMC 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/4-workshop/"
+  title="Workshop"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="../../4-workshop/">
+     <b> 4. </b> Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/4-workshop/4.1-overview/"
+  title="Overview"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.1-overview/">
+     <b> 4.1. </b> Overview 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.2-edge-delivery-and-geospatial-requests/"
+  title="Edge Delivery and Geospatial Requests"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.2-edge-delivery-and-geospatial-requests/">
+     <b> 4.2. </b> Edge Delivery and Geospatial Requests 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.3-private-application-routing-and-compute/"
+  title="Private Application Routing and Compute"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.3-private-application-routing-and-compute/">
+     <b> 4.3. </b> Private Application Routing and Compute 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.4-relational-data-resilience-and-network-isolation/"
+  title="Relational Data Resilience and Network Isolation"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.4-relational-data-resilience-and-network-isolation/">
+     <b> 4.4. </b> Relational Data Resilience and Network Isolation 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.5-operational-access-and-secret-governance/"
+  title="Operational Access and Secret Governance"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.5-operational-access-and-secret-governance/">
+     <b> 4.5. </b> Operational Access and Secret Governance 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.6-monitoring-audit-and-email-delivery/"
+  title="Monitoring, Audit, and Email Delivery"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.6-monitoring-audit-and-email-delivery/">
+     <b> 4.6. </b> Monitoring, Audit, and Email Delivery 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        active
+        
+        "
+>
+  <a href="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/5-feedback/"
+  title="Self-Assessment"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../5-feedback/">
+     <b> 5. </b> Self-Assessment 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+            
+<li
+  data-nav-id="/6-sharingfeedback/"
+  title="Sharing and Feedback"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../6-sharingfeedback/">
+     <b> 6. </b> Sharing and Feedback 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"
+            ><i class='fab fa-facebook'></i> AWS Study Group</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+     
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = '/' + this.options[this.selectedIndex].dataset.path;">
+                       
+                <option
+                  id="en"
+                  value="/4-workshop/4.7-workshop-architecture-deep-dive/"
+                  data-path="fcj-workshop/4-workshop/4.7-workshop-architecture-deep-dive/"
+                  selected
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="/vi/4-workshop/4.7-workshop-architecture-deep-dive/"
+                  data-path="fcj-workshop/vi/4-workshop/4.7-workshop-architecture-deep-dive/"
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><div class="menu-footer-block">
+    <b>Workshop</b><br>
+    <img
+        src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0"
+        alt="Workshop counter"
+        title="Workshop counter"
+        loading="lazy"
+    >
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.2rem;">
+    <b><a href="https://cloudjourney.awsstudygroup.com/" style="color:inherit; text-decoration:none;">Cloud Journey</a></b><br>
+    <img
+        src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0"
+        alt="Cloud Journey counter"
+        title="Cloud Journey counter"
+        loading="lazy"
+    >
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.75rem;">
+    <b>Last Updated</b><br>
+    <i><span id="lastUpdated" style="color:orange;"></span></i>
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.75rem;">
+    <b>Team</b><br>
+    <i><a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud Journey</a></i>
+</div>
+
+<script>
+    (function () {
+        var lastUpdated = document.getElementById('lastUpdated');
+        if (!lastUpdated) {
+            return;
+        }
+
+        var today = new Date();
+        lastUpdated.textContent = today.toLocaleDateString('en-GB');
+    })();
+</script>
+</section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>Internship Report</a> > <a href='../../4-workshop/'>Workshop</a> > Workshop Architecture Deep Dive
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#how-to-use-this-deep-dive">How to Use This Deep Dive</a></li>
+    <li><a href="#source-scope">Source Scope</a></li>
+    <li><a href="#reading-the-workshop-as-an-architecture-codebase">Reading the Workshop as an Architecture Codebase</a></li>
+    <li><a href="#architecture-baseline">Architecture Baseline</a>
+      <ul>
+        <li><a href="#confirmed-design-position">Confirmed Design Position</a></li>
+        <li><a href="#inferred-but-required-building-blocks">Inferred but Required Building Blocks</a></li>
+      </ul>
+    </li>
+    <li><a href="#core-modules-services-apis-and-data-flow">Core Modules, Services, APIs, and Data Flow</a></li>
+    <li><a href="#interface-and-api-inventory">Interface and API Inventory</a></li>
+    <li><a href="#aws-service-mapping-and-architecture-expansion">AWS Service Mapping and Architecture Expansion</a></li>
+    <li><a href="#detailed-workshop-breakdown">Detailed Workshop Breakdown</a>
+      <ul>
+        <li><a href="#4-workshop-root-chapter">4-Workshop Root Chapter</a></li>
+        <li><a href="#41-workshop-overview-and-service-map">4.1 Workshop Overview and Service Map</a></li>
+        <li><a href="#42-edge-delivery-and-geospatial-requests">4.2 Edge Delivery and Geospatial Requests</a></li>
+        <li><a href="#43-private-application-routing-and-compute">4.3 Private Application Routing and Compute</a></li>
+        <li><a href="#44-relational-data-resilience-and-network-isolation">4.4 Relational Data Resilience and Network Isolation</a></li>
+        <li><a href="#45-operational-access-and-secret-governance">4.5 Operational Access and Secret Governance</a></li>
+        <li><a href="#46-monitoring-audit-and-email-delivery">4.6 Monitoring, Audit, and Email Delivery</a></li>
+      </ul>
+    </li>
+    <li><a href="#request-lifecycle-and-service-interaction-flow">Request Lifecycle and Service Interaction Flow</a>
+      <ul>
+        <li><a href="#lifecycle-1-static-frontend-delivery">Lifecycle 1: Static frontend delivery</a></li>
+        <li><a href="#lifecycle-2-geospatial-experience">Lifecycle 2: Geospatial experience</a></li>
+        <li><a href="#lifecycle-3-dynamic-api-request">Lifecycle 3: Dynamic API request</a></li>
+        <li><a href="#lifecycle-4-database-backed-transaction">Lifecycle 4: Database-backed transaction</a></li>
+        <li><a href="#lifecycle-5-operator-access-and-diagnostics">Lifecycle 5: Operator access and diagnostics</a></li>
+        <li><a href="#lifecycle-6-email-and-audit-completion">Lifecycle 6: Email and audit completion</a></li>
+      </ul>
+    </li>
+    <li><a href="#deployment-considerations">Deployment Considerations</a></li>
+    <li><a href="#scalability-and-fault-tolerance">Scalability and Fault Tolerance</a></li>
+    <li><a href="#improvement-opportunities-and-aws-well-architected-alignment">Improvement Opportunities and AWS Well-Architected Alignment</a>
+      <ul>
+        <li><a href="#natural-evolution-paths">Natural Evolution Paths</a></li>
+      </ul>
+    </li>
+    <li><a href="#operational-readiness-checklist">Operational Readiness Checklist</a></li>
+    <li><a href="#notes--assumptions">Notes / Assumptions</a></li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Workshop Architecture Deep Dive
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="production-grade-architecture-deep-dive-for-the-aws-workshop">Production-Grade Architecture Deep Dive for the AWS Workshop</h1>
+<p><img src="../../images/2-Proposal/AWS-architecture.png" alt="AWS Workshop Architecture Overview"></p>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>This document synthesizes the existing source files under <code>content/4-Workshop/</code> and turns the workshop chapter into a single production-grade architecture reference.</li>
+<li>The workshop source is documentation-first rather than application-code-first, so the &ldquo;modules&rdquo; identified below are architecture capability modules inferred from sections <code>4.1</code> through <code>4.6</code>.</li>
+<li>The current runtime pattern is clear and consistent across the chapter: Route 53 and CloudFront form the public edge, Amazon S3 hosts static assets, the backend runs on private EC2 behind an Application Load Balancer, Amazon RDS is the relational system of record, and AWS-native services handle operations, secrets, monitoring, audit, and email.</li>
+<li>Where the original workshop leaves implementation details implicit, this document fills them in with clearly marked production-grade assumptions so the architecture reads as a complete AWS service design.</li>
+</ul>
+<h2 id="how-to-use-this-deep-dive">How to Use This Deep Dive</h2>
+<ul>
+<li>Read this section after <code>4.1</code> through <code>4.6</code> so the architectural narrative matches the hands-on order of the workshop.</li>
+<li>Use it during design reviews, onboarding, troubleshooting, or release-readiness checks when the team needs one consolidated architecture view.</li>
+<li>Treat services drawn in the existing diagrams as confirmed parts of the current design, and treat the added controls described here as supporting components reasonably inferred from those diagrams.</li>
+<li>When future-fit services such as API Gateway, Lambda, Step Functions, EventBridge, SQS, or SNS are mentioned, they are improvement paths rather than claims about the current deployed stack.</li>
+</ul>
+<h2 id="source-scope">Source Scope</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Workshop sources reviewed</th>
+          <th>Responsibility in the chapter</th>
+          <th>Architectural signals extracted</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>4-Workshop/_index.md</code> and <code>4-Workshop/_index.vi.md</code></td>
+          <td>Define chapter scope, shared variables, recommended access, and services in or out of scope</td>
+          <td>Establish the canonical workshop boundary and confirm that ALB, EC2, RDS, SSM, Secrets Manager, KMS, CloudWatch, CloudTrail, and SES are the primary AWS building blocks</td>
+      </tr>
+      <tr>
+          <td><code>4-Workshop/4.1-overview/_index.md</code> and <code>4-Workshop/4.1-overview/_index.vi.md</code></td>
+          <td>Introduce the service map and the end-to-end request flow</td>
+          <td>Confirm the layered architecture and the public/private boundary of the platform</td>
+      </tr>
+      <tr>
+          <td><code>4-Workshop/4.2-edge-delivery-and-geospatial-requests/_index.md</code> and <code>4-Workshop/4.2-edge-delivery-and-geospatial-requests/_index.vi.md</code></td>
+          <td>Explain DNS, CDN delivery, WAF filtering, S3 origin protection, and Amazon Location Service usage</td>
+          <td>Define the edge module, static content path, and geospatial integration path</td>
+      </tr>
+      <tr>
+          <td><code>4-Workshop/4.3-private-application-routing-and-compute/_index.md</code> and <code>4-Workshop/4.3-private-application-routing-and-compute/_index.vi.md</code></td>
+          <td>Describe VPC networking, ALB routing, EC2 runtime, private subnet placement, and Auto Scaling</td>
+          <td>Define the synchronous API execution path and the network isolation model for compute</td>
+      </tr>
+      <tr>
+          <td><code>4-Workshop/4.4-relational-data-resilience-and-network-isolation/_index.md</code> and <code>4-Workshop/4.4-relational-data-resilience-and-network-isolation/_index.vi.md</code></td>
+          <td>Describe Amazon RDS, primary and standby behavior, and non-public database access</td>
+          <td>Define the transactional persistence model and data-tier isolation rules</td>
+      </tr>
+      <tr>
+          <td><code>4-Workshop/4.5-operational-access-and-secret-governance/_index.md</code> and <code>4-Workshop/4.5-operational-access-and-secret-governance/_index.vi.md</code></td>
+          <td>Describe operator access, IAM machine identity, secret retrieval, and KMS protection</td>
+          <td>Define the security control plane and secret consumption model</td>
+      </tr>
+      <tr>
+          <td><code>4-Workshop/4.6-monitoring-audit-and-email-delivery/_index.md</code> and <code>4-Workshop/4.6-monitoring-audit-and-email-delivery/_index.vi.md</code></td>
+          <td>Describe logging, audit, SES-based mail delivery, and supporting DNS records</td>
+          <td>Define the observability plane, audit trail, and outbound communication model</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="reading-the-workshop-as-an-architecture-codebase">Reading the Workshop as an Architecture Codebase</h2>
+<ul>
+<li>The workshop chapter is structured like a layered infrastructure module system.</li>
+<li>Each subsection introduces one platform responsibility, its AWS services, its operational commands, and its verification expectations.</li>
+<li>The chapter index acts like a root architecture manifest because it declares shared variables, access requirements, and intentionally excluded services.</li>
+<li>The subsection pages act like implementation modules because they describe behavior, provide CLI-based inspection or change commands, and define success criteria.</li>
+<li>The English and Vietnamese files are equivalent content variants rather than separate technical designs, so both language trees reinforce the same architecture.</li>
+</ul>
+<h2 id="architecture-baseline">Architecture Baseline</h2>
+<p>The workshop describes the following AWS runtime baseline:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User -&gt; Route 53 -&gt; CloudFront/WAF -&gt; S3
+</span></span><span style="display:flex;"><span>Frontend -&gt; Amazon Location Service
+</span></span><span style="display:flex;"><span>Frontend -&gt; ALB -&gt; Private EC2 -&gt; Amazon RDS
+</span></span><span style="display:flex;"><span>Private EC2 -&gt; Secrets Manager/KMS -&gt; CloudWatch -&gt; SES
+</span></span><span style="display:flex;"><span>Admin -&gt; Systems Manager -&gt; Private EC2
+</span></span><span style="display:flex;"><span>AWS control-plane activity -&gt; CloudTrail
+</span></span></code></pre></div><h3 id="confirmed-design-position">Confirmed Design Position</h3>
+<ul>
+<li>Public traffic is terminated at the edge and the application entry point, not on the EC2 instances.</li>
+<li>Static and dynamic traffic are deliberately separated.</li>
+<li>Backend compute is long-running and instance-based, so EC2 is the active execution model.</li>
+<li>Persistent business data is relational and private, so Amazon RDS is the active data model.</li>
+<li>Operator access is AWS-native and avoids direct public SSH exposure.</li>
+<li>The visible architecture is primarily synchronous. No queue, event bus, or state-machine orchestration layer is shown in the current workshop sources.</li>
+</ul>
+<h3 id="inferred-but-required-building-blocks">Inferred but Required Building Blocks</h3>
+<p>The workshop does not draw every low-level AWS component, but the design depends on the following elements to function correctly:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Inferred building block</th>
+          <th>Why it is required</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>AWS Certificate Manager certificates</td>
+          <td>HTTPS on CloudFront and the ALB requires valid TLS certificates even though the diagrams do not label ACM explicitly</td>
+      </tr>
+      <tr>
+          <td>Security groups</td>
+          <td>The private/public segmentation described in the workshop depends on security group rules between CloudFront, ALB, EC2, and RDS</td>
+      </tr>
+      <tr>
+          <td>Route tables and subnet associations</td>
+          <td>Internet Gateway and NAT Gateway behavior only works when public and private subnet route tables are configured correctly</td>
+      </tr>
+      <tr>
+          <td>Launch template or launch configuration</td>
+          <td>The Auto Scaling Group must know which AMI, instance type, security groups, and user data to apply to new EC2 instances</td>
+      </tr>
+      <tr>
+          <td>RDS subnet group</td>
+          <td>A private relational data tier across multiple subnets requires an explicit DB subnet group</td>
+      </tr>
+      <tr>
+          <td>SSM Agent and CloudWatch log shipping</td>
+          <td>Private instance management and log delivery normally rely on an installed and functioning SSM agent and logging integration</td>
+      </tr>
+      <tr>
+          <td>IAM trust policies and KMS key policies</td>
+          <td>Instance profiles, secret decryption, and runtime AWS API access all depend on correct trust and resource policies</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="core-modules-services-apis-and-data-flow">Core Modules, Services, APIs, and Data Flow</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Core module</th>
+          <th>AWS services in scope</th>
+          <th>Main inputs</th>
+          <th>Main outputs</th>
+          <th>Immediate dependencies</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Edge delivery module</td>
+          <td>Route 53, CloudFront, AWS WAF, Amazon S3</td>
+          <td>DNS lookups, HTTPS static asset requests</td>
+          <td>HTML, JavaScript, CSS, cached responses</td>
+          <td>Hosted zone, CloudFront distribution, S3 bucket, OAC, TLS certificate</td>
+      </tr>
+      <tr>
+          <td>Geospatial integration module</td>
+          <td>Amazon Location Service</td>
+          <td>Search text, coordinates, map tile requests</td>
+          <td>Places, map metadata, geospatial responses</td>
+          <td>Frontend configuration, IAM or signed access pattern, regional service availability</td>
+      </tr>
+      <tr>
+          <td>API ingress module</td>
+          <td>Application Load Balancer</td>
+          <td>HTTPS API requests from the frontend</td>
+          <td>Routed requests to healthy backend targets</td>
+          <td>Listener rules, target groups, health checks, public subnets</td>
+      </tr>
+      <tr>
+          <td>Application runtime module</td>
+          <td>VPC, private subnets, EC2, Auto Scaling, NAT Gateway, Internet Gateway</td>
+          <td>Routed API requests, runtime configuration, outbound dependency calls</td>
+          <td>Business responses, logs, emails, database queries</td>
+          <td>AMI, instance profile, security groups, route tables, NAT egress</td>
+      </tr>
+      <tr>
+          <td>Relational persistence module</td>
+          <td>Amazon RDS primary and standby layout</td>
+          <td>SQL reads, writes, transactions, reconnect events</td>
+          <td>Durable records, failover continuity, private endpoint access</td>
+          <td>DB subnet group, security group rules, engine configuration, backups</td>
+      </tr>
+      <tr>
+          <td>Security and operations control module</td>
+          <td>Systems Manager, IAM instance profile, Secrets Manager, KMS</td>
+          <td>Admin session requests, secret retrieval requests, AWS API auth flows</td>
+          <td>Temporary credentials, decrypted secret values, controlled shell access</td>
+          <td>SSM registration, IAM trust, KMS key permissions, secret naming</td>
+      </tr>
+      <tr>
+          <td>Observability and communication module</td>
+          <td>CloudWatch, CloudTrail, SES, Route 53 email DNS records</td>
+          <td>Logs, metrics, AWS API events, email send requests</td>
+          <td>Troubleshooting signals, audit history, outbound email delivery</td>
+          <td>IAM permissions, verified SES identity, DNS verification records</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="interface-and-api-inventory">Interface and API Inventory</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Interface</th>
+          <th>Producer</th>
+          <th>Consumer</th>
+          <th>Protocol or API style</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Public domain resolution</td>
+          <td>Browser</td>
+          <td>Route 53</td>
+          <td>DNS</td>
+          <td>Resolve the workshop application domain to the CloudFront distribution</td>
+      </tr>
+      <tr>
+          <td>Static frontend delivery</td>
+          <td>Browser</td>
+          <td>CloudFront and S3</td>
+          <td>HTTPS GET</td>
+          <td>Deliver SPA assets with caching and private-origin enforcement</td>
+      </tr>
+      <tr>
+          <td>Edge protection</td>
+          <td>CloudFront</td>
+          <td>AWS WAF</td>
+          <td>Web ACL inspection</td>
+          <td>Filter malformed or malicious requests before origin access</td>
+      </tr>
+      <tr>
+          <td>Geospatial search</td>
+          <td>Frontend</td>
+          <td>Amazon Location Service</td>
+          <td>HTTPS JSON APIs</td>
+          <td>Search charging locations and map-related data</td>
+      </tr>
+      <tr>
+          <td>Dynamic application API</td>
+          <td>Frontend</td>
+          <td>ALB to EC2</td>
+          <td>HTTPS JSON REST-style traffic</td>
+          <td>Execute authentication, booking, charging, payment, and operator workflows</td>
+      </tr>
+      <tr>
+          <td>Database session</td>
+          <td>EC2 application</td>
+          <td>Amazon RDS</td>
+          <td>SQL over engine-specific port</td>
+          <td>Persist and query transactional business data</td>
+      </tr>
+      <tr>
+          <td>Secret retrieval</td>
+          <td>EC2 application</td>
+          <td>Secrets Manager</td>
+          <td>AWS control-plane API</td>
+          <td>Load database credentials and other runtime configuration values</td>
+      </tr>
+      <tr>
+          <td>Secret decryption</td>
+          <td>Secrets Manager</td>
+          <td>AWS KMS</td>
+          <td>Managed key usage</td>
+          <td>Protect secret values at rest and during authorized retrieval</td>
+      </tr>
+      <tr>
+          <td>Operator access</td>
+          <td>Administrator</td>
+          <td>Systems Manager</td>
+          <td>Session Manager control channel</td>
+          <td>Reach private instances without bastion hosts or public SSH</td>
+      </tr>
+      <tr>
+          <td>Log and metric publication</td>
+          <td>EC2 application or agent</td>
+          <td>CloudWatch</td>
+          <td>Log and metric ingestion APIs</td>
+          <td>Preserve runtime observability data</td>
+      </tr>
+      <tr>
+          <td>Audit recording</td>
+          <td>AWS services</td>
+          <td>CloudTrail</td>
+          <td>Service-generated audit events</td>
+          <td>Record administrative and control-plane activity</td>
+      </tr>
+      <tr>
+          <td>Email sending</td>
+          <td>EC2 application</td>
+          <td>Amazon SES</td>
+          <td><code>SendEmail</code> or <code>SendRawEmail</code> style API calls</td>
+          <td>Deliver notification or transactional email</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="aws-service-mapping-and-architecture-expansion">AWS Service Mapping and Architecture Expansion</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Capability</th>
+          <th>Current workshop mapping</th>
+          <th>Why this mapping fits the visible design</th>
+          <th>Production-grade expansion path</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Public DNS</td>
+          <td>Route 53</td>
+          <td>The workshop uses a named public domain and DNS is the first hop in every flow</td>
+          <td>Add health-check routing, weighted cutovers, or disaster recovery records if multi-region is introduced</td>
+      </tr>
+      <tr>
+          <td>CDN and static web delivery</td>
+          <td>CloudFront plus S3</td>
+          <td>The frontend is static and benefits from global caching with a private origin</td>
+          <td>Add stricter cache policies, response headers policies, and signed URLs if premium content is ever introduced</td>
+      </tr>
+      <tr>
+          <td>Edge security</td>
+          <td>AWS WAF</td>
+          <td>The workshop explicitly positions request filtering at the edge</td>
+          <td>Add managed rule groups, IP reputation lists, rate-based rules, and bot controls</td>
+      </tr>
+      <tr>
+          <td>Public API exposure</td>
+          <td>Application Load Balancer</td>
+          <td>The backend is EC2-based and the workshop clearly states that API Gateway is not currently used</td>
+          <td>If the product later needs public API monetization, authorizers, request validation, or per-client throttling, API Gateway can sit in front of ALB or front separate service endpoints</td>
+      </tr>
+      <tr>
+          <td>Compute runtime</td>
+          <td>EC2 plus Auto Scaling</td>
+          <td>Long-running backend processes and health-check-based replacement align with instance-based compute</td>
+          <td>If future jobs become short-lived or highly event-driven, Lambda can be introduced for utility functions without replacing the main EC2 runtime</td>
+      </tr>
+      <tr>
+          <td>Object storage</td>
+          <td>Amazon S3</td>
+          <td>Static frontend assets fit object storage with CloudFront OAC protection</td>
+          <td>Add S3 versioning, lifecycle transitions, and deployment prefixes for rollback support</td>
+      </tr>
+      <tr>
+          <td>Relational data</td>
+          <td>Amazon RDS</td>
+          <td>The workshop models transactional data and a primary/standby posture, which fits RDS</td>
+          <td>If read scale or cross-service isolation grows, add read replicas, Aurora migration planning, or a reporting database</td>
+      </tr>
+      <tr>
+          <td>Key and secret management</td>
+          <td>Secrets Manager plus KMS</td>
+          <td>The workshop intentionally externalizes credentials and encrypts them</td>
+          <td>Add automatic rotation, tighter resource scoping, and per-environment KMS keys</td>
+      </tr>
+      <tr>
+          <td>Private operator access</td>
+          <td>Systems Manager plus IAM</td>
+          <td>This matches the no-public-SSH requirement in the workshop</td>
+          <td>Add Session Manager logging, just-in-time access approval, and document-based operational runbooks</td>
+      </tr>
+      <tr>
+          <td>Monitoring and audit</td>
+          <td>CloudWatch plus CloudTrail</td>
+          <td>The workshop keeps observability and control-plane audit AWS-native</td>
+          <td>Add alarms, dashboards, log retention policies, metric filters, and centralized security analytics</td>
+      </tr>
+      <tr>
+          <td>Email delivery</td>
+          <td>Amazon SES plus Route 53 DNS</td>
+          <td>The application needs transactional email and SES fits the direct integration model shown</td>
+          <td>Add bounce and complaint processing, dedicated sending domains, and suppression handling</td>
+      </tr>
+      <tr>
+          <td>Workflow orchestration</td>
+          <td>Not present in the current workshop</td>
+          <td>The visible request flow is synchronous and does not require state-machine orchestration yet</td>
+          <td>Step Functions is a natural fit if future charging-session settlement or compliance workflows become multi-step and long-running</td>
+      </tr>
+      <tr>
+          <td>Async eventing</td>
+          <td>Not present in the current workshop</td>
+          <td>No EventBridge, SQS, or SNS path is shown in the diagrams or section text</td>
+          <td>EventBridge, SQS, and SNS are strong next additions for notification fan-out, retry isolation, and post-transaction background processing</td>
+      </tr>
+      <tr>
+          <td>NoSQL persistence</td>
+          <td>Not present in the current workshop</td>
+          <td>The current system of record is relational, so DynamoDB is intentionally out of scope</td>
+          <td>DynamoDB becomes relevant only if the platform later needs ultra-low-latency key-value access, idempotency stores, or event-driven denormalized views</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="detailed-workshop-breakdown">Detailed Workshop Breakdown</h2>
+<h3 id="4-workshop-root-chapter">4-Workshop Root Chapter</h3>
+<p>What this part does:</p>
+<ul>
+<li>Establishes the shared vocabulary and service boundary for the rest of the chapter.</li>
+<li>Declares common lab variables such as <code>${APP_DOMAIN}</code>, <code>${STATIC_BUCKET}</code>, <code>${ALB_NAME}</code>, <code>${DB_INSTANCE_ID}</code>, and <code>${SES_IDENTITY}</code>.</li>
+<li>Explains which services are intentionally not part of the visible design so readers do not invent components that the workshop never intended to cover.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>It acts as the architecture manifest for the workshop.</li>
+<li>It keeps all later hands-on pages aligned on the same AWS region, identifiers, and operational expectations.</li>
+<li>It prevents scope drift by stating that API Gateway, Lambda, ECS, EKS, DynamoDB, EventBridge, SQS, SNS, and Cognito are not part of the current visible implementation.</li>
+</ul>
+<p>Input and output behavior:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Input or trigger</th>
+          <th>Processing in this root chapter</th>
+          <th>Output or effect</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Reader enters the workshop chapter</td>
+          <td>Shared context is established</td>
+          <td>The reader knows which AWS services are in scope and how the chapter is organized</td>
+      </tr>
+      <tr>
+          <td>Reader needs CLI context</td>
+          <td>Environment variable list is provided</td>
+          <td>Commands in later sections can be reused consistently</td>
+      </tr>
+      <tr>
+          <td>Reader asks what is not implemented</td>
+          <td>Excluded-service list is stated explicitly</td>
+          <td>The architecture stays anchored to the visible design rather than speculative alternatives</td>
+      </tr>
+  </tbody>
+</table>
+<p>High-level explanation of the workshop artifacts:</p>
+<ul>
+<li>The shared environment variables are not application code. They are an operator convenience layer that makes every later CLI command reproducible.</li>
+<li>The recommended AWS access list functions like an IAM readiness checklist for workshop participants.</li>
+<li>The content list defines the architecture decomposition order: edge first, runtime second, data third, operations fourth, observability last.</li>
+</ul>
+<p>Dependencies:</p>
+<ul>
+<li>A working AWS account and region.</li>
+<li>Meaningful naming conventions for Route 53, CloudFront, EC2, RDS, and SES resources.</li>
+<li>Team agreement that this workshop documents deployed AWS behavior rather than local development setup.</li>
+</ul>
+<h3 id="41-workshop-overview-and-service-map">4.1 Workshop Overview and Service Map</h3>
+<p><img src="../../images/4-Workshop/ev-achi.png" alt="AWS Workshop Architecture Overview"></p>
+<p>What this part does:</p>
+<ul>
+<li>Defines the end-to-end service map of the EV Charging Station Management System.</li>
+<li>Separates public-facing services from private runtime and data services.</li>
+<li>Introduces the main request lifecycle before the reader dives into service-specific sections.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>Readers need a mental model before they can troubleshoot one layer at a time.</li>
+<li>It frames the entire workshop as a layered system rather than a flat list of AWS products.</li>
+<li>It confirms the architectural stance that the backend is ALB plus EC2 rather than API Gateway plus Lambda.</li>
+</ul>
+<p>Input and output behavior:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Input or trigger</th>
+          <th>Processing in this section</th>
+          <th>Output or effect</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>New reader needs orientation</td>
+          <td>The layered architecture is summarized</td>
+          <td>The reader can place each later section in context</td>
+      </tr>
+      <tr>
+          <td>Team needs a service-to-need mapping</td>
+          <td>The AWS service map table is provided</td>
+          <td>Each service is linked to a concrete architectural responsibility</td>
+      </tr>
+      <tr>
+          <td>Team needs quick environment validation</td>
+          <td>Baseline AWS CLI commands are provided</td>
+          <td>Operators can confirm the account, region, and core resources before deeper work</td>
+      </tr>
+  </tbody>
+</table>
+<p>High-level explanation of the workshop commands:</p>
+<ul>
+<li><code>aws sts get-caller-identity</code> validates that the operator is authenticated to the expected account.</li>
+<li><code>aws route53 list-hosted-zones</code>, <code>aws cloudfront list-distributions</code>, <code>aws ec2 describe-instances</code>, and <code>aws rds describe-db-instances</code> are baseline existence checks for the main architecture pillars.</li>
+<li>These commands are intentionally read-only, which makes section <code>4.1</code> a safe pre-flight validation stage.</li>
+</ul>
+<p>Dependencies:</p>
+<ul>
+<li>Route 53 hosted zone exists.</li>
+<li>CloudFront distribution exists and is tied to the expected domain.</li>
+<li>EC2 instances and RDS instance exist in the target account and region.</li>
+<li>The workshop&rsquo;s naming convention matches the actual environment.</li>
+</ul>
+<h3 id="42-edge-delivery-and-geospatial-requests">4.2 Edge Delivery and Geospatial Requests</h3>
+<h4 id="amazon-route-53">Amazon Route 53</h4>
+<p><img src="../../images/4-Workshop/route53.jpg" alt="Amazon Route 53 DNS"></p>
+<h4 id="amazon-cloudfront">Amazon CloudFront</h4>
+<p><img src="../../images/4-Workshop/cloudfront.jpg" alt="Amazon CloudFront Distribution"></p>
+<h4 id="amazon-s3">Amazon S3</h4>
+<p><img src="../../images/4-Workshop/s3-bucket.jpg" alt="Amazon S3 Bucket"></p>
+<h4 id="amazon-location-service">Amazon Location Service</h4>
+<p><img src="../../images/4-Workshop/location-service.png" alt="Amazon Location Service"></p>
+<p>What this part does:</p>
+<ul>
+<li>Handles the public entry path for browsers.</li>
+<li>Serves static frontend assets with global caching and a private S3 origin.</li>
+<li>Protects the edge path with WAF before requests reach the origin.</li>
+<li>Separates map and place-search traffic from ordinary static-asset delivery.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>Frontend delivery has very different scaling and latency characteristics from backend API execution.</li>
+<li>Static assets should be globally cached and cheap to serve, while the backend should process only dynamic traffic.</li>
+<li>Geospatial requests rely on a specialized AWS service and should not be forced through the same path as static files.</li>
+</ul>
+<p>Service interaction flow:</p>
+<ol>
+<li>A browser resolves <code>${APP_DOMAIN}</code> through Route 53.</li>
+<li>Route 53 directs the request to CloudFront.</li>
+<li>CloudFront evaluates WAF rules before serving or forwarding the request.</li>
+<li>On a cache hit, CloudFront returns the object immediately.</li>
+<li>On a cache miss, CloudFront reads the object from S3 through Origin Access Control.</li>
+<li>After the SPA loads, the frontend calls Amazon Location Service for map rendering or place search.</li>
+<li>Later API requests leave the edge module and move to the ALB-based application layer.</li>
+</ol>
+<p>Input and output behavior:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Input</th>
+          <th>Processing path</th>
+          <th>Output</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DNS lookup for <code>${APP_DOMAIN}</code></td>
+          <td>Route 53 resolves the alias or CNAME</td>
+          <td>CloudFront hostname is returned to the client</td>
+      </tr>
+      <tr>
+          <td>HTTPS request for <code>index.html</code>, JS, CSS, or media</td>
+          <td>CloudFront serves from cache or fetches from S3</td>
+          <td>Browser receives static assets with CDN acceleration</td>
+      </tr>
+      <tr>
+          <td>Untrusted HTTP request pattern</td>
+          <td>WAF inspects the request before origin access</td>
+          <td>Request is allowed, blocked, counted, or challenged depending on policy</td>
+      </tr>
+      <tr>
+          <td>Place search or map request</td>
+          <td>Frontend calls Amazon Location Service</td>
+          <td>Browser receives geospatial search results or map content</td>
+      </tr>
+  </tbody>
+</table>
+<p>High-level explanation of the workshop commands and samples:</p>
+<ul>
+<li>The hosted-zone inspection command validates that public DNS ownership is present.</li>
+<li>The <code>route53-app-record.json</code> sample teaches idempotent DNS management through <code>UPSERT</code>, which is a safe pattern for infrastructure updates.</li>
+<li><code>aws s3 sync ./dist s3://${STATIC_BUCKET} --delete</code> models a frontend deployment pipeline in simplified form.</li>
+<li>The CloudFront invalidation command explains why object replacement in S3 is not enough when CDN caches are active.</li>
+<li>The Location Service search command proves that the map integration path is separate from both S3 and ALB.</li>
+<li>The S3 bucket policy sample is the key security artifact of this module because it forces frontend users through CloudFront rather than allowing direct public bucket reads.</li>
+</ul>
+<p>Dependencies:</p>
+<ul>
+<li>Hosted zone and public application record.</li>
+<li>CloudFront distribution with an attached certificate and WAF association.</li>
+<li>Private S3 bucket with OAC-based read permission.</li>
+<li>Place index and map configuration in Amazon Location Service.</li>
+<li>Deployment discipline that invalidates cached assets after frontend release.</li>
+</ul>
+<h3 id="43-private-application-routing-and-compute">4.3 Private Application Routing and Compute</h3>
+<h4 id="amazon-vpc">Amazon VPC</h4>
+<p><img src="../../images/4-Workshop/vpc-overview.png" alt="Amazon VPC"></p>
+<h4 id="internet-gateway">Internet Gateway</h4>
+<p><img src="../../images/4-Workshop/internet-gateway.png" alt="Internet Gateway"></p>
+<h4 id="nat-gateway">NAT Gateway</h4>
+<p><img src="../../images/4-Workshop/nat-gateway.png" alt="NAT Gateway"></p>
+<h4 id="application-load-balancer">Application Load Balancer</h4>
+<p><img src="../../images/4-Workshop/alb.png" alt="Application Load Balancer"></p>
+<h4 id="amazon-ec2">Amazon EC2</h4>
+<p><img src="../../images/4-Workshop/ec2-instances.png" alt="Amazon EC2 Instances"></p>
+<h4 id="ec2-auto-scaling">EC2 Auto Scaling</h4>
+<p><img src="../../images/4-Workshop/auto-scaling-group.png" alt="Auto Scaling Group"></p>
+<p>What this part does:</p>
+<ul>
+<li>Moves dynamic user traffic from the edge into private application compute.</li>
+<li>Defines how public and private subnets interact inside the VPC.</li>
+<li>Ensures that only the ALB is internet-facing while the EC2 runtime stays private.</li>
+<li>Uses Auto Scaling and health checks to keep the backend horizontally scalable and self-healing.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>Dynamic APIs need controlled routing, health evaluation, and horizontal scale.</li>
+<li>Private subnets reduce exposure of the application servers.</li>
+<li>Outbound internet access is still necessary for package retrieval, AWS public endpoints, or third-party integrations, so NAT is part of the design.</li>
+</ul>
+<p>Service interaction flow:</p>
+<ol>
+<li>The frontend sends an HTTPS API request to the backend entry point.</li>
+<li>The ALB receives the request on a public listener.</li>
+<li>Listener rules and target-group health decide which EC2 instance should receive the request.</li>
+<li>A healthy EC2 instance in a private subnet processes the business logic.</li>
+<li>If the application needs outbound access, traffic exits through NAT Gateway and the Internet Gateway path.</li>
+<li>The application returns the response to the ALB, which returns it to the client.</li>
+<li>Auto Scaling replaces unhealthy instances or adds capacity when load increases.</li>
+</ol>
+<p>Input and output behavior:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Input</th>
+          <th>Processing path</th>
+          <th>Output</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>HTTPS API request from frontend</td>
+          <td>ALB listener routes to healthy target</td>
+          <td>Backend business response reaches the caller</td>
+      </tr>
+      <tr>
+          <td>Health-check probe from ALB</td>
+          <td>EC2 health endpoint responds</td>
+          <td>Target remains healthy or is removed from rotation</td>
+      </tr>
+      <tr>
+          <td>Outbound dependency call from private EC2</td>
+          <td>Private route table sends egress to NAT Gateway</td>
+          <td>Instance reaches external endpoints without public IP exposure</td>
+      </tr>
+      <tr>
+          <td>Capacity or failure event</td>
+          <td>Auto Scaling launches or replaces instances</td>
+          <td>Desired instance count and AZ coverage are maintained</td>
+      </tr>
+  </tbody>
+</table>
+<p>High-level explanation of the workshop commands and samples:</p>
+<ul>
+<li><code>describe-load-balancers</code> confirms that the ALB exists, is internet-facing, and uses the expected subnets.</li>
+<li><code>describe-target-health</code> is the most important runtime verification command in this module because it shows whether requests can actually reach healthy backend targets.</li>
+<li><code>describe-auto-scaling-groups</code> reveals desired capacity, subnet placement, and lifecycle state for backend instances.</li>
+<li><code>describe-instances</code> supports instance-level inspection when the team needs to compare one target against the group baseline.</li>
+<li>The security-group and route-table table is the core architecture logic of this section because it defines who can talk to whom.</li>
+<li>The recommended health-check settings teach that liveness must stay lightweight and should not fail simply because the database is under stress.</li>
+</ul>
+<p>Dependencies:</p>
+<ul>
+<li>VPC with at least one public subnet and at least two private subnets for resilient application placement.</li>
+<li>ALB listener, target group, and health-check endpoint.</li>
+<li>EC2 launch template, AMI, instance profile, and security groups.</li>
+<li>NAT Gateway and correct route-table wiring for private-subnet egress.</li>
+<li>Application behavior that supports stateless or low-session-affinity scale-out.</li>
+</ul>
+<h3 id="44-relational-data-resilience-and-network-isolation">4.4 Relational Data Resilience and Network Isolation</h3>
+<h4 id="amazon-rds">Amazon RDS</h4>
+<p><img src="../../images/4-Workshop/rds-overview.png" alt="Amazon RDS"></p>
+<h4 id="primary-database-instance">Primary Database Instance</h4>
+<p><img src="../../images/4-Workshop/rds-primary.png" alt="RDS Primary Instance"></p>
+<p>What this part does:</p>
+<ul>
+<li>Describes the relational system of record used by the application.</li>
+<li>Establishes that the database tier is private and reachable only from approved internal resources.</li>
+<li>Introduces a primary and standby posture to improve resilience during database or infrastructure failure.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>EV charging workflows such as user accounts, bookings, charging sessions, payments, and operator records require transactional consistency.</li>
+<li>Relational storage is a better fit than object or key-value storage for the workshop&rsquo;s stated workload.</li>
+<li>The data tier must remain isolated because it is the highest-value persistence boundary in the platform.</li>
+</ul>
+<p>Architectural interpretation:</p>
+<ul>
+<li>The workshop chapter itself models RDS as a primary and standby design, which implies a Multi-AZ or equivalent high-availability posture.</li>
+<li>This is more resilient than the earlier proposal chapter, which mentioned Single-AZ SQL Server.</li>
+<li>For this architecture document, the <code>4-Workshop</code> chapter is treated as the newer and more operationally mature source of truth.</li>
+</ul>
+<p>Service interaction flow:</p>
+<ol>
+<li>The EC2 application retrieves database connection details from Secrets Manager.</li>
+<li>The application opens a private network connection to the RDS endpoint.</li>
+<li>The primary database instance handles transactional reads and writes.</li>
+<li>RDS replicates state to the standby environment according to the chosen availability mode.</li>
+<li>If the primary becomes unavailable, RDS initiates failover and preserves endpoint continuity as much as possible.</li>
+<li>The application reconnects by using the managed RDS endpoint rather than an instance-specific address.</li>
+</ol>
+<p>Input and output behavior:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Input</th>
+          <th>Processing path</th>
+          <th>Output</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SQL read or write request from EC2</td>
+          <td>Request reaches the primary RDS endpoint over private networking</td>
+          <td>Application receives query results or transaction acknowledgement</td>
+      </tr>
+      <tr>
+          <td>Database state change</td>
+          <td>RDS synchronizes to standby infrastructure</td>
+          <td>Higher resilience and faster recovery after failure</td>
+      </tr>
+      <tr>
+          <td>Primary failure or maintenance event</td>
+          <td>Managed failover path is triggered</td>
+          <td>Service continuity through a standby role transition</td>
+      </tr>
+      <tr>
+          <td>Unauthorized internet request</td>
+          <td>No public access path exists</td>
+          <td>Database remains unreachable from the public internet</td>
+      </tr>
+  </tbody>
+</table>
+<p>High-level explanation of the workshop commands and samples:</p>
+<ul>
+<li><code>describe-db-instances</code> is the structural inspection command for this module.</li>
+<li>The <code>--query</code> example that returns status, <code>MultiAZ</code>, endpoint, and port is especially valuable because it proves whether the architecture matches the resilience claims in the document.</li>
+<li>The <code>reboot-db-instance --force-failover</code> sample is a controlled resilience drill, not a routine admin action.</li>
+<li>The secret JSON sample models a proper separation between application code and connection details.</li>
+<li>The configuration table reinforces that the RDS DNS endpoint, not an instance IP, is the correct application dependency.</li>
+</ul>
+<p>Dependencies:</p>
+<ul>
+<li>Private DB subnet group across multiple subnets.</li>
+<li>Security-group rule from the application tier only.</li>
+<li>Backup retention, parameter groups, and maintenance policy aligned with the production objective.</li>
+<li>Application connection pooling and reconnect logic that tolerate brief failover events.</li>
+</ul>
+<h3 id="45-operational-access-and-secret-governance">4.5 Operational Access and Secret Governance</h3>
+<h4 id="aws-systems-manager">AWS Systems Manager</h4>
+<p><img src="../../images/4-Workshop/ssm-session-manager.png" alt="AWS Systems Manager Session Manager"></p>
+<h4 id="iam-instance-profile">IAM Instance Profile</h4>
+<p><img src="../../images/4-Workshop/iam-instance-profile.png" alt="IAM Instance Profile"></p>
+<h4 id="amazon-ec2-runtime-identity">Amazon EC2 Runtime Identity</h4>
+<p><img src="../../images/4-Workshop/ec2-iam-role.png" alt="EC2 Instance IAM Role"></p>
+<p>What this part does:</p>
+<ul>
+<li>Defines how humans and machines gain controlled access to a private environment.</li>
+<li>Replaces SSH key distribution and public bastion exposure with Systems Manager and IAM-based access.</li>
+<li>Moves sensitive configuration out of application files and into managed secret storage.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>Production workloads should not depend on hardcoded credentials or public administration paths.</li>
+<li>Machine identity must be temporary, scoped, and automatically rotated.</li>
+<li>Secret storage and encryption should be delegated to managed AWS services instead of being reimplemented in the application layer.</li>
+</ul>
+<p>Service interaction flow:</p>
+<ol>
+<li>An administrator initiates access through Systems Manager.</li>
+<li>The target EC2 instance authenticates through its attached instance profile.</li>
+<li>The application or operator retrieves secrets from Secrets Manager by secret name.</li>
+<li>KMS protects the underlying secret material and authorizes decryption for approved principals.</li>
+<li>The same instance role can also publish logs and send email where necessary.</li>
+</ol>
+<p>Input and output behavior:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Input</th>
+          <th>Processing path</th>
+          <th>Output</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Admin wants shell access to a private instance</td>
+          <td>Session Manager session is established</td>
+          <td>Secure remote access without public SSH</td>
+      </tr>
+      <tr>
+          <td>EC2 boot or runtime AWS API call</td>
+          <td>Instance profile provides temporary credentials</td>
+          <td>Application can authenticate to AWS APIs safely</td>
+      </tr>
+      <tr>
+          <td>Application needs a credential or token</td>
+          <td>Secrets Manager returns the secret value after authorization</td>
+          <td>Runtime configuration is loaded without embedding secrets in code</td>
+      </tr>
+      <tr>
+          <td>Secret retrieval touches encrypted data</td>
+          <td>KMS enforces key-level permissions</td>
+          <td>Only approved roles can decrypt protected secret material</td>
+      </tr>
+  </tbody>
+</table>
+<p>High-level explanation of the workshop commands and samples:</p>
+<ul>
+<li><code>aws ssm start-session</code> proves that the operations path does not require a bastion host.</li>
+<li>The EC2 instance-profile inspection command confirms whether the expected runtime identity is actually attached.</li>
+<li><code>aws secretsmanager get-secret-value</code> is the most direct validation of secret naming, access policy, and region alignment.</li>
+<li><code>aws kms list-aliases</code> is not the full KMS audit story, but it is a practical way to verify that the intended key naming structure exists.</li>
+<li>The minimum IAM policy sample captures the workshop&rsquo;s machine-permission philosophy: read secrets, decrypt, write logs, and send email, all without storing static AWS keys on the host.</li>
+</ul>
+<p>Dependencies:</p>
+<ul>
+<li>EC2 instances must be registered and healthy in Systems Manager.</li>
+<li>Instance profiles need correct trust policies and least-privilege permissions.</li>
+<li>Secret naming, environment scoping, and KMS-key ownership must be consistent.</li>
+<li>If the environment is highly locked down, VPC endpoints for Secrets Manager, SSM, and CloudWatch may be preferable to internet egress through NAT.</li>
+</ul>
+<h3 id="46-monitoring-audit-and-email-delivery">4.6 Monitoring, Audit, and Email Delivery</h3>
+<h4 id="amazon-cloudwatch">Amazon CloudWatch</h4>
+<p><img src="../../images/4-Workshop/cloudwatch.png" alt="Amazon CloudWatch Logs and Metrics"></p>
+<h4 id="aws-cloudtrail">AWS CloudTrail</h4>
+<p><img src="../../images/4-Workshop/cloudtrail.png" alt="AWS CloudTrail Events"></p>
+<h4 id="amazon-ses">Amazon SES</h4>
+<p><img src="../../images/4-Workshop/ses.png" alt="Amazon SES"></p>
+<h4 id="route-53-email-dns-records">Route 53 Email DNS Records</h4>
+<p><img src="../../images/4-Workshop/route53-ses.png" alt="Route 53 SES DNS Records"></p>
+<p>What this part does:</p>
+<ul>
+<li>Defines how the platform is observed during runtime.</li>
+<li>Records AWS control-plane activity for governance and security investigations.</li>
+<li>Sends application-originated mail through SES with Route 53-backed domain verification.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>A production system is incomplete if it cannot be observed, audited, and trusted to deliver notifications.</li>
+<li>Email delivery is often a business-critical feature for account events, booking updates, or operational alerts.</li>
+<li>Audit visibility matters because the workshop relies heavily on AWS-native administrative paths such as SSM, IAM, and infrastructure APIs.</li>
+</ul>
+<p>Service interaction flow:</p>
+<ol>
+<li>The application writes logs and metrics to CloudWatch.</li>
+<li>Operators inspect logs, alarms, and metrics to diagnose production behavior.</li>
+<li>AWS services record control-plane activity in CloudTrail.</li>
+<li>The EC2 workload sends mail through SES with its IAM-backed permissions.</li>
+<li>SES depends on Route 53 records for identity verification, DKIM, SPF, and mail routing support.</li>
+</ol>
+<p>Input and output behavior:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Input</th>
+          <th>Processing path</th>
+          <th>Output</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Application log event or metric</td>
+          <td>CloudWatch stores the telemetry</td>
+          <td>Operators can search, alarm, and dashboard the signal</td>
+      </tr>
+      <tr>
+          <td>Administrative AWS API action</td>
+          <td>CloudTrail records the event</td>
+          <td>Teams can audit who changed what and when</td>
+      </tr>
+      <tr>
+          <td>Outbound email request</td>
+          <td>SES processes the message if the identity is verified</td>
+          <td>Recipient receives the notification and the platform avoids self-managed SMTP</td>
+      </tr>
+      <tr>
+          <td>SES domain verification requirement</td>
+          <td>Route 53 publishes TXT, CNAME, and MX records</td>
+          <td>SES identity becomes verifiable and deliverability improves</td>
+      </tr>
+  </tbody>
+</table>
+<p>High-level explanation of the workshop commands and samples:</p>
+<ul>
+<li><code>aws logs tail</code> is the fastest live-troubleshooting command in the chapter because it shortens the feedback loop during incidents.</li>
+<li><code>aws cloudtrail lookup-events</code> links operational actions to audit evidence, which is especially important when changes happen outside application code.</li>
+<li><code>aws sesv2 get-email-identity</code> verifies the readiness of the mail path before the application starts sending.</li>
+<li>The <code>ses-test-email.json</code> payload is a minimal transactional mail contract that proves the role, identity, and region are aligned.</li>
+<li><code>put-metric-alarm</code> demonstrates that observability is not only about reading logs but also about turning signals into operator-visible alerts.</li>
+<li>The SES Route 53 JSON sample is a concrete example of why email delivery is partly an infrastructure concern, not only an application concern.</li>
+</ul>
+<p>Dependencies:</p>
+<ul>
+<li>CloudWatch log groups, retention settings, and permissions.</li>
+<li>CloudTrail enabled with an audit retention strategy that matches compliance needs.</li>
+<li>Verified SES identities and correct DNS records in Route 53.</li>
+<li>Application code or agent behavior that emits useful logs, metrics, and message content.</li>
+</ul>
+<h2 id="request-lifecycle-and-service-interaction-flow">Request Lifecycle and Service Interaction Flow</h2>
+<h3 id="lifecycle-1-static-frontend-delivery">Lifecycle 1: Static frontend delivery</h3>
+<ol>
+<li>A user enters the application domain in a browser.</li>
+<li>Route 53 resolves the name to CloudFront.</li>
+<li>CloudFront terminates HTTPS and applies WAF controls.</li>
+<li>CloudFront returns cached assets or reads them from S3 through OAC.</li>
+<li>The browser boots the frontend application.</li>
+</ol>
+<p>Why this lifecycle matters:</p>
+<ul>
+<li>It minimizes latency for globally distributed users.</li>
+<li>It keeps the S3 bucket private.</li>
+<li>It reduces unnecessary dynamic traffic hitting the backend.</li>
+</ul>
+<h3 id="lifecycle-2-geospatial-experience">Lifecycle 2: Geospatial experience</h3>
+<ol>
+<li>The SPA requests map tiles, place lookup, or search suggestions.</li>
+<li>The request is sent to Amazon Location Service rather than to the application EC2 layer.</li>
+<li>The frontend renders map context or search results for the user.</li>
+</ol>
+<p>Why this lifecycle matters:</p>
+<ul>
+<li>It keeps geospatial workload specialized and decoupled from core transaction APIs.</li>
+<li>It prevents the backend from becoming an unnecessary proxy for map data.</li>
+</ul>
+<h3 id="lifecycle-3-dynamic-api-request">Lifecycle 3: Dynamic API request</h3>
+<ol>
+<li>The frontend calls the backend endpoint exposed through the ALB.</li>
+<li>The ALB selects a healthy private EC2 target.</li>
+<li>The EC2 application loads configuration or secrets if needed.</li>
+<li>The application executes business logic and talks to RDS.</li>
+<li>The application emits logs and returns the response through the ALB.</li>
+</ol>
+<p>Why this lifecycle matters:</p>
+<ul>
+<li>It is the core business path of the system.</li>
+<li>It concentrates public exposure at the ALB instead of at the instance layer.</li>
+</ul>
+<h3 id="lifecycle-4-database-backed-transaction">Lifecycle 4: Database-backed transaction</h3>
+<ol>
+<li>EC2 obtains the current database secret.</li>
+<li>The application connects to the RDS endpoint over private networking.</li>
+<li>The primary instance handles the transaction.</li>
+<li>RDS maintains standby continuity.</li>
+<li>If failover occurs, the application reconnects by using the managed endpoint.</li>
+</ol>
+<p>Why this lifecycle matters:</p>
+<ul>
+<li>It preserves transactional integrity.</li>
+<li>It hides database host changes behind a stable managed endpoint.</li>
+</ul>
+<h3 id="lifecycle-5-operator-access-and-diagnostics">Lifecycle 5: Operator access and diagnostics</h3>
+<ol>
+<li>An administrator starts a Systems Manager session to a private instance.</li>
+<li>The instance uses its IAM role to authenticate AWS service calls.</li>
+<li>The operator reviews app state, local logs, or runtime configuration.</li>
+<li>Relevant activity is later visible in CloudTrail and CloudWatch.</li>
+</ol>
+<p>Why this lifecycle matters:</p>
+<ul>
+<li>It delivers administration without public SSH.</li>
+<li>It keeps operational actions auditable.</li>
+</ul>
+<h3 id="lifecycle-6-email-and-audit-completion">Lifecycle 6: Email and audit completion</h3>
+<ol>
+<li>A business event in the application triggers an email send.</li>
+<li>The EC2 workload calls SES by using its instance role.</li>
+<li>SES accepts the message when the sender identity and DNS records are valid.</li>
+<li>Control-plane actions remain visible in CloudTrail.</li>
+<li>Application-side success or failure signals are written to CloudWatch.</li>
+</ol>
+<p>Why this lifecycle matters:</p>
+<ul>
+<li>It closes the loop between application actions, communication, and operator visibility.</li>
+</ul>
+<h2 id="deployment-considerations">Deployment Considerations</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Deployment area</th>
+          <th>Current workshop posture</th>
+          <th>Recommended production handling</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Frontend</td>
+          <td>Manual or CLI-driven <code>aws s3 sync</code> plus CloudFront invalidation</td>
+          <td>Build versioned static assets, publish to S3, invalidate only changed paths when possible, and keep rollback-ready object versions</td>
+      </tr>
+      <tr>
+          <td>Backend compute</td>
+          <td>EC2 instances behind ALB and Auto Scaling</td>
+          <td>Use a launch template with immutable artifacts, perform rolling or instance-refresh deployments, and validate health checks before terminating old nodes</td>
+      </tr>
+      <tr>
+          <td>Database changes</td>
+          <td>RDS is the system of record, but migration tooling is not shown</td>
+          <td>Run schema migrations in a controlled release stage through SSM or a CI/CD job with backup and rollback planning</td>
+      </tr>
+      <tr>
+          <td>Secrets and config</td>
+          <td>Secret values are centralized in Secrets Manager</td>
+          <td>Separate secrets by environment, rotate on schedule, and avoid mixing static configuration with credentials</td>
+      </tr>
+      <tr>
+          <td>Certificates and DNS</td>
+          <td>HTTPS is implied and Route 53 is in scope</td>
+          <td>Manage CloudFront and ALB certificates with ACM and automate DNS updates carefully to reduce cutover risk</td>
+      </tr>
+      <tr>
+          <td>Operator procedures</td>
+          <td>The chapter uses CLI inspection heavily</td>
+          <td>Convert repeated CLI checks into runbooks, Infrastructure as Code validations, and dashboards</td>
+      </tr>
+  </tbody>
+</table>
+<p>Recommended deployment sequence:</p>
+<ol>
+<li>Build and test the frontend artifact.</li>
+<li>Publish the frontend to S3 and invalidate the required CloudFront paths.</li>
+<li>Build the backend artifact and update the EC2 launch template or machine image.</li>
+<li>Roll the Auto Scaling Group gradually while monitoring ALB target health and CloudWatch logs.</li>
+<li>Run database migrations only after backup posture and rollback steps are confirmed.</li>
+<li>Validate SES identity status, alarms, and operational access before declaring the release healthy.</li>
+</ol>
+<h2 id="scalability-and-fault-tolerance">Scalability and Fault Tolerance</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Concern</th>
+          <th>Current workshop posture</th>
+          <th>Benefit</th>
+          <th>Current gap or risk</th>
+          <th>Recommended hardening</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Static content scale</td>
+          <td>CloudFront plus S3</td>
+          <td>Edge caching absorbs global read traffic efficiently</td>
+          <td>Cache invalidation discipline is required after releases</td>
+          <td>Use versioned assets and tuned cache policies</td>
+      </tr>
+      <tr>
+          <td>Application scale</td>
+          <td>ALB plus Auto Scaling across multiple AZs</td>
+          <td>Horizontal scale and instance replacement are built in</td>
+          <td>Session-heavy behavior could reduce scale efficiency</td>
+          <td>Keep application nodes stateless and tune scaling policies</td>
+      </tr>
+      <tr>
+          <td>Database resilience</td>
+          <td>RDS primary and standby posture</td>
+          <td>Managed failover improves durability and recovery</td>
+          <td>Actual Multi-AZ mode must be confirmed in the real environment</td>
+          <td>Validate Multi-AZ, backup recovery, and failover drills regularly</td>
+      </tr>
+      <tr>
+          <td>Private egress</td>
+          <td>NAT Gateway for outbound traffic</td>
+          <td>Instances stay private while still reaching external services</td>
+          <td>A single NAT Gateway is a cost and availability trade-off</td>
+          <td>Use one NAT Gateway per AZ for higher resilience or add VPC endpoints to reduce NAT dependence</td>
+      </tr>
+      <tr>
+          <td>Secret access</td>
+          <td>Secrets Manager and KMS</td>
+          <td>Centralized secret governance and encryption</td>
+          <td>Overly broad IAM permissions can weaken the model</td>
+          <td>Narrow resource scopes and enable rotation</td>
+      </tr>
+      <tr>
+          <td>Operator access</td>
+          <td>Systems Manager</td>
+          <td>No bastion host or SSH key sprawl</td>
+          <td>SSM readiness depends on agent health and IAM correctness</td>
+          <td>Enable session logging and test break-glass procedures</td>
+      </tr>
+      <tr>
+          <td>Observability</td>
+          <td>CloudWatch and CloudTrail</td>
+          <td>Logs, metrics, and audit events stay centralized</td>
+          <td>Alarm coverage and retention policies are not shown</td>
+          <td>Add dashboards, alarm routing, retention classes, and metric filters</td>
+      </tr>
+      <tr>
+          <td>Email delivery</td>
+          <td>SES plus DNS verification</td>
+          <td>Transactional email is externalized to a managed service</td>
+          <td>Bounce handling and complaint workflows are not visible</td>
+          <td>Add feedback processing and sending reputation monitoring</td>
+      </tr>
+      <tr>
+          <td>Async workload isolation</td>
+          <td>Not present</td>
+          <td>Simpler architecture today</td>
+          <td>Email, retries, or side effects may remain tightly coupled to request latency</td>
+          <td>Introduce EventBridge, SQS, or SNS for background processing when needed</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="improvement-opportunities-and-aws-well-architected-alignment">Improvement Opportunities and AWS Well-Architected Alignment</h2>
+<table>
+  <thead>
+      <tr>
+          <th>AWS Well-Architected pillar</th>
+          <th>Current strengths in the workshop</th>
+          <th>Recommended next step</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Operational Excellence</td>
+          <td>The chapter already encourages CLI verification, environment variables, and clear service ownership</td>
+          <td>Move the documented checks into Infrastructure as Code, automated health validation, and reusable operational runbooks</td>
+      </tr>
+      <tr>
+          <td>Security</td>
+          <td>Private EC2 and RDS, WAF, SSM, IAM instance profiles, Secrets Manager, and KMS create a strong baseline</td>
+          <td>Add tighter IAM scoping, session logging, secret rotation, VPC endpoints for sensitive service access, and explicit certificate management</td>
+      </tr>
+      <tr>
+          <td>Reliability</td>
+          <td>ALB health checks, Auto Scaling, and an RDS standby posture provide meaningful resilience</td>
+          <td>Confirm database HA mode, test failover routinely, remove single-AZ NAT dependency, and consider asynchronous decoupling for non-critical side effects</td>
+      </tr>
+      <tr>
+          <td>Performance Efficiency</td>
+          <td>CloudFront caching and scale-out EC2 compute support the primary web workload well</td>
+          <td>Tune cache policies, add database connection pooling, and consider read-optimization layers if usage grows sharply</td>
+      </tr>
+      <tr>
+          <td>Cost Optimization</td>
+          <td>S3, CloudFront, and managed services reduce some operational burden</td>
+          <td>Review NAT cost, right-size EC2 and RDS, use lifecycle policies, and replace avoidable public-endpoint traffic with VPC endpoints where possible</td>
+      </tr>
+      <tr>
+          <td>Sustainability</td>
+          <td>Elastic services and managed components avoid unnecessary always-on bespoke infrastructure</td>
+          <td>Schedule non-production shutdowns, optimize cache hit ratios, and right-size long-running compute regularly</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="natural-evolution-paths">Natural Evolution Paths</h3>
+<ul>
+<li>Introduce API Gateway only when the platform needs public API governance features that ALB does not naturally provide.</li>
+<li>Introduce Lambda for utility automations such as light post-processing, SES event handling, or secret-rotation helpers.</li>
+<li>Introduce Step Functions when booking, charging, payment, or compliance workflows become long-running and stateful.</li>
+<li>Introduce EventBridge, SQS, or SNS when notification, retry, or background processing should no longer be coupled to request latency.</li>
+<li>Introduce read replicas, Aurora, or a reporting store only when relational throughput or workload isolation requires them.</li>
+</ul>
+<h2 id="operational-readiness-checklist">Operational Readiness Checklist</h2>
+<ul>
+<li>Confirm the public path is healthy: Route 53 resolves the expected domain, CloudFront presents the right certificate, WAF is attached, and S3 remains private behind OAC.</li>
+<li>Confirm the application path is healthy: ALB listeners and target groups are green, Auto Scaling spans the intended Availability Zones, and private EC2 instances can reach required dependencies.</li>
+<li>Confirm the data path is healthy: the RDS endpoint is private, backups are enabled, failover posture is understood, and the application reads credentials from Secrets Manager rather than local files.</li>
+<li>Confirm the control plane is healthy: SSM access works without SSH, IAM roles are least-privilege, KMS policies are scoped correctly, and CloudTrail records administrative actions.</li>
+<li>Confirm observability is healthy: CloudWatch log groups exist with retention settings, important alarms have owners, SES identities are verified, and Route 53 contains the supporting email DNS records.</li>
+</ul>
+<h2 id="notes--assumptions">Notes / Assumptions</h2>
+<ul>
+<li>This architecture document is grounded in the workshop source tree under <code>content/4-Workshop/</code>, not in the backend application repository.</li>
+<li>The workshop describes a more resilient RDS posture than the earlier proposal chapter. This document follows the workshop chapter as the current architecture target.</li>
+<li>The visible implementation is intentionally AWS-native and mostly synchronous.</li>
+<li>API Gateway, Lambda, ECS, EKS, DynamoDB, Step Functions, EventBridge, SQS, SNS, and Cognito are not part of the confirmed current architecture, but several of them are reasonable future additions as the system grows.</li>
+<li>Security groups, ACM certificates, DB subnet groups, launch templates, and agent-level integrations are treated here as required inferred components because the documented AWS flows would not operate correctly without them.</li>
+</ul>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../4-workshop/4.6-monitoring-audit-and-email-delivery/" title="Monitoring, Audit, and Email Delivery"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../5-feedback/" title="Self-Assessment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775386387"></script>
+    <script src="../../js/jquery.sticky.js?1775386387"></script>
+    <script src="../../js/featherlight.min.js?1775386387"></script>
+    <script src="../../js/highlight.pack.js?1775386387"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775386387"></script>
+    <script src="../../js/learn.js?1775386387"></script>
+    <script src="../../js/hugo-learn.js?1775386387"></script>
+
+    <link href="../../mermaid/mermaid.css?1775386387" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775386387"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+<script>
+  (function () {
+    function getTarget(hash) {
+      if (!hash || hash.charAt(0) !== "#") {
+        return null;
+      }
+
+      var id = hash.slice(1);
+      return document.getElementById(id) || document.getElementById(decodeURIComponent(id));
+    }
+
+    function getFixedOffset() {
+      var topBar = document.getElementById("top-bar");
+      var topBarHeight = topBar ? topBar.getBoundingClientRect().height : 0;
+      return Math.ceil(topBarHeight) + 16;
+    }
+
+    function scrollToHash(hash, pushToHistory) {
+      var target = getTarget(hash);
+
+      if (!target) {
+        return false;
+      }
+
+      var top = window.pageYOffset + target.getBoundingClientRect().top - getFixedOffset();
+      window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: "auto" });
+
+      if (pushToHistory) {
+        history.pushState({}, document.title, window.location.pathname + hash);
+      }
+
+      return true;
+    }
+
+    document.addEventListener(
+      "click",
+      function (event) {
+        var link = event.target.closest("a[href^='#']");
+
+        if (!link) {
+          return;
+        }
+
+        var href = link.getAttribute("href");
+
+        if (!href || href === "#") {
+          return;
+        }
+
+        if (!scrollToHash(href, true)) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      },
+      true,
+    );
+
+    jQuery(function () {
+      
+      jQuery(window).off("hashchange");
+      jQuery("body").off("click", "a");
+
+      if (window.location.hash) {
+        window.requestAnimationFrame(function () {
+          scrollToHash(window.location.hash, false);
+        });
+      }
+    });
+
+    window.addEventListener("load", function () {
+      if (window.location.hash) {
+        window.requestAnimationFrame(function () {
+          scrollToHash(window.location.hash, false);
+        });
+      }
+    });
+
+    window.addEventListener("hashchange", function () {
+      scrollToHash(window.location.hash, false);
+    });
+  })();
+</script>
+
+  </body>
+</html>
+

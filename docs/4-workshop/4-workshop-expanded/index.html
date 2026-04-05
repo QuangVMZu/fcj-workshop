@@ -1,0 +1,3562 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/fcj-workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=fcj-workshop/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.156.0">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="vminhquang05@gmail.com" />
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>Workshop Expanded :: Internship Report</title>
+
+    
+    <link href="../../css/nucleus.css?1775384588" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775384588" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775384588" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775384588" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775384588" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775384588" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775384588" rel="stylesheet">
+    <link href="../../css/theme.css?1775384588" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775384588" rel="stylesheet">
+    
+    <link href="../../css/theme-workshop.css?1775384588" rel="stylesheet">
+    
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1775384588"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+
+  </head>
+  <body class="" data-url="../../4-workshop/4-workshop-expanded/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+   
+  
+  
+  
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="../../">
+  <svg
+    id="Layer_1"
+    data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 60 30"
+    width="30%"
+  >
+    <defs>
+      <style>
+        .cls-1 {
+          fill: #fff;
+        }
+        .cls-2 {
+          fill: #f90;
+          fill-rule: evenodd;
+        }
+      </style>
+    </defs>
+    <title>AWS-Logo_White-Color</title>
+    <path
+      class="cls-1"
+      d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"
+    ></path>
+  </svg>
+</a>
+</div>
+     <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1775384588"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775384588"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1775384588"></script>
+ 
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+                
+<li
+  data-nav-id="/1-worklog/"
+  title="Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/">
+     <b> 1. </b> Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/1-worklog/1.1-week1/"
+  title="Week 1 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.1-week1/">
+     <b> 1.1. </b> Week 1 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.2-week2/"
+  title="Week 2 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.2-week2/">
+     <b> 1.2. </b> Week 2 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.3-week3/"
+  title="Week 3 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.3-week3/">
+     <b> 1.3. </b> Week 3 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.4-week4/"
+  title="Week 4 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.4-week4/">
+     <b> 1.4. </b> Week 4 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.5-week5/"
+  title="Week 5 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.5-week5/">
+     <b> 1.5. </b> Week 5 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.6-week6/"
+  title="Week 6 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.6-week6/">
+     <b> 1.6. </b> Week 6 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.7-week7/"
+  title="Week 7 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.7-week7/">
+     <b> 1.7. </b> Week 7 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.8-week8/"
+  title="Week 8 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.8-week8/">
+     <b> 1.8. </b> Week 8 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.9-week9/"
+  title="Week 9 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.9-week9/">
+     <b> 1.9. </b> Week 9 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.10-week10/"
+  title="Week 10 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.10-week10/">
+     <b> 1.10. </b> Week 10 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.11-week11/"
+  title="Week 11 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.11-week11/">
+     <b> 1.11. </b> Week 11 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.12-week12/"
+  title="Week 13 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.12-week12/">
+     <b> 1.13. </b> Week 13 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/1-worklog/1.13-week13/"
+  title="Week 13 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../1-worklog/1.13-week13/">
+     <b> 1.13. </b> Week 13 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/2-proposal/"
+  title="Proposal"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../2-proposal/">
+     <b> 2. </b> Proposal 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+            
+<li
+  data-nav-id="/3-eventparticipated/"
+  title="Events Participated"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../3-eventparticipated/">
+     <b> 3. </b> Events Participated 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/3-eventparticipated/3.1-event1/"
+  title="Event 1 - Building Full-Stack Observability on AWS with Datadog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../3-eventparticipated/3.1-event1/">
+     <b> 3.1. </b> Event 1 - Building Full-Stack Observability on AWS with Datadog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/3-eventparticipated/3.2-event2/"
+  title="Event 2 - AWS re:Invent Recap HCMC"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../3-eventparticipated/3.2-event2/">
+     <b> 3.2. </b> Event 2 - AWS re:Invent Recap HCMC 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/4-workshop/"
+  title="Workshop"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="../../4-workshop/">
+     <b> 4. </b> Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/4-workshop/4.1-overview/"
+  title="Overview"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.1-overview/">
+     <b> 4.1. </b> Overview 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.2-edge-delivery-and-geospatial-requests/"
+  title="Edge Delivery and Geospatial Requests"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.2-edge-delivery-and-geospatial-requests/">
+     <b> 4.2. </b> Edge Delivery and Geospatial Requests 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.3-private-application-routing-and-compute/"
+  title="Private Application Routing and Compute"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.3-private-application-routing-and-compute/">
+     <b> 4.3. </b> Private Application Routing and Compute 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.4-relational-data-resilience-and-network-isolation/"
+  title="Relational Data Resilience and Network Isolation"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.4-relational-data-resilience-and-network-isolation/">
+     <b> 4.4. </b> Relational Data Resilience and Network Isolation 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.5-operational-access-and-secret-governance/"
+  title="Operational Access and Secret Governance"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.5-operational-access-and-secret-governance/">
+     <b> 4.5. </b> Operational Access and Secret Governance 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.6-monitoring-audit-and-email-delivery/"
+  title="Monitoring, Audit, and Email Delivery"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.6-monitoring-audit-and-email-delivery/">
+     <b> 4.6. </b> Monitoring, Audit, and Email Delivery 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4-workshop-expanded/"
+  title="Workshop Expanded"
+  class="dd-item active"
+>
+  <a href="../../4-workshop/4-workshop-expanded/">
+    Workshop Expanded <i
+      class="fas fa-check read-icon"
+    ></i
+    >
+  </a>
+</li>
+      
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/5-feedback/"
+  title="Self-Assessment"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../5-feedback/">
+     <b> 5. </b> Self-Assessment 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+            
+<li
+  data-nav-id="/6-sharingfeedback/"
+  title="Sharing and Feedback"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../6-sharingfeedback/">
+     <b> 6. </b> Sharing and Feedback 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"
+            ><i class='fab fa-facebook'></i> AWS Study Group</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+     
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = '/' + this.options[this.selectedIndex].dataset.path;">
+                       
+                <option
+                  id="en"
+                  value="/4-workshop/4-workshop-expanded/"
+                  data-path="fcj-workshop/4-workshop/4-workshop-expanded/"
+                  selected
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="/vi/4-workshop/4-workshop-expanded/"
+                  data-path="fcj-workshop/vi/4-workshop/4-workshop-expanded/"
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><div class="menu-footer-block">
+    <b>Workshop</b><br>
+    <img
+        src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0"
+        alt="Workshop counter"
+        title="Workshop counter"
+        loading="lazy"
+    >
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.2rem;">
+    <b><a href="https://cloudjourney.awsstudygroup.com/" style="color:inherit; text-decoration:none;">Cloud Journey</a></b><br>
+    <img
+        src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0"
+        alt="Cloud Journey counter"
+        title="Cloud Journey counter"
+        loading="lazy"
+    >
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.75rem;">
+    <b>Last Updated</b><br>
+    <i><span id="lastUpdated" style="color:orange;"></span></i>
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.75rem;">
+    <b>Team</b><br>
+    <i><a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud Journey</a></i>
+</div>
+
+<script>
+    (function () {
+        var lastUpdated = document.getElementById('lastUpdated');
+        if (!lastUpdated) {
+            return;
+        }
+
+        var today = new Date();
+        lastUpdated.textContent = today.toLocaleDateString('en-GB');
+    })();
+</script>
+</section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>Internship Report</a> > <a href='../../4-workshop/'>Workshop</a> > Workshop Expanded
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#how-to-use-this-workshop">How to Use This Workshop</a></li>
+    <li><a href="#services-used-in-this-architecture">Services Used in This Architecture</a></li>
+    <li><a href="#services-not-shown-in-this-diagram">Services Not Shown in This Diagram</a></li>
+    <li><a href="#shared-lab-variables">Shared Lab Variables</a></li>
+    <li><a href="#recommended-aws-access">Recommended AWS Access</a></li>
+    <li><a href="#content">Content</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#system-overview">System Overview</a></li>
+    <li><a href="#aws-service-map">AWS Service Map</a></li>
+    <li><a href="#end-to-end-aws-flow">End-to-End AWS Flow</a></li>
+    <li><a href="#hands-on-baseline-checks">Hands-on Baseline Checks</a></li>
+    <li><a href="#beginner-guidance">Beginner Guidance</a></li>
+    <li><a href="#notes--assumptions">Notes / Assumptions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#overview-1">Overview</a></li>
+    <li><a href="#aws-services-in-this-section">AWS Services in This Section</a>
+      <ul>
+        <li><a href="#amazon-route-53">Amazon Route 53</a></li>
+        <li><a href="#amazon-cloudfront">Amazon CloudFront</a></li>
+        <li><a href="#aws-waf">AWS WAF</a></li>
+        <li><a href="#amazon-s3">Amazon S3</a></li>
+        <li><a href="#amazon-location-service">Amazon Location Service</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-by-step-aws-flow">Step-by-Step AWS Flow</a>
+      <ul>
+        <li><a href="#request-and-response-behavior">Request and response behavior</a></li>
+        <li><a href="#high-level-internal-logic">High-level internal logic</a></li>
+      </ul>
+    </li>
+    <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-inspect-the-hosted-zone">1. Inspect the hosted zone</a></li>
+        <li><a href="#2-create-or-update-the-application-dns-record">2. Create or update the application DNS record</a></li>
+        <li><a href="#3-deploy-frontend-assets-to-s3">3. Deploy frontend assets to S3</a></li>
+        <li><a href="#4-invalidate-the-cloudfront-cache-after-deployment">4. Invalidate the CloudFront cache after deployment</a></li>
+        <li><a href="#5-test-a-location-service-search">5. Test a Location Service search</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration-example">Configuration Example</a>
+      <ul>
+        <li><a href="#private-s3-origin-policy-for-cloudfront-oac">Private S3 origin policy for CloudFront OAC</a></li>
+        <li><a href="#best-practices-for-this-layer">Best practices for this layer</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-verify">What to Verify</a></li>
+    <li><a href="#common-mistakes">Common Mistakes</a></li>
+    <li><a href="#notes--assumptions-1">Notes / Assumptions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#overview-2">Overview</a></li>
+    <li><a href="#aws-services-in-this-section-1">AWS Services in This Section</a>
+      <ul>
+        <li><a href="#amazon-vpc">Amazon VPC</a></li>
+        <li><a href="#internet-gateway">Internet Gateway</a></li>
+        <li><a href="#nat-gateway">NAT Gateway</a></li>
+        <li><a href="#application-load-balancer">Application Load Balancer</a></li>
+        <li><a href="#amazon-ec2">Amazon EC2</a></li>
+        <li><a href="#ec2-auto-scaling">EC2 Auto Scaling</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-this-design-uses-alb--ec2">Why This Design Uses ALB + EC2</a></li>
+    <li><a href="#step-by-step-aws-flow-1">Step-by-Step AWS Flow</a>
+      <ul>
+        <li><a href="#request-and-response-behavior-1">Request and response behavior</a></li>
+        <li><a href="#internal-logic-of-this-layer">Internal logic of this layer</a></li>
+      </ul>
+    </li>
+    <li><a href="#aws-cli-walkthrough-1">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-inspect-the-load-balancer">1. Inspect the load balancer</a></li>
+        <li><a href="#2-check-target-health">2. Check target health</a></li>
+        <li><a href="#3-inspect-the-auto-scaling-group">3. Inspect the Auto Scaling group</a></li>
+        <li><a href="#4-inspect-a-backend-instance">4. Inspect a backend instance</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration-example-1">Configuration Example</a>
+      <ul>
+        <li><a href="#typical-traffic-rules-for-this-architecture">Typical traffic rules for this architecture</a></li>
+        <li><a href="#recommended-alb-health-check-settings">Recommended ALB health check settings</a></li>
+        <li><a href="#best-practices-for-this-layer-1">Best practices for this layer</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-verify-1">What to Verify</a></li>
+    <li><a href="#common-mistakes-1">Common Mistakes</a></li>
+    <li><a href="#notes--assumptions-2">Notes / Assumptions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#overview-3">Overview</a></li>
+    <li><a href="#components">Components</a>
+      <ul>
+        <li><a href="#amazon-rds">Amazon RDS</a></li>
+        <li><a href="#primary-database-instance">Primary Database Instance</a></li>
+        <li><a href="#standby-database-instance">Standby Database Instance</a></li>
+        <li><a href="#no-public-access-boundary">No Public Access Boundary</a></li>
+        <li><a href="#ec2-to-rds-connectivity">EC2 to RDS Connectivity</a></li>
+      </ul>
+    </li>
+    <li><a href="#flow-description">Flow Description</a>
+      <ul>
+        <li><a href="#request-and-response-behavior-2">Request and response behavior</a></li>
+      </ul>
+    </li>
+    <li><a href="#key-logic--rules">Key Logic / Rules</a></li>
+    <li><a href="#aws-cli-walkthrough-2">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-inspect-the-db-instance">1. Inspect the DB instance</a></li>
+        <li><a href="#2-display-status-multi-az-flag-and-endpoint">2. Display status, Multi-AZ flag, and endpoint</a></li>
+        <li><a href="#3-perform-an-approved-failover-test-in-a-non-production-environment">3. Perform an approved failover test in a non-production environment</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration-example-2">Configuration Example</a>
+      <ul>
+        <li><a href="#recommended-database-access-model">Recommended database access model</a></li>
+        <li><a href="#example-connection-secret-stored-in-secrets-manager">Example connection secret stored in Secrets Manager</a></li>
+        <li><a href="#best-practices-for-this-layer-2">Best practices for this layer</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-verify-2">What to Verify</a></li>
+    <li><a href="#common-mistakes-2">Common Mistakes</a></li>
+    <li><a href="#notes--assumptions-3">Notes / Assumptions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#overview-4">Overview</a></li>
+    <li><a href="#components-1">Components</a>
+      <ul>
+        <li><a href="#aws-systems-manager-ssm">AWS Systems Manager (SSM)</a></li>
+        <li><a href="#iam-instance-profile">IAM Instance Profile</a></li>
+        <li><a href="#aws-secrets-manager">AWS Secrets Manager</a></li>
+        <li><a href="#aws-kms">AWS KMS</a></li>
+        <li><a href="#amazon-ec2-1">Amazon EC2</a></li>
+      </ul>
+    </li>
+    <li><a href="#flow-description-1">Flow Description</a>
+      <ul>
+        <li><a href="#request-and-response-behavior-3">Request and response behavior</a></li>
+      </ul>
+    </li>
+    <li><a href="#key-logic--rules-1">Key Logic / Rules</a></li>
+    <li><a href="#aws-cli-walkthrough-3">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-start-an-ssm-session-to-a-private-instance">1. Start an SSM session to a private instance</a></li>
+        <li><a href="#2-verify-the-attached-iam-instance-profile">2. Verify the attached IAM instance profile</a></li>
+        <li><a href="#3-read-a-secret-value">3. Read a secret value</a></li>
+        <li><a href="#4-list-kms-aliases">4. List KMS aliases</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration-example-3">Configuration Example</a>
+      <ul>
+        <li><a href="#minimum-permissions-for-the-instance-role-in-this-architecture">Minimum permissions for the instance role in this architecture</a></li>
+        <li><a href="#best-practices-for-this-layer-3">Best practices for this layer</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-verify-3">What to Verify</a></li>
+    <li><a href="#common-mistakes-3">Common Mistakes</a></li>
+    <li><a href="#notes--assumptions-4">Notes / Assumptions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#overview-5">Overview</a></li>
+    <li><a href="#components-2">Components</a>
+      <ul>
+        <li><a href="#amazon-cloudwatch">Amazon CloudWatch</a></li>
+        <li><a href="#aws-cloudtrail">AWS CloudTrail</a></li>
+        <li><a href="#amazon-ses">Amazon SES</a></li>
+        <li><a href="#route-53-dns-records-ses-support">Route 53 DNS Records (SES Support)</a></li>
+        <li><a href="#iam-backed-ec2-role">IAM-backed EC2 Role</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-this-design-uses-direct-aws-integrations">Why This Design Uses Direct AWS Integrations</a></li>
+    <li><a href="#step-by-step-aws-flow-2">Step-by-Step AWS Flow</a>
+      <ul>
+        <li><a href="#request-and-response-behavior-4">Request and response behavior</a></li>
+        <li><a href="#operational-response-pattern">Operational response pattern</a></li>
+      </ul>
+    </li>
+    <li><a href="#aws-cli-walkthrough-4">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-tail-recent-application-logs">1. Tail recent application logs</a></li>
+        <li><a href="#2-look-up-recent-audit-events">2. Look up recent audit events</a></li>
+        <li><a href="#3-check-ses-identity-status">3. Check SES identity status</a></li>
+        <li><a href="#4-send-a-test-email-through-ses">4. Send a test email through SES</a></li>
+        <li><a href="#5-create-a-simple-cpu-alarm-for-one-backend-instance">5. Create a simple CPU alarm for one backend instance</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration-example-4">Configuration Example</a>
+      <ul>
+        <li><a href="#example-route-53-records-for-ses-domain-setup">Example Route 53 records for SES domain setup</a></li>
+        <li><a href="#best-practices-for-this-layer-4">Best practices for this layer</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-verify-4">What to Verify</a></li>
+    <li><a href="#common-mistakes-4">Common Mistakes</a></li>
+    <li><a href="#notes--assumptions-5">Notes / Assumptions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#overview-6">Overview</a></li>
+    <li><a href="#source-scope">Source Scope</a></li>
+    <li><a href="#reading-the-workshop-as-an-architecture-codebase">Reading the Workshop as an Architecture Codebase</a></li>
+    <li><a href="#architecture-baseline">Architecture Baseline</a>
+      <ul>
+        <li><a href="#public-and-private-boundary">Public and private boundary</a></li>
+        <li><a href="#what-this-architectural-step-does">What this architectural step does</a></li>
+      </ul>
+    </li>
+    <li><a href="#core-modules-services-apis-and-data-flow">Core Modules, Services, APIs, and Data Flow</a></li>
+    <li><a href="#interface-and-api-inventory">Interface and API Inventory</a></li>
+    <li><a href="#aws-service-mapping-and-architecture-expansion">AWS Service Mapping and Architecture Expansion</a></li>
+    <li><a href="#detailed-workshop-breakdown">Detailed Workshop Breakdown</a>
+      <ul>
+        <li><a href="#4-workshop-root-chapter">4-Workshop Root Chapter</a></li>
+        <li><a href="#41-overview">4.1 Overview</a></li>
+        <li><a href="#42-edge-delivery-and-geospatial-requests">4.2 Edge Delivery and Geospatial Requests</a></li>
+        <li><a href="#43-private-application-routing-and-compute">4.3 Private Application Routing and Compute</a></li>
+        <li><a href="#44-relational-data-resilience-and-network-isolation">4.4 Relational Data Resilience and Network Isolation</a></li>
+        <li><a href="#45-operational-access-and-secret-governance">4.5 Operational Access and Secret Governance</a></li>
+        <li><a href="#46-monitoring-audit-and-email-delivery">4.6 Monitoring, Audit, and Email Delivery</a></li>
+      </ul>
+    </li>
+    <li><a href="#request-lifecycle-and-service-interaction-flow">Request Lifecycle and Service Interaction Flow</a>
+      <ul>
+        <li><a href="#lifecycle-1-user-enters-the-platform">Lifecycle 1: User enters the platform</a></li>
+        <li><a href="#lifecycle-2-user-interacts-with-maps">Lifecycle 2: User interacts with maps</a></li>
+        <li><a href="#lifecycle-3-user-performs-a-business-action">Lifecycle 3: User performs a business action</a></li>
+        <li><a href="#lifecycle-4-operator-manages-the-system">Lifecycle 4: Operator manages the system</a></li>
+      </ul>
+    </li>
+    <li><a href="#deployment-considerations">Deployment Considerations</a></li>
+    <li><a href="#scalability-and-fault-tolerance">Scalability and Fault Tolerance</a></li>
+    <li><a href="#improvement-opportunities-and-aws-well-architected-alignment">Improvement Opportunities and AWS Well-Architected Alignment</a>
+      <ul>
+        <li><a href="#natural-evolution-paths">Natural Evolution Paths</a></li>
+      </ul>
+    </li>
+    <li><a href="#notes--assumptions-6">Notes / Assumptions</a></li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Workshop Expanded
+            </h1>
+          
+
+        
+
+
+<h1 id="hands-on-aws-workshop-for-the-ev-charging-platform">Hands-on AWS Workshop for the EV Charging Platform</h1>
+<p><img src="../../images/2-Proposal/AWS-architecture.png" alt="AWS Workshop Architecture Overview"></p>
+<h2 id="overview">Overview</h2>
+<p>This expanded guide elaborates the existing <code>4-Workshop</code> chapter and its seven subsections into a single production-oriented reference. It still follows the original workshop intent: explain the deployed AWS architecture behind the EV Charging Station Management System rather than local application setup. The difference is depth. Each subsection below is expanded with additional architectural context, higher-level internal logic, request and response behavior, practical assumptions, scaling guidance, security notes, and realistic improvement paths.</p>
+<p>From an architecture perspective, the workshop describes a layered AWS platform with a clear separation between public entry points, private runtime components, and operational controls. The frontend is delivered from the edge, the backend runs on private compute, the relational database remains isolated, and observability plus administrative access are handled through AWS-native control-plane services.</p>
+<h2 id="how-to-use-this-workshop">How to Use This Workshop</h2>
+<ul>
+<li>Follow the sections in order from edge services to observability, because each subsection builds on the layer before it.</li>
+<li>Replace placeholder values such as <code>${APP_DOMAIN}</code> and <code>${DB_INSTANCE_ID}</code> with your own environment values before running any commands.</li>
+<li>The CLI examples use <code>bash</code> syntax. If you use PowerShell, adapt quoting and variable handling accordingly.</li>
+<li>Prefer a non-production account for experiments such as Route 53 changes, CloudFront invalidations, or RDS failover tests.</li>
+<li>Read each section in two passes: first for the flow, then for the commands and verification steps.</li>
+<li>Treat each subsection as both a learning module and an operational playbook. The explanations describe the intended design, while the commands show how to validate that the environment actually matches that design.</li>
+<li>When a section mentions a service that is not drawn explicitly in the diagram, treat it as a reasonable supporting assumption rather than a confirmed deployed component.</li>
+</ul>
+<h2 id="services-used-in-this-architecture">Services Used in This Architecture</h2>
+<ul>
+<li><strong>Edge and frontend delivery</strong>: Amazon Route 53, Amazon CloudFront, AWS WAF, Amazon S3, Amazon Location Service</li>
+<li><strong>Application runtime</strong>: Amazon VPC, Internet Gateway, NAT Gateway, Application Load Balancer, Amazon EC2, EC2 Auto Scaling</li>
+<li><strong>Data layer</strong>: Amazon RDS in a primary and standby layout</li>
+<li><strong>Operations and security</strong>: AWS Systems Manager, IAM instance profile, AWS Secrets Manager, AWS KMS</li>
+<li><strong>Observability and communication</strong>: Amazon CloudWatch, AWS CloudTrail, Amazon SES, Route 53 email DNS records</li>
+</ul>
+<p>These services form a practical AWS web-application baseline. Route 53 and CloudFront accept user traffic, S3 serves the static frontend, ALB and EC2 handle synchronous backend processing, RDS stores transactional state, and supporting services provide operator access, encryption, logging, audit, and outbound messaging.</p>
+<h2 id="services-not-shown-in-this-diagram">Services Not Shown in This Diagram</h2>
+<ul>
+<li><strong>API Gateway</strong>: Not used here because public application traffic enters through CloudFront and then the Application Load Balancer. In a future design, API Gateway would be appropriate only if the platform needed API products, request validation, authorizers, per-client throttling, or usage plans.</li>
+<li><strong>Lambda</strong>: Not shown. The backend is modeled as long-running EC2 instances. Lambda could still be introduced later for utility automation, asynchronous cleanup tasks, or SES event processing.</li>
+<li><strong>ECS / EKS</strong>: Not shown. Container orchestration is outside the scope of this design. The workshop intentionally stays focused on an EC2-based runtime model.</li>
+<li><strong>DynamoDB</strong>: Not shown. Persistent data is modeled as relational data in Amazon RDS. DynamoDB would make sense only for future low-latency lookup, idempotency, or event-driven read models.</li>
+<li><strong>EventBridge / SQS / SNS</strong>: Not shown. The diagram emphasizes synchronous request flow and direct service integrations. These services become relevant when retries, asynchronous notifications, or background jobs need better isolation.</li>
+<li><strong>Cognito</strong>: Not shown. The visible admin path uses IAM and AWS Systems Manager rather than a user pool.</li>
+</ul>
+<h2 id="shared-lab-variables">Shared Lab Variables</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export AWS_REGION<span style="color:#f92672">=</span>ap-southeast-1
+</span></span><span style="display:flex;"><span>export APP_DOMAIN<span style="color:#f92672">=</span>app.example.com
+</span></span><span style="display:flex;"><span>export HOSTED_ZONE_ID<span style="color:#f92672">=</span>Z123456789EXAMPLE
+</span></span><span style="display:flex;"><span>export STATIC_BUCKET<span style="color:#f92672">=</span>ev-prod-frontend
+</span></span><span style="display:flex;"><span>export CLOUDFRONT_DIST_ID<span style="color:#f92672">=</span>E123ABC456DEF
+</span></span><span style="display:flex;"><span>export PLACE_INDEX_NAME<span style="color:#f92672">=</span>ev-place-index
+</span></span><span style="display:flex;"><span>export ALB_NAME<span style="color:#f92672">=</span>ev-app-alb
+</span></span><span style="display:flex;"><span>export TARGET_GROUP_ARN<span style="color:#f92672">=</span>arn:aws:elasticloadbalancing:ap-southeast-1:123456789012:targetgroup/ev-app-tg/abc123
+</span></span><span style="display:flex;"><span>export ASG_NAME<span style="color:#f92672">=</span>ev-app-asg
+</span></span><span style="display:flex;"><span>export INSTANCE_ID<span style="color:#f92672">=</span>i-0123456789abcdef0
+</span></span><span style="display:flex;"><span>export APP_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>export DB_INSTANCE_ID<span style="color:#f92672">=</span>ev-prod-rds
+</span></span><span style="display:flex;"><span>export DB_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">1433</span>
+</span></span><span style="display:flex;"><span>export DB_SECRET_ID<span style="color:#f92672">=</span>ev/prod/database
+</span></span><span style="display:flex;"><span>export LOG_GROUP<span style="color:#f92672">=</span>/aws/ec2/ev-app
+</span></span><span style="display:flex;"><span>export SES_IDENTITY<span style="color:#f92672">=</span>example.com
+</span></span><span style="display:flex;"><span>export SES_SENDER<span style="color:#f92672">=</span>no-reply@example.com
+</span></span><span style="display:flex;"><span>export SES_RECIPIENT<span style="color:#f92672">=</span>ops@example.com
+</span></span></code></pre></div><p>What these variables control:</p>
+<ul>
+<li><code>${APP_DOMAIN}</code>, <code>${HOSTED_ZONE_ID}</code>, <code>${CLOUDFRONT_DIST_ID}</code>, and <code>${STATIC_BUCKET}</code> define the public web-delivery path.</li>
+<li><code>${PLACE_INDEX_NAME}</code> identifies the geospatial lookup resource used by the frontend.</li>
+<li><code>${ALB_NAME}</code>, <code>${TARGET_GROUP_ARN}</code>, <code>${ASG_NAME}</code>, <code>${INSTANCE_ID}</code>, and <code>${APP_PORT}</code> describe the application entry and compute tier.</li>
+<li><code>${DB_INSTANCE_ID}</code>, <code>${DB_PORT}</code>, and <code>${DB_SECRET_ID}</code> describe how the workload reaches and authenticates to the relational data tier.</li>
+<li><code>${LOG_GROUP}</code>, <code>${SES_IDENTITY}</code>, <code>${SES_SENDER}</code>, and <code>${SES_RECIPIENT}</code> support observability and communication checks.</li>
+</ul>
+<h2 id="recommended-aws-access">Recommended AWS Access</h2>
+<ul>
+<li>Route 53 read and change permissions for DNS validation tasks</li>
+<li>CloudFront and S3 permissions for frontend deployment checks</li>
+<li>EC2, ELBv2, Auto Scaling, and VPC read permissions for application runtime inspection</li>
+<li>RDS read permissions, and controlled reboot permissions only in approved environments</li>
+<li>SSM, Secrets Manager, IAM, KMS, CloudWatch, CloudTrail, and SES read permissions for operations work</li>
+</ul>
+<p>Least-privilege note:</p>
+<ul>
+<li>Read-only access is enough for most workshop checks.</li>
+<li>Write access should be limited to change windows or training environments when the exercise intentionally modifies infrastructure state.</li>
+</ul>
+<h2 id="content">Content</h2>
+<ol>
+<li><a href="../4.1-overview/">Overview</a></li>
+<li><a href="../4.2-edge-delivery-and-geospatial-requests/">Edge Delivery and Geospatial Requests</a></li>
+<li><a href="../4.3-private-application-routing-and-compute/">Private Application Routing and Compute</a></li>
+<li><a href="../4.4-relational-data-resilience-and-network-isolation/">Relational Data Resilience and Network Isolation</a></li>
+<li><a href="../4.5-operational-access-and-secret-governance/">Operational Access and Secret Governance</a></li>
+<li><a href="../4.6-monitoring-audit-and-email-delivery/">Monitoring, Audit, and Email Delivery</a></li>
+<li><a href="../4.7-workshop-architecture-deep-dive/">Workshop Architecture Deep Dive</a></li>
+</ol>
+<h1 id="workshop-overview-and-aws-service-map">Workshop Overview and AWS Service Map</h1>
+<p><img src="../../images/4-Workshop/ev-achi.png" alt="AWS Workshop Architecture Overview"></p>
+<h2 id="system-overview">System Overview</h2>
+<ul>
+<li>The EV Charging Station Management System is deployed as a layered AWS web platform.</li>
+<li>End users access a browser-based frontend through Route 53 and CloudFront.</li>
+<li>Static assets are stored in Amazon S3 and protected behind CloudFront Origin Access Control.</li>
+<li>Backend requests are routed to private EC2 instances through an Application Load Balancer.</li>
+<li>Business data is stored in Amazon RDS and isolated from public access.</li>
+<li>Operations teams use AWS-native tooling such as Systems Manager, Secrets Manager, CloudWatch, CloudTrail, and SES.</li>
+<li>The architecture separates content delivery, synchronous business processing, data persistence, and operational governance so that each layer can be tuned independently.</li>
+<li>The design assumes the backend is state-light at the instance level, which makes horizontal scale through Auto Scaling more realistic.</li>
+</ul>
+<p>What this subsection does:</p>
+<ul>
+<li>It establishes the shared system map used by the remaining six subsections.</li>
+<li>It explains why the workshop is organized by architectural layer rather than by AWS product name.</li>
+<li>It gives new readers a practical way to tell which services are public-facing, which are private, and which are operator-only.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>Teams troubleshoot faster when they understand the full service chain before looking at a single component.</li>
+<li>Many AWS incidents are boundary issues rather than single-service failures, so the overview makes those boundaries explicit.</li>
+<li>The subsection prevents incorrect assumptions such as &ldquo;the app uses Lambda&rdquo; or &ldquo;the database is public&rdquo; by showing the intended architecture up front.</li>
+</ul>
+<h2 id="aws-service-map">AWS Service Map</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Architecture need</th>
+          <th>Service used in this design</th>
+          <th>Why it is used</th>
+          <th>Not used here</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Public DNS</td>
+          <td>Amazon Route 53</td>
+          <td>Routes users to the public entry points</td>
+          <td>API Gateway custom domain</td>
+      </tr>
+      <tr>
+          <td>Frontend delivery</td>
+          <td>Amazon CloudFront + Amazon S3</td>
+          <td>Delivers static assets globally with cache</td>
+          <td>Amplify Hosting</td>
+      </tr>
+      <tr>
+          <td>Edge protection</td>
+          <td>AWS WAF</td>
+          <td>Filters unwanted web traffic</td>
+          <td>Shield configuration details are not shown</td>
+      </tr>
+      <tr>
+          <td>Map lookup</td>
+          <td>Amazon Location Service</td>
+          <td>Serves geospatial search and map features</td>
+          <td>Third-party map provider</td>
+      </tr>
+      <tr>
+          <td>API entry</td>
+          <td>Application Load Balancer</td>
+          <td>Forwards HTTP traffic to private compute</td>
+          <td>API Gateway</td>
+      </tr>
+      <tr>
+          <td>Compute</td>
+          <td>Amazon EC2 + Auto Scaling</td>
+          <td>Runs long-lived backend processes</td>
+          <td>Lambda, ECS, EKS</td>
+      </tr>
+      <tr>
+          <td>Outbound internet</td>
+          <td>NAT Gateway + Internet Gateway</td>
+          <td>Allows private instances to reach external AWS endpoints or the internet</td>
+          <td>Public EC2 instances</td>
+      </tr>
+      <tr>
+          <td>Relational storage</td>
+          <td>Amazon RDS</td>
+          <td>Stores transactional data with standby support</td>
+          <td>DynamoDB</td>
+      </tr>
+      <tr>
+          <td>Admin access</td>
+          <td>AWS Systems Manager</td>
+          <td>Avoids direct SSH exposure</td>
+          <td>Bastion host</td>
+      </tr>
+      <tr>
+          <td>Secret handling</td>
+          <td>AWS Secrets Manager + AWS KMS</td>
+          <td>Centralizes and encrypts secrets</td>
+          <td>Hard-coded credentials</td>
+      </tr>
+      <tr>
+          <td>Monitoring</td>
+          <td>Amazon CloudWatch</td>
+          <td>Captures metrics and logs</td>
+          <td>Third-party APM not shown</td>
+      </tr>
+      <tr>
+          <td>Audit</td>
+          <td>AWS CloudTrail</td>
+          <td>Records AWS API activity</td>
+          <td>EventBridge audit fan-out</td>
+      </tr>
+      <tr>
+          <td>Email</td>
+          <td>Amazon SES</td>
+          <td>Sends transactional email</td>
+          <td>SNS email delivery</td>
+      </tr>
+      <tr>
+          <td>Workflow orchestration future fit</td>
+          <td>AWS Step Functions</td>
+          <td>Useful if charging or settlement workflows become long-running</td>
+          <td>Not part of the current deployment</td>
+      </tr>
+      <tr>
+          <td>Async integration future fit</td>
+          <td>Amazon EventBridge / SQS / SNS</td>
+          <td>Useful for background processing and notification decoupling</td>
+          <td>Not part of the current deployment</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="end-to-end-aws-flow">End-to-End AWS Flow</h2>
+<ol>
+<li>A user resolves <code>${APP_DOMAIN}</code> through Amazon Route 53.
+Service: Amazon Route 53.
+What happens: Route 53 answers the public DNS query and directs the client to the CloudFront distribution.
+Why it matters: DNS is the first control point for the public application name, so a mistake here breaks the entire chain.</li>
+<li>CloudFront receives the request and evaluates AWS WAF rules.
+Services: Amazon CloudFront and AWS WAF.
+What happens: The edge layer terminates HTTPS, enforces edge security policy, and decides whether the request can continue.
+Why it matters: The edge layer reduces latency and filters malicious requests before they hit the backend.</li>
+<li>CloudFront serves cached frontend assets or fetches them from Amazon S3.
+Services: Amazon CloudFront and Amazon S3.
+What happens: Static content is delivered directly from cache when possible, otherwise fetched privately from S3.
+Why it matters: Static delivery stays fast and the S3 bucket does not need to be public.</li>
+<li>The frontend calls backend APIs through the Application Load Balancer.
+Service: Application Load Balancer.
+What happens: Dynamic requests are routed toward the application layer rather than the static-delivery path.
+Why it matters: The ALB is the public HTTP entry point for dynamic requests.</li>
+<li>The ALB routes traffic to healthy EC2 instances in private subnets.
+Services: ALB, Amazon EC2, EC2 Auto Scaling.
+What happens: Target-group health and listener logic decide which instance should process the request.
+Why it matters: The backend can scale horizontally without exposing instances directly.</li>
+<li>The EC2 application reads or writes relational data in Amazon RDS.
+Service: Amazon RDS.
+What happens: Transactional operations flow over private networking to the managed relational database.
+Why it matters: Transactions stay in a managed relational service with standby support.</li>
+<li>The application retrieves secrets, writes logs, and sends email by using its IAM role.
+Services: IAM, Secrets Manager, KMS, CloudWatch, SES.
+What happens: The workload uses temporary AWS credentials from its instance profile to reach supporting services.
+Why it matters: The instance does not need static credentials stored on disk.</li>
+<li>Operators administer the environment through Systems Manager and audit activities in CloudTrail.
+Services: AWS Systems Manager and AWS CloudTrail.
+What happens: Administrative activity goes through AWS-native control channels and remains auditable.
+Why it matters: Operations remain traceable and do not require public SSH access.</li>
+</ol>
+<p>Request and response behavior:</p>
+<ul>
+<li>User-facing browser traffic receives either cached static assets from CloudFront or dynamic JSON/API responses from the ALB-backed application tier.</li>
+<li>Backend-to-database traffic is private, stateful, and transactional.</li>
+<li>Control-plane and observability traffic is not part of the direct user request path, but it is essential for secure operations and post-incident analysis.</li>
+</ul>
+<h2 id="hands-on-baseline-checks">Hands-on Baseline Checks</h2>
+<p>Run these commands before working through the remaining sections.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sts get-caller-identity
+</span></span><span style="display:flex;"><span>aws route53 list-hosted-zones --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>aws cloudfront list-distributions --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>aws ec2 describe-instances --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span> --max-items <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>aws rds describe-db-instances --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>What to look for:</p>
+<ul>
+<li>You can authenticate to the intended AWS account.</li>
+<li>The hosted zone, CloudFront distribution, EC2 instances, and RDS instance all exist in the expected environment.</li>
+<li>The region and naming convention match the values you plan to use in the later labs.</li>
+<li>The discovered resource names are consistent enough that automation, dashboards, and runbooks can be built around them.</li>
+</ul>
+<h2 id="beginner-guidance">Beginner Guidance</h2>
+<ul>
+<li>Start by understanding which components are public and which are private.</li>
+<li>Treat Route 53, CloudFront, ALB, and SES as public-facing services.</li>
+<li>Treat EC2, RDS, Secrets Manager, and KMS as controlled internal services.</li>
+<li>Treat Systems Manager, CloudWatch, and CloudTrail as operator tools.</li>
+<li>If a service is not shown in the diagram, do not assume it exists in the deployment.</li>
+<li>Read the architecture from left to right for request flow, and from top to bottom for trust boundaries and operational ownership.</li>
+</ul>
+<h2 id="notes--assumptions">Notes / Assumptions</h2>
+<ul>
+<li>The diagram shows infrastructure topology, not application source code or CI/CD pipelines.</li>
+<li>The existing project proposal mentions Amazon RDS for SQL Server, but the diagram itself labels only Amazon RDS. Adjust engine-specific commands as needed.</li>
+<li>No API Gateway, Lambda, ECS, EKS, DynamoDB, EventBridge, SQS, SNS, or Cognito components are visible in this architecture.</li>
+<li>TLS certificates, security groups, subnet route tables, and EC2 launch templates are not drawn, but they are required for this design to function in a real AWS account.</li>
+</ul>
+<h1 id="hands-on-edge-delivery-and-geospatial-requests">Hands-on Edge Delivery and Geospatial Requests</h1>
+<h2 id="overview-1">Overview</h2>
+<ul>
+<li>This section focuses on the public edge of the platform.</li>
+<li>It explains how DNS, CDN caching, WAF filtering, S3 origin access, and Location Service requests work together.</li>
+<li>It is the right place to start when the frontend is slow, the domain does not resolve, or map data is missing.</li>
+<li>It also defines the boundary between static web delivery and the later dynamic request path to the backend.</li>
+<li>From an AWS architecture perspective, this subsection is the platform&rsquo;s latency-optimization and first-line security layer.</li>
+</ul>
+<p>What this step does:</p>
+<ul>
+<li>It brings browsers into the system through Route 53 and CloudFront.</li>
+<li>It protects the public ingress path with WAF and private-origin S3 access.</li>
+<li>It serves map and place-search capabilities without forcing all geospatial traffic through the backend.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>Static assets and map requests have very different caching and scaling behavior from transactional API calls.</li>
+<li>Frontend delivery should be globally distributed and cost-efficient.</li>
+<li>The edge path should absorb common attacks before they consume application capacity.</li>
+</ul>
+<p>What problem it solves:</p>
+<ul>
+<li>Slow or inconsistent global frontend delivery</li>
+<li>Unnecessary origin load on S3 or the backend</li>
+<li>Public exposure of the frontend bucket</li>
+<li>Poor separation between web-content delivery and geospatial integration</li>
+</ul>
+<h2 id="aws-services-in-this-section">AWS Services in This Section</h2>
+<h3 id="amazon-route-53">Amazon Route 53</h3>
+<p><img src="../../images/4-Workshop/route53.jpg" alt="Amazon Route 53 DNS"></p>
+<ul>
+<li>Resolves the public domain and directs users to the appropriate entry point.</li>
+<li>Acts as the first step in the request flow.</li>
+<li>Provides a controlled place to manage subdomains, validation records, and failover-ready DNS policy if the architecture evolves.</li>
+</ul>
+<h3 id="amazon-cloudfront">Amazon CloudFront</h3>
+<p><img src="../../images/4-Workshop/cloudfront.jpg" alt="Amazon CloudFront Distribution"></p>
+<ul>
+<li>Delivers cached frontend assets with low latency.</li>
+<li>Reduces repeated requests to the origin (S3).</li>
+<li>Terminates HTTPS close to the user and can enforce cache policy, header behavior, and origin controls.</li>
+</ul>
+<h3 id="aws-waf">AWS WAF</h3>
+<ul>
+<li>Filters incoming HTTP/HTTPS requests.</li>
+<li>Protects the system from common web attacks at the edge.</li>
+<li>Is the natural place to apply rate-based controls, managed rules, and coarse bot filtering before requests hit the application path.</li>
+</ul>
+<h3 id="amazon-s3">Amazon S3</h3>
+<p><img src="../../images/4-Workshop/s3-bucket.jpg" alt="Amazon S3 Bucket"></p>
+<ul>
+<li>Stores static frontend assets (HTML, JS, CSS).</li>
+<li>Serves as the origin for CloudFront via Origin Access Control.</li>
+<li>Keeps frontend deployment simple by separating object delivery from application runtime.</li>
+</ul>
+<h3 id="amazon-location-service">Amazon Location Service</h3>
+<p><img src="../../images/4-Workshop/location-service.png" alt="Amazon Location Service"></p>
+<ul>
+<li>Handles geospatial requests such as map rendering and place search.</li>
+<li>Operates independently from the static asset delivery flow.</li>
+<li>Lets the frontend consume map capabilities directly instead of overloading the core backend with proxy-style requests.</li>
+</ul>
+<h2 id="step-by-step-aws-flow">Step-by-Step AWS Flow</h2>
+<ol>
+<li>A user opens <code>${APP_DOMAIN}</code> in the browser.
+Service: Amazon Route 53.
+What happens: Route 53 resolves the public hostname to the CloudFront distribution.
+Why it matters: If DNS is wrong, no later AWS service can help.</li>
+<li>CloudFront receives the HTTPS request.
+Services: Amazon CloudFront and AWS WAF.
+What happens: WAF rules inspect the request before the distribution serves content.
+Why it matters: Malicious or malformed traffic can be blocked at the edge.</li>
+<li>CloudFront checks whether the requested file is cached.
+Services: Amazon CloudFront and Amazon S3.
+What happens: Cached files are returned immediately; cache misses are fetched from S3.
+Why it matters: Cache hits reduce latency and lower load on the origin bucket.</li>
+<li>S3 returns frontend objects only through the approved CloudFront path.
+Services: Amazon S3 and CloudFront Origin Access Control.
+What happens: The bucket stays private while CloudFront remains the allowed reader.
+Why it matters: Users cannot bypass CloudFront and read objects directly from S3.</li>
+<li>The frontend later requests geospatial data.
+Service: Amazon Location Service.
+What happens: The browser or frontend code calls place index and map APIs.
+Why it matters: Map traffic is separated from static asset delivery.</li>
+<li>The frontend then calls backend APIs through the application layer.
+Service: Application Load Balancer in the next section.
+What happens: Dynamic traffic leaves the edge path and enters the private compute stack.
+Why it matters: Static and dynamic traffic can be scaled and tuned independently.</li>
+</ol>
+<h3 id="request-and-response-behavior">Request and response behavior</h3>
+<ul>
+<li>DNS response: Route 53 returns the CloudFront entry that the browser should reach.</li>
+<li>Static asset response: CloudFront returns cached content or forwards an origin fetch to S3.</li>
+<li>Geospatial response: Amazon Location Service returns search or map data directly to the frontend integration.</li>
+<li>Dynamic handoff: Once the SPA is loaded, API calls leave the edge-delivery path and move to the ALB-based application tier.</li>
+</ul>
+<h3 id="high-level-internal-logic">High-level internal logic</h3>
+<ul>
+<li>CloudFront is effectively the read-optimization layer for the frontend.</li>
+<li>S3 is the object store of record for frontend artifacts, but not the public endpoint.</li>
+<li>WAF is the edge gatekeeper.</li>
+<li>Amazon Location Service is a specialized API dependency used by the UI, not the main application server.</li>
+</ul>
+<h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
+<h3 id="1-inspect-the-hosted-zone">1. Inspect the hosted zone</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws route53 list-hosted-zones --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Why this check exists:</p>
+<ul>
+<li>It verifies that DNS is managed in the expected account and region context.</li>
+</ul>
+<h3 id="2-create-or-update-the-application-dns-record">2. Create or update the application DNS record</h3>
+<p>Create a file named <code>route53-app-record.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Comment&#34;</span>: <span style="color:#e6db74">&#34;Point app subdomain to CloudFront&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Changes&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;app.example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;CNAME&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;d111111abcdef8.cloudfront.net&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Apply the change and wait until it is in sync:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CHANGE_ID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>aws route53 change-resource-record-sets <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --hosted-zone-id <span style="color:#e6db74">${</span>HOSTED_ZONE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch file://route53-app-record.json <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;ChangeInfo.Id&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output text<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>aws route53 wait resource-record-sets-changed --id <span style="color:#e6db74">${</span>CHANGE_ID<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Why this check exists:</p>
+<ul>
+<li>The <code>UPSERT</code> model is safe for repeated infrastructure updates.</li>
+<li>Waiting for sync avoids validating the route before DNS changes have propagated inside Route 53.</li>
+</ul>
+<h3 id="3-deploy-frontend-assets-to-s3">3. Deploy frontend assets to S3</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 sync ./dist s3://<span style="color:#e6db74">${</span>STATIC_BUCKET<span style="color:#e6db74">}</span> --delete
+</span></span></code></pre></div><p>Why this check exists:</p>
+<ul>
+<li>It models the publish step of a frontend release.</li>
+<li>The <code>--delete</code> flag keeps the bucket aligned with the current build output, but it should be used carefully in production.</li>
+</ul>
+<h3 id="4-invalidate-the-cloudfront-cache-after-deployment">4. Invalidate the CloudFront cache after deployment</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudfront create-invalidation <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --distribution-id <span style="color:#e6db74">${</span>CLOUDFRONT_DIST_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --paths <span style="color:#e6db74">&#34;/*&#34;</span>
+</span></span></code></pre></div><p>Why this check exists:</p>
+<ul>
+<li>CloudFront may continue serving stale cached objects even after S3 has newer versions.</li>
+<li>In production, targeted invalidations or versioned asset paths are usually better than always invalidating <code>/*</code>.</li>
+</ul>
+<h3 id="5-test-a-location-service-search">5. Test a Location Service search</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws location search-place-index-for-text <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --index-name <span style="color:#e6db74">${</span>PLACE_INDEX_NAME<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --text <span style="color:#e6db74">&#34;EV charging station&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Why this check exists:</p>
+<ul>
+<li>It isolates the map-data path from the rest of the frontend.</li>
+<li>It helps prove whether a map issue is an edge problem, a Location Service configuration problem, or a frontend rendering problem.</li>
+</ul>
+<h2 id="configuration-example">Configuration Example</h2>
+<h3 id="private-s3-origin-policy-for-cloudfront-oac">Private S3 origin policy for CloudFront OAC</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;AllowCloudFrontServicePrincipalReadOnly&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Service&#34;</span>: <span style="color:#e6db74">&#34;cloudfront.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;s3:GetObject&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:s3:::ev-prod-frontend/*&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;AWS:SourceArn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:cloudfront::123456789012:distribution/E123ABC456DEF&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>What this configuration achieves:</p>
+<ul>
+<li>The S3 bucket stays private.</li>
+<li>Only the named CloudFront distribution can read objects.</li>
+<li>Users must access the frontend through CloudFront, where WAF can inspect traffic.</li>
+<li>The policy narrows origin access to a known distribution, which is more secure than allowing broad public reads.</li>
+</ul>
+<h3 id="best-practices-for-this-layer">Best practices for this layer</h3>
+<ul>
+<li>Prefer Route 53 alias records to CloudFront in production instead of CNAMEs when possible.</li>
+<li>Use versioned frontend assets to reduce the need for large invalidations.</li>
+<li>Attach AWS-managed WAF rules first, then add custom rules after baseline traffic is understood.</li>
+<li>Consider CloudFront response headers policies for security headers such as <code>Strict-Transport-Security</code> and <code>Content-Security-Policy</code>.</li>
+<li>Use separate Amazon Location resources for development and production to avoid accidental cross-environment changes.</li>
+</ul>
+<h2 id="what-to-verify">What to Verify</h2>
+<ul>
+<li>DNS resolves to the expected CloudFront distribution.</li>
+<li>The S3 bucket is not publicly readable.</li>
+<li>A CloudFront invalidation is created after each deployment.</li>
+<li>Map search works through Amazon Location Service.</li>
+<li>WAF is associated with the CloudFront distribution in the target environment.</li>
+<li>TLS certificates are valid and the frontend is served over HTTPS end-to-end.</li>
+</ul>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li>Updating S3 content but forgetting to invalidate CloudFront.</li>
+<li>Making the S3 bucket public instead of using OAC.</li>
+<li>Pointing Route 53 to the wrong CloudFront domain.</li>
+<li>Troubleshooting map failures in the backend when the real issue is Amazon Location configuration.</li>
+<li>Treating CloudFront as only a cache while ignoring its role in edge security and origin protection.</li>
+</ul>
+<h2 id="notes--assumptions-1">Notes / Assumptions</h2>
+<ul>
+<li>The diagram shows Amazon Location Service as a frontend integration path, but it does not expose the exact map style or place index names.</li>
+<li>Route 53 record type may be an alias rather than a CNAME in a real production setup. The example above uses a CNAME for clarity.</li>
+<li>The diagram does not show API Gateway or Lambda at the edge. Dynamic requests move to the ALB-based application layer.</li>
+<li>If geospatial access needs stronger client isolation, signed requests or a backend mediation layer may eventually be required.</li>
+</ul>
+<h1 id="hands-on-private-application-routing-and-compute">Hands-on Private Application Routing and Compute</h1>
+<h2 id="overview-2">Overview</h2>
+<ul>
+<li>This section explains how dynamic requests move from the edge into private compute.</li>
+<li>It focuses on the VPC, public and private subnets, Internet Gateway, NAT Gateway, ALB, EC2 instances, and Auto Scaling.</li>
+<li>It is the primary section for troubleshooting <code>5xx</code> errors, unhealthy targets, or outbound connectivity issues.</li>
+<li>This subsection defines the core execution path for business logic, authentication, charging workflows, and other synchronous application behavior.</li>
+</ul>
+<p>What this step does:</p>
+<ul>
+<li>It receives public API traffic on the ALB.</li>
+<li>It routes requests to healthy EC2 instances inside private subnets.</li>
+<li>It provides controlled outbound access for those instances without giving them public IP addresses.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>The application needs a stable public API entry point but should not expose individual compute nodes.</li>
+<li>The backend needs horizontal scaling and self-healing.</li>
+<li>Private subnets lower the attack surface while NAT preserves outbound functionality.</li>
+</ul>
+<p>What problem it solves:</p>
+<ul>
+<li>Direct internet exposure of application servers</li>
+<li>Lack of controlled traffic distribution across instances</li>
+<li>Inability to replace failed nodes without downtime</li>
+<li>Poor separation between inbound public access and outbound dependency access</li>
+</ul>
+<h2 id="aws-services-in-this-section-1">AWS Services in This Section</h2>
+<h3 id="amazon-vpc">Amazon VPC</h3>
+<p><img src="../../images/4-Workshop/vpc-overview.png" alt="Amazon VPC"></p>
+<ul>
+<li>Defines the network boundary for the entire system.</li>
+<li>Hosts all subnets, gateways, and compute resources.</li>
+<li>Makes it possible to separate public routing, private compute, and private data into controlled segments.</li>
+</ul>
+<h3 id="internet-gateway">Internet Gateway</h3>
+<p><img src="../../images/4-Workshop/internet-gateway.png" alt="Internet Gateway"></p>
+<ul>
+<li>Connects the VPC to the public internet.</li>
+<li>Enables inbound and outbound traffic based on route table configuration.</li>
+<li>Supports public-facing resources such as the ALB and the NAT Gateway.</li>
+</ul>
+<h3 id="nat-gateway">NAT Gateway</h3>
+<p><img src="../../images/4-Workshop/nat-gateway.png" alt="NAT Gateway"></p>
+<ul>
+<li>Allows instances in private subnets to access the internet.</li>
+<li>Does not allow direct inbound traffic from the internet.</li>
+<li>Acts as a controlled egress point for patching, dependency download, and calls to public AWS service endpoints.</li>
+</ul>
+<h3 id="application-load-balancer">Application Load Balancer</h3>
+<p><img src="../../images/4-Workshop/alb.png" alt="Application Load Balancer"></p>
+<ul>
+<li>Receives external HTTP/HTTPS requests.</li>
+<li>Distributes traffic to backend EC2 instances.</li>
+<li>Enforces health-aware routing and can host listener rules for path- or host-based traffic decisions.</li>
+</ul>
+<h3 id="amazon-ec2">Amazon EC2</h3>
+<p><img src="../../images/4-Workshop/ec2-instances.png" alt="Amazon EC2 Instances"></p>
+<ul>
+<li>Runs backend application workloads.</li>
+<li>Processes business logic and returns responses.</li>
+<li>Holds the application runtime, local process state, and agent integrations such as SSM or CloudWatch logging.</li>
+</ul>
+<h3 id="ec2-auto-scaling">EC2 Auto Scaling</h3>
+<p><img src="../../images/4-Workshop/auto-scaling-group.png" alt="Auto Scaling Group"></p>
+<ul>
+<li>Automatically scales the number of instances based on load.</li>
+<li>Ensures high availability across multiple Availability Zones.</li>
+<li>Replaces unhealthy or terminated instances to keep the target fleet at the desired size.</li>
+</ul>
+<h2 id="why-this-design-uses-alb--ec2">Why This Design Uses ALB + EC2</h2>
+<ul>
+<li>The diagram shows long-running application servers, so <strong>Amazon EC2</strong> is the active compute model.</li>
+<li>The public API entry point is <strong>Application Load Balancer</strong>, not API Gateway.</li>
+<li>No Lambda, ECS, or EKS components are shown, so this workshop does not assume serverless or container orchestration.</li>
+<li>Private subnets indicate that compute should not be directly reachable from the internet.</li>
+<li>This design fits workloads that maintain application processes, connection pools, or JVM-based runtime characteristics that benefit from persistent hosts.</li>
+</ul>
+<h2 id="step-by-step-aws-flow-1">Step-by-Step AWS Flow</h2>
+<ol>
+<li>The frontend sends a dynamic request to the backend hostname.
+Service: Application Load Balancer.
+What happens: The ALB receives the request at the public boundary of the application tier.
+Why it matters: Only the ALB should be public for backend traffic.</li>
+<li>The ALB evaluates listener rules and target group health.
+Service: Application Load Balancer.
+What happens: Requests are routed only to registered healthy targets.
+Why it matters: Bad instances can be isolated without taking down the whole service.</li>
+<li>A healthy EC2 instance in a private subnet processes the request.
+Service: Amazon EC2.
+What happens: The application performs business logic and prepares the response.
+Why it matters: Compute remains private and controlled by security groups.</li>
+<li>Auto Scaling keeps the desired number of instances running.
+Service: EC2 Auto Scaling.
+What happens: Failed instances can be replaced and capacity can grow during traffic spikes.
+Why it matters: The platform can recover from instance failure and scale out.</li>
+<li>If the instance needs outbound access, it sends traffic through the NAT Gateway.
+Services: NAT Gateway and Internet Gateway.
+What happens: Private instances reach external endpoints without receiving public IPs.
+Why it matters: The backend can call AWS public service endpoints or download dependencies without becoming internet-facing.</li>
+<li>The response returns through the ALB to the client.
+Service: Application Load Balancer.
+What happens: The ALB completes the HTTP request lifecycle.
+Why it matters: Clients never communicate with EC2 instances directly.</li>
+</ol>
+<h3 id="request-and-response-behavior-1">Request and response behavior</h3>
+<ul>
+<li>Inbound request behavior: The ALB terminates the public request and forwards it to an eligible target over the configured application port.</li>
+<li>Backend processing behavior: The EC2 instance performs application logic, may call RDS or supporting AWS APIs, and returns an HTTP response.</li>
+<li>Health behavior: If the instance fails the configured health check, the ALB stops sending production traffic to it.</li>
+<li>Scale behavior: Auto Scaling adjusts capacity independently from request routing, allowing the service to adapt under load.</li>
+</ul>
+<h3 id="internal-logic-of-this-layer">Internal logic of this layer</h3>
+<ul>
+<li>Public subnets exist to host internet-facing endpoints.</li>
+<li>Private subnets exist to host compute that should not be directly reachable from the internet.</li>
+<li>ALB health checks and target groups form the contract between the edge-facing application boundary and the actual backend nodes.</li>
+<li>NAT is a convenience and security compromise: it preserves egress while keeping instances private, but it also introduces cost and availability trade-offs.</li>
+</ul>
+<h2 id="aws-cli-walkthrough-1">AWS CLI Walkthrough</h2>
+<h3 id="1-inspect-the-load-balancer">1. Inspect the load balancer</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws elbv2 describe-load-balancers <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --names <span style="color:#e6db74">${</span>ALB_NAME<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-check-target-health">2. Check target health</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws elbv2 describe-target-health <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --target-group-arn <span style="color:#e6db74">${</span>TARGET_GROUP_ARN<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="3-inspect-the-auto-scaling-group">3. Inspect the Auto Scaling group</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws autoscaling describe-auto-scaling-groups <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --auto-scaling-group-names <span style="color:#e6db74">${</span>ASG_NAME<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="4-inspect-a-backend-instance">4. Inspect a backend instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ec2 describe-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --instance-ids <span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>How to interpret these commands:</p>
+<ul>
+<li>The ALB inspection confirms whether the public entry point is really internet-facing and attached to the expected subnets.</li>
+<li>Target-health inspection proves whether the routing contract between ALB and EC2 is healthy right now.</li>
+<li>Auto Scaling inspection shows how many nodes the system expects to have and where they are placed.</li>
+<li>Instance inspection helps compare the properties of a single node against the expected fleet configuration.</li>
+</ul>
+<h2 id="configuration-example-1">Configuration Example</h2>
+<h3 id="typical-traffic-rules-for-this-architecture">Typical traffic rules for this architecture</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Inbound rule</th>
+          <th>Outbound rule</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ALB security group</td>
+          <td><code>443</code> from <code>0.0.0.0/0</code></td>
+          <td><code>${APP_PORT}</code> to EC2 security group</td>
+          <td>Public HTTPS entry</td>
+      </tr>
+      <tr>
+          <td>EC2 security group</td>
+          <td><code>${APP_PORT}</code> from ALB security group</td>
+          <td>Database port to RDS, <code>443</code> for outbound AWS calls</td>
+          <td>Private application runtime</td>
+      </tr>
+      <tr>
+          <td>Private subnet route table</td>
+          <td>No direct internet route</td>
+          <td><code>0.0.0.0/0</code> to NAT Gateway</td>
+          <td>Controlled egress</td>
+      </tr>
+      <tr>
+          <td>Public subnet route table</td>
+          <td><code>0.0.0.0/0</code> to Internet Gateway</td>
+          <td>Public edge path</td>
+          <td>Supports ALB and NAT Gateway</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="recommended-alb-health-check-settings">Recommended ALB health check settings</h3>
+<ul>
+<li>Protocol: <code>HTTP</code> or <code>HTTPS</code></li>
+<li>Health check path: a lightweight endpoint such as <code>/actuator/health</code> or <code>/health</code></li>
+<li>Success codes: <code>200-399</code></li>
+<li>Interval: <code>30</code> seconds</li>
+<li>Healthy threshold: <code>2</code> or more</li>
+<li>Unhealthy threshold: <code>2</code> or more</li>
+</ul>
+<h3 id="best-practices-for-this-layer-1">Best practices for this layer</h3>
+<ul>
+<li>Keep instances stateless wherever possible so scaling events do not interrupt user sessions.</li>
+<li>Use launch templates rather than manual instance builds for repeatability.</li>
+<li>Keep health checks shallow enough that a temporary RDS spike does not falsely evict healthy app nodes.</li>
+<li>Consider VPC endpoints for high-volume AWS API traffic to reduce NAT cost and egress dependence.</li>
+<li>Use separate security groups for ALB, EC2, and RDS to make trust boundaries explicit.</li>
+</ul>
+<h2 id="what-to-verify-1">What to Verify</h2>
+<ul>
+<li>The ALB is internet-facing, but EC2 instances are in private subnets.</li>
+<li>Target health is <code>healthy</code> for every active instance.</li>
+<li>The Auto Scaling group spans at least two Availability Zones.</li>
+<li>Private subnets use a NAT route for outbound traffic.</li>
+<li>Backend responses work even though instances do not have public IPs.</li>
+<li>Security-group rules allow only the minimum required traffic between layers.</li>
+</ul>
+<h2 id="common-mistakes-1">Common Mistakes</h2>
+<ul>
+<li>Opening the EC2 security group to the internet instead of only to the ALB.</li>
+<li>Using a health check path that depends on the database and marks healthy instances as failed during database events.</li>
+<li>Forgetting that private instances still need outbound connectivity through NAT.</li>
+<li>Assuming API Gateway or Lambda is involved when the real entry point is the ALB.</li>
+<li>Treating the NAT Gateway as optional even though package updates, AWS API calls, or third-party integrations may depend on it.</li>
+</ul>
+<h2 id="notes--assumptions-2">Notes / Assumptions</h2>
+<ul>
+<li>The diagram shows one NAT Gateway. In production, you may want one per Availability Zone for stronger outbound resilience.</li>
+<li>Security groups and NACLs are not drawn, but they are critical to making this routing model work.</li>
+<li>This workshop documents EC2-based deployment because ECS and EKS are not shown in the architecture.</li>
+<li>If the product later exposes partner-facing APIs, API Gateway may be added in front of dedicated endpoints without replacing the current ALB path.</li>
+</ul>
+<h1 id="relational-data-resilience-and-network-isolation">Relational Data Resilience and Network Isolation</h1>
+<h2 id="overview-3">Overview</h2>
+<ul>
+<li>This section describes how the platform stores persistent application data while keeping the database tier isolated from public access.</li>
+<li>Its purpose is to provide durable relational storage and support availability in case of database or infrastructure failure.</li>
+<li>It fits behind the application layer as the system of record for the workload.</li>
+<li>In practice, this subsection defines the persistence contract for bookings, charging sessions, payments, user records, and operational reporting queries that still belong to the main transaction path.</li>
+</ul>
+<p>What this step does:</p>
+<ul>
+<li>It stores application data in a managed relational database.</li>
+<li>It protects the data tier from direct public exposure.</li>
+<li>It provides a resilient primary and standby posture for continuity.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>The EV platform needs strong transactional behavior rather than eventually consistent object storage.</li>
+<li>Database availability is central to the user experience because booking, charging, and payment workflows all depend on consistent writes.</li>
+<li>Data is usually the highest-value asset in the system and deserves the strongest isolation boundary.</li>
+</ul>
+<p>What problem it solves:</p>
+<ul>
+<li>Loss of transactional integrity</li>
+<li>Public exposure of the database</li>
+<li>Hardcoded host dependency on a single database node</li>
+<li>Weak recovery posture during infrastructure or database failure</li>
+</ul>
+<h2 id="components">Components</h2>
+<h3 id="amazon-rds">Amazon RDS</h3>
+<p><img src="../../images/4-Workshop/rds-overview.png" alt="Amazon RDS"></p>
+<ul>
+<li>Managed relational database service for the application data tier.</li>
+<li>Handles provisioning, backups, patching, and failover.</li>
+<li>Reduces operational overhead compared with self-managed database servers on EC2.</li>
+</ul>
+<h3 id="primary-database-instance">Primary Database Instance</h3>
+<p><img src="../../images/4-Workshop/rds-primary.png" alt="RDS Primary Instance"></p>
+<ul>
+<li>Handles the main transactional workload.</li>
+<li>Processes read and write operations from the application.</li>
+<li>Represents the active endpoint for business-critical data changes.</li>
+</ul>
+<h3 id="standby-database-instance">Standby Database Instance</h3>
+<ul>
+<li>Maintains a synchronized replica of the primary instance.</li>
+<li>Automatically takes over during failover scenarios.</li>
+<li>Exists to improve resilience rather than to serve direct user traffic.</li>
+</ul>
+<h3 id="no-public-access-boundary">No Public Access Boundary</h3>
+<ul>
+<li>Ensures the database is not publicly accessible.</li>
+<li>Access is restricted to internal resources within the VPC.</li>
+<li>Reduces attack surface and prevents accidental exposure through broad CIDR rules.</li>
+</ul>
+<h3 id="ec2-to-rds-connectivity">EC2 to RDS Connectivity</h3>
+<ul>
+<li>Application servers connect to the database over private networking.</li>
+<li>Typically uses security groups and internal DNS endpoints.</li>
+<li>Keeps the application-to-database contract stable even if the underlying host changes during maintenance or failover.</li>
+</ul>
+<h2 id="flow-description">Flow Description</h2>
+<ol>
+<li>EC2 instances send database reads and writes to the primary RDS instance.
+What happens: The application opens a connection pool to the managed RDS endpoint and performs transactional operations.
+Why it matters: The application should depend on the stable endpoint, not a specific node IP.</li>
+<li>The RDS service maintains synchronization between the primary and standby instances.
+What happens: State changes are replicated according to the availability mode configured for the database.
+Why it matters: This is the basis for controlled failover and better durability.</li>
+<li>If the primary database becomes unavailable, the standby instance likely supports failover continuity.
+What happens: RDS shifts the primary role so the application can reconnect through the same logical endpoint.
+Why it matters: Failover time still matters, but application configuration changes should not be necessary.</li>
+<li>Database access remains internal to the application environment and is not exposed directly to internet users.
+What happens: Only allowed VPC-internal paths can reach the database port.
+Why it matters: The database remains protected even if a public endpoint elsewhere in the architecture is under attack.</li>
+</ol>
+<h3 id="request-and-response-behavior-2">Request and response behavior</h3>
+<ul>
+<li>Input request: The application submits SQL operations as part of synchronous business workflows.</li>
+<li>Processing: The primary node handles reads and writes, while the standby remains in a resilience role.</li>
+<li>Output response: The application receives query results, success acknowledgments, or database exceptions that it must handle cleanly.</li>
+<li>Failure behavior: During failover or maintenance, connection retries and timeout handling become part of the application contract.</li>
+</ul>
+<h2 id="key-logic--rules">Key Logic / Rules</h2>
+<ul>
+<li>The primary database is the main endpoint for normal application transactions.</li>
+<li>The standby database improves resilience but is not shown as a user-facing endpoint.</li>
+<li>Network isolation is a core rule of the design, as the diagram explicitly marks the data tier with no public access.</li>
+<li>Keeping the data tier private reduces attack surface and limits unintended connectivity paths.</li>
+<li>Application-layer control is required for all database interactions.</li>
+<li>Secrets should provide connection details so credentials and hostnames are not hardcoded in the application artifact.</li>
+<li>If future read-heavy patterns emerge, read replicas or analytics-specific stores should be evaluated instead of overloading the primary path.</li>
+</ul>
+<h2 id="aws-cli-walkthrough-2">AWS CLI Walkthrough</h2>
+<h3 id="1-inspect-the-db-instance">1. Inspect the DB instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds describe-db-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-display-status-multi-az-flag-and-endpoint">2. Display status, Multi-AZ flag, and endpoint</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds describe-db-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;DBInstances[0].[DBInstanceStatus,MultiAZ,Endpoint.Address,Endpoint.Port]&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output table
+</span></span></code></pre></div><h3 id="3-perform-an-approved-failover-test-in-a-non-production-environment">3. Perform an approved failover test in a non-production environment</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds reboot-db-instance <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --force-failover <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Use the failover command only when:</p>
+<ul>
+<li>Multi-AZ or an equivalent standby mode is actually enabled,</li>
+<li>the environment owner has approved the test,</li>
+<li>the application team is ready to observe reconnect behavior.</li>
+</ul>
+<h2 id="configuration-example-2">Configuration Example</h2>
+<h3 id="recommended-database-access-model">Recommended database access model</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Item</th>
+          <th>Recommended setting</th>
+          <th>Why it matters</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DB subnet group</td>
+          <td>Private subnets in at least two Availability Zones</td>
+          <td>Supports isolation and standby placement</td>
+      </tr>
+      <tr>
+          <td>Public accessibility</td>
+          <td>Disabled</td>
+          <td>Prevents direct internet access</td>
+      </tr>
+      <tr>
+          <td>Source access</td>
+          <td>Only from the EC2 application security group</td>
+          <td>Limits who can open sessions</td>
+      </tr>
+      <tr>
+          <td>Database port</td>
+          <td><code>${DB_PORT}</code> for the actual engine</td>
+          <td>Makes rules explicit and auditable</td>
+      </tr>
+      <tr>
+          <td>Connection target</td>
+          <td>RDS DNS endpoint, not an instance IP</td>
+          <td>Supports maintenance and failover without app reconfiguration</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="example-connection-secret-stored-in-secrets-manager">Example connection secret stored in Secrets Manager</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;ev-prod-rds.xxxxxx.ap-southeast-1.rds.amazonaws.com&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">1433</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;database&#34;</span>: <span style="color:#e6db74">&#34;evcharging&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;app_user&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;change-me&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="best-practices-for-this-layer-2">Best practices for this layer</h3>
+<ul>
+<li>Enable automated backups and verify point-in-time recovery settings.</li>
+<li>Use engine-specific parameter groups rather than unmanaged instance tuning.</li>
+<li>Keep connection pooling under control so failover does not result in a reconnect storm.</li>
+<li>Encrypt storage and snapshots with KMS-managed keys.</li>
+<li>Document database migration and rollback steps separately from routine application deployments.</li>
+</ul>
+<h2 id="what-to-verify-2">What to Verify</h2>
+<ul>
+<li>The RDS instance is not publicly accessible.</li>
+<li>The application connects by using the RDS endpoint, not a fixed private IP.</li>
+<li>The DB subnet group uses private subnets.</li>
+<li>Only the application security group is allowed to reach the database port.</li>
+<li>Failover behavior has been tested outside production and documented.</li>
+</ul>
+<h2 id="common-mistakes-2">Common Mistakes</h2>
+<ul>
+<li>Opening the database to a broad CIDR range instead of only the application security group.</li>
+<li>Hardcoding the database hostname in source code instead of using a managed secret.</li>
+<li>Treating the standby as a read endpoint when the diagram only shows a primary and standby pair.</li>
+<li>Running failover drills without coordinating with the application team.</li>
+<li>Assuming relational data can scale infinitely without later introducing read isolation, caching, or query optimization.</li>
+</ul>
+<h2 id="notes--assumptions-3">Notes / Assumptions</h2>
+<ul>
+<li>The primary and standby layout strongly suggests a Multi-AZ or equivalent high-availability configuration, but the exact mode is not labeled.</li>
+<li>Backup retention, point-in-time recovery, and encryption settings are not visible in the diagram.</li>
+<li>No read replica, cache, or analytics database is shown, so those patterns are not assumed here.</li>
+<li>DynamoDB and Aurora are intentionally out of scope for this currently documented architecture.</li>
+</ul>
+<h1 id="operational-access-and-secret-governance">Operational Access and Secret Governance</h1>
+<h2 id="overview-4">Overview</h2>
+<ul>
+<li>This section explains how administrators and application instances receive controlled access to the environment and sensitive configuration.</li>
+<li>Its purpose is to reduce direct exposure, centralize secret handling, and enforce machine permissions through AWS-native controls.</li>
+<li>It fits as the security and operations control plane alongside the runtime environment.</li>
+<li>In operational terms, this is the subsection that explains how people and workloads gain trust without falling back to hardcoded credentials or public SSH.</li>
+</ul>
+<p>What this step does:</p>
+<ul>
+<li>It provides operator access to private instances through Systems Manager.</li>
+<li>It gives EC2 instances machine identity through an IAM instance profile.</li>
+<li>It externalizes sensitive values into Secrets Manager and protects them with KMS.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>Production systems should not distribute long-lived AWS keys or SSH keys to application hosts unnecessarily.</li>
+<li>Operator access should be auditable and revocable.</li>
+<li>Secrets should be centralized, encrypted, and rotated independently from application code releases.</li>
+</ul>
+<p>What problem it solves:</p>
+<ul>
+<li>Public administration paths to private servers</li>
+<li>Hardcoded application credentials</li>
+<li>Weak machine identity and permission sprawl</li>
+<li>Inconsistent control over who can decrypt or use sensitive material</li>
+</ul>
+<h2 id="components-1">Components</h2>
+<h3 id="aws-systems-manager-ssm">AWS Systems Manager (SSM)</h3>
+<p><img src="../../images/4-Workshop/ssm-session-manager.png" alt="AWS Systems Manager Session Manager"></p>
+<ul>
+<li>Provides controlled access for operators to connect to private EC2 instances.</li>
+<li>Eliminates the need for SSH keys or public access.</li>
+<li>Can support interactive sessions, command execution, and standardized runbooks.</li>
+</ul>
+<h3 id="iam-instance-profile">IAM Instance Profile</h3>
+<p><img src="../../images/4-Workshop/iam-instance-profile.png" alt="IAM Instance Profile"></p>
+<ul>
+<li>Grants machine-level identity to EC2 instances.</li>
+<li>Allows applications to securely access AWS services without hardcoded credentials.</li>
+<li>Supplies temporary credentials that are rotated automatically by AWS.</li>
+</ul>
+<h3 id="aws-secrets-manager">AWS Secrets Manager</h3>
+<ul>
+<li>Stores sensitive data such as database connection strings, API keys, and credentials.</li>
+<li>Provides secure retrieval of secrets at runtime.</li>
+<li>Decouples secret lifecycle from application deployment lifecycle.</li>
+</ul>
+<h3 id="aws-kms">AWS KMS</h3>
+<ul>
+<li>Encrypts and protects secrets managed by the system.</li>
+<li>Controls access to encryption keys via IAM policies.</li>
+<li>Makes encryption governance a managed service concern rather than a custom application responsibility.</li>
+</ul>
+<h3 id="amazon-ec2-1">Amazon EC2</h3>
+<p><img src="../../images/4-Workshop/ec2-iam-role.png" alt="EC2 Instance IAM Role"></p>
+<ul>
+<li>Consumes IAM roles and retrieves secrets during application runtime.</li>
+<li>Acts as the execution environment for secure service interaction.</li>
+<li>Uses machine identity to reach CloudWatch, SES, Secrets Manager, and other AWS APIs.</li>
+</ul>
+<h2 id="flow-description-1">Flow Description</h2>
+<ol>
+<li>An administrator reaches the environment through AWS Systems Manager rather than a direct internet-facing login path.
+What happens: The operator opens a brokered session to a private instance by targeting it through SSM.
+Why it matters: The instance can remain private while still being manageable.</li>
+<li>EC2 instances assume their IAM instance profile automatically at runtime.
+What happens: Temporary AWS credentials are provided through the instance metadata service.
+Why it matters: The workload can authenticate safely without embedding keys in files.</li>
+<li>The application reads secrets from AWS Secrets Manager when configuration or credentials are required.
+What happens: The runtime fetches named secret material on demand or at startup.
+Why it matters: Secret rotation and environment separation become much more manageable.</li>
+<li>AWS KMS likely protects the secret material or encryption operations associated with those secrets.
+What happens: Authorized callers can decrypt protected values while unauthorized callers are denied.
+Why it matters: Encryption is enforced at the service boundary and can be audited through AWS controls.</li>
+<li>The same IAM role also allows the instance to write logs and send email, as shown in the diagram.
+What happens: One machine identity covers multiple runtime integrations, but each permission should still remain tightly scoped.
+Why it matters: Centralized machine identity reduces credential sprawl while keeping service access explicit.</li>
+</ol>
+<h3 id="request-and-response-behavior-3">Request and response behavior</h3>
+<ul>
+<li>Operator request: SSM receives an access request and establishes a managed session if the target instance is registered and authorized.</li>
+<li>Application request: The workload calls Secrets Manager to retrieve named configuration or credentials.</li>
+<li>Crypto response: KMS authorizes or denies decryption depending on IAM and key policy alignment.</li>
+<li>Service response: The instance either receives the required secret and credentials, or the failure is surfaced as a policy or configuration problem.</li>
+</ul>
+<h2 id="key-logic--rules-1">Key Logic / Rules</h2>
+<ul>
+<li>Administrative access is brokered through SSM, which avoids the need for public SSH or bastion exposure in the diagram.</li>
+<li>Secret values are externalized into a managed service instead of being embedded directly on application servers.</li>
+<li>IAM roles enforce least-privilege access for machine identities.</li>
+<li>Encryption is treated as a managed capability rather than an application-owned key store.</li>
+<li>The instance profile shown in the diagram is scoped to reading secrets, writing logs, and sending email.</li>
+<li>IAM resource scope should be narrower in production than the simplified examples often shown in workshops.</li>
+</ul>
+<h2 id="aws-cli-walkthrough-3">AWS CLI Walkthrough</h2>
+<h3 id="1-start-an-ssm-session-to-a-private-instance">1. Start an SSM session to a private instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ssm start-session <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --target <span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-verify-the-attached-iam-instance-profile">2. Verify the attached IAM instance profile</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ec2 describe-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --instance-ids <span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;Reservations[0].Instances[0].IamInstanceProfile.Arn&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output text
+</span></span></code></pre></div><h3 id="3-read-a-secret-value">3. Read a secret value</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws secretsmanager get-secret-value <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --secret-id <span style="color:#e6db74">${</span>DB_SECRET_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="4-list-kms-aliases">4. List KMS aliases</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws kms list-aliases --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>How to interpret these commands:</p>
+<ul>
+<li>A successful SSM session proves both management-plane reachability and correct instance registration.</li>
+<li>A missing instance profile ARN usually explains why secret retrieval, log publication, or SES calls fail later.</li>
+<li>Secret retrieval failures commonly point to IAM permissions, wrong secret IDs, or KMS policy gaps.</li>
+<li>KMS alias discovery helps verify whether the expected encryption boundary actually exists in the environment.</li>
+</ul>
+<h2 id="configuration-example-3">Configuration Example</h2>
+<h3 id="minimum-permissions-for-the-instance-role-in-this-architecture">Minimum permissions for the instance role in this architecture</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;secretsmanager:GetSecretValue&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;kms:Decrypt&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:PutLogEvents&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses:SendEmail&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses:SendRawEmail&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>What this policy achieves:</p>
+<ul>
+<li>The instance can read secrets.</li>
+<li>The instance can decrypt secret material through KMS.</li>
+<li>The instance can publish logs and send email.</li>
+<li>The application does not need static AWS keys stored on the server.</li>
+</ul>
+<h3 id="best-practices-for-this-layer-3">Best practices for this layer</h3>
+<ul>
+<li>Replace wildcard resource scope with secret-specific and key-specific ARNs in production.</li>
+<li>Enable Session Manager logging to CloudWatch or S3 for auditability.</li>
+<li>Separate operator roles from machine roles so human and workload permissions do not blur together.</li>
+<li>Use secret naming conventions such as <code>service/environment/purpose</code>.</li>
+<li>Consider automatic secret rotation for database credentials where the application can tolerate it.</li>
+</ul>
+<h2 id="what-to-verify-3">What to Verify</h2>
+<ul>
+<li>The target EC2 instance is registered in Systems Manager.</li>
+<li>The instance has an IAM instance profile attached.</li>
+<li>The application can read the exact secret names it requires.</li>
+<li>KMS permissions are granted only to the principals that truly need decryption.</li>
+<li>Operators use SSM instead of opening inbound SSH from the internet.</li>
+</ul>
+<h2 id="common-mistakes-3">Common Mistakes</h2>
+<ul>
+<li>Attaching a role to EC2 but forgetting <code>secretsmanager:GetSecretValue</code>.</li>
+<li>Granting Secrets Manager access but missing <code>kms:Decrypt</code> when a customer-managed key is used.</li>
+<li>Assuming end-user identity is handled here when the diagram only shows operator and machine access.</li>
+<li>Returning to hardcoded credentials because secret naming is inconsistent.</li>
+<li>Leaving broad IAM permissions in place after the workshop stage is complete.</li>
+</ul>
+<h2 id="notes--assumptions-4">Notes / Assumptions</h2>
+<ul>
+<li>The exact SSM features in use, such as Session Manager or Run Command, are not labeled explicitly.</li>
+<li>Secret rotation and KMS key rotation policies are not shown.</li>
+<li>No separate identity provider or fine-grained admin workflow engine appears in the diagram, so the documentation stays focused on the visible AWS controls.</li>
+<li>In a hardened environment, private VPC endpoints for SSM, Secrets Manager, and CloudWatch may reduce dependence on NAT for control-plane traffic.</li>
+</ul>
+<h1 id="hands-on-monitoring-audit-and-email-delivery">Hands-on Monitoring, Audit, and Email Delivery</h1>
+<h2 id="overview-5">Overview</h2>
+<ul>
+<li>This section explains how operators observe the running platform, audit AWS activity, and verify outbound email delivery.</li>
+<li>It focuses on Amazon CloudWatch, AWS CloudTrail, Amazon SES, and Route 53 email DNS records.</li>
+<li>It is the right section when the team needs to inspect logs, trace operator actions, or validate the email path used by the application.</li>
+<li>In production terms, this subsection closes the loop between application behavior, operator visibility, and customer-facing communications.</li>
+</ul>
+<p>What this step does:</p>
+<ul>
+<li>It captures operational signals from the running environment.</li>
+<li>It records control-plane actions for security and compliance visibility.</li>
+<li>It enables the application to send email through a managed outbound service.</li>
+</ul>
+<p>Why it exists:</p>
+<ul>
+<li>Without logs and metrics, teams diagnose incidents too slowly.</li>
+<li>Without audit trails, teams cannot reliably answer who changed what and when.</li>
+<li>Without a managed outbound email service, transactional messaging becomes more fragile and operationally expensive.</li>
+</ul>
+<p>What problem it solves:</p>
+<ul>
+<li>Low visibility during incidents</li>
+<li>Missing audit evidence for operator actions</li>
+<li>Self-managed email complexity</li>
+<li>Weak confidence in notification delivery</li>
+</ul>
+<h2 id="components-2">Components</h2>
+<h3 id="amazon-cloudwatch">Amazon CloudWatch</h3>
+<p><img src="../../images/4-Workshop/cloudwatch.png" alt="Amazon CloudWatch Logs and Metrics"></p>
+<ul>
+<li>Stores logs and metrics from the running environment.</li>
+<li>Enables monitoring, alerting, and troubleshooting of application behavior.</li>
+<li>Serves as the main operational telemetry plane for the workload.</li>
+</ul>
+<h3 id="aws-cloudtrail">AWS CloudTrail</h3>
+<p><img src="../../images/4-Workshop/cloudtrail.png" alt="AWS CloudTrail Events"></p>
+<ul>
+<li>Records AWS API activity across the account.</li>
+<li>Supports auditing, security analysis, and compliance tracking.</li>
+<li>Makes infrastructure and operator actions traceable long after the immediate incident is over.</li>
+</ul>
+<h3 id="amazon-ses">Amazon SES</h3>
+<p><img src="../../images/4-Workshop/ses.png" alt="Amazon SES"></p>
+<ul>
+<li>Sends application emails such as notifications or verification messages.</li>
+<li>Requires verified domain and proper DNS configuration.</li>
+<li>Offloads SMTP infrastructure and reputation management to a managed service.</li>
+</ul>
+<h3 id="route-53-dns-records-ses-support">Route 53 DNS Records (SES Support)</h3>
+<p><img src="../../images/4-Workshop/route53-ses.png" alt="Route 53 SES DNS Records"></p>
+<ul>
+<li>Provides DNS records for domain verification and email routing.</li>
+<li>Includes DKIM, SPF, and MX records for SES integration.</li>
+<li>Acts as the infrastructure prerequisite for trusted sender identity.</li>
+</ul>
+<h3 id="iam-backed-ec2-role">IAM-backed EC2 Role</h3>
+<ul>
+<li>Grants EC2 permission to:
+<ul>
+<li>Publish logs to CloudWatch</li>
+<li>Send emails via SES</li>
+</ul>
+</li>
+<li>Eliminates the need for hardcoded credentials.</li>
+<li>Keeps machine identity consistent with the rest of the workshop&rsquo;s security model.</li>
+</ul>
+<h2 id="why-this-design-uses-direct-aws-integrations">Why This Design Uses Direct AWS Integrations</h2>
+<ul>
+<li>The diagram shows CloudWatch and CloudTrail directly, so observability is centered on AWS-native tooling.</li>
+<li>Email is sent directly through Amazon SES rather than via a separate messaging or event bus service.</li>
+<li>EventBridge, SQS, and SNS are not shown in the architecture, so this workshop does not assume an event-driven notification pipeline.</li>
+<li>This direct pattern keeps the architecture easy to understand, but it also means request-path side effects may remain tightly coupled until asynchronous services are introduced later.</li>
+</ul>
+<h2 id="step-by-step-aws-flow-2">Step-by-Step AWS Flow</h2>
+<ol>
+<li>The application emits logs and runtime metrics.
+Service: Amazon CloudWatch.
+What happens: Application and platform signals are written to log groups and CloudWatch metrics.
+Why it matters: Logs and metrics are the first place to look when user-facing errors appear.</li>
+<li>Operators inspect the live logs.
+Service: Amazon CloudWatch Logs.
+What happens: The team tails or queries log streams to find failures and timing issues.
+Why it matters: Fast diagnosis depends on finding the correct log group quickly.</li>
+<li>AWS control-plane activity is recorded.
+Service: AWS CloudTrail.
+What happens: Actions such as starting an SSM session or changing infrastructure are stored as audit events.
+Why it matters: Operators can tell who changed what and when.</li>
+<li>The application sends email through SES.
+Service: Amazon SES.
+What happens: The EC2 workload calls SES APIs with its IAM role.
+Why it matters: Notifications, OTP, or operational messages can leave the platform without self-managed SMTP servers.</li>
+<li>SES relies on DNS records in Route 53.
+Services: Amazon SES and Route 53.
+What happens: Domain verification, DKIM, and mail routing records are published in the hosted zone.
+Why it matters: Without valid DNS records, SES identity verification or deliverability will fail.</li>
+</ol>
+<h3 id="request-and-response-behavior-4">Request and response behavior</h3>
+<ul>
+<li>Telemetry request: The application sends structured log lines or metrics to CloudWatch.</li>
+<li>Audit response: CloudTrail receives service activity as AWS-generated audit events.</li>
+<li>Email request: The application submits an outbound email payload to SES and receives success or failure status.</li>
+<li>DNS verification behavior: SES identity status changes only after the required Route 53 records are present and propagated.</li>
+</ul>
+<h3 id="operational-response-pattern">Operational response pattern</h3>
+<ul>
+<li>CloudWatch helps explain what the application did.</li>
+<li>CloudTrail helps explain what operators or AWS services changed.</li>
+<li>SES and Route 53 together help explain whether the system can communicate with users outside the platform boundary.</li>
+</ul>
+<h2 id="aws-cli-walkthrough-4">AWS CLI Walkthrough</h2>
+<h3 id="1-tail-recent-application-logs">1. Tail recent application logs</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws logs tail <span style="color:#e6db74">${</span>LOG_GROUP<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --since 30m <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --follow <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-look-up-recent-audit-events">2. Look up recent audit events</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudtrail lookup-events <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --lookup-attributes AttributeKey<span style="color:#f92672">=</span>EventName,AttributeValue<span style="color:#f92672">=</span>StartSession <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --max-results <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="3-check-ses-identity-status">3. Check SES identity status</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sesv2 get-email-identity <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --email-identity <span style="color:#e6db74">${</span>SES_IDENTITY<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="4-send-a-test-email-through-ses">4. Send a test email through SES</h3>
+<p>Create a file named <code>ses-test-email.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;FromEmailAddress&#34;</span>: <span style="color:#e6db74">&#34;no-reply@example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Destination&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ToAddresses&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;ops@example.com&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Content&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Simple&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Subject&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Data&#34;</span>: <span style="color:#e6db74">&#34;EV platform test email&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Body&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Text&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;Data&#34;</span>: <span style="color:#e6db74">&#34;If you received this message, SES delivery is working.&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Send the message:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sesv2 send-email <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --cli-input-json file://ses-test-email.json <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="5-create-a-simple-cpu-alarm-for-one-backend-instance">5. Create a simple CPU alarm for one backend instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudwatch put-metric-alarm <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --alarm-name ev-app-instance-high-cpu <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --metric-name CPUUtilization <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --namespace AWS/EC2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --statistic Average <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --period <span style="color:#ae81ff">300</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --threshold <span style="color:#ae81ff">80</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --comparison-operator GreaterThanThreshold <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --dimensions Name<span style="color:#f92672">=</span>InstanceId,Value<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --evaluation-periods <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>How to interpret these commands:</p>
+<ul>
+<li>Live log tailing shortens incident response time dramatically.</li>
+<li>CloudTrail lookup verifies that administrative actions are actually being recorded.</li>
+<li>SES identity checks prevent teams from blaming the application when the real issue is sender verification.</li>
+<li>Test emails validate IAM, SES, DNS, and region configuration together.</li>
+<li>Alarms make telemetry actionable rather than purely descriptive.</li>
+</ul>
+<h2 id="configuration-example-4">Configuration Example</h2>
+<h3 id="example-route-53-records-for-ses-domain-setup">Example Route 53 records for SES domain setup</h3>
+<p>Create a file named <code>ses-identity-records.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Comment&#34;</span>: <span style="color:#e6db74">&#34;SES identity verification records&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Changes&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;TXT&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;\&#34;amazonses:verification-token\&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;selector1._domainkey.example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;CNAME&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;selector1-example-com.dkim.amazonses.com&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;mail.example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;MX&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;10 inbound-smtp.ap-southeast-1.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Apply the DNS records:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws route53 change-resource-record-sets <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --hosted-zone-id <span style="color:#e6db74">${</span>HOSTED_ZONE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch file://ses-identity-records.json
+</span></span></code></pre></div><h3 id="best-practices-for-this-layer-4">Best practices for this layer</h3>
+<ul>
+<li>Use structured logs so application events can be filtered and queried consistently.</li>
+<li>Define retention periods separately for application logs, security logs, and audit logs.</li>
+<li>Treat CloudTrail as mandatory governance data, not optional debugging data.</li>
+<li>Handle SES bounces and complaints if the workload becomes customer-facing at scale.</li>
+<li>Use alarms that point to an actual operational response process rather than creating alert noise.</li>
+</ul>
+<h2 id="what-to-verify-4">What to Verify</h2>
+<ul>
+<li>Application logs arrive in the expected CloudWatch log group.</li>
+<li>CloudTrail captures administrator and infrastructure actions.</li>
+<li>SES identities are verified before the application attempts delivery.</li>
+<li>Route 53 contains the TXT, CNAME, and MX records required by your SES setup.</li>
+<li>CloudWatch alarms exist for the signals your team cares about.</li>
+<li>The EC2 instance role includes only the permissions required for telemetry and messaging.</li>
+</ul>
+<h2 id="common-mistakes-4">Common Mistakes</h2>
+<ul>
+<li>Sending email before verifying the SES identity.</li>
+<li>Looking only at application logs and ignoring CloudTrail when the issue is an operator action.</li>
+<li>Creating alarms without deciding who will review them.</li>
+<li>Expecting EventBridge or SQS-driven notification workflows when the architecture only shows direct SES integration.</li>
+<li>Treating email delivery as purely an application concern and forgetting the DNS dependency.</li>
+</ul>
+<h2 id="notes--assumptions-5">Notes / Assumptions</h2>
+<ul>
+<li>The diagram does not show dashboards, dashboards-as-code, tracing, or alarm actions.</li>
+<li>The alarm example intentionally avoids SNS wiring because SNS is not part of the visible architecture.</li>
+<li>Email use cases such as OTP or notifications are inferred from the presence of SES, but the exact templates are not shown in the diagram.</li>
+<li>If notification volume or retry complexity grows, EventBridge, SQS, or SNS would be natural additions.</li>
+</ul>
+<h1 id="production-grade-architecture-deep-dive-for-the-aws-workshop">Production-Grade Architecture Deep Dive for the AWS Workshop</h1>
+<p><img src="../../images/2-Proposal/AWS-architecture.png" alt="AWS Workshop Architecture Overview"></p>
+<h2 id="overview-6">Overview</h2>
+<ul>
+<li>This subsection consolidates the previous six workshop modules into one production-grade architecture narrative.</li>
+<li>It explains how the visible AWS services work together as a coherent platform rather than as isolated workshop exercises.</li>
+<li>It serves as the most complete design-reference subsection for onboarding, design review, and operational readiness conversations.</li>
+<li>The analysis remains grounded in the existing <code>4-Workshop</code> content rather than in the broader repository.</li>
+</ul>
+<h2 id="source-scope">Source Scope</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Workshop subsection reviewed</th>
+          <th>Architectural focus</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>4.1 Overview</code></td>
+          <td>Service inventory, trust boundaries, and end-to-end flow</td>
+      </tr>
+      <tr>
+          <td><code>4.2 Edge Delivery and Geospatial Requests</code></td>
+          <td>DNS, CDN, WAF, static delivery, and geospatial integration</td>
+      </tr>
+      <tr>
+          <td><code>4.3 Private Application Routing and Compute</code></td>
+          <td>VPC, ALB, private EC2 runtime, Auto Scaling, and egress</td>
+      </tr>
+      <tr>
+          <td><code>4.4 Relational Data Resilience and Network Isolation</code></td>
+          <td>Managed relational storage, standby posture, and private data access</td>
+      </tr>
+      <tr>
+          <td><code>4.5 Operational Access and Secret Governance</code></td>
+          <td>SSM-based access, IAM machine identity, secrets, and KMS</td>
+      </tr>
+      <tr>
+          <td><code>4.6 Monitoring, Audit, and Email Delivery</code></td>
+          <td>Observability, auditability, and outbound email</td>
+      </tr>
+      <tr>
+          <td><code>4-Workshop</code> root chapter</td>
+          <td>Shared variables, workshop boundaries, and excluded services</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="reading-the-workshop-as-an-architecture-codebase">Reading the Workshop as an Architecture Codebase</h2>
+<ul>
+<li>The workshop behaves like a layered infrastructure design document.</li>
+<li>Each subsection describes one platform concern, the AWS services behind it, and the practical ways to inspect or validate it.</li>
+<li>Together, the subsections form a deployment reference that covers public ingress, private execution, persistence, governance, and observability.</li>
+<li>The main architectural value of <code>4.7</code> is that it explains the relationships between those modules rather than repeating them in isolation.</li>
+</ul>
+<h2 id="architecture-baseline">Architecture Baseline</h2>
+<p>The workshop describes the following AWS runtime baseline:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User -&gt; Route 53 -&gt; CloudFront/WAF -&gt; S3
+</span></span><span style="display:flex;"><span>Frontend -&gt; Amazon Location Service
+</span></span><span style="display:flex;"><span>Frontend -&gt; ALB -&gt; Private EC2 -&gt; Amazon RDS
+</span></span><span style="display:flex;"><span>Private EC2 -&gt; Secrets Manager/KMS -&gt; CloudWatch -&gt; SES
+</span></span><span style="display:flex;"><span>Admin -&gt; Systems Manager -&gt; Private EC2
+</span></span><span style="display:flex;"><span>AWS control-plane activity -&gt; CloudTrail
+</span></span></code></pre></div><h3 id="public-and-private-boundary">Public and private boundary</h3>
+<ul>
+<li>Route 53, CloudFront, WAF, and the ALB define the public-facing entry path.</li>
+<li>EC2, RDS, Secrets Manager, KMS, and most operational controls are part of the protected internal estate.</li>
+<li>SES is public as a service endpoint, but it is used by a private workload through authenticated AWS APIs.</li>
+</ul>
+<h3 id="what-this-architectural-step-does">What this architectural step does</h3>
+<ul>
+<li>It shows the logical service graph of the platform.</li>
+<li>It clarifies which services belong to the user request path and which belong to the supporting control plane.</li>
+<li>It provides a practical basis for scaling, fault tolerance, and security discussions.</li>
+</ul>
+<h2 id="core-modules-services-apis-and-data-flow">Core Modules, Services, APIs, and Data Flow</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Core module</th>
+          <th>Primary AWS services</th>
+          <th>Main request path</th>
+          <th>Key outputs</th>
+          <th>Future-fit services not currently used</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Edge delivery</td>
+          <td>Route 53, CloudFront, WAF, S3</td>
+          <td>Browser -&gt; DNS -&gt; CDN -&gt; Object storage</td>
+          <td>Static frontend content</td>
+          <td>API Gateway for API-specific governance</td>
+      </tr>
+      <tr>
+          <td>Geospatial integration</td>
+          <td>Amazon Location Service</td>
+          <td>Frontend -&gt; map and place APIs</td>
+          <td>Search results and map context</td>
+          <td>Lambda if signed backend mediation is later needed</td>
+      </tr>
+      <tr>
+          <td>Application ingress and compute</td>
+          <td>ALB, EC2, Auto Scaling, NAT, VPC</td>
+          <td>Frontend -&gt; ALB -&gt; EC2</td>
+          <td>Dynamic application responses</td>
+          <td>ECS/EKS if runtime packaging changes</td>
+      </tr>
+      <tr>
+          <td>Relational persistence</td>
+          <td>Amazon RDS</td>
+          <td>EC2 -&gt; RDS</td>
+          <td>Durable transactional state</td>
+          <td>Read replicas, Aurora, or DynamoDB only if workload evolves</td>
+      </tr>
+      <tr>
+          <td>Security control plane</td>
+          <td>IAM, SSM, Secrets Manager, KMS</td>
+          <td>Operator/app -&gt; AWS control APIs</td>
+          <td>Trusted access, secret retrieval, encrypted material</td>
+          <td>Cognito only if end-user identity needs a managed pool</td>
+      </tr>
+      <tr>
+          <td>Observability and communication</td>
+          <td>CloudWatch, CloudTrail, SES, Route 53</td>
+          <td>App and AWS services -&gt; logs, audit, and mail</td>
+          <td>Metrics, audit events, notifications</td>
+          <td>EventBridge, SQS, and SNS for future decoupling</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="interface-and-api-inventory">Interface and API Inventory</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Interface</th>
+          <th>Source</th>
+          <th>Destination</th>
+          <th>Behavior</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Public DNS query</td>
+          <td>Browser</td>
+          <td>Route 53</td>
+          <td>Returns the edge entry point</td>
+      </tr>
+      <tr>
+          <td>Static content request</td>
+          <td>Browser</td>
+          <td>CloudFront and S3</td>
+          <td>Returns cached or origin-fetched frontend assets</td>
+      </tr>
+      <tr>
+          <td>Map or place search request</td>
+          <td>Frontend</td>
+          <td>Amazon Location Service</td>
+          <td>Returns geospatial search results or map data</td>
+      </tr>
+      <tr>
+          <td>Dynamic API request</td>
+          <td>Frontend</td>
+          <td>ALB and EC2</td>
+          <td>Executes synchronous business logic</td>
+      </tr>
+      <tr>
+          <td>Transactional database call</td>
+          <td>EC2</td>
+          <td>Amazon RDS</td>
+          <td>Performs relational reads and writes</td>
+      </tr>
+      <tr>
+          <td>Secret fetch</td>
+          <td>EC2</td>
+          <td>Secrets Manager</td>
+          <td>Returns runtime configuration or credentials</td>
+      </tr>
+      <tr>
+          <td>Decryption authorization</td>
+          <td>Secrets Manager</td>
+          <td>AWS KMS</td>
+          <td>Allows or denies protected secret access</td>
+      </tr>
+      <tr>
+          <td>Operator session</td>
+          <td>Administrator</td>
+          <td>Systems Manager</td>
+          <td>Establishes controlled access to private instances</td>
+      </tr>
+      <tr>
+          <td>Telemetry publication</td>
+          <td>EC2 or agent</td>
+          <td>CloudWatch</td>
+          <td>Preserves logs and metrics</td>
+      </tr>
+      <tr>
+          <td>Audit event capture</td>
+          <td>AWS services</td>
+          <td>CloudTrail</td>
+          <td>Records control-plane activity</td>
+      </tr>
+      <tr>
+          <td>Outbound email send</td>
+          <td>EC2</td>
+          <td>Amazon SES</td>
+          <td>Delivers transactional or operational mail</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="aws-service-mapping-and-architecture-expansion">AWS Service Mapping and Architecture Expansion</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Capability</th>
+          <th>Current workshop mapping</th>
+          <th>Why it fits</th>
+          <th>Reasonable expansion path</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Public web entry</td>
+          <td>Route 53 + CloudFront + ALB</td>
+          <td>Matches a layered web platform with separate static and dynamic paths</td>
+          <td>Add weighted DNS, blue/green cutovers, or edge security hardening</td>
+      </tr>
+      <tr>
+          <td>Compute</td>
+          <td>EC2 + Auto Scaling</td>
+          <td>Fits long-running backend services</td>
+          <td>Add API Gateway for public API governance or Lambda for utility tasks</td>
+      </tr>
+      <tr>
+          <td>Data</td>
+          <td>Amazon RDS</td>
+          <td>Fits transactional business logic and standby resilience</td>
+          <td>Add read replicas or analytics copies if read pressure grows</td>
+      </tr>
+      <tr>
+          <td>Secret handling</td>
+          <td>Secrets Manager + KMS</td>
+          <td>Fits centralized credential governance</td>
+          <td>Add automatic rotation and tighter resource scoping</td>
+      </tr>
+      <tr>
+          <td>Admin access</td>
+          <td>Systems Manager + IAM</td>
+          <td>Fits the no-public-SSH design</td>
+          <td>Add session logs, runbooks, and approval workflows</td>
+      </tr>
+      <tr>
+          <td>Monitoring and audit</td>
+          <td>CloudWatch + CloudTrail</td>
+          <td>Fits AWS-native observability and accountability</td>
+          <td>Add dashboards, alarm routing, and security analytics</td>
+      </tr>
+      <tr>
+          <td>Communication</td>
+          <td>SES + Route 53</td>
+          <td>Fits direct transactional email delivery</td>
+          <td>Add bounce processing or event-driven notification fan-out</td>
+      </tr>
+      <tr>
+          <td>Async processing</td>
+          <td>Not shown</td>
+          <td>The current design is mostly synchronous</td>
+          <td>EventBridge, SQS, or SNS can decouple slow side effects</td>
+      </tr>
+      <tr>
+          <td>Workflow orchestration</td>
+          <td>Not shown</td>
+          <td>Current flows do not require state machines yet</td>
+          <td>Step Functions fits future multi-step charging or settlement flows</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="detailed-workshop-breakdown">Detailed Workshop Breakdown</h2>
+<h3 id="4-workshop-root-chapter">4-Workshop Root Chapter</h3>
+<ul>
+<li>Defines workshop scope, common variables, and the boundary of the visible AWS design.</li>
+<li>Prevents architectural drift by stating which popular AWS services are intentionally not in scope.</li>
+<li>Acts as the operator-ready landing page for the chapter.</li>
+</ul>
+<h3 id="41-overview">4.1 Overview</h3>
+<ul>
+<li>Explains the architecture at a map level.</li>
+<li>Helps readers classify services by trust boundary and operational purpose.</li>
+<li>Provides safe baseline inspection commands before any change is attempted.</li>
+</ul>
+<h3 id="42-edge-delivery-and-geospatial-requests">4.2 Edge Delivery and Geospatial Requests</h3>
+<ul>
+<li>Explains how users actually reach the platform and how the frontend becomes available.</li>
+<li>Shows how caching, origin protection, and map integration are deliberately separated.</li>
+<li>Makes clear that geospatial APIs are a frontend dependency, not necessarily a backend feature.</li>
+</ul>
+<h3 id="43-private-application-routing-and-compute">4.3 Private Application Routing and Compute</h3>
+<ul>
+<li>Describes the synchronous application execution path.</li>
+<li>Defines where requests are accepted, where they are processed, and how unhealthy nodes are removed.</li>
+<li>Clarifies how private compute can still reach approved external endpoints through NAT.</li>
+</ul>
+<h3 id="44-relational-data-resilience-and-network-isolation">4.4 Relational Data Resilience and Network Isolation</h3>
+<ul>
+<li>Defines the persistence boundary of the platform.</li>
+<li>Explains that the data tier is both durable and intentionally difficult to reach directly.</li>
+<li>Frames primary and standby layout as an availability decision, not just a storage decision.</li>
+</ul>
+<h3 id="45-operational-access-and-secret-governance">4.5 Operational Access and Secret Governance</h3>
+<ul>
+<li>Explains how the system stays manageable without becoming broadly exposed.</li>
+<li>Separates human access from application identity.</li>
+<li>Shows that secret governance is an architecture concern, not a small application configuration detail.</li>
+</ul>
+<h3 id="46-monitoring-audit-and-email-delivery">4.6 Monitoring, Audit, and Email Delivery</h3>
+<ul>
+<li>Defines how the platform tells operators what is happening.</li>
+<li>Adds accountability for AWS-side changes.</li>
+<li>Completes the communication path from internal events to external email notifications.</li>
+</ul>
+<h2 id="request-lifecycle-and-service-interaction-flow">Request Lifecycle and Service Interaction Flow</h2>
+<h3 id="lifecycle-1-user-enters-the-platform">Lifecycle 1: User enters the platform</h3>
+<ol>
+<li>Route 53 resolves the domain.</li>
+<li>CloudFront and WAF process the request.</li>
+<li>Static frontend content is returned from cache or S3.</li>
+</ol>
+<h3 id="lifecycle-2-user-interacts-with-maps">Lifecycle 2: User interacts with maps</h3>
+<ol>
+<li>The frontend requests place or map data.</li>
+<li>Amazon Location Service responds directly to that integration.</li>
+</ol>
+<h3 id="lifecycle-3-user-performs-a-business-action">Lifecycle 3: User performs a business action</h3>
+<ol>
+<li>The frontend sends a dynamic request through the ALB.</li>
+<li>A healthy private EC2 instance processes the action.</li>
+<li>The app reaches RDS, CloudWatch, Secrets Manager, or SES as needed.</li>
+</ol>
+<h3 id="lifecycle-4-operator-manages-the-system">Lifecycle 4: Operator manages the system</h3>
+<ol>
+<li>An operator connects through Systems Manager.</li>
+<li>Actions are later visible in CloudTrail.</li>
+<li>Runtime effects remain visible in CloudWatch.</li>
+</ol>
+<h2 id="deployment-considerations">Deployment Considerations</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Area</th>
+          <th>Current implication from the workshop</th>
+          <th>Production-minded recommendation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Frontend release</td>
+          <td>S3 sync and CloudFront invalidation</td>
+          <td>Prefer artifact versioning and controlled invalidation scope</td>
+      </tr>
+      <tr>
+          <td>Backend release</td>
+          <td>EC2 fleet update behind ALB</td>
+          <td>Use immutable deployment artifacts and rolling replacement</td>
+      </tr>
+      <tr>
+          <td>Database migration</td>
+          <td>Not shown directly</td>
+          <td>Run separately with backups, approvals, and rollback plans</td>
+      </tr>
+      <tr>
+          <td>Secret changes</td>
+          <td>Out-of-band from code</td>
+          <td>Rotate and version secrets by environment</td>
+      </tr>
+      <tr>
+          <td>Email readiness</td>
+          <td>Depends on DNS and SES state</td>
+          <td>Validate sender identity before release cutover</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="scalability-and-fault-tolerance">Scalability and Fault Tolerance</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Layer</th>
+          <th>Current strength</th>
+          <th>Main risk</th>
+          <th>Practical improvement</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Edge delivery</td>
+          <td>Global caching and private origin</td>
+          <td>Stale cache or misconfigured WAF rules</td>
+          <td>Use versioned assets and tuned edge policies</td>
+      </tr>
+      <tr>
+          <td>Application compute</td>
+          <td>Horizontal scale and health-aware routing</td>
+          <td>Session-heavy behavior or single-AZ egress</td>
+          <td>Keep nodes stateless and improve AZ-balanced egress</td>
+      </tr>
+      <tr>
+          <td>Data</td>
+          <td>Managed relational persistence with standby posture</td>
+          <td>Failover behavior may be untested</td>
+          <td>Rehearse recovery and validate Multi-AZ assumptions</td>
+      </tr>
+      <tr>
+          <td>Operations</td>
+          <td>SSM and IAM reduce exposure</td>
+          <td>Over-broad permissions</td>
+          <td>Narrow policy scope and log admin sessions</td>
+      </tr>
+      <tr>
+          <td>Observability</td>
+          <td>Native logs, metrics, and audit</td>
+          <td>Missing alarms or weak retention strategy</td>
+          <td>Add dashboards, alarms, and audit retention policy</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="improvement-opportunities-and-aws-well-architected-alignment">Improvement Opportunities and AWS Well-Architected Alignment</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Pillar</th>
+          <th>Existing strengths</th>
+          <th>Next useful step</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Operational Excellence</td>
+          <td>Clear layer-based documentation and CLI validation</td>
+          <td>Convert workshop checks into repeatable runbooks and infrastructure validation</td>
+      </tr>
+      <tr>
+          <td>Security</td>
+          <td>Private compute, private database, IAM, SSM, KMS, and WAF</td>
+          <td>Tighten permission scope, add session logging, and formalize certificate management</td>
+      </tr>
+      <tr>
+          <td>Reliability</td>
+          <td>Auto Scaling, target health, and database standby posture</td>
+          <td>Remove single-NAT dependence and test failover regularly</td>
+      </tr>
+      <tr>
+          <td>Performance Efficiency</td>
+          <td>CloudFront edge caching and scale-out EC2</td>
+          <td>Tune cache behavior and watch DB hotspots</td>
+      </tr>
+      <tr>
+          <td>Cost Optimization</td>
+          <td>Managed services reduce custom overhead</td>
+          <td>Review NAT spend, rightsize hosts, and use lifecycle policies</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="natural-evolution-paths">Natural Evolution Paths</h3>
+<ul>
+<li>Introduce API Gateway only when API management needs exceed what ALB naturally provides.</li>
+<li>Introduce Lambda for helper automations rather than replacing the current EC2 backend prematurely.</li>
+<li>Introduce Step Functions if booking, charging, and settlement flows become multi-step and long-running.</li>
+<li>Introduce EventBridge, SQS, or SNS if background processing needs looser coupling from the request path.</li>
+</ul>
+<h2 id="notes--assumptions-6">Notes / Assumptions</h2>
+<ul>
+<li>This deep dive is intentionally limited to the <code>4-Workshop</code> section and its seven existing subsections.</li>
+<li>The architecture is modeled as mostly synchronous, even though future asynchronous services would be reasonable additions.</li>
+<li>TLS certificates, subnet associations, security groups, IAM trust policies, and other supporting controls are treated as implied requirements even when the workshop diagrams do not draw them explicitly.</li>
+</ul>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../4-workshop/4.7-workshop-architecture-deep-dive/" title="Workshop Architecture Deep Dive"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../5-feedback/" title="Self-Assessment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1775384588"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775384588"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775384588"></script>
+    <script src="../../js/jquery.sticky.js?1775384588"></script>
+    <script src="../../js/featherlight.min.js?1775384588"></script>
+    <script src="../../js/highlight.pack.js?1775384588"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775384588"></script>
+    <script src="../../js/learn.js?1775384588"></script>
+    <script src="../../js/hugo-learn.js?1775384588"></script>
+
+    <link href="../../mermaid/mermaid.css?1775384588" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775384588"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+<script>
+  (function () {
+    function getTarget(hash) {
+      if (!hash || hash.charAt(0) !== "#") {
+        return null;
+      }
+
+      var id = hash.slice(1);
+      return document.getElementById(id) || document.getElementById(decodeURIComponent(id));
+    }
+
+    function getFixedOffset() {
+      var topBar = document.getElementById("top-bar");
+      var topBarHeight = topBar ? topBar.getBoundingClientRect().height : 0;
+      return Math.ceil(topBarHeight) + 16;
+    }
+
+    function scrollToHash(hash, pushToHistory) {
+      var target = getTarget(hash);
+
+      if (!target) {
+        return false;
+      }
+
+      var top = window.pageYOffset + target.getBoundingClientRect().top - getFixedOffset();
+      window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: "auto" });
+
+      if (pushToHistory) {
+        history.pushState({}, document.title, window.location.pathname + hash);
+      }
+
+      return true;
+    }
+
+    document.addEventListener(
+      "click",
+      function (event) {
+        var link = event.target.closest("a[href^='#']");
+
+        if (!link) {
+          return;
+        }
+
+        var href = link.getAttribute("href");
+
+        if (!href || href === "#") {
+          return;
+        }
+
+        if (!scrollToHash(href, true)) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      },
+      true,
+    );
+
+    jQuery(function () {
+      
+      jQuery(window).off("hashchange");
+      jQuery("body").off("click", "a");
+
+      if (window.location.hash) {
+        window.requestAnimationFrame(function () {
+          scrollToHash(window.location.hash, false);
+        });
+      }
+    });
+
+    window.addEventListener("load", function () {
+      if (window.location.hash) {
+        window.requestAnimationFrame(function () {
+          scrollToHash(window.location.hash, false);
+        });
+      }
+    });
+
+    window.addEventListener("hashchange", function () {
+      scrollToHash(window.location.hash, false);
+    });
+  })();
+</script>
+
+  </body>
+</html>
+

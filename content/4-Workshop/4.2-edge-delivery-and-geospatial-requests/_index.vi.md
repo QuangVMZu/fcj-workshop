@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Phân phối biên và yêu cầu dữ liệu bản đồ"
 date: 2026-04-04
 weight: 2
@@ -39,6 +39,13 @@ pre: " <b> 4.2. </b> "
 - Xử lý các yêu cầu liên quan đến bản đồ và dữ liệu địa lý.
 - Hoạt động tách biệt với luồng phân phối static asset.
 
+## Vì sao lớp này quan trọng
+
+- Đây là lớp AWS đầu tiên mà người dùng chạm tới, nên nó ảnh hưởng trực tiếp đến độ trễ, tư thế bảo mật và cảm nhận về độ sẵn sàng của hệ thống.
+- Nó tách frontend traffic có khả năng cache cao khỏi backend traffic mang nhiều business logic hơn.
+- Nó giữ bucket frontend ở trạng thái private nhưng vẫn cho phép phân phối asset trên phạm vi toàn cầu qua CloudFront.
+- Nó cho phép map và place search giữ vai trò tích hợp chuyên biệt, thay vì biến application server thành proxy chung cho geospatial API.
+
 ## Luồng AWS từng bước
 
 1. Người dùng mở `${APP_DOMAIN}` trên trình duyệt.
@@ -65,6 +72,14 @@ pre: " <b> 4.2. </b> "
    Dịch vụ: Application Load Balancer ở phần tiếp theo.
    Điều xảy ra: Traffic động rời lớp edge và đi vào compute stack private.
    Tại sao quan trọng: Static traffic và dynamic traffic có thể được tối ưu riêng.
+
+## Logic nội bộ và hành vi request
+
+- DNS resolution quyết định trình duyệt có đi đúng tới edge distribution hay không.
+- CloudFront không chỉ là cache mà còn là lớp thực thi policy. Nó giúp giảm tải cho origin, chuẩn hóa hành vi request và phối hợp với WAF trước khi request chạm S3.
+- S3 là nơi lưu trữ chuẩn của artifact frontend, nhưng không phải public endpoint cho người dùng.
+- Amazon Location Service là một dependency song song của frontend. Nó liên quan đến trải nghiệm người dùng, nhưng tách biệt về mặt logic với đường static asset và với backend private.
+- Vì lớp này chủ yếu là read-heavy, đặc tính scale của nó rất khác so với compute tier. Cache hit ratio tốt sẽ giúp giảm cả độ trễ lẫn chi phí.
 
 ## AWS CLI Walkthrough
 
@@ -165,6 +180,21 @@ aws location search-place-index-for-text \
 - Bucket S3 vẫn giữ trạng thái private.
 - Chỉ CloudFront distribution được chỉ định mới có quyền đọc object.
 - Người dùng buộc phải đi qua CloudFront, nơi WAF có thể kiểm tra traffic.
+
+## Lưu ý về bảo mật và hiệu năng
+
+- Nên ưu tiên Origin Access Control hoặc mô hình private origin tương đương thay vì public bucket.
+- Cần dùng invalidation có chủ đích. Ở môi trường trưởng thành hơn, asset versioning thường tốt hơn việc thường xuyên xóa toàn bộ cache.
+- Hãy xem WAF là một phần của security baseline của nền tảng, không phải thành phần thêm vào sau.
+- Nếu sau này frontend cần các policy mang tính API như request validation, authorizer hoặc quota theo client, API Gateway có thể trở nên phù hợp, nhưng hiện chưa nằm trong thiết kế này.
+- Nếu geospatial call về sau cần kiểm soát chặt hơn, có thể bổ sung signed-request pattern hoặc một backend mediation layer.
+
+## Best practices
+
+- Tách riêng cấu hình DNS, CDN, bucket policy và geospatial theo từng môi trường.
+- Tài liệu hóa giả định về cache policy để release không vô tình phục vụ asset cũ.
+- Theo dõi CloudFront cache hit ratio và số lượng WAF block như chỉ báo sớm về hành vi của edge layer.
+- Dùng TLS trên toàn bộ public path và quản lý certificate một cách chủ động.
 
 ## Những gì cần xác minh
 

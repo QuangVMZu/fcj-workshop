@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Monitoring, Audit, and Email Delivery"
 date: 2026-04-04
 weight: 6
@@ -47,6 +47,14 @@ pre: " <b> 4.6. </b> "
 - The diagram shows CloudWatch and CloudTrail directly, so observability is centered on AWS-native tooling.
 - Email is sent directly through Amazon SES rather than via a separate messaging or event bus service.
 - EventBridge, SQS, and SNS are not shown in the architecture, so this workshop does not assume an event-driven notification pipeline.
+
+## Internal Logic and Operational Model
+
+- CloudWatch explains what the workload is doing at runtime by storing logs, metrics, and operational signals.
+- CloudTrail explains what changed in the AWS environment by capturing control-plane activity.
+- SES provides managed outbound communication so the application does not have to operate its own SMTP stack.
+- Route 53 supports the email trust model by hosting the DNS records that prove domain ownership and improve deliverability.
+- Because these services are cross-cutting, problems in this section often explain symptoms seen in other layers even when the user-facing request path looks healthy.
 
 ## Step-by-Step AWS Flow
 
@@ -210,6 +218,14 @@ aws route53 change-resource-record-sets \
   --hosted-zone-id ${HOSTED_ZONE_ID} \
   --change-batch file://ses-identity-records.json
 ```
+
+## Best Practices and Improvement Paths
+
+- Use structured application logs so search, filtering, and incident review become easier over time.
+- Define log retention explicitly for application, audit, and security-relevant data instead of relying on defaults.
+- Treat CloudTrail as part of the governance baseline, not just a troubleshooting aid.
+- Add alarm routing and ownership so every important alarm has an actual response path.
+- If notification volume or retry complexity grows, services such as EventBridge, SQS, or SNS can decouple email and other side effects from the synchronous request path.
 
 ## What to Verify
 

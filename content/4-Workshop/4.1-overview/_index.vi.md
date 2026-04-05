@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Tổng quan"
 date: 2026-04-04
 weight: 1
@@ -37,6 +37,13 @@ pre: " <b> 4.1. </b> "
 | Audit | AWS CloudTrail | Ghi nhận hoạt động API của AWS | Fan-out audit bằng EventBridge |
 | Email | Amazon SES | Gửi email giao dịch | SNS email delivery |
 
+## Cách đọc sơ đồ này
+
+- Hãy đọc sơ đồ từ trái sang phải để hiểu request flow chính, bắt đầu từ người dùng và kết thúc ở tầng ứng dụng, dữ liệu và các dịch vụ hỗ trợ.
+- Hãy đọc sơ đồ từ trên xuống dưới để hiểu trust boundary: edge layer là lớp public, application layer vừa có public entry vừa có private runtime, còn data layer được cô lập có chủ đích.
+- Các dịch vụ observability và security nên được hiểu là supporting control plane. Chúng không phải lúc nào cũng nằm trực tiếp trên đường request của người dùng, nhưng lại rất quan trọng cho vận hành production.
+- Nếu một dịch vụ không xuất hiện trong sơ đồ, hãy coi nó là ngoài phạm vi hoặc chỉ là dependency ngầm định, chứ không phải thành phần chắc chắn đang được triển khai.
+
 ## Luồng AWS đầu cuối
 
 1. Người dùng phân giải `${APP_DOMAIN}` thông qua Amazon Route 53.
@@ -63,6 +70,14 @@ pre: " <b> 4.1. </b> "
 8. Đội vận hành quản trị môi trường qua Systems Manager và kiểm toán bằng CloudTrail.
    Dịch vụ: AWS Systems Manager và AWS CloudTrail.
    Tại sao quan trọng: Hoạt động quản trị có thể truy vết và không cần public SSH.
+
+## Diễn giải dưới góc nhìn vận hành
+
+- Route 53 và CloudFront tạo thành đường vào public của web, nên lỗi ở lớp này thường biểu hiện thành sự cố DNS, TLS, cache hoặc static delivery.
+- ALB và EC2 tạo thành đường backend đồng bộ, nên lỗi `4xx`, `5xx`, target health hoặc scaling thường thuộc application tier.
+- Amazon RDS là transactional system of record, nên lỗi kết nối, failover và tính nhất quán dữ liệu nằm ở data tier.
+- Systems Manager, Secrets Manager, KMS, CloudWatch, CloudTrail và SES tạo thành lớp hỗ trợ giúp môi trường vận hành được, quan sát được và có thể kiểm toán.
+- API Gateway, Lambda và các dịch vụ bất đồng bộ như SQS hoặc EventBridge là điểm so sánh hữu ích, nhưng không nằm trong runtime path hiện tại được tài liệu này mô tả.
 
 ## Các bước kiểm tra nền tảng
 

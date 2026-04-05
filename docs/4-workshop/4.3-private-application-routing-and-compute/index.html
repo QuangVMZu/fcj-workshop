@@ -15,21 +15,21 @@
     <title>Private Application Routing and Compute :: Internship Report</title>
 
     
-    <link href="../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../css/nucleus.css?1775386387" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775386387" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775386387" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775386387" rel="stylesheet">
+    <link href="../../css/theme.css?1775386387" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775386387" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1775386387" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1775386387"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1775386387"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775386387"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../js/search.js?1775386387"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -781,6 +799,7 @@
     </li>
     <li><a href="#why-this-design-uses-alb--ec2">Why This Design Uses ALB + EC2</a></li>
     <li><a href="#step-by-step-aws-flow">Step-by-Step AWS Flow</a></li>
+    <li><a href="#internal-logic-and-request-behavior">Internal Logic and Request Behavior</a></li>
     <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
       <ul>
         <li><a href="#1-inspect-the-load-balancer">1. Inspect the load balancer</a></li>
@@ -795,6 +814,8 @@
         <li><a href="#recommended-alb-health-check-settings">Recommended ALB health check settings</a></li>
       </ul>
     </li>
+    <li><a href="#scaling-and-security-considerations">Scaling and Security Considerations</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
     <li><a href="#what-to-verify">What to Verify</a></li>
     <li><a href="#common-mistakes">Common Mistakes</a></li>
     <li><a href="#notes--assumptions">Notes / Assumptions</a></li>
@@ -901,6 +922,14 @@ Service: Application Load Balancer.
 What happens: The ALB completes the HTTP request lifecycle.
 Why it matters: Clients never communicate with EC2 instances directly.</li>
 </ol>
+<h2 id="internal-logic-and-request-behavior">Internal Logic and Request Behavior</h2>
+<ul>
+<li>The ALB is the public HTTP boundary for the backend. It decides which requests reach the application fleet and which targets are healthy enough to receive them.</li>
+<li>EC2 instances represent the long-running application runtime. They are expected to process requests, maintain connection pools, and use private networking for downstream dependencies.</li>
+<li>Auto Scaling manages fleet size, while the ALB manages request routing. These are related controls, but they solve different problems.</li>
+<li>NAT Gateway handles controlled egress for private instances. It is not part of the inbound request path, but it is often essential for runtime dependency access.</li>
+<li>Because the architecture does not show API Gateway, Lambda, ECS, or EKS, the operational model here is intentionally instance-centric and network-centric.</li>
+</ul>
 <h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
 <h3 id="1-inspect-the-load-balancer">1. Inspect the load balancer</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws elbv2 describe-load-balancers <span style="color:#ae81ff">\
@@ -964,6 +993,21 @@ Why it matters: Clients never communicate with EC2 instances directly.</li>
 <li>Interval: <code>30</code> seconds</li>
 <li>Healthy threshold: <code>2</code> or more</li>
 <li>Unhealthy threshold: <code>2</code> or more</li>
+</ul>
+<h2 id="scaling-and-security-considerations">Scaling and Security Considerations</h2>
+<ul>
+<li>Keep backend nodes as stateless as possible so Auto Scaling can replace them without complex session recovery.</li>
+<li>Restrict EC2 inbound access to the ALB security group instead of opening the application port to public CIDR ranges.</li>
+<li>Treat NAT as a controlled egress dependency. If outbound availability becomes critical, consider one NAT Gateway per Availability Zone or VPC endpoints for selected AWS services.</li>
+<li>Health checks should validate application liveness without depending too heavily on downstream services that may fail independently.</li>
+<li>If the platform later needs richer API governance, API Gateway could front selected endpoints, but that would be an architectural extension rather than a correction to the current model.</li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li>Use launch templates and immutable deployment artifacts for consistent fleet replacement.</li>
+<li>Spread the Auto Scaling group across multiple Availability Zones.</li>
+<li>Keep security groups simple and service-specific so trust boundaries stay clear.</li>
+<li>Monitor target health and scaling activity together, because a healthy fleet with poor scaling signals can still fail under load.</li>
 </ul>
 <h2 id="what-to-verify">What to Verify</h2>
 <ul>
@@ -1435,6 +1479,22 @@ Why it matters: Clients never communicate with EC2 instances directly.</li>
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1492,19 +1552,19 @@ Why it matters: Clients never communicate with EC2 instances directly.</li>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../js/clipboard.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775386387"></script>
+    <script src="../../js/jquery.sticky.js?1775386387"></script>
+    <script src="../../js/featherlight.min.js?1775386387"></script>
+    <script src="../../js/highlight.pack.js?1775386387"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../js/learn.js?1775326934"></script>
-    <script src="../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775386387"></script>
+    <script src="../../js/learn.js?1775386387"></script>
+    <script src="../../js/hugo-learn.js?1775386387"></script>
 
-    <link href="../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../mermaid/mermaid.css?1775386387" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775386387"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -15,21 +15,21 @@
     <title>Overview :: Internship Report</title>
 
     
-    <link href="../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../css/nucleus.css?1775386387" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775386387" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775386387" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775386387" rel="stylesheet">
+    <link href="../../css/theme.css?1775386387" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775386387" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1775386387" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1775386387"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1775386387"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775386387"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../js/search.js?1775386387"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -770,7 +788,9 @@
   <ul>
     <li><a href="#system-overview">System Overview</a></li>
     <li><a href="#aws-service-map">AWS Service Map</a></li>
+    <li><a href="#how-to-read-this-diagram">How to Read This Diagram</a></li>
     <li><a href="#end-to-end-aws-flow">End-to-End AWS Flow</a></li>
+    <li><a href="#operational-interpretation">Operational Interpretation</a></li>
     <li><a href="#hands-on-baseline-checks">Hands-on Baseline Checks</a></li>
     <li><a href="#beginner-guidance">Beginner Guidance</a></li>
     <li><a href="#notes--assumptions">Notes / Assumptions</a></li>
@@ -901,6 +921,13 @@
       </tr>
   </tbody>
 </table>
+<h2 id="how-to-read-this-diagram">How to Read This Diagram</h2>
+<ul>
+<li>Read the diagram from left to right for the main request flow, starting at the user and ending at the application, data, and support services.</li>
+<li>Read it from top to bottom to understand trust boundaries: the edge layer is public-facing, the application layer mixes public entry with private runtime, and the data layer is intentionally isolated.</li>
+<li>Treat the observability and security services as a supporting control plane. They do not always sit directly in the user request path, but they are essential for safe production operations.</li>
+<li>If a service is not shown in the diagram, treat it as out of scope or only an implied dependency, not a confirmed deployed component.</li>
+</ul>
 <h2 id="end-to-end-aws-flow">End-to-End AWS Flow</h2>
 <ol>
 <li>A user resolves <code>${APP_DOMAIN}</code> through Amazon Route 53.
@@ -928,6 +955,14 @@ Why it matters: The instance does not need static credentials stored on disk.</l
 Services: AWS Systems Manager and AWS CloudTrail.
 Why it matters: Operations remain traceable and do not require public SSH access.</li>
 </ol>
+<h2 id="operational-interpretation">Operational Interpretation</h2>
+<ul>
+<li>Route 53 and CloudFront define the public web entry path, so problems at this layer usually appear as DNS, TLS, cache, or static-delivery failures.</li>
+<li>ALB and EC2 define the synchronous backend path, so <code>4xx</code>, <code>5xx</code>, target health, or scale-related issues usually belong to the application tier.</li>
+<li>Amazon RDS defines the transactional system of record, so connection, failover, and consistency concerns belong to the data tier.</li>
+<li>Systems Manager, Secrets Manager, KMS, CloudWatch, CloudTrail, and SES form the operational support layer that keeps the environment manageable, observable, and auditable.</li>
+<li>API Gateway, Lambda, and asynchronous services such as SQS or EventBridge are useful comparison points, but they are not part of the currently documented runtime path.</li>
+</ul>
 <h2 id="hands-on-baseline-checks">Hands-on Baseline Checks</h2>
 <p>Run these commands before working through the remaining sections.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sts get-caller-identity
@@ -1401,6 +1436,22 @@ Why it matters: Operations remain traceable and do not require public SSH access
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1458,19 +1509,19 @@ Why it matters: Operations remain traceable and do not require public SSH access
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../js/clipboard.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775386387"></script>
+    <script src="../../js/jquery.sticky.js?1775386387"></script>
+    <script src="../../js/featherlight.min.js?1775386387"></script>
+    <script src="../../js/highlight.pack.js?1775386387"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../js/learn.js?1775326934"></script>
-    <script src="../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775386387"></script>
+    <script src="../../js/learn.js?1775386387"></script>
+    <script src="../../js/hugo-learn.js?1775386387"></script>
 
-    <link href="../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../mermaid/mermaid.css?1775386387" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775386387"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -15,21 +15,21 @@
     <title>Monitoring, Audit, and Email Delivery :: Internship Report</title>
 
     
-    <link href="../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../css/nucleus.css?1775386387" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775386387" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775386387" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775386387" rel="stylesheet">
+    <link href="../../css/theme.css?1775386387" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775386387" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1775386387" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1775386387"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1775386387"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775386387"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../js/search.js?1775386387"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -779,6 +797,7 @@
       </ul>
     </li>
     <li><a href="#why-this-design-uses-direct-aws-integrations">Why This Design Uses Direct AWS Integrations</a></li>
+    <li><a href="#internal-logic-and-operational-model">Internal Logic and Operational Model</a></li>
     <li><a href="#step-by-step-aws-flow">Step-by-Step AWS Flow</a></li>
     <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
       <ul>
@@ -794,6 +813,7 @@
         <li><a href="#example-route-53-records-for-ses-domain-setup">Example Route 53 records for SES domain setup</a></li>
       </ul>
     </li>
+    <li><a href="#best-practices-and-improvement-paths">Best Practices and Improvement Paths</a></li>
     <li><a href="#what-to-verify">What to Verify</a></li>
     <li><a href="#common-mistakes">Common Mistakes</a></li>
     <li><a href="#notes--assumptions">Notes / Assumptions</a></li>
@@ -869,6 +889,14 @@
 <li>The diagram shows CloudWatch and CloudTrail directly, so observability is centered on AWS-native tooling.</li>
 <li>Email is sent directly through Amazon SES rather than via a separate messaging or event bus service.</li>
 <li>EventBridge, SQS, and SNS are not shown in the architecture, so this workshop does not assume an event-driven notification pipeline.</li>
+</ul>
+<h2 id="internal-logic-and-operational-model">Internal Logic and Operational Model</h2>
+<ul>
+<li>CloudWatch explains what the workload is doing at runtime by storing logs, metrics, and operational signals.</li>
+<li>CloudTrail explains what changed in the AWS environment by capturing control-plane activity.</li>
+<li>SES provides managed outbound communication so the application does not have to operate its own SMTP stack.</li>
+<li>Route 53 supports the email trust model by hosting the DNS records that prove domain ownership and improve deliverability.</li>
+<li>Because these services are cross-cutting, problems in this section often explain symptoms seen in other layers even when the user-facing request path looks healthy.</li>
 </ul>
 <h2 id="step-by-step-aws-flow">Step-by-Step AWS Flow</h2>
 <ol>
@@ -997,7 +1025,15 @@ Why it matters: Without valid DNS records, SES identity verification or delivera
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws route53 change-resource-record-sets <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --hosted-zone-id <span style="color:#e6db74">${</span>HOSTED_ZONE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --change-batch file://ses-identity-records.json
-</span></span></code></pre></div><h2 id="what-to-verify">What to Verify</h2>
+</span></span></code></pre></div><h2 id="best-practices-and-improvement-paths">Best Practices and Improvement Paths</h2>
+<ul>
+<li>Use structured application logs so search, filtering, and incident review become easier over time.</li>
+<li>Define log retention explicitly for application, audit, and security-relevant data instead of relying on defaults.</li>
+<li>Treat CloudTrail as part of the governance baseline, not just a troubleshooting aid.</li>
+<li>Add alarm routing and ownership so every important alarm has an actual response path.</li>
+<li>If notification volume or retry complexity grows, services such as EventBridge, SQS, or SNS can decouple email and other side effects from the synchronous request path.</li>
+</ul>
+<h2 id="what-to-verify">What to Verify</h2>
 <ul>
 <li>Application logs arrive in the expected CloudWatch log group.</li>
 <li>CloudTrail captures administrator and infrastructure actions.</li>
@@ -1464,9 +1500,6 @@ Why it matters: Without valid DNS records, SES identity verification or delivera
             
         
                     
-            
-        
-                    
                         
             
             
@@ -1474,6 +1507,25 @@ Why it matters: Without valid DNS records, SES identity verification or delivera
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1514,7 +1566,7 @@ Why it matters: Without valid DNS records, SES identity verification or delivera
 			<a class="nav nav-prev" href="../../4-workshop/4.5-operational-access-and-secret-governance/" title="Operational Access and Secret Governance"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../5-feedback/" title="Self-Assessment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../4-workshop/4.7-workshop-architecture-deep-dive/" title="Workshop Architecture Deep Dive" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1524,19 +1576,19 @@ Why it matters: Without valid DNS records, SES identity verification or delivera
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../js/clipboard.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775386387"></script>
+    <script src="../../js/jquery.sticky.js?1775386387"></script>
+    <script src="../../js/featherlight.min.js?1775386387"></script>
+    <script src="../../js/highlight.pack.js?1775386387"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../js/learn.js?1775326934"></script>
-    <script src="../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775386387"></script>
+    <script src="../../js/learn.js?1775386387"></script>
+    <script src="../../js/hugo-learn.js?1775386387"></script>
 
-    <link href="../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../mermaid/mermaid.css?1775386387" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775386387"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

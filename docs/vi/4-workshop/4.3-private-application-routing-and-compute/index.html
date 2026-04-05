@@ -15,21 +15,21 @@
     <title>Điều phối ứng dụng riêng tư và tầng tính toán :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1775386388" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1775386388" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1775386388" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1775386388" rel="stylesheet">
+    <link href="../../../css/theme.css?1775386388" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1775386388" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1775386388" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1775386388"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1775386388"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1775386388"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../../js/search.js?1775386388"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Phân tích kiến trúc workshop chuyên sâu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Phân tích kiến trúc workshop chuyên sâu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -781,6 +799,7 @@
     </li>
     <li><a href="#vì-sao-thiết-kế-này-dùng-alb--ec2">Vì sao thiết kế này dùng ALB + EC2</a></li>
     <li><a href="#luồng-aws-từng-bước">Luồng AWS từng bước</a></li>
+    <li><a href="#logic-nội-bộ-và-hành-vi-request">Logic nội bộ và hành vi request</a></li>
     <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
       <ul>
         <li><a href="#1-kiểm-tra-load-balancer">1. Kiểm tra load balancer</a></li>
@@ -795,6 +814,8 @@
         <li><a href="#thiết-lập-health-check-alb-được-khuyến-nghị">Thiết lập health check ALB được khuyến nghị</a></li>
       </ul>
     </li>
+    <li><a href="#lưu-ý-về-scale-và-bảo-mật">Lưu ý về scale và bảo mật</a></li>
+    <li><a href="#best-practices">Best practices</a></li>
     <li><a href="#những-gì-cần-xác-minh">Những gì cần xác minh</a></li>
     <li><a href="#lỗi-thường-gặp">Lỗi thường gặp</a></li>
     <li><a href="#ghi-chú--giả-định">Ghi chú / Giả định</a></li>
@@ -901,6 +922,14 @@ Dịch vụ: Application Load Balancer.
 Điều xảy ra: ALB hoàn tất vòng đời của HTTP request.
 Tại sao quan trọng: Client không bao giờ giao tiếp trực tiếp với EC2 instance.</li>
 </ol>
+<h2 id="logic-nội-bộ-và-hành-vi-request">Logic nội bộ và hành vi request</h2>
+<ul>
+<li>ALB là ranh giới HTTP công khai của backend. Nó quyết định request nào được vào fleet của ứng dụng và target nào đủ healthy để nhận traffic.</li>
+<li>EC2 instance là runtime chạy lâu dài của ứng dụng. Chúng được kỳ vọng xử lý request, duy trì connection pool và dùng private network cho các dependency downstream.</li>
+<li>Auto Scaling quản lý kích thước của fleet, còn ALB quản lý việc route request. Hai cơ chế này liên quan với nhau nhưng không giải quyết cùng một bài toán.</li>
+<li>NAT Gateway xử lý egress có kiểm soát cho private instance. Nó không nằm trên inbound request path, nhưng thường là thành phần rất quan trọng cho runtime dependency access.</li>
+<li>Vì kiến trúc hiện tại không cho thấy API Gateway, Lambda, ECS hay EKS, mô hình vận hành ở đây được giữ theo hướng instance-centric và network-centric.</li>
+</ul>
 <h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
 <h3 id="1-kiểm-tra-load-balancer">1. Kiểm tra load balancer</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws elbv2 describe-load-balancers <span style="color:#ae81ff">\
@@ -964,6 +993,21 @@ Tại sao quan trọng: Client không bao giờ giao tiếp trực tiếp với 
 <li>Interval: <code>30</code> giây</li>
 <li>Healthy threshold: <code>2</code> trở lên</li>
 <li>Unhealthy threshold: <code>2</code> trở lên</li>
+</ul>
+<h2 id="lưu-ý-về-scale-và-bảo-mật">Lưu ý về scale và bảo mật</h2>
+<ul>
+<li>Hãy giữ backend node càng stateless càng tốt để Auto Scaling có thể thay thế chúng mà không cần phục hồi session phức tạp.</li>
+<li>Chỉ cho phép inbound vào EC2 từ security group của ALB, thay vì mở application port cho CIDR public.</li>
+<li>Hãy xem NAT là dependency egress có kiểm soát. Nếu outbound availability trở nên quan trọng hơn, nên cân nhắc NAT Gateway theo từng Availability Zone hoặc VPC endpoint cho một số AWS service.</li>
+<li>Health check nên xác minh liveness của ứng dụng nhưng không được phụ thuộc quá nặng vào downstream service có thể lỗi độc lập.</li>
+<li>Nếu sau này nền tảng cần governance cho API ở mức cao hơn, API Gateway có thể được thêm vào trước một số endpoint cụ thể, nhưng đó là phần mở rộng kiến trúc chứ không phải sửa sai mô hình hiện tại.</li>
+</ul>
+<h2 id="best-practices">Best practices</h2>
+<ul>
+<li>Dùng launch template và immutable deployment artifact để việc thay fleet được nhất quán.</li>
+<li>Trải Auto Scaling group trên nhiều Availability Zone.</li>
+<li>Giữ security group đơn giản và tách theo từng service để trust boundary rõ ràng.</li>
+<li>Theo dõi target health cùng với scaling activity, vì fleet đang healthy nhưng scale sai vẫn có thể làm hệ thống thất bại khi tăng tải.</li>
 </ul>
 <h2 id="những-gì-cần-xác-minh">Những gì cần xác minh</h2>
 <ul>
@@ -1435,6 +1479,22 @@ Tại sao quan trọng: Client không bao giờ giao tiếp trực tiếp với 
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1492,19 +1552,19 @@ Tại sao quan trọng: Client không bao giờ giao tiếp trực tiếp với 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../../js/clipboard.min.js?1775386388"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1775386388"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775386388"></script>
+    <script src="../../../js/jquery.sticky.js?1775386388"></script>
+    <script src="../../../js/featherlight.min.js?1775386388"></script>
+    <script src="../../../js/highlight.pack.js?1775386388"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../../js/learn.js?1775326934"></script>
-    <script src="../../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1775386388"></script>
+    <script src="../../../js/learn.js?1775386388"></script>
+    <script src="../../../js/hugo-learn.js?1775386388"></script>
 
-    <link href="../../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../../mermaid/mermaid.css?1775386388" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1775386388"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

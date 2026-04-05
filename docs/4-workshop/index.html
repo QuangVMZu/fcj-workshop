@@ -15,21 +15,21 @@
     <title>Workshop :: Internship Report</title>
 
     
-    <link href="../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../css/nucleus.css?1775386387" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1775386387" rel="stylesheet">
+    <link href="../css/hybrid.css?1775386387" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1775386387" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1775386387" rel="stylesheet">
+    <link href="../css/auto-complete.css?1775386387" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1775386387" rel="stylesheet">
+    <link href="../css/theme.css?1775386387" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1775386387" rel="stylesheet">
     
-    <link href="../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../css/theme-workshop.css?1775386387" rel="stylesheet">
     
     
 
-    <script src="../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../js/jquery-3.3.1.min.js?1775386387"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1775386387"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1775386387"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../js/search.js?1775386387"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -766,6 +784,7 @@
     <li><a href="#how-to-use-this-workshop">How to Use This Workshop</a></li>
     <li><a href="#services-used-in-this-architecture">Services Used in This Architecture</a></li>
     <li><a href="#services-not-shown-in-this-diagram">Services Not Shown in This Diagram</a></li>
+    <li><a href="#what-this-chapter-covers-in-practice">What This Chapter Covers in Practice</a></li>
     <li><a href="#shared-lab-variables">Shared Lab Variables</a></li>
     <li><a href="#recommended-aws-access">Recommended AWS Access</a></li>
     <li><a href="#content">Content</a></li>
@@ -823,6 +842,14 @@
 <li><strong>EventBridge / SQS / SNS</strong>: Not shown. The diagram emphasizes synchronous request flow and direct service integrations.</li>
 <li><strong>Cognito</strong>: Not shown. The visible admin path uses IAM and AWS Systems Manager rather than a user pool.</li>
 </ul>
+<h2 id="what-this-chapter-covers-in-practice">What This Chapter Covers in Practice</h2>
+<ul>
+<li>It explains how a browser request enters AWS, reaches the frontend, and then transitions into backend API processing.</li>
+<li>It clarifies where the public trust boundary ends and where the private application and data tiers begin.</li>
+<li>It shows how operators administer the environment without opening SSH to the internet.</li>
+<li>It highlights the supporting services that make the runtime production-ready, such as secret management, audit logging, metrics, and outbound email.</li>
+<li>It intentionally focuses on deployed AWS behavior so the reader can reason about runtime responsibilities, failure domains, and service interactions layer by layer.</li>
+</ul>
 <h2 id="shared-lab-variables">Shared Lab Variables</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export AWS_REGION<span style="color:#f92672">=</span>ap-southeast-1
 </span></span><span style="display:flex;"><span>export APP_DOMAIN<span style="color:#f92672">=</span>app.example.com
@@ -858,6 +885,7 @@
 <li><a href="../4-workshop/4.4-relational-data-resilience-and-network-isolation/">Relational Data Resilience and Network Isolation</a></li>
 <li><a href="../4-workshop/4.5-operational-access-and-secret-governance/">Operational Access and Secret Governance</a></li>
 <li><a href="../4-workshop/4.6-monitoring-audit-and-email-delivery/">Monitoring, Audit, and Email Delivery</a></li>
+<li><a href="../4-workshop/4.7-workshop-architecture-deep-dive/">Workshop Architecture Deep Dive</a></li>
 </ol>
 
 
@@ -1304,6 +1332,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1361,19 +1405,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1775326934"></script>
-    <script src="../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../js/jquery.sticky.js?1775326934"></script>
-    <script src="../js/featherlight.min.js?1775326934"></script>
-    <script src="../js/highlight.pack.js?1775326934"></script>
+    <script src="../js/clipboard.min.js?1775386387"></script>
+    <script src="../js/perfect-scrollbar.min.js?1775386387"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1775386387"></script>
+    <script src="../js/jquery.sticky.js?1775386387"></script>
+    <script src="../js/featherlight.min.js?1775386387"></script>
+    <script src="../js/highlight.pack.js?1775386387"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../js/learn.js?1775326934"></script>
-    <script src="../js/hugo-learn.js?1775326934"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1775386387"></script>
+    <script src="../js/learn.js?1775386387"></script>
+    <script src="../js/hugo-learn.js?1775386387"></script>
 
-    <link href="../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1775326934"></script>
+    <link href="../mermaid/mermaid.css?1775386387" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1775386387"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

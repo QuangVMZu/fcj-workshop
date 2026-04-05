@@ -15,21 +15,21 @@
     <title>Edge Delivery and Geospatial Requests :: Internship Report</title>
 
     
-    <link href="../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../css/nucleus.css?1775386387" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775386387" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775386387" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775386387" rel="stylesheet">
+    <link href="../../css/theme.css?1775386387" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775386387" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1775386387" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1775386387"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1775386387"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775386387"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../js/search.js?1775386387"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -778,7 +796,9 @@
         <li><a href="#amazon-location-service">Amazon Location Service</a></li>
       </ul>
     </li>
+    <li><a href="#why-this-layer-matters">Why This Layer Matters</a></li>
     <li><a href="#step-by-step-aws-flow">Step-by-Step AWS Flow</a></li>
+    <li><a href="#internal-logic-and-request-behavior">Internal Logic and Request Behavior</a></li>
     <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
       <ul>
         <li><a href="#1-inspect-the-hosted-zone">1. Inspect the hosted zone</a></li>
@@ -793,6 +813,8 @@
         <li><a href="#private-s3-origin-policy-for-cloudfront-oac">Private S3 origin policy for CloudFront OAC</a></li>
       </ul>
     </li>
+    <li><a href="#security-and-performance-notes">Security and Performance Notes</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
     <li><a href="#what-to-verify">What to Verify</a></li>
     <li><a href="#common-mistakes">Common Mistakes</a></li>
     <li><a href="#notes--assumptions">Notes / Assumptions</a></li>
@@ -857,6 +879,13 @@
 <li>Handles geospatial requests such as map rendering and place search.</li>
 <li>Operates independently from the static asset delivery flow.</li>
 </ul>
+<h2 id="why-this-layer-matters">Why This Layer Matters</h2>
+<ul>
+<li>It is the first AWS layer that users interact with, so it strongly shapes latency, security posture, and perceived availability.</li>
+<li>It separates high-cache, high-read frontend traffic from lower-cache, business-logic-heavy backend traffic.</li>
+<li>It keeps the frontend bucket private while still allowing global asset delivery through CloudFront.</li>
+<li>It lets map and place search remain a specialized integration instead of turning the application servers into a generic proxy for geospatial APIs.</li>
+</ul>
 <h2 id="step-by-step-aws-flow">Step-by-Step AWS Flow</h2>
 <ol>
 <li>A user opens <code>${APP_DOMAIN}</code> in the browser.
@@ -884,6 +913,14 @@ Service: Application Load Balancer in the next section.
 What happens: Dynamic traffic leaves the edge path and enters the private compute stack.
 Why it matters: Static and dynamic traffic can be scaled and tuned independently.</li>
 </ol>
+<h2 id="internal-logic-and-request-behavior">Internal Logic and Request Behavior</h2>
+<ul>
+<li>DNS resolution determines whether the browser reaches the correct edge distribution in the first place.</li>
+<li>CloudFront acts as both a cache and a policy-enforcement layer. It can reduce origin load, normalize request behavior, and work with WAF before anything reaches S3.</li>
+<li>S3 acts as the origin of record for static frontend artifacts, but not as the public endpoint exposed to users.</li>
+<li>Amazon Location Service represents a parallel frontend dependency. It is related to the user experience, but it is logically separate from static asset delivery and from the private backend request path.</li>
+<li>Because this layer is mostly read-heavy, its scaling behavior is very different from the compute tier. Good cache hit ratios reduce both latency and cost.</li>
+</ul>
 <h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
 <h3 id="1-inspect-the-hosted-zone">1. Inspect the hosted zone</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws route53 list-hosted-zones --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
@@ -952,6 +989,21 @@ Why it matters: Static and dynamic traffic can be scaled and tuned independently
 <li>The S3 bucket stays private.</li>
 <li>Only the named CloudFront distribution can read objects.</li>
 <li>Users must access the frontend through CloudFront, where WAF can inspect traffic.</li>
+</ul>
+<h2 id="security-and-performance-notes">Security and Performance Notes</h2>
+<ul>
+<li>Prefer Origin Access Control or an equivalent private-origin pattern over public bucket access.</li>
+<li>Use cache invalidation carefully. In mature deployments, versioned asset names are often better than frequent full-path invalidations.</li>
+<li>Treat WAF as part of the platform security baseline, not as an optional add-on after the application goes live.</li>
+<li>If the frontend eventually needs API-specific policies such as request validation, authorizers, or client quotas, API Gateway may become relevant, but it is not part of the current design shown here.</li>
+<li>If geospatial calls require stronger access control later, a signed-request pattern or a backend mediation layer could be introduced.</li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li>Keep DNS, CDN, bucket policy, and geospatial configuration separated by environment.</li>
+<li>Document cache policy assumptions so releases do not accidentally serve stale assets.</li>
+<li>Monitor CloudFront cache hit ratio and WAF block counts as leading indicators of edge behavior.</li>
+<li>Use TLS everywhere on the public path and keep certificates rotated and validated.</li>
 </ul>
 <h2 id="what-to-verify">What to Verify</h2>
 <ul>
@@ -1423,6 +1475,22 @@ Why it matters: Static and dynamic traffic can be scaled and tuned independently
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1480,19 +1548,19 @@ Why it matters: Static and dynamic traffic can be scaled and tuned independently
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../js/clipboard.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775386387"></script>
+    <script src="../../js/jquery.sticky.js?1775386387"></script>
+    <script src="../../js/featherlight.min.js?1775386387"></script>
+    <script src="../../js/highlight.pack.js?1775386387"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../js/learn.js?1775326934"></script>
-    <script src="../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775386387"></script>
+    <script src="../../js/learn.js?1775386387"></script>
+    <script src="../../js/hugo-learn.js?1775386387"></script>
 
-    <link href="../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../mermaid/mermaid.css?1775386387" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775386387"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

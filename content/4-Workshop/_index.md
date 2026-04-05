@@ -39,6 +39,14 @@ This chapter is a hands-on workshop guide for the AWS architecture behind the EV
 - **EventBridge / SQS / SNS**: Not shown. The diagram emphasizes synchronous request flow and direct service integrations.
 - **Cognito**: Not shown. The visible admin path uses IAM and AWS Systems Manager rather than a user pool.
 
+## What This Chapter Covers in Practice
+
+- It explains how a browser request enters AWS, reaches the frontend, and then transitions into backend API processing.
+- It clarifies where the public trust boundary ends and where the private application and data tiers begin.
+- It shows how operators administer the environment without opening SSH to the internet.
+- It highlights the supporting services that make the runtime production-ready, such as secret management, audit logging, metrics, and outbound email.
+- It intentionally focuses on deployed AWS behavior so the reader can reason about runtime responsibilities, failure domains, and service interactions layer by layer.
+
 ## Shared Lab Variables
 
 ```bash
@@ -78,6 +86,5 @@ export SES_RECIPIENT=ops@example.com
 4. [Relational Data Resilience and Network Isolation](4.4-relational-data-resilience-and-network-isolation/)
 5. [Operational Access and Secret Governance](4.5-operational-access-and-secret-governance/)
 6. [Monitoring, Audit, and Email Delivery](4.6-monitoring-audit-and-email-delivery/)
-
-
+7. [Workshop Architecture Deep Dive](4.7-workshop-architecture-deep-dive/)
 

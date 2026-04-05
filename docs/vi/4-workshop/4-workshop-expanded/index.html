@@ -1,0 +1,3566 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/fcj-workshop/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=fcj-workshop/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.156.0">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="vminhquang05@gmail.com" />
+
+    <link rel="icon" href="../../../images/favicon.png" type="image/png">
+
+    <title>Workshop mở rộng :: Báo cáo thực tập</title>
+
+    
+    <link href="../../../css/nucleus.css?1775384645" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1775384645" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1775384645" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1775384645" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1775384645" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1775384645" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1775384645" rel="stylesheet">
+    <link href="../../../css/theme.css?1775384645" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1775384645" rel="stylesheet">
+    
+    <link href="../../../css/theme-workshop.css?1775384645" rel="stylesheet">
+    
+    
+
+    <script src="../../../js/jquery-3.3.1.min.js?1775384645"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+
+  </head>
+  <body class="" data-url="../../../vi/4-workshop/4-workshop-expanded/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+   
+  
+  
+  
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="../../../vi/">
+  <svg
+    id="Layer_1"
+    data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 60 30"
+    width="30%"
+  >
+    <defs>
+      <style>
+        .cls-1 {
+          fill: #fff;
+        }
+        .cls-2 {
+          fill: #f90;
+          fill-rule: evenodd;
+        }
+      </style>
+    </defs>
+    <title>AWS-Logo_White-Color</title>
+    <path
+      class="cls-1"
+      d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"
+    ></path>
+  </svg>
+</a>
+</div>
+     <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../../js/lunr.min.js?1775384645"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1775384645"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/\/vi";
+    
+</script>
+<script type="text/javascript" src="../../../js/search.js?1775384645"></script>
+ 
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+                
+<li
+  data-nav-id="/vi/1-worklog/"
+  title="Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/">
+     <b> 1. </b> Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/"
+  title="Worklog Tuần 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.1-week1/">
+     <b> 1.1. </b> Worklog Tuần 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/"
+  title="Worklog Tuần 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.2-week2/">
+     <b> 1.2. </b> Worklog Tuần 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/"
+  title="Worklog Tuần 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.3-week3/">
+     <b> 1.3. </b> Worklog Tuần 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/"
+  title="Worklog Tuần 4"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.4-week4/">
+     <b> 1.4. </b> Worklog Tuần 4 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/"
+  title="Worklog Tuần 5"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.5-week5/">
+     <b> 1.5. </b> Worklog Tuần 5 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/"
+  title="Worklog Tuần 6"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.6-week6/">
+     <b> 1.6. </b> Worklog Tuần 6 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/"
+  title="Worklog Tuần 7"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.7-week7/">
+     <b> 1.7. </b> Worklog Tuần 7 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/"
+  title="Worklog Tuần 8"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.8-week8/">
+     <b> 1.8. </b> Worklog Tuần 8 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/"
+  title="Worklog Tuần 9"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.9-week9/">
+     <b> 1.9. </b> Worklog Tuần 9 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.10-week10/"
+  title="Week 10 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.10-week10/">
+     <b> 1.10. </b> Week 10 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.11-week11/"
+  title="Week 11 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.11-week11/">
+     <b> 1.11. </b> Week 11 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.12-week12/"
+  title="Week 12 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.12-week12/">
+     <b> 1.12. </b> Week 12 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/1-worklog/1.13-week13/"
+  title="Week 13 Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.13-week13/">
+     <b> 1.13. </b> Week 13 Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/vi/2-proposal/"
+  title="Proposal"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/2-proposal/">
+     <b> 2. </b> Proposal 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+            
+<li
+  data-nav-id="/vi/3-eventparticipated/"
+  title="Sự kiện đã tham gia"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/3-eventparticipated/">
+     <b> 3. </b> Sự kiện đã tham gia 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/vi/3-eventparticipated/3.1-event1/"
+  title="Event 1 - Building Full-Stack Observability on AWS with Datadog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/3-eventparticipated/3.1-event1/">
+     <b> 3.1. </b> Event 1 - Building Full-Stack Observability on AWS with Datadog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/3-eventparticipated/3.2-event2/"
+  title="Event 2 - AWS re:Invent Recap HCMC"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/3-eventparticipated/3.2-event2/">
+     <b> 3.2. </b> Event 2 - AWS re:Invent Recap HCMC 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/vi/4-workshop/"
+  title="Workshop"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/">
+     <b> 4. </b> Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+             
+<li
+  data-nav-id="/vi/4-workshop/4.1-overview/"
+  title="Tổng quan"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.1-overview/">
+     <b> 4.1. </b> Tổng quan 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.2-edge-delivery-and-geospatial-requests/"
+  title="Phân phối biên và yêu cầu dữ liệu bản đồ"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.2-edge-delivery-and-geospatial-requests/">
+     <b> 4.2. </b> Phân phối biên và yêu cầu dữ liệu bản đồ 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.3-private-application-routing-and-compute/"
+  title="Điều phối ứng dụng riêng tư và tầng tính toán"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.3-private-application-routing-and-compute/">
+     <b> 4.3. </b> Điều phối ứng dụng riêng tư và tầng tính toán 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.4-relational-data-resilience-and-network-isolation/"
+  title="Độ bền dữ liệu quan hệ và cô lập mạng"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.4-relational-data-resilience-and-network-isolation/">
+     <b> 4.4. </b> Độ bền dữ liệu quan hệ và cô lập mạng 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.5-operational-access-and-secret-governance/"
+  title="Truy cập vận hành và quản trị bí mật"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.5-operational-access-and-secret-governance/">
+     <b> 4.5. </b> Truy cập vận hành và quản trị bí mật 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.6-monitoring-audit-and-email-delivery/"
+  title="Giám sát, kiểm toán và gửi email"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.6-monitoring-audit-and-email-delivery/">
+     <b> 4.6. </b> Giám sát, kiểm toán và gửi email 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Phân tích kiến trúc workshop chuyên sâu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Phân tích kiến trúc workshop chuyên sâu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4-workshop-expanded/"
+  title="Workshop mở rộng"
+  class="dd-item active"
+>
+  <a href="../../../vi/4-workshop/4-workshop-expanded/">
+    Workshop mở rộng <i
+      class="fas fa-check read-icon"
+    ></i
+    >
+  </a>
+</li>
+      
+  </ul>
+  
+</li>
+            
+<li
+  data-nav-id="/vi/5-feedback/"
+  title="Tự Đánh Giá"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-feedback/">
+     <b> 5. </b> Tự Đánh Giá 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+            
+<li
+  data-nav-id="/vi/6-sharingfeedback/"
+  title="Chia Sẻ Và Đánh Giá"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/6-sharingfeedback/">
+     <b> 6. </b> Chia Sẻ Và Đánh Giá 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"
+            ><i class='fab fa-facebook'></i> AWS Study Group</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+     
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = '/' + this.options[this.selectedIndex].dataset.path;">
+                         
+                <option
+                  id="vi"
+                  value="/vi/4-workshop/4-workshop-expanded/"
+                  data-path="fcj-workshop/vi/4-workshop/4-workshop-expanded/"
+                  selected
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><div class="menu-footer-block">
+    <b>Workshop</b><br>
+    <img
+        src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0"
+        alt="Workshop counter"
+        title="Workshop counter"
+        loading="lazy"
+    >
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.2rem;">
+    <b><a href="https://cloudjourney.awsstudygroup.com/" style="color:inherit; text-decoration:none;">Cloud Journey</a></b><br>
+    <img
+        src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0"
+        alt="Cloud Journey counter"
+        title="Cloud Journey counter"
+        loading="lazy"
+    >
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.75rem;">
+    <b>Last Updated</b><br>
+    <i><span id="lastUpdated" style="color:orange;"></span></i>
+</div>
+
+<div class="menu-footer-block" style="margin-top: 0.75rem;">
+    <b>Team</b><br>
+    <i><a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud Journey</a></i>
+</div>
+
+<script>
+    (function () {
+        var lastUpdated = document.getElementById('lastUpdated');
+        if (!lastUpdated) {
+            return;
+        }
+
+        var today = new Date();
+        lastUpdated.textContent = today.toLocaleDateString('en-GB');
+    })();
+</script>
+</section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../../vi/'>Báo cáo thực tập</a> > <a href='../../../vi/4-workshop/'>Workshop</a> > Workshop mở rộng
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#tổng-quan">Tổng quan</a></li>
+    <li><a href="#cách-sử-dụng-workshop">Cách sử dụng workshop</a></li>
+    <li><a href="#các-dịch-vụ-được-dùng-trong-kiến-trúc-này">Các dịch vụ được dùng trong kiến trúc này</a></li>
+    <li><a href="#các-dịch-vụ-không-xuất-hiện-trong-sơ-đồ-này">Các dịch vụ không xuất hiện trong sơ đồ này</a></li>
+    <li><a href="#biến-môi-trường-dùng-chung-trong-lab">Biến môi trường dùng chung trong lab</a></li>
+    <li><a href="#quyền-aws-nên-có">Quyền AWS nên có</a></li>
+    <li><a href="#nội-dung">Nội dung</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tổng-quan-hệ-thống">Tổng quan hệ thống</a></li>
+    <li><a href="#bản-đồ-dịch-vụ-aws">Bản đồ dịch vụ AWS</a></li>
+    <li><a href="#luồng-aws-đầu-cuối">Luồng AWS đầu cuối</a></li>
+    <li><a href="#các-bước-kiểm-tra-nền-tảng">Các bước kiểm tra nền tảng</a></li>
+    <li><a href="#hướng-dẫn-cho-người-mới-bắt-đầu">Hướng dẫn cho người mới bắt đầu</a></li>
+    <li><a href="#ghi-chú--giả-định">Ghi chú / Giả định</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tổng-quan-1">Tổng quan</a></li>
+    <li><a href="#các-dịch-vụ-aws-trong-phần-này">Các dịch vụ AWS trong phần này</a>
+      <ul>
+        <li><a href="#amazon-route-53">Amazon Route 53</a></li>
+        <li><a href="#amazon-cloudfront">Amazon CloudFront</a></li>
+        <li><a href="#aws-waf">AWS WAF</a></li>
+        <li><a href="#amazon-s3">Amazon S3</a></li>
+        <li><a href="#amazon-location-service">Amazon Location Service</a></li>
+      </ul>
+    </li>
+    <li><a href="#luồng-aws-từng-bước">Luồng AWS từng bước</a>
+      <ul>
+        <li><a href="#hành-vi-request-và-response">Hành vi request và response</a></li>
+        <li><a href="#logic-nội-bộ-ở-mức-cao">Logic nội bộ ở mức cao</a></li>
+      </ul>
+    </li>
+    <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-kiểm-tra-hosted-zone">1. Kiểm tra hosted zone</a></li>
+        <li><a href="#2-tạo-hoặc-cập-nhật-bản-ghi-dns-của-ứng-dụng">2. Tạo hoặc cập nhật bản ghi DNS của ứng dụng</a></li>
+        <li><a href="#3-triển-khai-frontend-asset-lên-s3">3. Triển khai frontend asset lên S3</a></li>
+        <li><a href="#4-xóa-cache-cloudfront-sau-khi-deploy">4. Xóa cache CloudFront sau khi deploy</a></li>
+        <li><a href="#5-thử-một-truy-vấn-tìm-kiếm-với-location-service">5. Thử một truy vấn tìm kiếm với Location Service</a></li>
+      </ul>
+    </li>
+    <li><a href="#ví-dụ-cấu-hình">Ví dụ cấu hình</a>
+      <ul>
+        <li><a href="#s3-bucket-policy-private-cho-cloudfront-oac">S3 bucket policy private cho CloudFront OAC</a></li>
+        <li><a href="#best-practices-cho-lớp-này">Best practices cho lớp này</a></li>
+      </ul>
+    </li>
+    <li><a href="#những-gì-cần-xác-minh">Những gì cần xác minh</a></li>
+    <li><a href="#lỗi-thường-gặp">Lỗi thường gặp</a></li>
+    <li><a href="#ghi-chú--giả-định-1">Ghi chú / Giả định</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tổng-quan-2">Tổng quan</a></li>
+    <li><a href="#các-dịch-vụ-aws-trong-phần-này-1">Các dịch vụ AWS trong phần này</a>
+      <ul>
+        <li><a href="#amazon-vpc">Amazon VPC</a></li>
+        <li><a href="#internet-gateway">Internet Gateway</a></li>
+        <li><a href="#nat-gateway">NAT Gateway</a></li>
+        <li><a href="#application-load-balancer">Application Load Balancer</a></li>
+        <li><a href="#amazon-ec2">Amazon EC2</a></li>
+        <li><a href="#ec2-auto-scaling">EC2 Auto Scaling</a></li>
+      </ul>
+    </li>
+    <li><a href="#vì-sao-thiết-kế-này-dùng-alb--ec2">Vì sao thiết kế này dùng ALB + EC2</a></li>
+    <li><a href="#luồng-aws-từng-bước-1">Luồng AWS từng bước</a>
+      <ul>
+        <li><a href="#hành-vi-request-và-response-1">Hành vi request và response</a></li>
+        <li><a href="#logic-nội-bộ-của-lớp-này">Logic nội bộ của lớp này</a></li>
+      </ul>
+    </li>
+    <li><a href="#aws-cli-walkthrough-1">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-kiểm-tra-load-balancer">1. Kiểm tra load balancer</a></li>
+        <li><a href="#2-kiểm-tra-trạng-thái-target">2. Kiểm tra trạng thái target</a></li>
+        <li><a href="#3-kiểm-tra-auto-scaling-group">3. Kiểm tra Auto Scaling group</a></li>
+        <li><a href="#4-kiểm-tra-một-backend-instance">4. Kiểm tra một backend instance</a></li>
+      </ul>
+    </li>
+    <li><a href="#ví-dụ-cấu-hình-1">Ví dụ cấu hình</a>
+      <ul>
+        <li><a href="#bộ-rule-traffic-điển-hình-cho-kiến-trúc-này">Bộ rule traffic điển hình cho kiến trúc này</a></li>
+        <li><a href="#thiết-lập-health-check-alb-được-khuyến-nghị">Thiết lập health check ALB được khuyến nghị</a></li>
+        <li><a href="#best-practices-cho-lớp-này-1">Best practices cho lớp này</a></li>
+      </ul>
+    </li>
+    <li><a href="#những-gì-cần-xác-minh-1">Những gì cần xác minh</a></li>
+    <li><a href="#lỗi-thường-gặp-1">Lỗi thường gặp</a></li>
+    <li><a href="#ghi-chú--giả-định-2">Ghi chú / Giả định</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tổng-quan-3">Tổng quan</a></li>
+    <li><a href="#các-dịch-vụ-aws-trong-phần-này-2">Các dịch vụ AWS trong phần này</a>
+      <ul>
+        <li><a href="#amazon-rds">Amazon RDS</a></li>
+        <li><a href="#primary-database-instance">Primary Database Instance</a></li>
+        <li><a href="#standby-database-instance">Standby Database Instance</a></li>
+        <li><a href="#không-có-truy-cập-công-khai">Không có truy cập công khai</a></li>
+        <li><a href="#kết-nối-ec2-tới-rds">Kết nối EC2 tới RDS</a></li>
+      </ul>
+    </li>
+    <li><a href="#luồng-aws-từng-bước-2">Luồng AWS từng bước</a>
+      <ul>
+        <li><a href="#hành-vi-request-và-response-2">Hành vi request và response</a></li>
+      </ul>
+    </li>
+    <li><a href="#key-logic--rules">Key Logic / Rules</a></li>
+    <li><a href="#aws-cli-walkthrough-2">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-kiểm-tra-db-instance">1. Kiểm tra DB instance</a></li>
+        <li><a href="#2-hiển-thị-trạng-thái-cờ-multi-az-và-endpoint">2. Hiển thị trạng thái, cờ Multi-AZ và endpoint</a></li>
+        <li><a href="#3-thực-hiện-failover-test-ở-môi-trường-không-phải-production-đã-được-phê-duyệt">3. Thực hiện failover test ở môi trường không phải production đã được phê duyệt</a></li>
+      </ul>
+    </li>
+    <li><a href="#ví-dụ-cấu-hình-2">Ví dụ cấu hình</a>
+      <ul>
+        <li><a href="#mô-hình-truy-cập-database-được-khuyến-nghị">Mô hình truy cập database được khuyến nghị</a></li>
+        <li><a href="#ví-dụ-thông-tin-kết-nối-lưu-trong-secrets-manager">Ví dụ thông tin kết nối lưu trong Secrets Manager</a></li>
+        <li><a href="#best-practices-cho-lớp-này-2">Best practices cho lớp này</a></li>
+      </ul>
+    </li>
+    <li><a href="#những-gì-cần-xác-minh-2">Những gì cần xác minh</a></li>
+    <li><a href="#lỗi-thường-gặp-2">Lỗi thường gặp</a></li>
+    <li><a href="#ghi-chú--giả-định-3">Ghi chú / Giả định</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tổng-quan-4">Tổng quan</a></li>
+    <li><a href="#các-dịch-vụ-aws-trong-phần-này-3">Các dịch vụ AWS trong phần này</a>
+      <ul>
+        <li><a href="#aws-systems-manager-ssm">AWS Systems Manager (SSM)</a></li>
+        <li><a href="#iam-instance-profile">IAM Instance Profile</a></li>
+        <li><a href="#aws-secrets-manager">AWS Secrets Manager</a></li>
+        <li><a href="#aws-kms">AWS KMS</a></li>
+        <li><a href="#amazon-ec2-1">Amazon EC2</a></li>
+      </ul>
+    </li>
+    <li><a href="#luồng-aws-từng-bước-3">Luồng AWS từng bước</a>
+      <ul>
+        <li><a href="#hành-vi-request-và-response-3">Hành vi request và response</a></li>
+      </ul>
+    </li>
+    <li><a href="#key-logic--rules-1">Key Logic / Rules</a></li>
+    <li><a href="#aws-cli-walkthrough-3">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-mở-phiên-ssm-vào-private-instance">1. Mở phiên SSM vào private instance</a></li>
+        <li><a href="#2-xác-minh-iam-instance-profile-đang-được-gắn">2. Xác minh IAM instance profile đang được gắn</a></li>
+        <li><a href="#3-đọc-giá-trị-secret">3. Đọc giá trị secret</a></li>
+        <li><a href="#4-liệt-kê-alias-kms">4. Liệt kê alias KMS</a></li>
+      </ul>
+    </li>
+    <li><a href="#ví-dụ-cấu-hình-3">Ví dụ cấu hình</a>
+      <ul>
+        <li><a href="#quyền-tối-thiểu-cho-instance-role-trong-kiến-trúc-này">Quyền tối thiểu cho instance-role trong kiến trúc này</a></li>
+        <li><a href="#best-practices-cho-lớp-này-3">Best practices cho lớp này</a></li>
+      </ul>
+    </li>
+    <li><a href="#những-gì-cần-xác-minh-3">Những gì cần xác minh</a></li>
+    <li><a href="#lỗi-thường-gặp-3">Lỗi thường gặp</a></li>
+    <li><a href="#ghi-chú--giả-định-4">Ghi chú / Giả định</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tổng-quan-5">Tổng quan</a></li>
+    <li><a href="#các-dịch-vụ-aws-trong-phần-này-4">Các dịch vụ AWS trong phần này</a>
+      <ul>
+        <li><a href="#amazon-cloudwatch">Amazon CloudWatch</a></li>
+        <li><a href="#aws-cloudtrail">AWS CloudTrail</a></li>
+        <li><a href="#amazon-ses">Amazon SES</a></li>
+        <li><a href="#dns-trong-route-53-cho-ses">DNS trong Route 53 (cho SES)</a></li>
+        <li><a href="#iam-role-gắn-với-ec2">IAM Role gắn với EC2</a></li>
+      </ul>
+    </li>
+    <li><a href="#vì-sao-thiết-kế-này-dùng-tích-hợp-aws-trực-tiếp">Vì sao thiết kế này dùng tích hợp AWS trực tiếp</a></li>
+    <li><a href="#luồng-aws-từng-bước-4">Luồng AWS từng bước</a>
+      <ul>
+        <li><a href="#hành-vi-request-và-response-4">Hành vi request và response</a></li>
+        <li><a href="#mô-hình-phản-ứng-vận-hành">Mô hình phản ứng vận hành</a></li>
+      </ul>
+    </li>
+    <li><a href="#aws-cli-walkthrough-4">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-tail-log-ứng-dụng-gần-đây">1. Tail log ứng dụng gần đây</a></li>
+        <li><a href="#2-tra-cứu-audit-event-gần-đây">2. Tra cứu audit event gần đây</a></li>
+        <li><a href="#3-kiểm-tra-trạng-thái-ses-identity">3. Kiểm tra trạng thái SES identity</a></li>
+        <li><a href="#4-gửi-một-email-kiểm-tra-qua-ses">4. Gửi một email kiểm tra qua SES</a></li>
+        <li><a href="#5-tạo-một-cpu-alarm-đơn-giản-cho-backend-instance">5. Tạo một CPU alarm đơn giản cho backend instance</a></li>
+      </ul>
+    </li>
+    <li><a href="#ví-dụ-cấu-hình-4">Ví dụ cấu hình</a>
+      <ul>
+        <li><a href="#ví-dụ-các-bản-ghi-route-53-cho-thiết-lập-ses-domain">Ví dụ các bản ghi Route 53 cho thiết lập SES domain</a></li>
+        <li><a href="#best-practices-cho-lớp-này-4">Best practices cho lớp này</a></li>
+      </ul>
+    </li>
+    <li><a href="#những-gì-cần-xác-minh-4">Những gì cần xác minh</a></li>
+    <li><a href="#lỗi-thường-gặp-4">Lỗi thường gặp</a></li>
+    <li><a href="#ghi-chú--giả-định-5">Ghi chú / Giả định</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tổng-quan-6">Tổng quan</a></li>
+    <li><a href="#phạm-vi-nguồn">Phạm vi nguồn</a></li>
+    <li><a href="#đọc-workshop-như-một-codebase-kiến-trúc">Đọc workshop như một codebase kiến trúc</a></li>
+    <li><a href="#kiến-trúc-nền-tảng">Kiến trúc nền tảng</a>
+      <ul>
+        <li><a href="#ranh-giới-public-và-private">Ranh giới public và private</a></li>
+        <li><a href="#phần-kiến-trúc-này-làm-gì">Phần kiến trúc này làm gì</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-lõi-dịch-vụ-api-và-luồng-dữ-liệu">Module lõi, dịch vụ, API và luồng dữ liệu</a></li>
+    <li><a href="#danh-mục-giao-diện-và-api">Danh mục giao diện và API</a></li>
+    <li><a href="#ánh-xạ-dịch-vụ-aws-và-hướng-mở-rộng-kiến-trúc">Ánh xạ dịch vụ AWS và hướng mở rộng kiến trúc</a></li>
+    <li><a href="#phân-rã-chi-tiết-workshop">Phân rã chi tiết workshop</a>
+      <ul>
+        <li><a href="#chương-gốc-4-workshop">Chương gốc 4-Workshop</a></li>
+        <li><a href="#41-tổng-quan">4.1 Tổng quan</a></li>
+        <li><a href="#42-phân-phối-biên-và-yêu-cầu-dữ-liệu-bản-đồ">4.2 Phân phối biên và yêu cầu dữ liệu bản đồ</a></li>
+        <li><a href="#43-điều-phối-ứng-dụng-riêng-tư-và-tầng-tính-toán">4.3 Điều phối ứng dụng riêng tư và tầng tính toán</a></li>
+        <li><a href="#44-độ-bền-dữ-liệu-quan-hệ-và-cô-lập-mạng">4.4 Độ bền dữ liệu quan hệ và cô lập mạng</a></li>
+        <li><a href="#45-truy-cập-vận-hành-và-quản-trị-bí-mật">4.5 Truy cập vận hành và quản trị bí mật</a></li>
+        <li><a href="#46-giám-sát-kiểm-toán-và-gửi-email">4.6 Giám sát, kiểm toán và gửi email</a></li>
+      </ul>
+    </li>
+    <li><a href="#vòng-đời-request-và-luồng-tương-tác-dịch-vụ">Vòng đời request và luồng tương tác dịch vụ</a>
+      <ul>
+        <li><a href="#vòng-đời-1-người-dùng-vào-hệ-thống">Vòng đời 1: Người dùng vào hệ thống</a></li>
+        <li><a href="#vòng-đời-2-người-dùng-tương-tác-với-bản-đồ">Vòng đời 2: Người dùng tương tác với bản đồ</a></li>
+        <li><a href="#vòng-đời-3-người-dùng-thực-hiện-thao-tác-nghiệp-vụ">Vòng đời 3: Người dùng thực hiện thao tác nghiệp vụ</a></li>
+        <li><a href="#vòng-đời-4-operator-quản-trị-hệ-thống">Vòng đời 4: Operator quản trị hệ thống</a></li>
+      </ul>
+    </li>
+    <li><a href="#các-cân-nhắc-khi-triển-khai">Các cân nhắc khi triển khai</a></li>
+    <li><a href="#khả-năng-mở-rộng-và-chịu-lỗi">Khả năng mở rộng và chịu lỗi</a></li>
+    <li><a href="#cơ-hội-cải-thiện-và-đối-chiếu-với-aws-well-architected">Cơ hội cải thiện và đối chiếu với AWS Well-Architected</a>
+      <ul>
+        <li><a href="#hướng-tiến-hóa-tự-nhiên">Hướng tiến hóa tự nhiên</a></li>
+      </ul>
+    </li>
+    <li><a href="#ghi-chú--giả-định-6">Ghi chú / Giả định</a></li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Workshop mở rộng
+            </h1>
+          
+
+        
+
+
+<h1 id="workshop-thực-hành-aws-cho-nền-tảng-quản-lý-trạm-sạc-xe-điện">Workshop thực hành AWS cho nền tảng quản lý trạm sạc xe điện</h1>
+<p><img src="../../../images/2-Proposal/AWS-architecture.png" alt="Tong quan kien truc workshop AWS"></p>
+<h2 id="tổng-quan">Tổng quan</h2>
+<p>Tài liệu mở rộng này phát triển thêm nội dung của chương <code>4-Workshop</code> và toàn bộ bảy subsection hiện có thành một tài liệu tham chiếu ở mức production. Mục tiêu gốc của workshop vẫn được giữ nguyên: giải thích kiến trúc AWS đã triển khai cho EV Charging Station Management System, chứ không đi vào local setup. Điểm khác biệt nằm ở độ sâu. Mỗi subsection bên dưới được bổ sung thêm bối cảnh kiến trúc, logic xử lý ở mức cao, hành vi request và response, các giả định hợp lý, lưu ý về scale, lưu ý về bảo mật và các hướng cải thiện thực tế.</p>
+<p>Nếu nhìn theo góc độ kiến trúc, workshop mô tả một nền tảng AWS nhiều lớp với ranh giới rõ ràng giữa public entry point, private runtime và control plane cho vận hành. Frontend được phát từ edge, backend chạy trên compute private, cơ sở dữ liệu quan hệ được cô lập, còn observability và administrative access được cung cấp bởi các dịch vụ control-plane native của AWS.</p>
+<h2 id="cách-sử-dụng-workshop">Cách sử dụng workshop</h2>
+<ul>
+<li>Đi theo đúng thứ tự các phần, từ edge services đến observability, vì mỗi subsection đều dựa trên lớp trước đó.</li>
+<li>Thay các giá trị mẫu như <code>${APP_DOMAIN}</code> và <code>${DB_INSTANCE_ID}</code> bằng thông tin môi trường thật trước khi chạy lệnh.</li>
+<li>Các ví dụ CLI dùng cú pháp <code>bash</code>. Nếu bạn dùng PowerShell, hãy điều chỉnh dấu nháy và cách xử lý biến cho phù hợp.</li>
+<li>Nên thao tác trên môi trường không phải production khi thử Route 53, CloudFront invalidation hoặc RDS failover.</li>
+<li>Hãy đọc mỗi phần theo hai lượt: lượt đầu để hiểu flow, lượt sau để làm theo command và bước kiểm tra.</li>
+<li>Hãy xem mỗi subsection vừa là tài liệu học tập vừa là operational playbook. Phần giải thích mô tả thiết kế mong muốn, còn các lệnh cho bạn cách xác minh môi trường thật có đúng như thiết kế hay không.</li>
+<li>Khi một phần nhắc đến dịch vụ không được vẽ rõ trong sơ đồ, hãy hiểu đó là giả định kỹ thuật hợp lý để kiến trúc chạy được, không phải bằng chứng chắc chắn rằng dịch vụ đó đã được triển khai.</li>
+</ul>
+<h2 id="các-dịch-vụ-được-dùng-trong-kiến-trúc-này">Các dịch vụ được dùng trong kiến trúc này</h2>
+<ul>
+<li><strong>Edge và phân phối frontend</strong>: Amazon Route 53, Amazon CloudFront, AWS WAF, Amazon S3, Amazon Location Service</li>
+<li><strong>Tầng chạy ứng dụng</strong>: Amazon VPC, Internet Gateway, NAT Gateway, Application Load Balancer, Amazon EC2, EC2 Auto Scaling</li>
+<li><strong>Tầng dữ liệu</strong>: Amazon RDS với bố cục primary và standby</li>
+<li><strong>Vận hành và bảo mật</strong>: AWS Systems Manager, IAM instance profile, AWS Secrets Manager, AWS KMS</li>
+<li><strong>Quan sát và giao tiếp</strong>: Amazon CloudWatch, AWS CloudTrail, Amazon SES, các bản ghi DNS email trong Route 53</li>
+</ul>
+<p>Tập hợp dịch vụ này tạo thành một baseline khá thực tế cho ứng dụng web trên AWS. Route 53 và CloudFront nhận traffic từ người dùng, S3 chứa frontend tĩnh, ALB và EC2 xử lý request nghiệp vụ đồng bộ, RDS lưu trạng thái giao dịch, còn các dịch vụ hỗ trợ phụ trách truy cập vận hành, mã hóa, logging, audit và gửi thông điệp ra ngoài.</p>
+<h2 id="các-dịch-vụ-không-xuất-hiện-trong-sơ-đồ-này">Các dịch vụ không xuất hiện trong sơ đồ này</h2>
+<ul>
+<li><strong>API Gateway</strong>: Không dùng trong thiết kế này vì traffic công khai đi vào qua CloudFront rồi tới Application Load Balancer. Trong tương lai, API Gateway chỉ thực sự cần thiết nếu hệ thống cần quản trị API ở mức sản phẩm như authorizer, usage plan, request validation hoặc throttle theo từng client.</li>
+<li><strong>Lambda</strong>: Không được thể hiện. Backend đang được mô hình hóa bằng các EC2 instance chạy lâu dài. Tuy vậy, Lambda vẫn có thể được bổ sung sau này cho các tác vụ utility, dọn dẹp bất đồng bộ hoặc xử lý sự kiện từ SES.</li>
+<li><strong>ECS / EKS</strong>: Không được thể hiện. Container orchestration nằm ngoài phạm vi của thiết kế này. Workshop cố tình giữ trọng tâm ở runtime theo kiểu EC2.</li>
+<li><strong>DynamoDB</strong>: Không được thể hiện. Dữ liệu chính được mô hình hóa dưới dạng quan hệ trong Amazon RDS. DynamoDB chỉ hợp lý khi sau này cần key-value latency thấp, idempotency store hoặc read model theo sự kiện.</li>
+<li><strong>EventBridge / SQS / SNS</strong>: Không được thể hiện. Sơ đồ tập trung vào luồng request đồng bộ và tích hợp trực tiếp giữa các dịch vụ. Các dịch vụ này sẽ phù hợp hơn khi cần retry, background processing hoặc tách notification ra khỏi request path.</li>
+<li><strong>Cognito</strong>: Không được thể hiện. Đường truy cập admin đang dùng IAM và AWS Systems Manager thay vì user pool.</li>
+</ul>
+<h2 id="biến-môi-trường-dùng-chung-trong-lab">Biến môi trường dùng chung trong lab</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export AWS_REGION<span style="color:#f92672">=</span>ap-southeast-1
+</span></span><span style="display:flex;"><span>export APP_DOMAIN<span style="color:#f92672">=</span>app.example.com
+</span></span><span style="display:flex;"><span>export HOSTED_ZONE_ID<span style="color:#f92672">=</span>Z123456789EXAMPLE
+</span></span><span style="display:flex;"><span>export STATIC_BUCKET<span style="color:#f92672">=</span>ev-prod-frontend
+</span></span><span style="display:flex;"><span>export CLOUDFRONT_DIST_ID<span style="color:#f92672">=</span>E123ABC456DEF
+</span></span><span style="display:flex;"><span>export PLACE_INDEX_NAME<span style="color:#f92672">=</span>ev-place-index
+</span></span><span style="display:flex;"><span>export ALB_NAME<span style="color:#f92672">=</span>ev-app-alb
+</span></span><span style="display:flex;"><span>export TARGET_GROUP_ARN<span style="color:#f92672">=</span>arn:aws:elasticloadbalancing:ap-southeast-1:123456789012:targetgroup/ev-app-tg/abc123
+</span></span><span style="display:flex;"><span>export ASG_NAME<span style="color:#f92672">=</span>ev-app-asg
+</span></span><span style="display:flex;"><span>export INSTANCE_ID<span style="color:#f92672">=</span>i-0123456789abcdef0
+</span></span><span style="display:flex;"><span>export APP_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>export DB_INSTANCE_ID<span style="color:#f92672">=</span>ev-prod-rds
+</span></span><span style="display:flex;"><span>export DB_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">1433</span>
+</span></span><span style="display:flex;"><span>export DB_SECRET_ID<span style="color:#f92672">=</span>ev/prod/database
+</span></span><span style="display:flex;"><span>export LOG_GROUP<span style="color:#f92672">=</span>/aws/ec2/ev-app
+</span></span><span style="display:flex;"><span>export SES_IDENTITY<span style="color:#f92672">=</span>example.com
+</span></span><span style="display:flex;"><span>export SES_SENDER<span style="color:#f92672">=</span>no-reply@example.com
+</span></span><span style="display:flex;"><span>export SES_RECIPIENT<span style="color:#f92672">=</span>ops@example.com
+</span></span></code></pre></div><p>Ý nghĩa của các biến này:</p>
+<ul>
+<li><code>${APP_DOMAIN}</code>, <code>${HOSTED_ZONE_ID}</code>, <code>${CLOUDFRONT_DIST_ID}</code> và <code>${STATIC_BUCKET}</code> mô tả đường đi public của web frontend.</li>
+<li><code>${PLACE_INDEX_NAME}</code> là tài nguyên geospatial mà frontend dùng để tra cứu địa điểm.</li>
+<li><code>${ALB_NAME}</code>, <code>${TARGET_GROUP_ARN}</code>, <code>${ASG_NAME}</code>, <code>${INSTANCE_ID}</code> và <code>${APP_PORT}</code> mô tả điểm vào ứng dụng và tầng compute.</li>
+<li><code>${DB_INSTANCE_ID}</code>, <code>${DB_PORT}</code> và <code>${DB_SECRET_ID}</code> mô tả cách workload kết nối và xác thực với tầng dữ liệu.</li>
+<li><code>${LOG_GROUP}</code>, <code>${SES_IDENTITY}</code>, <code>${SES_SENDER}</code> và <code>${SES_RECIPIENT}</code> phục vụ cho kiểm tra observability và email.</li>
+</ul>
+<h2 id="quyền-aws-nên-có">Quyền AWS nên có</h2>
+<ul>
+<li>Quyền đọc và thay đổi Route 53 cho các bước xác thực DNS</li>
+<li>Quyền với CloudFront và S3 để kiểm tra luồng phân phối frontend</li>
+<li>Quyền đọc EC2, ELBv2, Auto Scaling và VPC để kiểm tra tầng ứng dụng</li>
+<li>Quyền đọc RDS, và chỉ cấp quyền reboot có kiểm soát ở môi trường được cho phép</li>
+<li>Quyền với SSM, Secrets Manager, IAM, KMS, CloudWatch, CloudTrail và SES để thao tác vận hành</li>
+</ul>
+<p>Lưu ý theo nguyên tắc least privilege:</p>
+<ul>
+<li>Với phần lớn bước trong workshop, quyền đọc là đủ.</li>
+<li>Quyền ghi chỉ nên được mở trong training environment hoặc change window khi bài thực hành thực sự cần thay đổi trạng thái hạ tầng.</li>
+</ul>
+<h2 id="nội-dung">Nội dung</h2>
+<ol>
+<li><a href="../4.1-overview/">Tổng quan</a></li>
+<li><a href="../4.2-edge-delivery-and-geospatial-requests/">Phân phối biên và yêu cầu dữ liệu bản đồ</a></li>
+<li><a href="../4.3-private-application-routing-and-compute/">Điều phối ứng dụng riêng tư và tầng tính toán</a></li>
+<li><a href="../4.4-relational-data-resilience-and-network-isolation/">Độ bền dữ liệu quan hệ và cô lập mạng</a></li>
+<li><a href="../4.5-operational-access-and-secret-governance/">Truy cập vận hành và quản trị bí mật</a></li>
+<li><a href="../4.6-monitoring-audit-and-email-delivery/">Giám sát, kiểm toán và gửi email</a></li>
+<li><a href="../4.7-workshop-architecture-deep-dive/">Phân tích kiến trúc workshop chuyên sâu</a></li>
+</ol>
+<h1 id="tổng-quan-workshop-và-bản-đồ-dịch-vụ-aws">Tổng quan workshop và bản đồ dịch vụ AWS</h1>
+<p><img src="../../../images/4-Workshop/ev-achi.png" alt="AWS Workshop Architecture Overview"></p>
+<h2 id="tổng-quan-hệ-thống">Tổng quan hệ thống</h2>
+<ul>
+<li>EV Charging Station Management System được triển khai như một nền tảng web nhiều lớp trên AWS.</li>
+<li>Người dùng truy cập frontend qua Route 53 và CloudFront.</li>
+<li>Static asset được lưu trong Amazon S3 và được bảo vệ phía sau CloudFront Origin Access Control.</li>
+<li>Request backend được chuyển tới các EC2 instance private thông qua Application Load Balancer.</li>
+<li>Dữ liệu nghiệp vụ được lưu trong Amazon RDS và không public ra bên ngoài.</li>
+<li>Đội vận hành sử dụng các dịch vụ gốc của AWS như Systems Manager, Secrets Manager, CloudWatch, CloudTrail và SES.</li>
+<li>Kiến trúc này tách biệt rõ content delivery, xử lý nghiệp vụ đồng bộ, lưu trữ dữ liệu và control plane cho vận hành để mỗi lớp có thể tối ưu riêng.</li>
+<li>Thiết kế cũng ngầm giả định backend có mức state thấp ở từng instance, nhờ đó việc scale ngang bằng Auto Scaling mới thực sự hiệu quả.</li>
+</ul>
+<p>Phần này làm gì:</p>
+<ul>
+<li>Thiết lập bản đồ hệ thống dùng chung cho sáu subsection còn lại.</li>
+<li>Giải thích vì sao workshop được tổ chức theo lớp kiến trúc thay vì chỉ liệt kê các dịch vụ AWS.</li>
+<li>Giúp người đọc mới nhận ra ngay thành phần nào public, thành phần nào private và thành phần nào chỉ dành cho operator.</li>
+</ul>
+<p>Vì sao phần này tồn tại:</p>
+<ul>
+<li>Nhóm kỹ thuật sẽ debug nhanh hơn khi hiểu chuỗi dịch vụ đầy đủ trước khi soi vào từng service riêng lẻ.</li>
+<li>Nhiều sự cố trên AWS xuất phát từ vấn đề ranh giới giữa các lớp chứ không phải do một dịch vụ duy nhất.</li>
+<li>Phần này ngăn các giả định sai như &ldquo;hệ thống dùng Lambda&rdquo; hoặc &ldquo;database là public&rdquo; bằng cách chốt lại kiến trúc ngay từ đầu.</li>
+</ul>
+<h2 id="bản-đồ-dịch-vụ-aws">Bản đồ dịch vụ AWS</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Nhu cầu kiến trúc</th>
+          <th>Dịch vụ dùng trong thiết kế này</th>
+          <th>Lý do sử dụng</th>
+          <th>Không dùng ở đây</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DNS công khai</td>
+          <td>Amazon Route 53</td>
+          <td>Điều hướng người dùng tới điểm vào của hệ thống</td>
+          <td>API Gateway custom domain</td>
+      </tr>
+      <tr>
+          <td>Phân phối frontend</td>
+          <td>Amazon CloudFront + Amazon S3</td>
+          <td>Phát static asset toàn cầu với cache</td>
+          <td>Amplify Hosting</td>
+      </tr>
+      <tr>
+          <td>Bảo vệ edge</td>
+          <td>AWS WAF</td>
+          <td>Lọc web traffic không mong muốn</td>
+          <td>Chi tiết cấu hình Shield không được thể hiện</td>
+      </tr>
+      <tr>
+          <td>Tra cứu bản đồ</td>
+          <td>Amazon Location Service</td>
+          <td>Phục vụ tìm kiếm địa lý và tính năng bản đồ</td>
+          <td>Nhà cung cấp bản đồ bên thứ ba</td>
+      </tr>
+      <tr>
+          <td>Điểm vào API</td>
+          <td>Application Load Balancer</td>
+          <td>Chuyển tiếp HTTP traffic tới compute private</td>
+          <td>API Gateway</td>
+      </tr>
+      <tr>
+          <td>Compute</td>
+          <td>Amazon EC2 + Auto Scaling</td>
+          <td>Chạy backend process lâu dài</td>
+          <td>Lambda, ECS, EKS</td>
+      </tr>
+      <tr>
+          <td>Outbound internet</td>
+          <td>NAT Gateway + Internet Gateway</td>
+          <td>Cho phép instance private đi ra ngoài khi cần</td>
+          <td>EC2 public</td>
+      </tr>
+      <tr>
+          <td>Lưu trữ quan hệ</td>
+          <td>Amazon RDS</td>
+          <td>Lưu dữ liệu giao dịch với standby support</td>
+          <td>DynamoDB</td>
+      </tr>
+      <tr>
+          <td>Truy cập admin</td>
+          <td>AWS Systems Manager</td>
+          <td>Tránh phải mở SSH trực tiếp</td>
+          <td>Bastion host</td>
+      </tr>
+      <tr>
+          <td>Quản lý secret</td>
+          <td>AWS Secrets Manager + AWS KMS</td>
+          <td>Tập trung hóa và mã hóa secret</td>
+          <td>Hard-coded credentials</td>
+      </tr>
+      <tr>
+          <td>Monitoring</td>
+          <td>Amazon CloudWatch</td>
+          <td>Thu thập metrics và logs</td>
+          <td>APM bên thứ ba không được thể hiện</td>
+      </tr>
+      <tr>
+          <td>Audit</td>
+          <td>AWS CloudTrail</td>
+          <td>Ghi nhận hoạt động API của AWS</td>
+          <td>EventBridge audit fan-out</td>
+      </tr>
+      <tr>
+          <td>Email</td>
+          <td>Amazon SES</td>
+          <td>Gửi email giao dịch</td>
+          <td>SNS email delivery</td>
+      </tr>
+      <tr>
+          <td>Hướng mở rộng workflow</td>
+          <td>AWS Step Functions</td>
+          <td>Phù hợp nếu charging hoặc settlement trở thành workflow nhiều bước</td>
+          <td>Chưa nằm trong triển khai hiện tại</td>
+      </tr>
+      <tr>
+          <td>Hướng mở rộng async</td>
+          <td>Amazon EventBridge / SQS / SNS</td>
+          <td>Phù hợp khi cần xử lý nền và tách notification</td>
+          <td>Chưa nằm trong triển khai hiện tại</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="luồng-aws-đầu-cuối">Luồng AWS đầu cuối</h2>
+<ol>
+<li>Người dùng phân giải <code>${APP_DOMAIN}</code> thông qua Amazon Route 53.
+Dịch vụ: Amazon Route 53.
+Điều xảy ra: Route 53 trả về điểm vào CloudFront cho client.
+Tại sao quan trọng: DNS là điểm điều khiển đầu tiên của toàn bộ ứng dụng công khai.</li>
+<li>CloudFront nhận request và đánh giá rule của AWS WAF.
+Dịch vụ: Amazon CloudFront và AWS WAF.
+Điều xảy ra: Lớp edge kết thúc HTTPS, áp dụng chính sách bảo mật và quyết định request có được đi tiếp hay không.
+Tại sao quan trọng: Edge layer vừa giảm độ trễ vừa lọc request xấu trước khi backend phải xử lý.</li>
+<li>CloudFront trả nội dung từ cache hoặc lấy từ Amazon S3.
+Dịch vụ: Amazon CloudFront và Amazon S3.
+Điều xảy ra: Nội dung tĩnh được phục vụ ngay từ cache nếu có, nếu không thì lấy riêng tư từ S3.
+Tại sao quan trọng: Frontend được phát nhanh và bucket S3 không cần public.</li>
+<li>Frontend gọi backend APIs thông qua Application Load Balancer.
+Dịch vụ: Application Load Balancer.
+Điều xảy ra: Request động được chuyển sang application layer thay vì đi tiếp trên đường static delivery.
+Tại sao quan trọng: ALB là public HTTP entry point của các request động.</li>
+<li>ALB chuyển traffic tới các EC2 instance healthy trong private subnet.
+Dịch vụ: ALB, Amazon EC2, EC2 Auto Scaling.
+Điều xảy ra: Listener và target group quyết định node nào sẽ xử lý request.
+Tại sao quan trọng: Backend có thể scale ngang mà không cần public trực tiếp từng instance.</li>
+<li>Ứng dụng trên EC2 đọc và ghi dữ liệu quan hệ trong Amazon RDS.
+Dịch vụ: Amazon RDS.
+Điều xảy ra: Giao dịch dữ liệu đi qua private network tới managed database.
+Tại sao quan trọng: Tính nhất quán dữ liệu được giữ trong dịch vụ quan hệ có standby.</li>
+<li>Ứng dụng lấy secret, ghi log và gửi email bằng IAM role của instance.
+Dịch vụ: IAM, Secrets Manager, KMS, CloudWatch, SES.
+Điều xảy ra: Workload dùng temporary credential của instance profile để truy cập các dịch vụ hỗ trợ.
+Tại sao quan trọng: Không cần lưu static credential trên ổ đĩa máy chủ.</li>
+<li>Đội vận hành quản trị môi trường qua Systems Manager và kiểm toán bằng CloudTrail.
+Dịch vụ: AWS Systems Manager và AWS CloudTrail.
+Điều xảy ra: Hoạt động quản trị đi qua control channel của AWS và có thể audit được.
+Tại sao quan trọng: Có thể quản trị hệ thống mà không cần public SSH.</li>
+</ol>
+<p>Hành vi request và response:</p>
+<ul>
+<li>Browser nhận static asset từ CloudFront hoặc nhận JSON/API response từ application layer phía sau ALB.</li>
+<li>Traffic giữa backend và database là private, có trạng thái và mang tính giao dịch.</li>
+<li>Control-plane traffic và observability traffic không nằm trực tiếp trên đường request của người dùng, nhưng lại cực kỳ quan trọng để vận hành và điều tra sự cố.</li>
+</ul>
+<h2 id="các-bước-kiểm-tra-nền-tảng">Các bước kiểm tra nền tảng</h2>
+<p>Hãy chạy các lệnh sau trước khi đi vào những phần còn lại.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sts get-caller-identity
+</span></span><span style="display:flex;"><span>aws route53 list-hosted-zones --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>aws cloudfront list-distributions --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>aws ec2 describe-instances --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span> --max-items <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>aws rds describe-db-instances --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Những điều cần kiểm tra:</p>
+<ul>
+<li>Bạn đang xác thực đúng AWS account mong muốn.</li>
+<li>Hosted zone, CloudFront distribution, EC2 instance và RDS instance đều tồn tại trong môi trường đúng.</li>
+<li>Region và naming convention khớp với các giá trị bạn sẽ dùng ở các lab tiếp theo.</li>
+<li>Tên tài nguyên đủ nhất quán để sau này còn có thể xây dashboard, runbook hoặc automation xoay quanh chúng.</li>
+</ul>
+<h2 id="hướng-dẫn-cho-người-mới-bắt-đầu">Hướng dẫn cho người mới bắt đầu</h2>
+<ul>
+<li>Hãy bắt đầu bằng cách phân biệt thành phần nào public và thành phần nào private.</li>
+<li>Xem Route 53, CloudFront, ALB và SES là các dịch vụ hướng công khai.</li>
+<li>Xem EC2, RDS, Secrets Manager và KMS là các dịch vụ nội bộ cần kiểm soát chặt.</li>
+<li>Xem Systems Manager, CloudWatch và CloudTrail là bộ công cụ cho operator.</li>
+<li>Nếu một dịch vụ không xuất hiện trong sơ đồ, không nên tự giả định rằng nó tồn tại trong môi trường triển khai.</li>
+<li>Hãy đọc kiến trúc theo chiều trái sang phải để hiểu request flow, và theo chiều trên xuống dưới để hiểu trust boundary và ownership vận hành.</li>
+</ul>
+<h2 id="ghi-chú--giả-định">Ghi chú / Giả định</h2>
+<ul>
+<li>Sơ đồ thể hiện infrastructure topology, không phải application source code hay CI/CD pipeline.</li>
+<li>Proposal hiện có nhắc đến Amazon RDS for SQL Server, nhưng bản thân sơ đồ chỉ ghi Amazon RDS. Hãy điều chỉnh lệnh theo engine thực tế.</li>
+<li>Không có thành phần API Gateway, Lambda, ECS, EKS, DynamoDB, EventBridge, SQS, SNS hay Cognito nào xuất hiện trong kiến trúc này.</li>
+<li>TLS certificate, security group, subnet route table và EC2 launch template không được vẽ ra, nhưng bắt buộc phải có nếu muốn kiến trúc này hoạt động đúng trong môi trường AWS thật.</li>
+</ul>
+<h1 id="thực-hành-phân-phối-biên-và-yêu-cầu-dữ-liệu-bản-đồ">Thực hành phân phối biên và yêu cầu dữ liệu bản đồ</h1>
+<h2 id="tổng-quan-1">Tổng quan</h2>
+<ul>
+<li>Phần này tập trung vào lớp edge hướng công khai của nền tảng.</li>
+<li>Nó giải thích cách DNS, CDN caching, WAF filtering, S3 origin access và request tới Location Service hoạt động cùng nhau.</li>
+<li>Đây là điểm bắt đầu phù hợp khi frontend chậm, domain không resolve hoặc dữ liệu bản đồ bị thiếu.</li>
+<li>Ở góc nhìn kiến trúc AWS, đây là lớp tối ưu độ trễ và cũng là tuyến phòng thủ đầu tiên trước khi request chạm vào backend.</li>
+</ul>
+<p>Phần này làm gì:</p>
+<ul>
+<li>Đưa trình duyệt người dùng vào hệ thống thông qua Route 53 và CloudFront.</li>
+<li>Bảo vệ đường vào public bằng WAF và cơ chế S3 origin private.</li>
+<li>Cung cấp bản đồ và place search mà không ép toàn bộ geospatial traffic phải đi qua backend.</li>
+</ul>
+<p>Vì sao phần này tồn tại:</p>
+<ul>
+<li>Static asset và map request có đặc tính cache, scale và độ trễ rất khác so với API giao dịch.</li>
+<li>Frontend nên được phát toàn cầu với chi phí thấp.</li>
+<li>Đường edge cần hấp thụ các kiểu tấn công phổ biến trước khi chúng tiêu tốn tài nguyên của ứng dụng.</li>
+</ul>
+<p>Phần này giải quyết vấn đề gì:</p>
+<ul>
+<li>Phân phối frontend chậm hoặc thiếu ổn định theo khu vực</li>
+<li>Tăng tải không cần thiết lên S3 origin hoặc backend</li>
+<li>Lộ public bucket chứa frontend</li>
+<li>Trộn lẫn luồng web tĩnh với luồng dữ liệu bản đồ</li>
+</ul>
+<h2 id="các-dịch-vụ-aws-trong-phần-này">Các dịch vụ AWS trong phần này</h2>
+<h3 id="amazon-route-53">Amazon Route 53</h3>
+<p><img src="../../../images/4-Workshop/route53.jpg" alt="Amazon Route 53 DNS"></p>
+<ul>
+<li>Phân giải domain công khai và chuyển người dùng đến điểm truy cập phù hợp.</li>
+<li>Là bước đầu tiên trong luồng request.</li>
+<li>Đồng thời là nơi quản lý subdomain, record xác thực và các chính sách DNS nâng cao nếu sau này kiến trúc cần failover hoặc cutover.</li>
+</ul>
+<h3 id="amazon-cloudfront">Amazon CloudFront</h3>
+<p><img src="../../../images/4-Workshop/cloudfront.jpg" alt="Amazon CloudFront Distribution"></p>
+<ul>
+<li>Phân phối frontend asset đã cache với độ trễ thấp.</li>
+<li>Giảm số lần truy vấn về origin (S3).</li>
+<li>Kết thúc HTTPS gần người dùng và cho phép áp dụng cache policy, header policy và origin control.</li>
+</ul>
+<h3 id="aws-waf">AWS WAF</h3>
+<ul>
+<li>Lọc các request HTTP/HTTPS đầu vào.</li>
+<li>Bảo vệ hệ thống trước các tấn công phổ biến ngay tại edge.</li>
+<li>Là nơi hợp lý để áp dụng managed rule, rate limit hoặc bot filtering ở mức coarse trước khi request chạm application layer.</li>
+</ul>
+<h3 id="amazon-s3">Amazon S3</h3>
+<p><img src="../../../images/4-Workshop/s3-bucket.jpg" alt="Amazon S3 Bucket"></p>
+<ul>
+<li>Lưu trữ các file frontend (HTML, JS, CSS).</li>
+<li>Là origin cho CloudFront thông qua cơ chế Origin Access Control.</li>
+<li>Giữ cho việc deploy frontend đơn giản vì tách riêng object delivery khỏi runtime của ứng dụng.</li>
+</ul>
+<h3 id="amazon-location-service">Amazon Location Service</h3>
+<p><img src="../../../images/4-Workshop/location-service.png" alt="Amazon Location Service"></p>
+<ul>
+<li>Xử lý các yêu cầu liên quan đến bản đồ và dữ liệu địa lý.</li>
+<li>Hoạt động tách biệt với luồng phân phối static asset.</li>
+<li>Cho phép frontend dùng trực tiếp năng lực geospatial thay vì bắt backend làm proxy cho map data.</li>
+</ul>
+<h2 id="luồng-aws-từng-bước">Luồng AWS từng bước</h2>
+<ol>
+<li>Người dùng mở <code>${APP_DOMAIN}</code> trên trình duyệt.
+Dịch vụ: Amazon Route 53.
+Điều xảy ra: Route 53 phân giải hostname công khai tới CloudFront distribution.
+Tại sao quan trọng: Nếu DNS sai, các dịch vụ AWS phía sau sẽ không được truy cập đúng.</li>
+<li>CloudFront nhận HTTPS request.
+Dịch vụ: Amazon CloudFront và AWS WAF.
+Điều xảy ra: WAF rule kiểm tra request trước khi distribution phục vụ nội dung.
+Tại sao quan trọng: Traffic xấu hoặc bất thường có thể bị chặn ngay tại edge.</li>
+<li>CloudFront kiểm tra file có nằm trong cache hay không.
+Dịch vụ: Amazon CloudFront và Amazon S3.
+Điều xảy ra: Nếu có cache thì trả ngay; nếu cache miss thì lấy từ S3.
+Tại sao quan trọng: Cache hit giúp giảm độ trễ và giảm tải cho origin bucket.</li>
+<li>S3 chỉ trả object thông qua đường CloudFront đã được cho phép.
+Dịch vụ: Amazon S3 và CloudFront Origin Access Control.
+Điều xảy ra: Bucket vẫn private, còn CloudFront là bên đọc được ủy quyền.
+Tại sao quan trọng: Người dùng không thể bỏ qua CloudFront để truy cập trực tiếp vào S3.</li>
+<li>Frontend sau đó gửi request lấy dữ liệu địa lý.
+Dịch vụ: Amazon Location Service.
+Điều xảy ra: Trình duyệt hoặc mã frontend gọi place index và map API.
+Tại sao quan trọng: Luồng map được tách khỏi luồng phân phối static asset.</li>
+<li>Frontend tiếp tục gọi backend API qua tầng ứng dụng.
+Dịch vụ: Application Load Balancer ở phần tiếp theo.
+Điều xảy ra: Traffic động rời lớp edge và đi vào compute stack private.
+Tại sao quan trọng: Static traffic và dynamic traffic có thể được tối ưu riêng.</li>
+</ol>
+<h3 id="hành-vi-request-và-response">Hành vi request và response</h3>
+<ul>
+<li>DNS response: Route 53 trả về điểm vào CloudFront cho trình duyệt.</li>
+<li>Static asset response: CloudFront trả file đã cache hoặc fetch object từ S3.</li>
+<li>Geospatial response: Amazon Location Service trả dữ liệu tìm kiếm hoặc bản đồ cho frontend.</li>
+<li>Dynamic handoff: Sau khi SPA tải xong, request API sẽ rời lớp edge và chuyển sang application tier phía sau ALB.</li>
+</ul>
+<h3 id="logic-nội-bộ-ở-mức-cao">Logic nội bộ ở mức cao</h3>
+<ul>
+<li>CloudFront là lớp read-optimization cho frontend.</li>
+<li>S3 là nơi lưu trữ chuẩn của artifact frontend, nhưng không phải public endpoint.</li>
+<li>WAF là bộ lọc bảo mật ở mép ngoài hệ thống.</li>
+<li>Amazon Location Service là dependency chuyên biệt của UI, không phải backend business service chính.</li>
+</ul>
+<h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
+<h3 id="1-kiểm-tra-hosted-zone">1. Kiểm tra hosted zone</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws route53 list-hosted-zones --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Vì sao lệnh này cần thiết:</p>
+<ul>
+<li>Nó xác minh rằng quyền quản lý DNS đang nằm ở đúng account và đúng bối cảnh làm việc.</li>
+</ul>
+<h3 id="2-tạo-hoặc-cập-nhật-bản-ghi-dns-của-ứng-dụng">2. Tạo hoặc cập nhật bản ghi DNS của ứng dụng</h3>
+<p>Tạo file <code>route53-app-record.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Comment&#34;</span>: <span style="color:#e6db74">&#34;Point app subdomain to CloudFront&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Changes&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;app.example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;CNAME&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;d111111abcdef8.cloudfront.net&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Áp dụng thay đổi và chờ trạng thái đồng bộ:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CHANGE_ID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>aws route53 change-resource-record-sets <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --hosted-zone-id <span style="color:#e6db74">${</span>HOSTED_ZONE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch file://route53-app-record.json <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;ChangeInfo.Id&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output text<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>aws route53 wait resource-record-sets-changed --id <span style="color:#e6db74">${</span>CHANGE_ID<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Vì sao lệnh này cần thiết:</p>
+<ul>
+<li>Mô hình <code>UPSERT</code> an toàn cho các thay đổi hạ tầng có thể lặp lại.</li>
+<li>Chờ trạng thái sync giúp tránh kiểm thử quá sớm khi Route 53 chưa hoàn tất thay đổi nội bộ.</li>
+</ul>
+<h3 id="3-triển-khai-frontend-asset-lên-s3">3. Triển khai frontend asset lên S3</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 sync ./dist s3://<span style="color:#e6db74">${</span>STATIC_BUCKET<span style="color:#e6db74">}</span> --delete
+</span></span></code></pre></div><p>Vì sao lệnh này cần thiết:</p>
+<ul>
+<li>Nó mô hình hóa bước publish trong pipeline phát hành frontend.</li>
+<li>Tham số <code>--delete</code> giúp bucket khớp với output hiện tại, nhưng trong production cần dùng cẩn thận.</li>
+</ul>
+<h3 id="4-xóa-cache-cloudfront-sau-khi-deploy">4. Xóa cache CloudFront sau khi deploy</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudfront create-invalidation <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --distribution-id <span style="color:#e6db74">${</span>CLOUDFRONT_DIST_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --paths <span style="color:#e6db74">&#34;/*&#34;</span>
+</span></span></code></pre></div><p>Vì sao lệnh này cần thiết:</p>
+<ul>
+<li>CloudFront có thể tiếp tục trả asset cũ dù S3 đã có phiên bản mới.</li>
+<li>Trong production, targeted invalidation hoặc asset versioning thường tốt hơn việc luôn invalidate <code>/*</code>.</li>
+</ul>
+<h3 id="5-thử-một-truy-vấn-tìm-kiếm-với-location-service">5. Thử một truy vấn tìm kiếm với Location Service</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws location search-place-index-for-text <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --index-name <span style="color:#e6db74">${</span>PLACE_INDEX_NAME<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --text <span style="color:#e6db74">&#34;EV charging station&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Vì sao lệnh này cần thiết:</p>
+<ul>
+<li>Nó tách riêng bài test của đường dữ liệu bản đồ ra khỏi phần frontend và backend.</li>
+<li>Nó giúp xác định lỗi map nằm ở đâu: edge, Location Service hay frontend rendering.</li>
+</ul>
+<h2 id="ví-dụ-cấu-hình">Ví dụ cấu hình</h2>
+<h3 id="s3-bucket-policy-private-cho-cloudfront-oac">S3 bucket policy private cho CloudFront OAC</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;AllowCloudFrontServicePrincipalReadOnly&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Service&#34;</span>: <span style="color:#e6db74">&#34;cloudfront.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;s3:GetObject&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:s3:::ev-prod-frontend/*&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;StringEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;AWS:SourceArn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:cloudfront::123456789012:distribution/E123ABC456DEF&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ý nghĩa của cấu hình này:</p>
+<ul>
+<li>Bucket S3 vẫn giữ trạng thái private.</li>
+<li>Chỉ CloudFront distribution được chỉ định mới có quyền đọc object.</li>
+<li>Người dùng buộc phải đi qua CloudFront, nơi WAF có thể kiểm tra traffic.</li>
+<li>Policy thu hẹp origin access về đúng distribution đã biết, an toàn hơn rất nhiều so với public read.</li>
+</ul>
+<h3 id="best-practices-cho-lớp-này">Best practices cho lớp này</h3>
+<ul>
+<li>Trong production, nên ưu tiên Route 53 alias record tới CloudFront thay vì CNAME nếu phù hợp.</li>
+<li>Dùng asset versioning để giảm nhu cầu invalidate cả cache.</li>
+<li>Gắn AWS-managed WAF rule trước, sau đó mới tinh chỉnh custom rule khi đã hiểu lưu lượng thật.</li>
+<li>Cân nhắc dùng CloudFront response headers policy để thêm security header như <code>Strict-Transport-Security</code> hoặc <code>Content-Security-Policy</code>.</li>
+<li>Tách resource Amazon Location riêng cho từng môi trường để tránh thay đổi nhầm.</li>
+</ul>
+<h2 id="những-gì-cần-xác-minh">Những gì cần xác minh</h2>
+<ul>
+<li>DNS resolve về đúng CloudFront distribution.</li>
+<li>Bucket S3 không public read.</li>
+<li>Sau mỗi lần deploy đều có CloudFront invalidation.</li>
+<li>Chức năng tìm kiếm bản đồ hoạt động qua Amazon Location Service.</li>
+<li>WAF đã được gắn với CloudFront distribution trong môi trường mục tiêu.</li>
+<li>TLS certificate hợp lệ và frontend được phục vụ qua HTTPS end-to-end.</li>
+</ul>
+<h2 id="lỗi-thường-gặp">Lỗi thường gặp</h2>
+<ul>
+<li>Cập nhật nội dung S3 nhưng quên invalidate CloudFront.</li>
+<li>Mở public bucket S3 thay vì dùng OAC.</li>
+<li>Trỏ Route 53 đến sai CloudFront domain.</li>
+<li>Chẩn đoán lỗi map ở backend trong khi nguyên nhân thật nằm ở cấu hình Amazon Location.</li>
+<li>Chỉ xem CloudFront như một cache mà quên vai trò bảo vệ origin và lọc request ở edge.</li>
+</ul>
+<h2 id="ghi-chú--giả-định-1">Ghi chú / Giả định</h2>
+<ul>
+<li>Sơ đồ thể hiện Amazon Location Service là đường tích hợp cho frontend, nhưng không ghi rõ map style hay place index cụ thể.</li>
+<li>Trong môi trường production, Route 53 có thể dùng alias thay vì CNAME. Ví dụ ở đây dùng CNAME để dễ hiểu.</li>
+<li>Sơ đồ không có API Gateway hay Lambda ở lớp edge. Request động được chuyển xuống tầng ứng dụng dùng ALB.</li>
+<li>Nếu cần kiểm soát client truy cập dữ liệu bản đồ chặt hơn, sau này có thể phải thêm cơ chế ký request hoặc một lớp backend trung gian.</li>
+</ul>
+<h1 id="thực-hành-điều-phối-ứng-dụng-riêng-tư-và-tầng-tính-toán">Thực hành điều phối ứng dụng riêng tư và tầng tính toán</h1>
+<h2 id="tổng-quan-2">Tổng quan</h2>
+<ul>
+<li>Phần này giải thích cách request động đi từ lớp edge vào compute private.</li>
+<li>Nội dung tập trung vào VPC, public và private subnet, Internet Gateway, NAT Gateway, ALB, EC2 instance và Auto Scaling.</li>
+<li>Đây là phần quan trọng nhất khi xử lý lỗi <code>5xx</code>, target unhealthy hoặc sự cố outbound connectivity.</li>
+<li>Về bản chất, đây là đường thực thi cốt lõi cho auth, booking, charging workflow và các nghiệp vụ đồng bộ khác của hệ thống.</li>
+</ul>
+<p>Phần này làm gì:</p>
+<ul>
+<li>Nhận public API traffic tại ALB.</li>
+<li>Chuyển request tới các EC2 instance healthy trong private subnet.</li>
+<li>Cung cấp outbound access có kiểm soát cho các instance mà không cần public IP.</li>
+</ul>
+<p>Vì sao phần này tồn tại:</p>
+<ul>
+<li>Ứng dụng cần một public API entry point ổn định nhưng không nên public từng compute node riêng lẻ.</li>
+<li>Backend cần khả năng scale ngang và tự phục hồi.</li>
+<li>Private subnet giúp giảm bề mặt tấn công, còn NAT giữ cho backend vẫn đi ra ngoài được khi cần.</li>
+</ul>
+<p>Phần này giải quyết vấn đề gì:</p>
+<ul>
+<li>Public trực tiếp application server ra internet</li>
+<li>Không có cơ chế phân phối traffic có kiểm soát giữa các instance</li>
+<li>Không thể thay node lỗi mà không ảnh hưởng dịch vụ</li>
+<li>Không tách bạch rõ inbound public access với outbound dependency access</li>
+</ul>
+<h2 id="các-dịch-vụ-aws-trong-phần-này-1">Các dịch vụ AWS trong phần này</h2>
+<h3 id="amazon-vpc">Amazon VPC</h3>
+<p><img src="../../../images/4-Workshop/vpc-overview.png" alt="Amazon VPC"></p>
+<ul>
+<li>Định nghĩa ranh giới mạng cho toàn bộ hệ thống.</li>
+<li>Là nơi chứa tất cả subnet, gateway và compute resource.</li>
+<li>Cho phép tách public routing, private compute và private data thành các phân đoạn có kiểm soát.</li>
+</ul>
+<h3 id="internet-gateway">Internet Gateway</h3>
+<p><img src="../../../images/4-Workshop/internet-gateway.png" alt="Internet Gateway"></p>
+<ul>
+<li>Gắn VPC với internet công khai.</li>
+<li>Cho phép traffic đi vào/ra khỏi VPC theo route table.</li>
+<li>Hỗ trợ các tài nguyên phải hướng internet như ALB và NAT Gateway.</li>
+</ul>
+<h3 id="nat-gateway">NAT Gateway</h3>
+<p><img src="../../../images/4-Workshop/nat-gateway.png" alt="NAT Gateway"></p>
+<ul>
+<li>Cho phép các instance trong private subnet truy cập internet.</li>
+<li>Không cho phép inbound traffic trực tiếp từ internet.</li>
+<li>Là điểm egress có kiểm soát cho việc update package, tải dependency hoặc gọi AWS public endpoint.</li>
+</ul>
+<h3 id="application-load-balancer">Application Load Balancer</h3>
+<p><img src="../../../images/4-Workshop/alb.png" alt="Application Load Balancer"></p>
+<ul>
+<li>Nhận request HTTP/HTTPS từ bên ngoài.</li>
+<li>Phân phối traffic tới các EC2 instance phía sau.</li>
+<li>Cung cấp health-aware routing và có thể gắn listener rule theo host hoặc path.</li>
+</ul>
+<h3 id="amazon-ec2">Amazon EC2</h3>
+<p><img src="../../../images/4-Workshop/ec2-instances.png" alt="Amazon EC2 Instances"></p>
+<ul>
+<li>Chạy application backend.</li>
+<li>Xử lý business logic và trả response.</li>
+<li>Chứa runtime của ứng dụng, process state cục bộ và các agent như SSM hay CloudWatch logging.</li>
+</ul>
+<h3 id="ec2-auto-scaling">EC2 Auto Scaling</h3>
+<p><img src="../../../images/4-Workshop/auto-scaling-group.png" alt="Auto Scaling Group"></p>
+<ul>
+<li>Tự động scale số lượng instance theo load.</li>
+<li>Đảm bảo high availability trên nhiều Availability Zone.</li>
+<li>Thay thế node unhealthy hoặc bị terminate để duy trì desired capacity.</li>
+</ul>
+<h2 id="vì-sao-thiết-kế-này-dùng-alb--ec2">Vì sao thiết kế này dùng ALB + EC2</h2>
+<ul>
+<li>Sơ đồ thể hiện các application server chạy lâu dài, nên <strong>Amazon EC2</strong> là mô hình compute đang dùng.</li>
+<li>Điểm vào công khai của API là <strong>Application Load Balancer</strong>, không phải API Gateway.</li>
+<li>Không có Lambda, ECS hay EKS trong sơ đồ, nên workshop này không giả định serverless hay container orchestration.</li>
+<li>Việc đặt compute trong private subnet cho thấy instance không nên bị truy cập trực tiếp từ internet.</li>
+<li>Mô hình này phù hợp với workload chạy lâu dài, có connection pool hoặc đặc tính runtime kiểu JVM.</li>
+</ul>
+<h2 id="luồng-aws-từng-bước-1">Luồng AWS từng bước</h2>
+<ol>
+<li>Frontend gửi request động tới hostname của backend.
+Dịch vụ: Application Load Balancer.
+Điều xảy ra: ALB nhận request tại ranh giới công khai của tầng ứng dụng.
+Tại sao quan trọng: Chỉ ALB nên là thành phần public cho backend traffic.</li>
+<li>ALB đánh giá listener rule và trạng thái health của target group.
+Dịch vụ: Application Load Balancer.
+Điều xảy ra: Request chỉ được chuyển tới target đã đăng ký và đang healthy.
+Tại sao quan trọng: Instance lỗi có thể bị loại ra mà không làm sập toàn hệ thống.</li>
+<li>Một EC2 instance khỏe mạnh trong private subnet xử lý request.
+Dịch vụ: Amazon EC2.
+Điều xảy ra: Ứng dụng thực thi business logic và tạo response.
+Tại sao quan trọng: Compute vẫn private và được bảo vệ bằng security group.</li>
+<li>Auto Scaling duy trì số lượng instance mong muốn.
+Dịch vụ: EC2 Auto Scaling.
+Điều xảy ra: Instance lỗi có thể được thay thế và công suất có thể tăng khi traffic tăng.
+Tại sao quan trọng: Nền tảng có thể tự phục hồi khi lỗi instance và scale ngang khi cần.</li>
+<li>Nếu instance cần đi ra ngoài, traffic sẽ qua NAT Gateway.
+Dịch vụ: NAT Gateway và Internet Gateway.
+Điều xảy ra: Private instance truy cập endpoint bên ngoài mà không cần public IP.
+Tại sao quan trọng: Backend vẫn có thể gọi endpoint công khai của AWS hoặc tải dependency mà không public máy chủ.</li>
+<li>Response đi ngược qua ALB về client.
+Dịch vụ: Application Load Balancer.
+Điều xảy ra: ALB hoàn tất vòng đời của HTTP request.
+Tại sao quan trọng: Client không bao giờ giao tiếp trực tiếp với EC2 instance.</li>
+</ol>
+<h3 id="hành-vi-request-và-response-1">Hành vi request và response</h3>
+<ul>
+<li>Inbound request: ALB kết thúc request công khai và forward tới target phù hợp qua application port.</li>
+<li>Backend processing: EC2 thực thi business logic, có thể gọi RDS hoặc các AWS API hỗ trợ rồi trả response.</li>
+<li>Health behavior: Nếu health check thất bại, ALB dừng gửi production traffic tới node đó.</li>
+<li>Scale behavior: Auto Scaling điều chỉnh số lượng node độc lập với routing của ALB.</li>
+</ul>
+<h3 id="logic-nội-bộ-của-lớp-này">Logic nội bộ của lớp này</h3>
+<ul>
+<li>Public subnet tồn tại để chứa các endpoint phải hướng internet.</li>
+<li>Private subnet tồn tại để chạy compute không nên public.</li>
+<li>Health check và target group chính là hợp đồng giữa application boundary public và backend node thực tế.</li>
+<li>NAT là một trade-off có chủ đích: nó cho phép egress mà vẫn giữ instance private, nhưng đồng thời tạo thêm chi phí và rủi ro availability nếu chỉ có một node.</li>
+</ul>
+<h2 id="aws-cli-walkthrough-1">AWS CLI Walkthrough</h2>
+<h3 id="1-kiểm-tra-load-balancer">1. Kiểm tra load balancer</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws elbv2 describe-load-balancers <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --names <span style="color:#e6db74">${</span>ALB_NAME<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-kiểm-tra-trạng-thái-target">2. Kiểm tra trạng thái target</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws elbv2 describe-target-health <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --target-group-arn <span style="color:#e6db74">${</span>TARGET_GROUP_ARN<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="3-kiểm-tra-auto-scaling-group">3. Kiểm tra Auto Scaling group</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws autoscaling describe-auto-scaling-groups <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --auto-scaling-group-names <span style="color:#e6db74">${</span>ASG_NAME<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="4-kiểm-tra-một-backend-instance">4. Kiểm tra một backend instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ec2 describe-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --instance-ids <span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Cách đọc các lệnh này:</p>
+<ul>
+<li>Lệnh kiểm tra ALB xác nhận endpoint công khai có thực sự internet-facing và nằm đúng subnet hay không.</li>
+<li>Lệnh kiểm tra target health là bằng chứng rõ nhất cho việc request có đi được tới backend hay không.</li>
+<li>Lệnh kiểm tra Auto Scaling group cho thấy hệ thống đang kỳ vọng bao nhiêu node và chúng nằm ở đâu.</li>
+<li>Lệnh soi một instance giúp so sánh thuộc tính của một node cụ thể với cấu hình chuẩn của cả cụm.</li>
+</ul>
+<h2 id="ví-dụ-cấu-hình-1">Ví dụ cấu hình</h2>
+<h3 id="bộ-rule-traffic-điển-hình-cho-kiến-trúc-này">Bộ rule traffic điển hình cho kiến trúc này</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Thành phần</th>
+          <th>Inbound rule</th>
+          <th>Outbound rule</th>
+          <th>Mục đích</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Security group của ALB</td>
+          <td><code>443</code> từ <code>0.0.0.0/0</code></td>
+          <td><code>${APP_PORT}</code> tới security group của EC2</td>
+          <td>Điểm vào HTTPS công khai</td>
+      </tr>
+      <tr>
+          <td>Security group của EC2</td>
+          <td><code>${APP_PORT}</code> từ security group của ALB</td>
+          <td>Port database tới RDS, <code>443</code> cho AWS call outbound</td>
+          <td>Runtime private của ứng dụng</td>
+      </tr>
+      <tr>
+          <td>Route table của private subnet</td>
+          <td>Không có internet route trực tiếp</td>
+          <td><code>0.0.0.0/0</code> tới NAT Gateway</td>
+          <td>Egress có kiểm soát</td>
+      </tr>
+      <tr>
+          <td>Route table của public subnet</td>
+          <td><code>0.0.0.0/0</code> tới Internet Gateway</td>
+          <td>Đường công khai</td>
+          <td>Hỗ trợ ALB và NAT Gateway</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="thiết-lập-health-check-alb-được-khuyến-nghị">Thiết lập health check ALB được khuyến nghị</h3>
+<ul>
+<li>Protocol: <code>HTTP</code> hoặc <code>HTTPS</code></li>
+<li>Health check path: endpoint nhẹ như <code>/actuator/health</code> hoặc <code>/health</code></li>
+<li>Success codes: <code>200-399</code></li>
+<li>Interval: <code>30</code> giây</li>
+<li>Healthy threshold: <code>2</code> trở lên</li>
+<li>Unhealthy threshold: <code>2</code> trở lên</li>
+</ul>
+<h3 id="best-practices-cho-lớp-này-1">Best practices cho lớp này</h3>
+<ul>
+<li>Giữ node càng stateless càng tốt để scale event không ảnh hưởng session người dùng.</li>
+<li>Dùng launch template thay vì build instance thủ công để bảo đảm tính lặp lại.</li>
+<li>Giữ health check đủ nhẹ để database spike tạm thời không làm backend node bị loại sai.</li>
+<li>Cân nhắc VPC endpoint cho AWS API có tần suất cao để giảm chi phí NAT.</li>
+<li>Dùng security group tách riêng cho ALB, EC2 và RDS để trust boundary rõ ràng.</li>
+</ul>
+<h2 id="những-gì-cần-xác-minh-1">Những gì cần xác minh</h2>
+<ul>
+<li>ALB là internet-facing, còn EC2 instance nằm trong private subnet.</li>
+<li>Target health là <code>healthy</code> cho mọi instance đang hoạt động.</li>
+<li>Auto Scaling group trải trên ít nhất hai Availability Zone.</li>
+<li>Private subnet dùng route qua NAT cho outbound traffic.</li>
+<li>Backend vẫn phản hồi bình thường dù instance không có public IP.</li>
+<li>Security group chỉ mở đúng mức traffic cần thiết giữa các tầng.</li>
+</ul>
+<h2 id="lỗi-thường-gặp-1">Lỗi thường gặp</h2>
+<ul>
+<li>Mở security group của EC2 ra internet thay vì chỉ cho ALB truy cập.</li>
+<li>Dùng health check path phụ thuộc vào database, làm instance bị đánh dấu lỗi khi database có sự cố.</li>
+<li>Quên rằng private instance vẫn cần outbound connectivity qua NAT.</li>
+<li>Tưởng rằng API Gateway hoặc Lambda tham gia vào flow trong khi điểm vào thật là ALB.</li>
+<li>Xem NAT Gateway là không cần thiết trong khi backend vẫn phải gọi AWS API hoặc third-party endpoint.</li>
+</ul>
+<h2 id="ghi-chú--giả-định-2">Ghi chú / Giả định</h2>
+<ul>
+<li>Sơ đồ chỉ thể hiện một NAT Gateway. Trong production, có thể cần một NAT Gateway cho mỗi Availability Zone để tăng độ bền outbound.</li>
+<li>Security groups và NACL không được vẽ trên sơ đồ, nhưng là thành phần rất quan trọng để mô hình routing này hoạt động.</li>
+<li>Workshop này mô tả triển khai trên EC2 vì kiến trúc hiện tại không cho thấy ECS hay EKS.</li>
+<li>Nếu sau này hệ thống mở API cho đối tác bên ngoài, API Gateway có thể được thêm trước một nhóm endpoint riêng mà không cần thay toàn bộ đường ALB hiện tại.</li>
+</ul>
+<h1 id="thực-hành-độ-bền-dữ-liệu-quan-hệ-và-cô-lập-mạng">Thực hành độ bền dữ liệu quan hệ và cô lập mạng</h1>
+<h2 id="tổng-quan-3">Tổng quan</h2>
+<ul>
+<li>Phần này giải thích cách nền tảng lưu dữ liệu giao dịch trong Amazon RDS trong khi vẫn giữ tầng dữ liệu ở trạng thái private.</li>
+<li>Nội dung tập trung vào hành vi primary và standby, kết nối database từ EC2, và các bước kiểm tra vận hành trước khi tác động tới dữ liệu production.</li>
+<li>Đây là phần nên đọc khi ứng dụng không kết nối được database, hành vi failover chưa rõ, hoặc nhóm cần xác minh giả định về backup và network isolation.</li>
+<li>Ở góc độ triển khai thực tế, đây là nơi xác định hợp đồng lưu trữ cho booking, charging session, payment, user record và các truy vấn vận hành vẫn còn nằm trên transaction path chính.</li>
+</ul>
+<p>Phần này làm gì:</p>
+<ul>
+<li>Lưu dữ liệu ứng dụng trong một managed relational database.</li>
+<li>Bảo vệ data tier khỏi truy cập public trực tiếp.</li>
+<li>Cung cấp tư thế primary và standby để tăng tính liên tục dịch vụ.</li>
+</ul>
+<p>Vì sao phần này tồn tại:</p>
+<ul>
+<li>Nền tảng EV cần hành vi giao dịch mạnh thay vì mô hình eventual consistency kiểu object storage.</li>
+<li>Độ sẵn sàng của database ảnh hưởng trực tiếp tới trải nghiệm booking, charging và payment.</li>
+<li>Dữ liệu thường là tài sản giá trị nhất của hệ thống nên cần được đặt trong ranh giới mạng chặt nhất.</li>
+</ul>
+<p>Phần này giải quyết vấn đề gì:</p>
+<ul>
+<li>Mất tính toàn vẹn giao dịch</li>
+<li>Public database ra ngoài internet</li>
+<li>Gắn cứng ứng dụng vào một host database cụ thể</li>
+<li>Khả năng phục hồi yếu khi hạ tầng hoặc database gặp sự cố</li>
+</ul>
+<h2 id="các-dịch-vụ-aws-trong-phần-này-2">Các dịch vụ AWS trong phần này</h2>
+<h3 id="amazon-rds">Amazon RDS</h3>
+<p><img src="../../../images/4-Workshop/rds-overview.png" alt="Amazon RDS"></p>
+<ul>
+<li>Dịch vụ cơ sở dữ liệu quan hệ được quản lý cho tầng dữ liệu của hệ thống.</li>
+<li>Tự động xử lý provisioning, backup, patching và failover.</li>
+<li>Giảm đáng kể gánh nặng vận hành so với việc tự quản lý database trên EC2.</li>
+</ul>
+<h3 id="primary-database-instance">Primary Database Instance</h3>
+<p><img src="../../../images/4-Workshop/rds-primary.png" alt="RDS Primary Instance"></p>
+<ul>
+<li>Xử lý workload giao dịch chính.</li>
+<li>Thực hiện các thao tác đọc/ghi từ ứng dụng.</li>
+<li>Là endpoint chính cho các thay đổi dữ liệu mang tính nghiệp vụ.</li>
+</ul>
+<h3 id="standby-database-instance">Standby Database Instance</h3>
+<ul>
+<li>Duy trì bản sao đồng bộ với instance chính.</li>
+<li>Tự động chuyển sang hoạt động khi xảy ra failover.</li>
+<li>Tồn tại nhằm tăng độ bền chứ không phải để phục vụ traffic trực tiếp từ người dùng.</li>
+</ul>
+<h3 id="không-có-truy-cập-công-khai">Không có truy cập công khai</h3>
+<ul>
+<li>Đảm bảo database không thể truy cập trực tiếp từ internet.</li>
+<li>Chỉ cho phép truy cập từ các resource nội bộ trong VPC.</li>
+<li>Giảm bề mặt tấn công và tránh các lỗi mở CIDR quá rộng.</li>
+</ul>
+<h3 id="kết-nối-ec2-tới-rds">Kết nối EC2 tới RDS</h3>
+<ul>
+<li>Application server kết nối tới database qua mạng private.</li>
+<li>Thường sử dụng security group và endpoint nội bộ.</li>
+<li>Giữ cho hợp đồng kết nối giữa app và database ổn định ngay cả khi node vật lý thay đổi trong lúc bảo trì hoặc failover.</li>
+</ul>
+<h2 id="luồng-aws-từng-bước-2">Luồng AWS từng bước</h2>
+<ol>
+<li>Backend chạy trên EC2 cần đọc hoặc ghi dữ liệu nghiệp vụ.
+Dịch vụ: Amazon EC2.
+Điều xảy ra: Ứng dụng mở connection pool tới RDS endpoint và gửi thao tác giao dịch.
+Tại sao quan trọng: Ứng dụng nên phụ thuộc vào endpoint quản lý, không phải IP của một node cụ thể.</li>
+<li>Request đến primary RDS instance.
+Dịch vụ: Amazon RDS.
+Điều xảy ra: Primary DB instance xử lý transaction của ứng dụng.
+Tại sao quan trọng: Đây là điểm ghi dữ liệu cốt lõi của hệ thống.</li>
+<li>RDS giữ một bản standby được đồng bộ.
+Dịch vụ: Amazon RDS.
+Điều xảy ra: Trạng thái dữ liệu được sao chép theo availability mode đã chọn.
+Tại sao quan trọng: Đây là nền tảng cho failover và độ bền của dữ liệu.</li>
+<li>Database không thể bị truy cập trực tiếp từ internet.
+Dịch vụ: RDS, private subnet, security group.
+Điều xảy ra: Chỉ các đường kết nối nội bộ đã được phê duyệt mới tới được database port.
+Tại sao quan trọng: Data tier vẫn được bảo vệ kể cả khi public endpoint khác của hệ thống đang bị tấn công.</li>
+<li>Khi primary gặp lỗi, RDS có thể chuyển sang đường standby.
+Dịch vụ: Amazon RDS.
+Điều xảy ra: RDS chuyển vai trò primary để ứng dụng có thể reconnect qua cùng logical endpoint.
+Tại sao quan trọng: Cần chấp nhận một khoảng gián đoạn ngắn, nhưng không nên phải sửa cấu hình ứng dụng.</li>
+</ol>
+<h3 id="hành-vi-request-và-response-2">Hành vi request và response</h3>
+<ul>
+<li>Input request: Ứng dụng gửi thao tác SQL như một phần của workflow nghiệp vụ đồng bộ.</li>
+<li>Xử lý: Primary xử lý đọc/ghi, còn standby giữ vai trò tăng độ bền.</li>
+<li>Output response: Ứng dụng nhận kết quả query, xác nhận transaction hoặc exception từ database.</li>
+<li>Failure behavior: Trong lúc failover hoặc bảo trì, timeout và cơ chế reconnect trở thành một phần của hợp đồng ứng dụng.</li>
+</ul>
+<h2 id="key-logic--rules">Key Logic / Rules</h2>
+<ul>
+<li>Primary database là endpoint chính cho giao dịch bình thường của ứng dụng.</li>
+<li>Standby database giúp tăng độ bền nhưng không phải user-facing endpoint.</li>
+<li>Network isolation là quy tắc cốt lõi của thiết kế, vì sơ đồ ghi rõ data tier không có public access.</li>
+<li>Giữ data tier ở trạng thái private làm giảm attack surface và hạn chế các đường kết nối ngoài ý muốn.</li>
+<li>Mọi tương tác với database phải đi qua application layer.</li>
+<li>Thông tin kết nối nên được lấy từ secret thay vì hard-code trong artifact của ứng dụng.</li>
+<li>Nếu sau này xuất hiện bài toán đọc nhiều, nên cân nhắc read replica hoặc reporting store thay vì ép primary làm tất cả.</li>
+</ul>
+<h2 id="aws-cli-walkthrough-2">AWS CLI Walkthrough</h2>
+<h3 id="1-kiểm-tra-db-instance">1. Kiểm tra DB instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds describe-db-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-hiển-thị-trạng-thái-cờ-multi-az-và-endpoint">2. Hiển thị trạng thái, cờ Multi-AZ và endpoint</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds describe-db-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;DBInstances[0].[DBInstanceStatus,MultiAZ,Endpoint.Address,Endpoint.Port]&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output table
+</span></span></code></pre></div><h3 id="3-thực-hiện-failover-test-ở-môi-trường-không-phải-production-đã-được-phê-duyệt">3. Thực hiện failover test ở môi trường không phải production đã được phê duyệt</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds reboot-db-instance <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --force-failover <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Chỉ dùng lệnh failover khi:</p>
+<ul>
+<li>chế độ Multi-AZ hoặc tương đương thực sự đã bật,</li>
+<li>chủ môi trường đã phê duyệt bài test,</li>
+<li>nhóm ứng dụng sẵn sàng quan sát hành vi reconnect.</li>
+</ul>
+<h2 id="ví-dụ-cấu-hình-2">Ví dụ cấu hình</h2>
+<h3 id="mô-hình-truy-cập-database-được-khuyến-nghị">Mô hình truy cập database được khuyến nghị</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Hạng mục</th>
+          <th>Thiết lập khuyến nghị</th>
+          <th>Ý nghĩa</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DB subnet group</td>
+          <td>Private subnet ở ít nhất hai Availability Zone</td>
+          <td>Hỗ trợ isolation và placement của standby</td>
+      </tr>
+      <tr>
+          <td>Public accessibility</td>
+          <td>Tắt</td>
+          <td>Ngăn truy cập trực tiếp từ internet</td>
+      </tr>
+      <tr>
+          <td>Nguồn truy cập</td>
+          <td>Chỉ cho phép từ security group của EC2 ứng dụng</td>
+          <td>Giới hạn chính xác bên được mở session</td>
+      </tr>
+      <tr>
+          <td>Database port</td>
+          <td><code>${DB_PORT}</code> theo engine đang dùng</td>
+          <td>Làm rule rõ ràng và dễ kiểm toán</td>
+      </tr>
+      <tr>
+          <td>Điểm kết nối</td>
+          <td>Dùng DNS endpoint của RDS, không dùng IP của instance</td>
+          <td>Cho phép failover mà không sửa cấu hình app</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="ví-dụ-thông-tin-kết-nối-lưu-trong-secrets-manager">Ví dụ thông tin kết nối lưu trong Secrets Manager</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;ev-prod-rds.xxxxxx.ap-southeast-1.rds.amazonaws.com&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">1433</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;database&#34;</span>: <span style="color:#e6db74">&#34;evcharging&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;app_user&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;change-me&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="best-practices-cho-lớp-này-2">Best practices cho lớp này</h3>
+<ul>
+<li>Bật automated backup và kiểm tra point-in-time recovery.</li>
+<li>Dùng engine-specific parameter group thay vì chỉnh database một cách tùy tiện.</li>
+<li>Kiểm soát connection pool để failover không gây reconnect storm.</li>
+<li>Mã hóa storage và snapshot bằng KMS-managed key.</li>
+<li>Tài liệu hóa migration và rollback riêng, không trộn lẫn với deploy ứng dụng thông thường.</li>
+</ul>
+<h2 id="những-gì-cần-xác-minh-2">Những gì cần xác minh</h2>
+<ul>
+<li>RDS instance không public accessible.</li>
+<li>Ứng dụng kết nối bằng RDS endpoint, không phải private IP cố định.</li>
+<li>DB subnet group dùng private subnet.</li>
+<li>Chỉ security group của ứng dụng được phép tới database port.</li>
+<li>Quy trình failover đã được thử ở ngoài production và có tài liệu ghi lại.</li>
+</ul>
+<h2 id="lỗi-thường-gặp-2">Lỗi thường gặp</h2>
+<ul>
+<li>Mở database cho dải CIDR rộng thay vì chỉ cho security group của ứng dụng.</li>
+<li>Lưu hostname database trực tiếp trong source code thay vì secret được quản lý.</li>
+<li>Hiểu nhầm standby là query endpoint trong khi sơ đồ chỉ cho thấy cặp primary và standby.</li>
+<li>Chạy failover test cưỡng bức mà không thông báo trước cho nhóm ứng dụng.</li>
+<li>Tưởng rằng database quan hệ sẽ tự scale vô hạn mà không cần tối ưu query, read isolation hoặc kiến trúc phụ trợ về sau.</li>
+</ul>
+<h2 id="ghi-chú--giả-định-3">Ghi chú / Giả định</h2>
+<ul>
+<li>Sơ đồ cho thấy rất rõ mô hình primary và standby kiểu Multi-AZ, nhưng không nêu chính xác engine hay deployment mode của RDS.</li>
+<li>Backup retention, point-in-time recovery và encryption setting không hiển thị trong hình.</li>
+<li>Không có read replica, cache hay analytics database trong sơ đồ nên không được giả định là đang tồn tại.</li>
+<li>DynamoDB và Aurora được coi là ngoài phạm vi của kiến trúc hiện tại.</li>
+</ul>
+<h1 id="thực-hành-truy-cập-vận-hành-và-quản-trị-bí-mật">Thực hành truy cập vận hành và quản trị bí mật</h1>
+<h2 id="tổng-quan-4">Tổng quan</h2>
+<ul>
+<li>Phần này giải thích cách operator và application instance truy cập môi trường mà không cần public server.</li>
+<li>Nội dung tập trung vào AWS Systems Manager, IAM instance profile, AWS Secrets Manager và AWS KMS.</li>
+<li>Đây là phần nên xem trước khi xử lý tình huống admin không vào được private EC2 hoặc ứng dụng không đọc được secret.</li>
+<li>Ở góc độ vận hành thực tế, đây là phần giải thích cách con người và máy cùng được cấp trust mà không phải quay lại hardcoded credential hoặc public SSH.</li>
+</ul>
+<p>Phần này làm gì:</p>
+<ul>
+<li>Cung cấp đường truy cập vào EC2 private cho operator qua Systems Manager.</li>
+<li>Cấp danh tính máy cho EC2 thông qua IAM instance profile.</li>
+<li>Đưa secret ra khỏi file cấu hình cục bộ và bảo vệ chúng bằng Secrets Manager cùng KMS.</li>
+</ul>
+<p>Vì sao phần này tồn tại:</p>
+<ul>
+<li>Hệ thống production không nên phát tán AWS key dài hạn hoặc SSH key một cách tùy tiện.</li>
+<li>Truy cập của operator phải audit được và có thể thu hồi.</li>
+<li>Secret phải được quản lý tập trung, mã hóa và có thể xoay vòng độc lập với chu kỳ release của ứng dụng.</li>
+</ul>
+<p>Phần này giải quyết vấn đề gì:</p>
+<ul>
+<li>Public đường quản trị vào private server</li>
+<li>Hardcoded credential trong application</li>
+<li>Machine identity yếu và quyền bị dàn trải</li>
+<li>Thiếu kiểm soát ở mức key đối với dữ liệu nhạy cảm</li>
+</ul>
+<h2 id="các-dịch-vụ-aws-trong-phần-này-3">Các dịch vụ AWS trong phần này</h2>
+<h3 id="aws-systems-manager-ssm">AWS Systems Manager (SSM)</h3>
+<p><img src="../../../images/4-Workshop/ssm-session-manager.png" alt="AWS Systems Manager Session Manager"></p>
+<ul>
+<li>Cung cấp truy cập có kiểm soát cho operator vào EC2 trong private subnet.</li>
+<li>Không cần mở SSH hay public IP.</li>
+<li>Có thể hỗ trợ session tương tác, chạy lệnh từ xa và runbook chuẩn hóa.</li>
+</ul>
+<h3 id="iam-instance-profile">IAM Instance Profile</h3>
+<p><img src="../../../images/4-Workshop/iam-instance-profile.png" alt="IAM Instance Profile"></p>
+<ul>
+<li>Cấp danh tính cho EC2 instance.</li>
+<li>Cho phép ứng dụng truy cập AWS service mà không cần hardcode credential.</li>
+<li>Cung cấp temporary credential được AWS tự xoay vòng.</li>
+</ul>
+<h3 id="aws-secrets-manager">AWS Secrets Manager</h3>
+<ul>
+<li>Lưu trữ các thông tin nhạy cảm như connection string, API key.</li>
+<li>Cho phép ứng dụng lấy secret một cách an toàn trong runtime.</li>
+<li>Tách vòng đời của secret khỏi vòng đời deploy ứng dụng.</li>
+</ul>
+<h3 id="aws-kms">AWS KMS</h3>
+<ul>
+<li>Mã hóa và bảo vệ secret.</li>
+<li>Kiểm soát quyền truy cập key thông qua IAM.</li>
+<li>Biến bài toán mã hóa thành trách nhiệm của managed service thay vì để application tự xử lý.</li>
+</ul>
+<h3 id="amazon-ec2-1">Amazon EC2</h3>
+<p><img src="../../../images/4-Workshop/ec2-iam-role.png" alt="EC2 Instance IAM Role"></p>
+<ul>
+<li>Sử dụng IAM role và lấy secret trong runtime.</li>
+<li>Là nơi thực thi application một cách an toàn.</li>
+<li>Dùng machine identity để truy cập CloudWatch, SES, Secrets Manager và các AWS API khác.</li>
+</ul>
+<h2 id="luồng-aws-từng-bước-3">Luồng AWS từng bước</h2>
+<ol>
+<li>Operator cần shell access hoặc run-command access vào một EC2 instance private.
+Dịch vụ: AWS Systems Manager.
+Điều xảy ra: Operator khởi tạo một phiên SSM tới instance mục tiêu.
+Tại sao quan trọng: Không cần bastion host hay mở public SSH.</li>
+<li>Instance xác thực bằng danh tính máy.
+Dịch vụ: IAM instance profile.
+Điều xảy ra: EC2 nhận temporary credential từ IAM role được gắn.
+Tại sao quan trọng: Ứng dụng có thể gọi AWS API mà không cần static access key.</li>
+<li>Ứng dụng yêu cầu một secret.
+Dịch vụ: AWS Secrets Manager.
+Điều xảy ra: App gọi lấy secret theo tên trong runtime.
+Tại sao quan trọng: Credential database và token tích hợp có thể được xoay vòng ngoài gói triển khai.</li>
+<li>Secret được giải mã theo mô hình bảo vệ của KMS.
+Dịch vụ: AWS KMS.
+Điều xảy ra: Secrets Manager dùng cơ chế mã hóa dựa trên KMS cho giá trị secret lưu trữ.
+Tại sao quan trọng: Secret được mã hóa và việc dùng khóa có thể được kiểm soát.</li>
+<li>IAM role đó cũng có thể cho phép ghi log và gửi email.
+Dịch vụ: IAM, CloudWatch, SES.
+Điều xảy ra: Role của instance cho phép các thao tác AWS khác mà workload cần.
+Tại sao quan trọng: Một danh tính máy duy nhất có thể phục vụ nhiều tích hợp nhưng vẫn giữ được kiểm soát quyền.</li>
+</ol>
+<h3 id="hành-vi-request-và-response-3">Hành vi request và response</h3>
+<ul>
+<li>Operator request: SSM nhận yêu cầu truy cập và tạo phiên nếu instance đã đăng ký và đúng quyền.</li>
+<li>Application request: Workload gọi Secrets Manager để lấy cấu hình hoặc credential theo tên.</li>
+<li>Crypto response: KMS cho phép hoặc từ chối giải mã tùy theo IAM và key policy.</li>
+<li>Service response: Instance hoặc nhận được secret cần thiết để chạy tiếp, hoặc lỗi sẽ lộ ra như một vấn đề policy hay cấu hình.</li>
+</ul>
+<h2 id="key-logic--rules-1">Key Logic / Rules</h2>
+<ul>
+<li>Truy cập quản trị đi qua SSM, tránh phải mở public SSH hay dùng bastion trong thiết kế này.</li>
+<li>Secret được tách ra khỏi application server và lưu trong managed service.</li>
+<li>IAM role thực thi nguyên tắc least privilege cho machine identity.</li>
+<li>Encryption được coi là năng lực managed của nền tảng chứ không phải key store do ứng dụng tự sở hữu.</li>
+<li>Instance profile trong sơ đồ được dùng để đọc secret, ghi log và gửi email.</li>
+<li>Trong production, phạm vi resource của IAM nên chặt hơn nhiều so với ví dụ đơn giản trong workshop.</li>
+</ul>
+<h2 id="aws-cli-walkthrough-3">AWS CLI Walkthrough</h2>
+<h3 id="1-mở-phiên-ssm-vào-private-instance">1. Mở phiên SSM vào private instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ssm start-session <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --target <span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-xác-minh-iam-instance-profile-đang-được-gắn">2. Xác minh IAM instance profile đang được gắn</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ec2 describe-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --instance-ids <span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;Reservations[0].Instances[0].IamInstanceProfile.Arn&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output text
+</span></span></code></pre></div><h3 id="3-đọc-giá-trị-secret">3. Đọc giá trị secret</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws secretsmanager get-secret-value <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --secret-id <span style="color:#e6db74">${</span>DB_SECRET_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="4-liệt-kê-alias-kms">4. Liệt kê alias KMS</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws kms list-aliases --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Cách đọc các lệnh này:</p>
+<ul>
+<li>Một phiên SSM thành công là bằng chứng cho thấy cả management plane lẫn việc đăng ký instance đều đúng.</li>
+<li>Nếu thiếu ARN của instance profile thì đó thường là nguyên nhân cho lỗi đọc secret, gửi log hoặc gọi SES.</li>
+<li>Lỗi đọc secret thường đến từ IAM, sai secret ID hoặc thiếu quyền KMS.</li>
+<li>Việc liệt kê alias KMS giúp kiểm tra ranh giới mã hóa có thực sự tồn tại trong môi trường hay không.</li>
+</ul>
+<h2 id="ví-dụ-cấu-hình-3">Ví dụ cấu hình</h2>
+<h3 id="quyền-tối-thiểu-cho-instance-role-trong-kiến-trúc-này">Quyền tối thiểu cho instance-role trong kiến trúc này</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;secretsmanager:GetSecretValue&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;kms:Decrypt&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:PutLogEvents&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses:SendEmail&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses:SendRawEmail&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ý nghĩa của policy này:</p>
+<ul>
+<li>Instance đọc được secret.</li>
+<li>Instance giải mã được dữ liệu thông qua KMS.</li>
+<li>Instance ghi log và gửi email được.</li>
+<li>Không cần lưu static AWS key trên máy chủ.</li>
+</ul>
+<h3 id="best-practices-cho-lớp-này-3">Best practices cho lớp này</h3>
+<ul>
+<li>Thay wildcard bằng ARN cụ thể của secret và key trong production.</li>
+<li>Bật Session Manager logging về CloudWatch hoặc S3 để audit.</li>
+<li>Tách role của operator và role của workload để tránh lẫn lộn quyền.</li>
+<li>Dùng naming convention kiểu <code>service/environment/purpose</code> cho secret.</li>
+<li>Cân nhắc secret rotation tự động nếu ứng dụng chịu được cơ chế đó.</li>
+</ul>
+<h2 id="những-gì-cần-xác-minh-3">Những gì cần xác minh</h2>
+<ul>
+<li>EC2 instance mục tiêu đã được đăng ký trong Systems Manager.</li>
+<li>Instance có IAM instance profile đi kèm.</li>
+<li>Ứng dụng đọc được đúng các secret name mà nó cần.</li>
+<li>Quyền KMS chỉ cấp cho principal thực sự cần giải mã.</li>
+<li>Operator dùng SSM thay vì mở inbound SSH từ internet.</li>
+</ul>
+<h2 id="lỗi-thường-gặp-3">Lỗi thường gặp</h2>
+<ul>
+<li>Gắn role cho EC2 nhưng quên cấp <code>secretsmanager:GetSecretValue</code>.</li>
+<li>Có quyền Secrets Manager nhưng thiếu <code>kms:Decrypt</code> khi dùng customer-managed KMS key.</li>
+<li>Nhầm rằng xác thực người dùng cuối nằm ở đây trong khi sơ đồ chỉ thể hiện đường truy cập cho operator.</li>
+<li>Quay lại hard-coded credential vì naming convention của secret chưa rõ ràng.</li>
+<li>Giữ nguyên IAM policy quá rộng sau khi workshop kết thúc.</li>
+</ul>
+<h2 id="ghi-chú--giả-định-4">Ghi chú / Giả định</h2>
+<ul>
+<li>Sơ đồ không ghi cụ thể chế độ SSM nào, nhưng Session Manager là cách hiểu trực tiếp nhất cho truy cập tương tác.</li>
+<li>Secret rotation và KMS key rotation policy không được thể hiện.</li>
+<li>Không có identity provider riêng hay workflow engine chi tiết cho admin trong sơ đồ, nên tài liệu tập trung vào những AWS control đang nhìn thấy được.</li>
+<li>Trong môi trường siết chặt hơn, có thể dùng VPC endpoint cho SSM, Secrets Manager và CloudWatch để giảm phụ thuộc vào NAT đối với control-plane traffic.</li>
+</ul>
+<h1 id="thực-hành-giám-sát-kiểm-toán-và-gửi-email">Thực hành giám sát, kiểm toán và gửi email</h1>
+<h2 id="tổng-quan-5">Tổng quan</h2>
+<ul>
+<li>Phần này giải thích cách operator quan sát nền tảng đang chạy, kiểm toán hoạt động AWS và xác minh luồng gửi email outbound.</li>
+<li>Nội dung tập trung vào Amazon CloudWatch, AWS CloudTrail, Amazon SES và các bản ghi DNS email trong Route 53.</li>
+<li>Đây là phần nên dùng khi nhóm cần soi log, truy vết hành động vận hành hoặc kiểm tra đường gửi mail của ứng dụng.</li>
+<li>Nếu nhìn theo góc độ production, đây là lớp khép lại vòng lặp giữa hành vi của ứng dụng, khả năng nhìn thấy của operator và giao tiếp ra bên ngoài với người dùng.</li>
+</ul>
+<p>Phần này làm gì:</p>
+<ul>
+<li>Thu thập tín hiệu vận hành từ môi trường đang chạy.</li>
+<li>Ghi lại hoạt động control-plane để phục vụ bảo mật và compliance.</li>
+<li>Cho phép ứng dụng gửi email qua một dịch vụ managed.</li>
+</ul>
+<p>Vì sao phần này tồn tại:</p>
+<ul>
+<li>Không có log và metric thì đội vận hành phản ứng với sự cố quá chậm.</li>
+<li>Không có audit trail thì không thể trả lời chính xác ai đã thay đổi điều gì và vào lúc nào.</li>
+<li>Không có managed email service thì việc gửi mail giao dịch trở nên mong manh và tốn công vận hành.</li>
+</ul>
+<p>Phần này giải quyết vấn đề gì:</p>
+<ul>
+<li>Thiếu khả năng quan sát khi có sự cố</li>
+<li>Không có bằng chứng audit cho thao tác của operator</li>
+<li>Phải tự quản lý SMTP và danh tiếng gửi mail</li>
+<li>Thiếu niềm tin vào khả năng gửi thông báo cho người dùng</li>
+</ul>
+<h2 id="các-dịch-vụ-aws-trong-phần-này-4">Các dịch vụ AWS trong phần này</h2>
+<h3 id="amazon-cloudwatch">Amazon CloudWatch</h3>
+<p><img src="../../../images/4-Workshop/cloudwatch.png" alt="Amazon CloudWatch Logs and Metrics"></p>
+<ul>
+<li>Lưu trữ log và metric của hệ thống đang chạy.</li>
+<li>Hỗ trợ monitoring, alert và debug hệ thống.</li>
+<li>Là telemetry plane chính cho workload trong workshop.</li>
+</ul>
+<h3 id="aws-cloudtrail">AWS CloudTrail</h3>
+<p><img src="../../../images/4-Workshop/cloudtrail.png" alt="AWS CloudTrail Events"></p>
+<ul>
+<li>Ghi lại toàn bộ hoạt động API trong AWS.</li>
+<li>Phục vụ audit, bảo mật và compliance.</li>
+<li>Giúp truy vết thay đổi hạ tầng và thao tác của operator kể cả khi sự cố đã qua.</li>
+</ul>
+<h3 id="amazon-ses">Amazon SES</h3>
+<p><img src="../../../images/4-Workshop/ses.png" alt="Amazon SES"></p>
+<ul>
+<li>Gửi email từ ứng dụng (notification, verify, v.v.).</li>
+<li>Cần cấu hình domain và DNS hợp lệ.</li>
+<li>Giảm gánh nặng phải tự quản lý SMTP server và sender reputation.</li>
+</ul>
+<h3 id="dns-trong-route-53-cho-ses">DNS trong Route 53 (cho SES)</h3>
+<p><img src="../../../images/4-Workshop/route53-ses.png" alt="Route 53 SES DNS Records"></p>
+<ul>
+<li>Cung cấp bản ghi DNS để xác thực domain và gửi email.</li>
+<li>Bao gồm DKIM, SPF, MX phục vụ SES.</li>
+<li>Là điều kiện hạ tầng bắt buộc để sender identity trở nên đáng tin cậy.</li>
+</ul>
+<h3 id="iam-role-gắn-với-ec2">IAM Role gắn với EC2</h3>
+<ul>
+<li>Cấp quyền cho EC2:
+<ul>
+<li>Ghi log lên CloudWatch</li>
+<li>Gửi email qua SES</li>
+</ul>
+</li>
+<li>Không cần hardcode credential trong code.</li>
+<li>Giữ machine identity nhất quán với phần còn lại của kiến trúc.</li>
+</ul>
+<h2 id="vì-sao-thiết-kế-này-dùng-tích-hợp-aws-trực-tiếp">Vì sao thiết kế này dùng tích hợp AWS trực tiếp</h2>
+<ul>
+<li>Sơ đồ hiển thị trực tiếp CloudWatch và CloudTrail, nên observability được xây dựng trên bộ công cụ native của AWS.</li>
+<li>Email được gửi trực tiếp qua Amazon SES thay vì qua một dịch vụ messaging hay event bus riêng.</li>
+<li>EventBridge, SQS và SNS không xuất hiện trong kiến trúc, nên workshop này không giả định có pipeline notification theo kiểu event-driven.</li>
+<li>Kiểu tích hợp trực tiếp này giúp kiến trúc dễ hiểu hơn, nhưng cũng có nghĩa là side effect trong request path vẫn còn gắn chặt cho tới khi có lớp async.</li>
+</ul>
+<h2 id="luồng-aws-từng-bước-4">Luồng AWS từng bước</h2>
+<ol>
+<li>Ứng dụng phát sinh log và metric runtime.
+Dịch vụ: Amazon CloudWatch.
+Điều xảy ra: Tín hiệu vận hành và log của ứng dụng được ghi vào log group và metric của CloudWatch.
+Tại sao quan trọng: Log và metric là nơi đầu tiên cần kiểm tra khi xuất hiện lỗi phía người dùng.</li>
+<li>Operator kiểm tra log đang chạy.
+Dịch vụ: Amazon CloudWatch Logs.
+Điều xảy ra: Nhóm vận hành tail log hoặc truy vấn log stream để tìm lỗi và vấn đề timing.
+Tại sao quan trọng: Chẩn đoán nhanh phụ thuộc vào việc mở đúng log group càng sớm càng tốt.</li>
+<li>Hoạt động control-plane của AWS được ghi nhận.
+Dịch vụ: AWS CloudTrail.
+Điều xảy ra: Các hành động như mở phiên SSM hay thay đổi hạ tầng được lưu thành audit event.
+Tại sao quan trọng: Nhóm có thể biết ai đã thay đổi điều gì và vào thời điểm nào.</li>
+<li>Ứng dụng gửi email qua SES.
+Dịch vụ: Amazon SES.
+Điều xảy ra: Workload trên EC2 gọi SES API bằng IAM role của chính instance.
+Tại sao quan trọng: Hệ thống có thể gửi notification, OTP hoặc mail vận hành mà không cần tự quản lý SMTP server.</li>
+<li>SES phụ thuộc vào bản ghi DNS trong Route 53.
+Dịch vụ: Amazon SES và Route 53.
+Điều xảy ra: Bản ghi xác thực domain, DKIM và mail routing được xuất bản trong hosted zone.
+Tại sao quan trọng: Nếu DNS record không đúng, SES sẽ không verify identity hoặc không đạt deliverability như mong đợi.</li>
+</ol>
+<h3 id="hành-vi-request-và-response-4">Hành vi request và response</h3>
+<ul>
+<li>Telemetry request: Ứng dụng gửi log có cấu trúc hoặc metric lên CloudWatch.</li>
+<li>Audit response: CloudTrail nhận event do AWS service sinh ra.</li>
+<li>Email request: Ứng dụng gửi payload email tới SES và nhận trạng thái thành công hoặc lỗi.</li>
+<li>DNS verification behavior: Trạng thái identity của SES chỉ chuyển sang sẵn sàng sau khi record trong Route 53 đã tồn tại và propagate đầy đủ.</li>
+</ul>
+<h3 id="mô-hình-phản-ứng-vận-hành">Mô hình phản ứng vận hành</h3>
+<ul>
+<li>CloudWatch trả lời câu hỏi &ldquo;ứng dụng đã làm gì&rdquo;.</li>
+<li>CloudTrail trả lời câu hỏi &ldquo;operator hoặc AWS service đã thay đổi gì&rdquo;.</li>
+<li>SES cùng Route 53 trả lời câu hỏi &ldquo;hệ thống có thật sự giao tiếp được ra bên ngoài hay không&rdquo;.</li>
+</ul>
+<h2 id="aws-cli-walkthrough-4">AWS CLI Walkthrough</h2>
+<h3 id="1-tail-log-ứng-dụng-gần-đây">1. Tail log ứng dụng gần đây</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws logs tail <span style="color:#e6db74">${</span>LOG_GROUP<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --since 30m <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --follow <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-tra-cứu-audit-event-gần-đây">2. Tra cứu audit event gần đây</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudtrail lookup-events <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --lookup-attributes AttributeKey<span style="color:#f92672">=</span>EventName,AttributeValue<span style="color:#f92672">=</span>StartSession <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --max-results <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="3-kiểm-tra-trạng-thái-ses-identity">3. Kiểm tra trạng thái SES identity</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sesv2 get-email-identity <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --email-identity <span style="color:#e6db74">${</span>SES_IDENTITY<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="4-gửi-một-email-kiểm-tra-qua-ses">4. Gửi một email kiểm tra qua SES</h3>
+<p>Tạo file <code>ses-test-email.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;FromEmailAddress&#34;</span>: <span style="color:#e6db74">&#34;no-reply@example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Destination&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ToAddresses&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;ops@example.com&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Content&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Simple&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Subject&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Data&#34;</span>: <span style="color:#e6db74">&#34;EV platform test email&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Body&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Text&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;Data&#34;</span>: <span style="color:#e6db74">&#34;If you received this message, SES delivery is working.&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Gửi email:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sesv2 send-email <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --cli-input-json file://ses-test-email.json <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="5-tạo-một-cpu-alarm-đơn-giản-cho-backend-instance">5. Tạo một CPU alarm đơn giản cho backend instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudwatch put-metric-alarm <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --alarm-name ev-app-instance-high-cpu <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --metric-name CPUUtilization <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --namespace AWS/EC2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --statistic Average <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --period <span style="color:#ae81ff">300</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --threshold <span style="color:#ae81ff">80</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --comparison-operator GreaterThanThreshold <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --dimensions Name<span style="color:#f92672">=</span>InstanceId,Value<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --evaluation-periods <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Cách đọc các lệnh này:</p>
+<ul>
+<li>Tail log trực tiếp giúp rút ngắn đáng kể thời gian phản ứng khi có sự cố.</li>
+<li>CloudTrail lookup xác minh thao tác vận hành thực sự đang được ghi lại.</li>
+<li>Kiểm tra SES identity giúp tránh việc đổ lỗi cho ứng dụng khi nguyên nhân thật nằm ở sender verification.</li>
+<li>Test email kiểm tra đồng thời IAM, SES, DNS và region.</li>
+<li>Alarm biến telemetry thành tín hiệu có thể hành động, thay vì chỉ là dữ liệu để xem.</li>
+</ul>
+<h2 id="ví-dụ-cấu-hình-4">Ví dụ cấu hình</h2>
+<h3 id="ví-dụ-các-bản-ghi-route-53-cho-thiết-lập-ses-domain">Ví dụ các bản ghi Route 53 cho thiết lập SES domain</h3>
+<p>Tạo file <code>ses-identity-records.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Comment&#34;</span>: <span style="color:#e6db74">&#34;SES identity verification records&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Changes&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;TXT&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;\&#34;amazonses:verification-token\&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;selector1._domainkey.example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;CNAME&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;selector1-example-com.dkim.amazonses.com&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;UPSERT&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;ResourceRecordSet&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;mail.example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;MX&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;TTL&#34;</span>: <span style="color:#ae81ff">300</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ResourceRecords&#34;</span>: [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Value&#34;</span>: <span style="color:#e6db74">&#34;10 inbound-smtp.ap-southeast-1.amazonaws.com&#34;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Áp dụng các bản ghi DNS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws route53 change-resource-record-sets <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --hosted-zone-id <span style="color:#e6db74">${</span>HOSTED_ZONE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch file://ses-identity-records.json
+</span></span></code></pre></div><h3 id="best-practices-cho-lớp-này-4">Best practices cho lớp này</h3>
+<ul>
+<li>Dùng structured log để có thể lọc và truy vấn nhất quán.</li>
+<li>Tách retention period cho application log, security log và audit log.</li>
+<li>Xem CloudTrail là dữ liệu governance bắt buộc, không chỉ là công cụ debug.</li>
+<li>Bổ sung bounce và complaint handling nếu hệ thống gửi mail cho khách hàng ở quy mô lớn.</li>
+<li>Chỉ tạo alarm cho những tín hiệu thật sự có owner và runbook phản ứng.</li>
+</ul>
+<h2 id="những-gì-cần-xác-minh-4">Những gì cần xác minh</h2>
+<ul>
+<li>Log của ứng dụng đã vào đúng CloudWatch log group.</li>
+<li>CloudTrail ghi lại hành động của admin và các thay đổi hạ tầng.</li>
+<li>SES identity đã verify trước khi ứng dụng thử gửi mail.</li>
+<li>Route 53 có đủ TXT, CNAME và MX record mà cấu hình SES yêu cầu.</li>
+<li>CloudWatch alarm đã tồn tại cho những tín hiệu mà nhóm vận hành quan tâm.</li>
+<li>IAM role của EC2 chỉ có đúng những quyền cần cho telemetry và messaging.</li>
+</ul>
+<h2 id="lỗi-thường-gặp-4">Lỗi thường gặp</h2>
+<ul>
+<li>Gửi email trước khi verify SES identity.</li>
+<li>Chỉ xem application log mà bỏ qua CloudTrail khi nguyên nhân thực chất là thao tác của operator.</li>
+<li>Tạo alarm nhưng không xác định rõ ai sẽ theo dõi và phản hồi.</li>
+<li>Kỳ vọng luồng notification theo EventBridge hoặc SQS trong khi kiến trúc hiện tại chỉ thể hiện tích hợp SES trực tiếp.</li>
+<li>Xem việc gửi mail chỉ là bài toán của ứng dụng mà quên phụ thuộc DNS.</li>
+</ul>
+<h2 id="ghi-chú--giả-định-5">Ghi chú / Giả định</h2>
+<ul>
+<li>Sơ đồ không cho thấy dashboard, dashboards-as-code, tracing hay alarm action.</li>
+<li>Ví dụ alarm cố ý không gắn SNS vì SNS không nằm trong phần kiến trúc đang được thể hiện.</li>
+<li>Các use case email như OTP hoặc notification được suy ra từ việc có SES, nhưng template cụ thể không xuất hiện trong sơ đồ.</li>
+<li>Nếu khối lượng notification hoặc logic retry tăng lên, EventBridge, SQS hoặc SNS sẽ là hướng mở rộng tự nhiên.</li>
+</ul>
+<h1 id="phân-tích-kiến-trúc-theo-chuẩn-production-cho-workshop-aws">Phân tích kiến trúc theo chuẩn production cho workshop AWS</h1>
+<p><img src="../../../images/2-Proposal/AWS-architecture.png" alt="Tong quan kien truc workshop AWS"></p>
+<h2 id="tổng-quan-6">Tổng quan</h2>
+<ul>
+<li>Subsection này gom sáu module trước đó lại thành một câu chuyện kiến trúc production hoàn chỉnh.</li>
+<li>Nó giải thích cách các dịch vụ AWS đang hiển thị phối hợp với nhau thành một nền tảng thống nhất, thay vì chỉ là các bài lab tách rời.</li>
+<li>Đây là phần tham chiếu đầy đủ nhất cho các cuộc trao đổi về design review, onboarding và mức độ sẵn sàng vận hành.</li>
+<li>Phân tích ở đây chỉ bám trên nội dung hiện có của <code>4-Workshop</code>, không kéo sang phạm vi rộng hơn của repository.</li>
+</ul>
+<h2 id="phạm-vi-nguồn">Phạm vi nguồn</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Subsection của workshop</th>
+          <th>Trọng tâm kiến trúc</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>4.1 Tổng quan</code></td>
+          <td>Service inventory, trust boundary và end-to-end flow</td>
+      </tr>
+      <tr>
+          <td><code>4.2 Phân phối biên và yêu cầu dữ liệu bản đồ</code></td>
+          <td>DNS, CDN, WAF, static delivery và geospatial integration</td>
+      </tr>
+      <tr>
+          <td><code>4.3 Điều phối ứng dụng riêng tư và tầng tính toán</code></td>
+          <td>VPC, ALB, private EC2 runtime, Auto Scaling và egress</td>
+      </tr>
+      <tr>
+          <td><code>4.4 Độ bền dữ liệu quan hệ và cô lập mạng</code></td>
+          <td>Relational storage, standby posture và private data access</td>
+      </tr>
+      <tr>
+          <td><code>4.5 Truy cập vận hành và quản trị bí mật</code></td>
+          <td>Truy cập qua SSM, machine identity bằng IAM, secret và KMS</td>
+      </tr>
+      <tr>
+          <td><code>4.6 Giám sát, kiểm toán và gửi email</code></td>
+          <td>Observability, auditability và outbound email</td>
+      </tr>
+      <tr>
+          <td>Chương gốc <code>4-Workshop</code></td>
+          <td>Shared variable, boundary của workshop và các dịch vụ bị loại trừ</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="đọc-workshop-như-một-codebase-kiến-trúc">Đọc workshop như một codebase kiến trúc</h2>
+<ul>
+<li>Workshop vận hành như một bộ tài liệu thiết kế hạ tầng theo lớp.</li>
+<li>Mỗi subsection mô tả một mối quan tâm của nền tảng, các dịch vụ AWS đằng sau nó và cách kiểm tra thực tế.</li>
+<li>Khi ghép lại, các subsection tạo thành một tài liệu tham chiếu cho public ingress, private execution, persistence, governance và observability.</li>
+<li>Giá trị chính của <code>4.7</code> là giải thích mối quan hệ giữa các module thay vì lặp lại từng module như những phần độc lập.</li>
+</ul>
+<h2 id="kiến-trúc-nền-tảng">Kiến trúc nền tảng</h2>
+<p>Workshop mô tả baseline runtime AWS như sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User -&gt; Route 53 -&gt; CloudFront/WAF -&gt; S3
+</span></span><span style="display:flex;"><span>Frontend -&gt; Amazon Location Service
+</span></span><span style="display:flex;"><span>Frontend -&gt; ALB -&gt; Private EC2 -&gt; Amazon RDS
+</span></span><span style="display:flex;"><span>Private EC2 -&gt; Secrets Manager/KMS -&gt; CloudWatch -&gt; SES
+</span></span><span style="display:flex;"><span>Admin -&gt; Systems Manager -&gt; Private EC2
+</span></span><span style="display:flex;"><span>AWS control-plane activity -&gt; CloudTrail
+</span></span></code></pre></div><h3 id="ranh-giới-public-và-private">Ranh giới public và private</h3>
+<ul>
+<li>Route 53, CloudFront, WAF và ALB tạo thành đường vào public của hệ thống.</li>
+<li>EC2, RDS, Secrets Manager, KMS và phần lớn control plane vận hành nằm trong vùng protected internal estate.</li>
+<li>SES là public service endpoint, nhưng được gọi bởi workload private thông qua AWS API đã xác thực.</li>
+</ul>
+<h3 id="phần-kiến-trúc-này-làm-gì">Phần kiến trúc này làm gì</h3>
+<ul>
+<li>Hiển thị service graph logic của nền tảng.</li>
+<li>Phân biệt dịch vụ nào nằm trên request path của người dùng và dịch vụ nào thuộc control plane hỗ trợ.</li>
+<li>Tạo nền tảng để bàn tiếp về scale, fault tolerance và security.</li>
+</ul>
+<h2 id="module-lõi-dịch-vụ-api-và-luồng-dữ-liệu">Module lõi, dịch vụ, API và luồng dữ liệu</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Module lõi</th>
+          <th>Dịch vụ AWS chính</th>
+          <th>Đường request chính</th>
+          <th>Đầu ra quan trọng</th>
+          <th>Dịch vụ tương lai có thể bổ sung</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Phân phối edge</td>
+          <td>Route 53, CloudFront, WAF, S3</td>
+          <td>Browser -&gt; DNS -&gt; CDN -&gt; Object storage</td>
+          <td>Nội dung frontend tĩnh</td>
+          <td>API Gateway nếu sau này cần governance cho API</td>
+      </tr>
+      <tr>
+          <td>Tích hợp geospatial</td>
+          <td>Amazon Location Service</td>
+          <td>Frontend -&gt; map và place APIs</td>
+          <td>Kết quả tìm kiếm và ngữ cảnh bản đồ</td>
+          <td>Lambda nếu sau này cần backend ký request</td>
+      </tr>
+      <tr>
+          <td>Vào ứng dụng và compute</td>
+          <td>ALB, EC2, Auto Scaling, NAT, VPC</td>
+          <td>Frontend -&gt; ALB -&gt; EC2</td>
+          <td>Dynamic application response</td>
+          <td>ECS/EKS nếu cách đóng gói runtime thay đổi</td>
+      </tr>
+      <tr>
+          <td>Lưu trữ quan hệ</td>
+          <td>Amazon RDS</td>
+          <td>EC2 -&gt; RDS</td>
+          <td>Trạng thái giao dịch bền vững</td>
+          <td>Read replica, Aurora hoặc store báo cáo khi workload đổi khác</td>
+      </tr>
+      <tr>
+          <td>Security control plane</td>
+          <td>IAM, SSM, Secrets Manager, KMS</td>
+          <td>Operator/app -&gt; AWS control APIs</td>
+          <td>Trusted access, secret retrieval, protected encryption</td>
+          <td>Cognito chỉ nếu cần user identity dạng managed pool</td>
+      </tr>
+      <tr>
+          <td>Observability và communication</td>
+          <td>CloudWatch, CloudTrail, SES, Route 53</td>
+          <td>App và AWS service -&gt; log, audit, mail</td>
+          <td>Metric, audit event, notification</td>
+          <td>EventBridge, SQS và SNS nếu cần decouple</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="danh-mục-giao-diện-và-api">Danh mục giao diện và API</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Giao diện</th>
+          <th>Nguồn phát sinh</th>
+          <th>Đích đến</th>
+          <th>Hành vi</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DNS query công khai</td>
+          <td>Browser</td>
+          <td>Route 53</td>
+          <td>Trả về edge entry point</td>
+      </tr>
+      <tr>
+          <td>Request nội dung tĩnh</td>
+          <td>Browser</td>
+          <td>CloudFront và S3</td>
+          <td>Trả asset frontend từ cache hoặc origin</td>
+      </tr>
+      <tr>
+          <td>Request map hoặc place search</td>
+          <td>Frontend</td>
+          <td>Amazon Location Service</td>
+          <td>Trả dữ liệu geospatial</td>
+      </tr>
+      <tr>
+          <td>Dynamic API request</td>
+          <td>Frontend</td>
+          <td>ALB và EC2</td>
+          <td>Thực thi business logic đồng bộ</td>
+      </tr>
+      <tr>
+          <td>Transactional database call</td>
+          <td>EC2</td>
+          <td>Amazon RDS</td>
+          <td>Đọc và ghi dữ liệu quan hệ</td>
+      </tr>
+      <tr>
+          <td>Secret fetch</td>
+          <td>EC2</td>
+          <td>Secrets Manager</td>
+          <td>Trả cấu hình runtime hoặc credential</td>
+      </tr>
+      <tr>
+          <td>Decryption authorization</td>
+          <td>Secrets Manager</td>
+          <td>AWS KMS</td>
+          <td>Cho phép hoặc từ chối truy cập secret được bảo vệ</td>
+      </tr>
+      <tr>
+          <td>Operator session</td>
+          <td>Quản trị viên</td>
+          <td>Systems Manager</td>
+          <td>Thiết lập truy cập có kiểm soát tới EC2 private</td>
+      </tr>
+      <tr>
+          <td>Telemetry publication</td>
+          <td>EC2 hoặc agent</td>
+          <td>CloudWatch</td>
+          <td>Lưu log và metric</td>
+      </tr>
+      <tr>
+          <td>Audit event capture</td>
+          <td>Dịch vụ AWS</td>
+          <td>CloudTrail</td>
+          <td>Ghi lại hoạt động control-plane</td>
+      </tr>
+      <tr>
+          <td>Outbound email send</td>
+          <td>EC2</td>
+          <td>Amazon SES</td>
+          <td>Gửi mail giao dịch hoặc mail vận hành</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="ánh-xạ-dịch-vụ-aws-và-hướng-mở-rộng-kiến-trúc">Ánh xạ dịch vụ AWS và hướng mở rộng kiến trúc</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Năng lực</th>
+          <th>Ánh xạ hiện tại trong workshop</th>
+          <th>Vì sao phù hợp</th>
+          <th>Hướng mở rộng hợp lý</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Public web entry</td>
+          <td>Route 53 + CloudFront + ALB</td>
+          <td>Phù hợp với web platform nhiều lớp có đường static và dynamic tách biệt</td>
+          <td>Có thể thêm weighted DNS, blue/green cutover hoặc hardening ở edge</td>
+      </tr>
+      <tr>
+          <td>Compute</td>
+          <td>EC2 + Auto Scaling</td>
+          <td>Phù hợp với backend chạy lâu dài</td>
+          <td>Có thể thêm API Gateway cho governance của API công khai hoặc Lambda cho utility task</td>
+      </tr>
+      <tr>
+          <td>Data</td>
+          <td>Amazon RDS</td>
+          <td>Phù hợp với logic giao dịch và tư thế standby</td>
+          <td>Có thể thêm read replica hoặc bản sao analytics nếu áp lực đọc tăng</td>
+      </tr>
+      <tr>
+          <td>Secret handling</td>
+          <td>Secrets Manager + KMS</td>
+          <td>Phù hợp với cách quản trị credential tập trung</td>
+          <td>Có thể thêm rotation tự động và thu hẹp resource scope</td>
+      </tr>
+      <tr>
+          <td>Admin access</td>
+          <td>Systems Manager + IAM</td>
+          <td>Phù hợp với thiết kế không mở public SSH</td>
+          <td>Có thể thêm session log, runbook và approval workflow</td>
+      </tr>
+      <tr>
+          <td>Monitoring và audit</td>
+          <td>CloudWatch + CloudTrail</td>
+          <td>Phù hợp với observability và accountability kiểu AWS-native</td>
+          <td>Có thể thêm dashboard, alarm routing và security analytics</td>
+      </tr>
+      <tr>
+          <td>Communication</td>
+          <td>SES + Route 53</td>
+          <td>Phù hợp với gửi email giao dịch trực tiếp</td>
+          <td>Có thể thêm bounce processing hoặc fan-out theo kiểu event-driven</td>
+      </tr>
+      <tr>
+          <td>Xử lý bất đồng bộ</td>
+          <td>Chưa có</td>
+          <td>Kiến trúc hiện tại chủ yếu là synchronous</td>
+          <td>EventBridge, SQS hoặc SNS có thể tách side effect ra khỏi request path</td>
+      </tr>
+      <tr>
+          <td>Điều phối workflow</td>
+          <td>Chưa có</td>
+          <td>Luồng hiện tại chưa cần state machine</td>
+          <td>Step Functions phù hợp nếu booking, charging hoặc settlement trở thành nhiều bước kéo dài</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="phân-rã-chi-tiết-workshop">Phân rã chi tiết workshop</h2>
+<h3 id="chương-gốc-4-workshop">Chương gốc 4-Workshop</h3>
+<ul>
+<li>Định nghĩa phạm vi, biến dùng chung và ranh giới của thiết kế AWS đang được mô tả.</li>
+<li>Chặn scope drift bằng cách nêu rõ dịch vụ nào hiện không nằm trong kiến trúc.</li>
+<li>Đóng vai trò trang mở đầu mang tính vận hành cho toàn bộ chương.</li>
+</ul>
+<h3 id="41-tổng-quan">4.1 Tổng quan</h3>
+<ul>
+<li>Giải thích kiến trúc ở mức bản đồ tổng thể.</li>
+<li>Giúp người đọc phân loại dịch vụ theo trust boundary và mục đích vận hành.</li>
+<li>Cung cấp bộ lệnh kiểm tra an toàn trước khi thực hiện thao tác thay đổi.</li>
+</ul>
+<h3 id="42-phân-phối-biên-và-yêu-cầu-dữ-liệu-bản-đồ">4.2 Phân phối biên và yêu cầu dữ liệu bản đồ</h3>
+<ul>
+<li>Mô tả cách người dùng thực sự đi vào hệ thống và cách frontend được phục vụ.</li>
+<li>Chỉ ra rằng caching, origin protection và map integration được tách ra có chủ đích.</li>
+<li>Làm rõ geospatial API là dependency của frontend chứ không nhất thiết là logic của backend.</li>
+</ul>
+<h3 id="43-điều-phối-ứng-dụng-riêng-tư-và-tầng-tính-toán">4.3 Điều phối ứng dụng riêng tư và tầng tính toán</h3>
+<ul>
+<li>Mô tả đường thực thi đồng bộ của ứng dụng.</li>
+<li>Xác định request được nhận ở đâu, xử lý ở đâu và unhealthy node bị loại thế nào.</li>
+<li>Giải thích cách compute private vẫn đi ra ngoài được thông qua NAT.</li>
+</ul>
+<h3 id="44-độ-bền-dữ-liệu-quan-hệ-và-cô-lập-mạng">4.4 Độ bền dữ liệu quan hệ và cô lập mạng</h3>
+<ul>
+<li>Xác định ranh giới persistence của nền tảng.</li>
+<li>Giải thích vì sao data tier vừa phải bền vững vừa phải khó tiếp cận trực tiếp.</li>
+<li>Cho thấy primary và standby là quyết định về độ sẵn sàng chứ không chỉ là quyết định về lưu trữ.</li>
+</ul>
+<h3 id="45-truy-cập-vận-hành-và-quản-trị-bí-mật">4.5 Truy cập vận hành và quản trị bí mật</h3>
+<ul>
+<li>Giải thích cách hệ thống vẫn quản trị được mà không cần phơi lộ thêm bề mặt tấn công.</li>
+<li>Tách bạch rõ truy cập của con người với machine identity của workload.</li>
+<li>Cho thấy secret governance là một vấn đề kiến trúc, không phải chỉ là chi tiết cấu hình nhỏ trong code.</li>
+</ul>
+<h3 id="46-giám-sát-kiểm-toán-và-gửi-email">4.6 Giám sát, kiểm toán và gửi email</h3>
+<ul>
+<li>Xác định cách nền tảng tự nói cho operator biết chuyện gì đang xảy ra.</li>
+<li>Bổ sung accountability cho thay đổi ở phía AWS.</li>
+<li>Hoàn thiện đường giao tiếp từ sự kiện nội bộ ra email gửi cho người dùng.</li>
+</ul>
+<h2 id="vòng-đời-request-và-luồng-tương-tác-dịch-vụ">Vòng đời request và luồng tương tác dịch vụ</h2>
+<h3 id="vòng-đời-1-người-dùng-vào-hệ-thống">Vòng đời 1: Người dùng vào hệ thống</h3>
+<ol>
+<li>Route 53 phân giải domain.</li>
+<li>CloudFront và WAF xử lý request.</li>
+<li>Frontend tĩnh được trả từ cache hoặc S3.</li>
+</ol>
+<h3 id="vòng-đời-2-người-dùng-tương-tác-với-bản-đồ">Vòng đời 2: Người dùng tương tác với bản đồ</h3>
+<ol>
+<li>Frontend yêu cầu dữ liệu place hoặc map.</li>
+<li>Amazon Location Service trả về dữ liệu geospatial.</li>
+</ol>
+<h3 id="vòng-đời-3-người-dùng-thực-hiện-thao-tác-nghiệp-vụ">Vòng đời 3: Người dùng thực hiện thao tác nghiệp vụ</h3>
+<ol>
+<li>Frontend gửi request động qua ALB.</li>
+<li>Một EC2 private đang healthy xử lý yêu cầu.</li>
+<li>Ứng dụng gọi RDS, CloudWatch, Secrets Manager hoặc SES khi cần.</li>
+</ol>
+<h3 id="vòng-đời-4-operator-quản-trị-hệ-thống">Vòng đời 4: Operator quản trị hệ thống</h3>
+<ol>
+<li>Operator kết nối qua Systems Manager.</li>
+<li>Hoạt động đó được phản chiếu trong CloudTrail.</li>
+<li>Tác động runtime tiếp tục hiện ra trong CloudWatch.</li>
+</ol>
+<h2 id="các-cân-nhắc-khi-triển-khai">Các cân nhắc khi triển khai</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Hạng mục</th>
+          <th>Hàm ý hiện tại từ workshop</th>
+          <th>Khuyến nghị ở mức production</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Frontend release</td>
+          <td>S3 sync và CloudFront invalidation</td>
+          <td>Nên dùng artifact versioning và kiểm soát phạm vi invalidation</td>
+      </tr>
+      <tr>
+          <td>Backend release</td>
+          <td>Cập nhật fleet EC2 phía sau ALB</td>
+          <td>Dùng artifact bất biến và rolling replacement</td>
+      </tr>
+      <tr>
+          <td>Database migration</td>
+          <td>Chưa được mô tả trực tiếp</td>
+          <td>Chạy riêng với backup, approval và rollback plan</td>
+      </tr>
+      <tr>
+          <td>Secret change</td>
+          <td>Tách khỏi code</td>
+          <td>Quản lý theo môi trường và có version rõ ràng</td>
+      </tr>
+      <tr>
+          <td>Email readiness</td>
+          <td>Phụ thuộc DNS và trạng thái SES</td>
+          <td>Kiểm tra sender identity trước khi cutover release</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="khả-năng-mở-rộng-và-chịu-lỗi">Khả năng mở rộng và chịu lỗi</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Lớp</th>
+          <th>Điểm mạnh hiện có</th>
+          <th>Rủi ro chính</th>
+          <th>Hướng cải thiện thực tế</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Phân phối edge</td>
+          <td>Cache toàn cầu và origin private</td>
+          <td>Cache cũ hoặc WAF rule sai</td>
+          <td>Dùng asset versioning và policy edge chặt hơn</td>
+      </tr>
+      <tr>
+          <td>Application compute</td>
+          <td>Scale ngang và routing theo health</td>
+          <td>Nặng session hoặc egress một AZ</td>
+          <td>Giữ node stateless và cải thiện egress đa AZ</td>
+      </tr>
+      <tr>
+          <td>Data</td>
+          <td>Persistence được quản lý và có standby</td>
+          <td>Failover có thể chưa từng được thử thật</td>
+          <td>Diễn tập recovery và xác minh giả định Multi-AZ</td>
+      </tr>
+      <tr>
+          <td>Operations</td>
+          <td>SSM và IAM giảm phơi lộ</td>
+          <td>IAM có thể quá rộng</td>
+          <td>Thu hẹp policy và log admin session</td>
+      </tr>
+      <tr>
+          <td>Observability</td>
+          <td>Log, metric và audit native</td>
+          <td>Thiếu alarm hoặc retention strategy yếu</td>
+          <td>Bổ sung dashboard, alarm và audit retention policy</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="cơ-hội-cải-thiện-và-đối-chiếu-với-aws-well-architected">Cơ hội cải thiện và đối chiếu với AWS Well-Architected</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Trụ cột</th>
+          <th>Điểm mạnh hiện có</th>
+          <th>Bước tiếp theo hợp lý</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Operational Excellence</td>
+          <td>Tài liệu phân lớp rõ ràng và có CLI validation</td>
+          <td>Chuyển các bước kiểm tra thành runbook và kiểm tra hạ tầng có thể lặp lại</td>
+      </tr>
+      <tr>
+          <td>Security</td>
+          <td>EC2 private, RDS private, IAM, SSM, KMS và WAF</td>
+          <td>Siết permission, bật session logging và quản lý certificate chặt hơn</td>
+      </tr>
+      <tr>
+          <td>Reliability</td>
+          <td>Auto Scaling, target health và tư thế database có standby</td>
+          <td>Loại bỏ điểm yếu NAT một AZ và test failover định kỳ</td>
+      </tr>
+      <tr>
+          <td>Performance Efficiency</td>
+          <td>CloudFront caching và EC2 scale-out</td>
+          <td>Tối ưu cache behavior và theo dõi hotspot ở database</td>
+      </tr>
+      <tr>
+          <td>Cost Optimization</td>
+          <td>Managed service giúp giảm custom overhead</td>
+          <td>Rà soát chi phí NAT, right-size host và dùng lifecycle policy</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="hướng-tiến-hóa-tự-nhiên">Hướng tiến hóa tự nhiên</h3>
+<ul>
+<li>Chỉ đưa API Gateway vào khi nhu cầu quản trị API vượt quá khả năng tự nhiên của ALB.</li>
+<li>Bổ sung Lambda cho utility automation thay vì thay backend EC2 quá sớm.</li>
+<li>Bổ sung Step Functions khi booking, charging và settlement trở thành workflow nhiều bước kéo dài.</li>
+<li>Bổ sung EventBridge, SQS hoặc SNS khi background processing cần tách khỏi request path.</li>
+</ul>
+<h2 id="ghi-chú--giả-định-6">Ghi chú / Giả định</h2>
+<ul>
+<li>Phân tích chuyên sâu này chỉ giới hạn trong chương <code>4-Workshop</code> và bảy subsection hiện có của nó.</li>
+<li>Kiến trúc hiện tại được mô hình hóa là chủ yếu đồng bộ, dù hướng mở rộng bất đồng bộ là hoàn toàn hợp lý về sau.</li>
+<li>TLS certificate, subnet association, security group, IAM trust policy và các thành phần hỗ trợ khác được xem là điều kiện ngầm định bắt buộc, dù workshop không luôn vẽ chúng ra một cách tường minh.</li>
+</ul>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../../vi/4-workshop/4.7-workshop-architecture-deep-dive/" title="Phân tích kiến trúc workshop chuyên sâu"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../../vi/5-feedback/" title="Tự Đánh Giá" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../js/clipboard.min.js?1775384645"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1775384645"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775384645"></script>
+    <script src="../../../js/jquery.sticky.js?1775384645"></script>
+    <script src="../../../js/featherlight.min.js?1775384645"></script>
+    <script src="../../../js/highlight.pack.js?1775384645"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1775384645"></script>
+    <script src="../../../js/learn.js?1775384645"></script>
+    <script src="../../../js/hugo-learn.js?1775384645"></script>
+
+    <link href="../../../mermaid/mermaid.css?1775384645" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1775384645"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+<script>
+  (function () {
+    function getTarget(hash) {
+      if (!hash || hash.charAt(0) !== "#") {
+        return null;
+      }
+
+      var id = hash.slice(1);
+      return document.getElementById(id) || document.getElementById(decodeURIComponent(id));
+    }
+
+    function getFixedOffset() {
+      var topBar = document.getElementById("top-bar");
+      var topBarHeight = topBar ? topBar.getBoundingClientRect().height : 0;
+      return Math.ceil(topBarHeight) + 16;
+    }
+
+    function scrollToHash(hash, pushToHistory) {
+      var target = getTarget(hash);
+
+      if (!target) {
+        return false;
+      }
+
+      var top = window.pageYOffset + target.getBoundingClientRect().top - getFixedOffset();
+      window.scrollTo({ top: Math.max(top, 0), left: 0, behavior: "auto" });
+
+      if (pushToHistory) {
+        history.pushState({}, document.title, window.location.pathname + hash);
+      }
+
+      return true;
+    }
+
+    document.addEventListener(
+      "click",
+      function (event) {
+        var link = event.target.closest("a[href^='#']");
+
+        if (!link) {
+          return;
+        }
+
+        var href = link.getAttribute("href");
+
+        if (!href || href === "#") {
+          return;
+        }
+
+        if (!scrollToHash(href, true)) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      },
+      true,
+    );
+
+    jQuery(function () {
+      
+      jQuery(window).off("hashchange");
+      jQuery("body").off("click", "a");
+
+      if (window.location.hash) {
+        window.requestAnimationFrame(function () {
+          scrollToHash(window.location.hash, false);
+        });
+      }
+    });
+
+    window.addEventListener("load", function () {
+      if (window.location.hash) {
+        window.requestAnimationFrame(function () {
+          scrollToHash(window.location.hash, false);
+        });
+      }
+    });
+
+    window.addEventListener("hashchange", function () {
+      scrollToHash(window.location.hash, false);
+    });
+  })();
+</script>
+
+  </body>
+</html>
+

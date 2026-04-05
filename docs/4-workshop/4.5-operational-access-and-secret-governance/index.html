@@ -15,21 +15,21 @@
     <title>Operational Access and Secret Governance :: Internship Report</title>
 
     
-    <link href="../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../css/nucleus.css?1775386387" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775386387" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775386387" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775386387" rel="stylesheet">
+    <link href="../../css/theme.css?1775386387" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775386387" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1775386387" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1775386387"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1775386387"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775386387"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../js/search.js?1775386387"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -778,8 +796,27 @@
         <li><a href="#amazon-ec2">Amazon EC2</a></li>
       </ul>
     </li>
+    <li><a href="#why-this-design-uses-ssm-and-iam">Why This Design Uses SSM and IAM</a></li>
     <li><a href="#flow-description">Flow Description</a></li>
+    <li><a href="#request-and-response-behavior">Request and Response Behavior</a></li>
+    <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-start-an-ssm-session-to-a-private-instance">1. Start an SSM session to a private instance</a></li>
+        <li><a href="#2-verify-the-attached-iam-instance-profile">2. Verify the attached IAM instance profile</a></li>
+        <li><a href="#3-read-a-secret-value">3. Read a secret value</a></li>
+        <li><a href="#4-list-kms-aliases">4. List KMS aliases</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration-example">Configuration Example</a>
+      <ul>
+        <li><a href="#minimum-permissions-for-the-instance-role-in-this-architecture">Minimum permissions for the instance role in this architecture</a></li>
+      </ul>
+    </li>
     <li><a href="#key-logic--rules">Key Logic / Rules</a></li>
+    <li><a href="#operational-and-security-considerations">Operational and Security Considerations</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
+    <li><a href="#what-to-verify">What to Verify</a></li>
+    <li><a href="#common-mistakes">Common Mistakes</a></li>
     <li><a href="#notes--assumptions">Notes / Assumptions</a></li>
   </ul>
 </nav></div>
@@ -812,6 +849,7 @@
 <li>This section explains how administrators and application instances receive controlled access to the environment and sensitive configuration.</li>
 <li>Its purpose is to reduce direct exposure, centralize secret handling, and enforce machine permissions through AWS-native controls.</li>
 <li>It fits as the security and operations control plane alongside the runtime environment.</li>
+<li>It is the right section to review when the team needs to reason about how people and workloads gain trust without relying on public SSH or hardcoded credentials.</li>
 </ul>
 <h2 id="components">Components</h2>
 <h3 id="aws-systems-manager-ssm">AWS Systems Manager (SSM)</h3>
@@ -819,37 +857,116 @@
 <ul>
 <li>Provides controlled access for operators to connect to private EC2 instances.</li>
 <li>Eliminates the need for SSH keys or public access.</li>
+<li>Can support interactive sessions, command execution, and standardized operational workflows.</li>
 </ul>
 <h3 id="iam-instance-profile">IAM Instance Profile</h3>
 <p><img src="../../images/4-Workshop/iam-instance-profile.png" alt="IAM Instance Profile"></p>
 <ul>
 <li>Grants machine-level identity to EC2 instances.</li>
 <li>Allows applications to securely access AWS services without hardcoded credentials.</li>
+<li>Supplies temporary credentials that AWS rotates automatically.</li>
 </ul>
 <h3 id="aws-secrets-manager">AWS Secrets Manager</h3>
 <ul>
 <li>Stores sensitive data such as database connection strings, API keys, and credentials.</li>
 <li>Provides secure retrieval of secrets at runtime.</li>
+<li>Separates secret lifecycle from application deployment lifecycle.</li>
 </ul>
 <h3 id="aws-kms">AWS KMS</h3>
 <ul>
 <li>Encrypts and protects secrets managed by the system.</li>
 <li>Controls access to encryption keys via IAM policies.</li>
+<li>Makes encryption governance a managed platform capability rather than a custom application concern.</li>
 </ul>
 <h3 id="amazon-ec2">Amazon EC2</h3>
 <p><img src="../../images/4-Workshop/ec2-iam-role.png" alt="EC2 Instance IAM Role"></p>
 <ul>
 <li>Consumes IAM roles and retrieves secrets during application runtime.</li>
 <li>Acts as the execution environment for secure service interaction.</li>
+<li>Uses machine identity to reach Secrets Manager, CloudWatch, SES, and other AWS APIs.</li>
+</ul>
+<h2 id="why-this-design-uses-ssm-and-iam">Why This Design Uses SSM and IAM</h2>
+<ul>
+<li>The diagram shows operator access flowing through Systems Manager instead of a direct public login path.</li>
+<li>EC2 instances use an attached IAM role, so the application does not need long-lived AWS keys stored on disk.</li>
+<li>The visible access path is an operator and machine identity path, not an end-user identity path.</li>
+<li>This design keeps access auditable, revocable, and aligned with AWS-native trust models.</li>
 </ul>
 <h2 id="flow-description">Flow Description</h2>
 <ol>
-<li>An administrator reaches the environment through AWS Systems Manager rather than a direct internet-facing login path.</li>
-<li>EC2 instances assume their IAM instance profile automatically at runtime.</li>
-<li>The application reads secrets from AWS Secrets Manager when configuration or credentials are required.</li>
-<li>AWS KMS likely protects the secret material or encryption operations associated with those secrets.</li>
-<li>The same IAM role also allows the instance to write logs and send email, as shown in the diagram.</li>
+<li>An administrator reaches the environment through AWS Systems Manager rather than a direct internet-facing login path.
+What happens: The operator starts a brokered session to a private instance through the SSM control plane.
+Why it matters: The instance remains private while still being operable.</li>
+<li>EC2 instances assume their IAM instance profile automatically at runtime.
+What happens: Temporary AWS credentials are issued through the instance metadata service.
+Why it matters: The workload can call AWS APIs without storing static keys.</li>
+<li>The application reads secrets from AWS Secrets Manager when configuration or credentials are required.
+What happens: Secret values are fetched by name during startup or runtime.
+Why it matters: Secret rotation and environment separation become easier to manage.</li>
+<li>AWS KMS likely protects the secret material or encryption operations associated with those secrets.
+What happens: Authorized callers can decrypt protected values, while unauthorized callers are denied.
+Why it matters: Encryption and decryption stay under managed policy control.</li>
+<li>The same IAM role also allows the instance to write logs and send email, as shown in the diagram.
+What happens: One machine identity supports multiple supporting integrations while still remaining auditable.
+Why it matters: The platform avoids credential sprawl across the application estate.</li>
 </ol>
+<h2 id="request-and-response-behavior">Request and Response Behavior</h2>
+<ul>
+<li>An operator request reaches SSM, which either establishes a managed session or fails due to registration or IAM issues.</li>
+<li>An application request reaches Secrets Manager, which either returns the secret value or fails due to permission, region, or naming errors.</li>
+<li>A decryption request reaches KMS implicitly through the secret flow and succeeds only when IAM policy and key policy align.</li>
+<li>The runtime either receives the configuration it needs to continue safely or surfaces a policy/configuration failure early.</li>
+</ul>
+<h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
+<h3 id="1-start-an-ssm-session-to-a-private-instance">1. Start an SSM session to a private instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ssm start-session <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --target <span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-verify-the-attached-iam-instance-profile">2. Verify the attached IAM instance profile</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws ec2 describe-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --instance-ids <span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;Reservations[0].Instances[0].IamInstanceProfile.Arn&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output text
+</span></span></code></pre></div><h3 id="3-read-a-secret-value">3. Read a secret value</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws secretsmanager get-secret-value <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --secret-id <span style="color:#e6db74">${</span>DB_SECRET_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="4-list-kms-aliases">4. List KMS aliases</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws kms list-aliases --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>How to interpret these commands:</p>
+<ul>
+<li>A successful SSM session proves both management-plane reachability and correct instance registration.</li>
+<li>A missing instance profile ARN often explains later failures in secret retrieval, log publishing, or SES usage.</li>
+<li>Secret retrieval failures usually point to IAM permissions, incorrect secret names, or missing KMS access.</li>
+<li>KMS alias discovery helps verify whether the expected encryption boundary exists in the environment.</li>
+</ul>
+<h2 id="configuration-example">Configuration Example</h2>
+<h3 id="minimum-permissions-for-the-instance-role-in-this-architecture">Minimum permissions for the instance role in this architecture</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;secretsmanager:GetSecretValue&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;kms:Decrypt&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;logs:PutLogEvents&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses:SendEmail&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses:SendRawEmail&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>What this policy achieves:</p>
+<ul>
+<li>The instance can read secrets.</li>
+<li>The instance can decrypt protected data through KMS.</li>
+<li>The instance can publish logs and send email.</li>
+<li>The workload does not require static AWS keys stored on the server.</li>
+</ul>
 <h2 id="key-logic--rules">Key Logic / Rules</h2>
 <ul>
 <li>Administrative access is brokered through SSM, which avoids the need for public SSH or bastion exposure in the diagram.</li>
@@ -857,12 +974,45 @@
 <li>IAM roles enforce least-privilege access for machine identities.</li>
 <li>Encryption is treated as a managed capability rather than an application-owned key store.</li>
 <li>The instance profile shown in the diagram is scoped to reading secrets, writing logs, and sending email.</li>
+<li>In production, resource scope should be narrower than the simplified workshop examples.</li>
+</ul>
+<h2 id="operational-and-security-considerations">Operational and Security Considerations</h2>
+<ul>
+<li>Separate operator permissions from workload permissions so human access and machine access remain distinct.</li>
+<li>Use Session Manager logging for traceability when interactive access is allowed.</li>
+<li>Use consistent secret naming by environment, workload, and purpose.</li>
+<li>Review KMS key policy scope carefully when customer-managed keys are used.</li>
+<li>Consider VPC endpoints for SSM, Secrets Manager, and CloudWatch if the environment needs to reduce dependence on NAT for control-plane access.</li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li>Replace wildcard resource access with secret-specific and key-specific ARNs in production.</li>
+<li>Document which workloads may decrypt which secrets and why.</li>
+<li>Rotate secrets on a schedule that matches the environment&rsquo;s risk profile.</li>
+<li>Treat failed secret retrieval as an operational signal, not just an application bug.</li>
+</ul>
+<h2 id="what-to-verify">What to Verify</h2>
+<ul>
+<li>The target EC2 instance is registered in Systems Manager.</li>
+<li>The instance has an IAM instance profile attached.</li>
+<li>The application can read the exact secret names it requires.</li>
+<li>KMS permissions are granted only to the principals that truly need decryption.</li>
+<li>Operators use SSM instead of opening inbound SSH from the internet.</li>
+</ul>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li>Attaching a role to EC2 but forgetting <code>secretsmanager:GetSecretValue</code>.</li>
+<li>Granting Secrets Manager access but missing <code>kms:Decrypt</code> when a customer-managed key is used.</li>
+<li>Assuming end-user identity is handled here when the diagram only shows operator and machine access.</li>
+<li>Returning to hardcoded credentials because secret naming is inconsistent.</li>
+<li>Leaving workshop-style broad IAM permissions in place after the environment matures.</li>
 </ul>
 <h2 id="notes--assumptions">Notes / Assumptions</h2>
 <ul>
 <li>The exact SSM features in use, such as Session Manager or Run Command, are not labeled explicitly.</li>
 <li>Secret rotation and KMS key rotation policies are not shown.</li>
 <li>No separate identity provider or fine-grained admin workflow engine appears in the diagram, so the documentation stays focused on the visible AWS controls.</li>
+<li>In a hardened environment, private VPC endpoints for SSM, Secrets Manager, and CloudWatch may reduce dependence on NAT for control-plane traffic.</li>
 </ul>
 
 
@@ -1313,6 +1463,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1370,19 +1536,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../js/clipboard.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775386387"></script>
+    <script src="../../js/jquery.sticky.js?1775386387"></script>
+    <script src="../../js/featherlight.min.js?1775386387"></script>
+    <script src="../../js/highlight.pack.js?1775386387"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../js/learn.js?1775326934"></script>
-    <script src="../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775386387"></script>
+    <script src="../../js/learn.js?1775386387"></script>
+    <script src="../../js/hugo-learn.js?1775386387"></script>
 
-    <link href="../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../mermaid/mermaid.css?1775386387" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775386387"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

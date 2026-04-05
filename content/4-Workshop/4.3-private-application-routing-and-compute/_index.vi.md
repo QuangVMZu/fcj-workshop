@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Điều phối ứng dụng riêng tư và tầng tính toán"
 date: 2026-04-04
 weight: 3
@@ -80,6 +80,14 @@ pre: " <b> 4.3. </b> "
    Điều xảy ra: ALB hoàn tất vòng đời của HTTP request.
    Tại sao quan trọng: Client không bao giờ giao tiếp trực tiếp với EC2 instance.
 
+## Logic nội bộ và hành vi request
+
+- ALB là ranh giới HTTP công khai của backend. Nó quyết định request nào được vào fleet của ứng dụng và target nào đủ healthy để nhận traffic.
+- EC2 instance là runtime chạy lâu dài của ứng dụng. Chúng được kỳ vọng xử lý request, duy trì connection pool và dùng private network cho các dependency downstream.
+- Auto Scaling quản lý kích thước của fleet, còn ALB quản lý việc route request. Hai cơ chế này liên quan với nhau nhưng không giải quyết cùng một bài toán.
+- NAT Gateway xử lý egress có kiểm soát cho private instance. Nó không nằm trên inbound request path, nhưng thường là thành phần rất quan trọng cho runtime dependency access.
+- Vì kiến trúc hiện tại không cho thấy API Gateway, Lambda, ECS hay EKS, mô hình vận hành ở đây được giữ theo hướng instance-centric và network-centric.
+
 ## AWS CLI Walkthrough
 
 ### 1. Kiểm tra load balancer
@@ -133,6 +141,21 @@ aws ec2 describe-instances \
 - Interval: `30` giây
 - Healthy threshold: `2` trở lên
 - Unhealthy threshold: `2` trở lên
+
+## Lưu ý về scale và bảo mật
+
+- Hãy giữ backend node càng stateless càng tốt để Auto Scaling có thể thay thế chúng mà không cần phục hồi session phức tạp.
+- Chỉ cho phép inbound vào EC2 từ security group của ALB, thay vì mở application port cho CIDR public.
+- Hãy xem NAT là dependency egress có kiểm soát. Nếu outbound availability trở nên quan trọng hơn, nên cân nhắc NAT Gateway theo từng Availability Zone hoặc VPC endpoint cho một số AWS service.
+- Health check nên xác minh liveness của ứng dụng nhưng không được phụ thuộc quá nặng vào downstream service có thể lỗi độc lập.
+- Nếu sau này nền tảng cần governance cho API ở mức cao hơn, API Gateway có thể được thêm vào trước một số endpoint cụ thể, nhưng đó là phần mở rộng kiến trúc chứ không phải sửa sai mô hình hiện tại.
+
+## Best practices
+
+- Dùng launch template và immutable deployment artifact để việc thay fleet được nhất quán.
+- Trải Auto Scaling group trên nhiều Availability Zone.
+- Giữ security group đơn giản và tách theo từng service để trust boundary rõ ràng.
+- Theo dõi target health cùng với scaling activity, vì fleet đang healthy nhưng scale sai vẫn có thể làm hệ thống thất bại khi tăng tải.
 
 ## Những gì cần xác minh
 

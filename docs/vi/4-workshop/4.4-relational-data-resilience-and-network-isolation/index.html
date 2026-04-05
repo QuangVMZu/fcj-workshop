@@ -15,21 +15,21 @@
     <title>Độ bền dữ liệu quan hệ và cô lập mạng :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1775386388" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1775386388" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1775386388" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1775386388" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1775386388" rel="stylesheet">
+    <link href="../../../css/theme.css?1775386388" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1775386388" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1775386388" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1775386388"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1775386388"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1775386388"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../../js/search.js?1775386388"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/vi/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Phân tích kiến trúc workshop chuyên sâu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Phân tích kiến trúc workshop chuyên sâu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -780,6 +798,7 @@
     </li>
     <li><a href="#vì-sao-thiết-kế-này-dùng-amazon-rds">Vì sao thiết kế này dùng Amazon RDS</a></li>
     <li><a href="#luồng-aws-từng-bước">Luồng AWS từng bước</a></li>
+    <li><a href="#hành-vi-request-và-response">Hành vi request và response</a></li>
     <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
       <ul>
         <li><a href="#1-kiểm-tra-db-instance">1. Kiểm tra DB instance</a></li>
@@ -793,6 +812,9 @@
         <li><a href="#ví-dụ-thông-tin-kết-nối-lưu-trong-secrets-manager">Ví dụ thông tin kết nối lưu trong Secrets Manager</a></li>
       </ul>
     </li>
+    <li><a href="#key-logic--rules">Key Logic / Rules</a></li>
+    <li><a href="#lưu-ý-về-vận-hành-và-bảo-mật">Lưu ý về vận hành và bảo mật</a></li>
+    <li><a href="#best-practices">Best practices</a></li>
     <li><a href="#những-gì-cần-xác-minh">Những gì cần xác minh</a></li>
     <li><a href="#lỗi-thường-gặp">Lỗi thường gặp</a></li>
     <li><a href="#ghi-chú--giả-định">Ghi chú / Giả định</a></li>
@@ -827,6 +849,7 @@
 <li>Phần này giải thích cách nền tảng lưu dữ liệu giao dịch trong Amazon RDS trong khi vẫn giữ tầng dữ liệu ở trạng thái private.</li>
 <li>Nội dung tập trung vào hành vi primary và standby, kết nối database từ EC2, và các bước kiểm tra vận hành trước khi tác động tới dữ liệu production.</li>
 <li>Đây là phần nên đọc khi ứng dụng không kết nối được database, hành vi failover chưa rõ, hoặc nhóm cần xác minh giả định về backup và network isolation.</li>
+<li>Ở góc nhìn vận hành thực tế, đây là nơi xác định ranh giới persistence của booking, charging session, payment và các nghiệp vụ cốt lõi khác.</li>
 </ul>
 <h2 id="các-dịch-vụ-aws-trong-phần-này">Các dịch vụ AWS trong phần này</h2>
 <h3 id="amazon-rds">Amazon RDS</h3>
@@ -834,57 +857,70 @@
 <ul>
 <li>Dịch vụ cơ sở dữ liệu quan hệ được quản lý cho tầng dữ liệu của hệ thống.</li>
 <li>Tự động xử lý provisioning, backup, patching và failover.</li>
+<li>Giảm đáng kể gánh nặng vận hành so với việc tự quản lý database trên EC2.</li>
 </ul>
 <h3 id="primary-database-instance">Primary Database Instance</h3>
 <p><img src="../../../images/4-Workshop/rds-primary.png" alt="RDS Primary Instance"></p>
 <ul>
 <li>Xử lý workload giao dịch chính.</li>
 <li>Thực hiện các thao tác đọc/ghi từ ứng dụng.</li>
+<li>Là endpoint chính cho các thay đổi dữ liệu mang tính nghiệp vụ.</li>
 </ul>
 <h3 id="standby-database-instance">Standby Database Instance</h3>
 <ul>
 <li>Duy trì bản sao đồng bộ với instance chính.</li>
 <li>Tự động chuyển sang hoạt động khi xảy ra failover.</li>
+<li>Tồn tại nhằm tăng độ bền chứ không phải để phục vụ traffic trực tiếp từ người dùng.</li>
 </ul>
 <h3 id="không-có-truy-cập-công-khai">Không có truy cập công khai</h3>
 <ul>
 <li>Đảm bảo database không thể truy cập trực tiếp từ internet.</li>
 <li>Chỉ cho phép truy cập từ các resource nội bộ trong VPC.</li>
+<li>Giảm bề mặt tấn công và tránh lỗi mở CIDR quá rộng.</li>
 </ul>
 <h3 id="kết-nối-ec2-tới-rds">Kết nối EC2 tới RDS</h3>
 <ul>
 <li>Application server kết nối tới database qua mạng private.</li>
 <li>Thường sử dụng security group và endpoint nội bộ.</li>
+<li>Giữ cho hợp đồng kết nối giữa app và database ổn định ngay cả khi node vật lý thay đổi trong lúc bảo trì hoặc failover.</li>
 </ul>
 <h2 id="vì-sao-thiết-kế-này-dùng-amazon-rds">Vì sao thiết kế này dùng Amazon RDS</h2>
 <ul>
 <li>Kiến trúc đang mô hình hóa dữ liệu giao dịch dạng quan hệ, nên Amazon RDS là lựa chọn lưu trữ được thể hiện rõ.</li>
-<li>Proposal của dự án nhắc đến Amazon RDS for SQL Server, nhưng sơ đồ chỉ ghi Amazon RDS. Luôn xác nhận engine thật trước khi chạy bước chuyên biệt theo engine.</li>
-<li>Không có DynamoDB, cache tier hay analytics warehouse trong sơ đồ, nên workshop này chỉ tập trung vào đường kết nối quan hệ private từ EC2 tới RDS.</li>
+<li>Workshop đã mô tả data layer theo mô hình primary và standby, phù hợp với một tư thế HA dựa trên managed service.</li>
+<li>Không có DynamoDB, cache tier hay analytics database trong sơ đồ hiện tại, nên phần này chỉ tập trung vào đường quan hệ private từ EC2 tới RDS.</li>
+<li>RDS giúp đội ngũ dành ít thời gian hơn cho các tác vụ database mang tính hạ tầng như backup, patching và failover.</li>
 </ul>
 <h2 id="luồng-aws-từng-bước">Luồng AWS từng bước</h2>
 <ol>
 <li>Backend chạy trên EC2 cần đọc hoặc ghi dữ liệu nghiệp vụ.
 Dịch vụ: Amazon EC2.
-Điều xảy ra: Ứng dụng mở kết nối tới RDS endpoint qua mạng VPC.
-Tại sao quan trọng: Database traffic nên chỉ đi trên đường mạng private.</li>
+Điều xảy ra: Ứng dụng mở kết nối tới managed RDS endpoint và thực hiện giao dịch.
+Tại sao quan trọng: Ứng dụng nên phụ thuộc vào endpoint được quản lý, không phải vào một host cụ thể.</li>
 <li>Request đến primary RDS instance.
 Dịch vụ: Amazon RDS.
 Điều xảy ra: Primary DB instance xử lý transaction của ứng dụng.
-Tại sao quan trọng: Ghi dữ liệu và phần lớn đọc vận hành nên đi vào primary nếu chưa có read replica.</li>
+Tại sao quan trọng: Đây là điểm ghi dữ liệu cốt lõi của hệ thống.</li>
 <li>RDS giữ một bản standby được đồng bộ.
 Dịch vụ: Amazon RDS.
-Điều xảy ra: Thay đổi được sao chép sang môi trường standby.
-Tại sao quan trọng: Standby giúp tăng độ bền khi primary hoặc hạ tầng bên dưới gặp lỗi.</li>
+Điều xảy ra: Trạng thái dữ liệu được sao chép theo availability mode đã chọn.
+Tại sao quan trọng: Đây là nền tảng cho failover và độ bền của dữ liệu.</li>
 <li>Database không thể bị truy cập trực tiếp từ internet.
 Dịch vụ: RDS, private subnet, security group.
-Điều xảy ra: Chỉ các đường kết nối được phê duyệt từ tầng ứng dụng mới truy cập được.
-Tại sao quan trọng: Giảm bề mặt tấn công và hạn chế việc quét từ internet.</li>
+Điều xảy ra: Chỉ các đường kết nối nội bộ đã được phê duyệt mới tới được database port.
+Tại sao quan trọng: Data tier vẫn được bảo vệ kể cả khi public endpoint khác của hệ thống gặp sự cố.</li>
 <li>Khi primary gặp lỗi, RDS có thể chuyển sang đường standby.
 Dịch vụ: Amazon RDS.
-Điều xảy ra: Failover diễn ra ở tầng database được quản lý.
-Tại sao quan trọng: Ứng dụng nên kết nối qua RDS endpoint thay vì một hostname cứng theo máy cụ thể.</li>
+Điều xảy ra: RDS chuyển vai trò primary phía sau managed endpoint.
+Tại sao quan trọng: Ứng dụng cần reconnect được mà không phải đổi cấu hình thủ công.</li>
 </ol>
+<h2 id="hành-vi-request-và-response">Hành vi request và response</h2>
+<ul>
+<li>Backend gửi SQL request như một phần của workflow nghiệp vụ đồng bộ.</li>
+<li>Primary xử lý đọc/ghi bình thường, còn standby giữ vai trò tăng độ bền thay vì phục vụ traffic trực tiếp.</li>
+<li>Ứng dụng nhận kết quả query, xác nhận transaction hoặc database error và phải xử lý chúng đúng cách.</li>
+<li>Trong lúc bảo trì hoặc failover, timeout, connection pool và retry logic trở thành một phần của hợp đồng vận hành của ứng dụng.</li>
+</ul>
 <h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
 <h3 id="1-kiểm-tra-db-instance">1. Kiểm tra DB instance</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds describe-db-instances <span style="color:#ae81ff">\
@@ -901,9 +937,9 @@ Tại sao quan trọng: Ứng dụng nên kết nối qua RDS endpoint thay vì 
 </span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --force-failover <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
-</span></span></code></pre></div><p>Chỉ dùng lệnh này khi:</p>
+</span></span></code></pre></div><p>Chỉ dùng lệnh failover khi:</p>
 <ul>
-<li>instance đã bật Multi-AZ,</li>
+<li>chế độ Multi-AZ hoặc tương đương thực sự đã bật,</li>
 <li>chủ môi trường đã phê duyệt bài test,</li>
 <li>nhóm ứng dụng sẵn sàng quan sát hành vi reconnect.</li>
 </ul>
@@ -921,7 +957,7 @@ Tại sao quan trọng: Ứng dụng nên kết nối qua RDS endpoint thay vì 
       <tr>
           <td>DB subnet group</td>
           <td>Private subnet ở ít nhất hai Availability Zone</td>
-          <td>Hỗ trợ isolation và đặt standby</td>
+          <td>Hỗ trợ isolation và placement của standby</td>
       </tr>
       <tr>
           <td>Public accessibility</td>
@@ -936,7 +972,7 @@ Tại sao quan trọng: Ứng dụng nên kết nối qua RDS endpoint thay vì 
       <tr>
           <td>Database port</td>
           <td><code>${DB_PORT}</code> theo engine đang dùng</td>
-          <td>Giúp rule rõ ràng và dễ kiểm toán</td>
+          <td>Làm rule rõ ràng và dễ kiểm toán</td>
       </tr>
       <tr>
           <td>Điểm kết nối</td>
@@ -953,7 +989,31 @@ Tại sao quan trọng: Ứng dụng nên kết nối qua RDS endpoint thay vì 
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;app_user&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;change-me&#34;</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="những-gì-cần-xác-minh">Những gì cần xác minh</h2>
+</span></span></code></pre></div><h2 id="key-logic--rules">Key Logic / Rules</h2>
+<ul>
+<li>Primary database là endpoint chính cho giao dịch bình thường của ứng dụng.</li>
+<li>Standby database giúp tăng độ bền nhưng không phải user-facing endpoint.</li>
+<li>Network isolation là quy tắc cốt lõi của thiết kế, vì sơ đồ ghi rõ data tier không có public access.</li>
+<li>Giữ data tier ở trạng thái private làm giảm attack surface và hạn chế các đường kết nối ngoài ý muốn.</li>
+<li>Mọi tương tác với database phải đi qua application layer.</li>
+<li>Secret nên cung cấp connection detail để tránh hard-code hostname hay credential trong artifact của ứng dụng.</li>
+</ul>
+<h2 id="lưu-ý-về-vận-hành-và-bảo-mật">Lưu ý về vận hành và bảo mật</h2>
+<ul>
+<li>Chỉ mở quyền truy cập database từ security group của ứng dụng thay vì từ CIDR rộng.</li>
+<li>Cần kiểm tra định kỳ backup retention, snapshot policy và maintenance window.</li>
+<li>Nên bật mã hóa dữ liệu ở trạng thái lưu trữ và trong quá trình truyền tải, đặc biệt khi dữ liệu liên quan đến tài chính hoặc compliance.</li>
+<li>Cần test connection pool, timeout và retry logic bằng failover thật thay vì chỉ giả định chúng sẽ hoạt động.</li>
+<li>Nếu bài toán đọc nhiều xuất hiện về sau, nên bổ sung read replica hoặc reporting isolation một cách có chủ đích.</li>
+</ul>
+<h2 id="best-practices">Best practices</h2>
+<ul>
+<li>Dùng parameter group phù hợp với engine và quy trình migration có kiểm soát.</li>
+<li>Tài liệu hóa recovery expectation, bao gồm failover time điển hình và hành vi reconnect của ứng dụng.</li>
+<li>Kiểm tra point-in-time recovery và restore thực tế thay vì chỉ tin vào cấu hình.</li>
+<li>Lưu connection metadata trong Secrets Manager và xoay vòng credential theo policy của môi trường.</li>
+</ul>
+<h2 id="những-gì-cần-xác-minh">Những gì cần xác minh</h2>
 <ul>
 <li>RDS instance không public accessible.</li>
 <li>Ứng dụng kết nối bằng RDS endpoint, không phải private IP cố định.</li>
@@ -967,12 +1027,14 @@ Tại sao quan trọng: Ứng dụng nên kết nối qua RDS endpoint thay vì 
 <li>Lưu hostname database trực tiếp trong source code thay vì secret được quản lý.</li>
 <li>Hiểu nhầm standby là query endpoint trong khi sơ đồ chỉ cho thấy cặp primary và standby.</li>
 <li>Chạy failover test cưỡng bức mà không thông báo trước cho nhóm ứng dụng.</li>
+<li>Tưởng rằng relational persistence sẽ tự scale mãi mãi mà không cần tối ưu query hay tách tải đọc về sau.</li>
 </ul>
 <h2 id="ghi-chú--giả-định">Ghi chú / Giả định</h2>
 <ul>
 <li>Sơ đồ cho thấy rất rõ mô hình primary và standby kiểu Multi-AZ, nhưng không nêu chính xác engine hay deployment mode của RDS.</li>
-<li>Không có read replica trong hình.</li>
-<li>Phần này không giả định DynamoDB hay Aurora vì chúng không xuất hiện trong sơ đồ kiến trúc.</li>
+<li>Backup retention, point-in-time recovery và encryption setting không hiển thị trong hình.</li>
+<li>Không có read replica, cache hay analytics database trong sơ đồ nên không được giả định là đang tồn tại.</li>
+<li>DynamoDB và Aurora được coi là ngoài phạm vi của kiến trúc hiện tại.</li>
 </ul>
 
 
@@ -1423,6 +1485,22 @@ Tại sao quan trọng: Ứng dụng nên kết nối qua RDS endpoint thay vì 
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1480,19 +1558,19 @@ Tại sao quan trọng: Ứng dụng nên kết nối qua RDS endpoint thay vì 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../../js/clipboard.min.js?1775386388"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1775386388"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1775386388"></script>
+    <script src="../../../js/jquery.sticky.js?1775386388"></script>
+    <script src="../../../js/featherlight.min.js?1775386388"></script>
+    <script src="../../../js/highlight.pack.js?1775386388"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../../js/learn.js?1775326934"></script>
-    <script src="../../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1775386388"></script>
+    <script src="../../../js/learn.js?1775386388"></script>
+    <script src="../../../js/hugo-learn.js?1775386388"></script>
 
-    <link href="../../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../../mermaid/mermaid.css?1775386388" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1775386388"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

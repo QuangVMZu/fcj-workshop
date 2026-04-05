@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Giám sát, kiểm toán và gửi email"
 date: 2026-04-04
 weight: 6
@@ -47,6 +47,14 @@ pre: " <b> 4.6. </b> "
 - Sơ đồ hiển thị trực tiếp CloudWatch và CloudTrail, nên observability được xây dựng trên bộ công cụ native của AWS.
 - Email được gửi trực tiếp qua Amazon SES thay vì qua một dịch vụ messaging hay event bus riêng.
 - EventBridge, SQS và SNS không xuất hiện trong kiến trúc, nên workshop này không giả định có pipeline notification theo kiểu event-driven.
+
+## Logic nội bộ và mô hình vận hành
+
+- CloudWatch trả lời câu hỏi workload đang làm gì trong runtime thông qua log, metric và các tín hiệu vận hành.
+- CloudTrail trả lời câu hỏi môi trường AWS đã thay đổi như thế nào bằng cách ghi lại control-plane activity.
+- SES cung cấp đường giao tiếp outbound được quản lý để ứng dụng không phải tự vận hành SMTP stack.
+- Route 53 hỗ trợ mô hình trust cho email bằng cách lưu các DNS record xác minh quyền sở hữu domain và cải thiện deliverability.
+- Vì đây là các dịch vụ cross-cutting, sự cố ở phần này thường giải thích được triệu chứng xuất hiện ở lớp khác, ngay cả khi request path của người dùng nhìn bề ngoài vẫn còn hoạt động.
 
 ## Luồng AWS từng bước
 
@@ -210,6 +218,14 @@ aws route53 change-resource-record-sets \
   --hosted-zone-id ${HOSTED_ZONE_ID} \
   --change-batch file://ses-identity-records.json
 ```
+
+## Best practices và hướng cải thiện
+
+- Dùng structured application log để việc tìm kiếm, lọc và rà soát sự cố dễ dàng hơn theo thời gian.
+- Xác định retention rõ ràng cho application log, audit log và dữ liệu liên quan đến bảo mật thay vì dùng mặc định.
+- Hãy xem CloudTrail là một phần của governance baseline, không chỉ là công cụ hỗ trợ debug.
+- Cần có alarm routing và owner rõ ràng để mọi alarm quan trọng đều có đường phản ứng thực tế.
+- Nếu khối lượng notification hoặc độ phức tạp của retry tăng lên, EventBridge, SQS hoặc SNS có thể được dùng để tách email và các side effect khác khỏi synchronous request path.
 
 ## Những gì cần xác minh
 

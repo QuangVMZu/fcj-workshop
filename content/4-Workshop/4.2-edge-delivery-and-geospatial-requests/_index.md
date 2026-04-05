@@ -39,6 +39,13 @@ pre: " <b> 4.2. </b> "
 - Handles geospatial requests such as map rendering and place search.
 - Operates independently from the static asset delivery flow.
 
+## Why This Layer Matters
+
+- It is the first AWS layer that users interact with, so it strongly shapes latency, security posture, and perceived availability.
+- It separates high-cache, high-read frontend traffic from lower-cache, business-logic-heavy backend traffic.
+- It keeps the frontend bucket private while still allowing global asset delivery through CloudFront.
+- It lets map and place search remain a specialized integration instead of turning the application servers into a generic proxy for geospatial APIs.
+
 ## Step-by-Step AWS Flow
 
 1. A user opens `${APP_DOMAIN}` in the browser.
@@ -65,6 +72,14 @@ pre: " <b> 4.2. </b> "
    Service: Application Load Balancer in the next section.
    What happens: Dynamic traffic leaves the edge path and enters the private compute stack.
    Why it matters: Static and dynamic traffic can be scaled and tuned independently.
+
+## Internal Logic and Request Behavior
+
+- DNS resolution determines whether the browser reaches the correct edge distribution in the first place.
+- CloudFront acts as both a cache and a policy-enforcement layer. It can reduce origin load, normalize request behavior, and work with WAF before anything reaches S3.
+- S3 acts as the origin of record for static frontend artifacts, but not as the public endpoint exposed to users.
+- Amazon Location Service represents a parallel frontend dependency. It is related to the user experience, but it is logically separate from static asset delivery and from the private backend request path.
+- Because this layer is mostly read-heavy, its scaling behavior is very different from the compute tier. Good cache hit ratios reduce both latency and cost.
 
 ## AWS CLI Walkthrough
 
@@ -165,6 +180,21 @@ What this configuration achieves:
 - The S3 bucket stays private.
 - Only the named CloudFront distribution can read objects.
 - Users must access the frontend through CloudFront, where WAF can inspect traffic.
+
+## Security and Performance Notes
+
+- Prefer Origin Access Control or an equivalent private-origin pattern over public bucket access.
+- Use cache invalidation carefully. In mature deployments, versioned asset names are often better than frequent full-path invalidations.
+- Treat WAF as part of the platform security baseline, not as an optional add-on after the application goes live.
+- If the frontend eventually needs API-specific policies such as request validation, authorizers, or client quotas, API Gateway may become relevant, but it is not part of the current design shown here.
+- If geospatial calls require stronger access control later, a signed-request pattern or a backend mediation layer could be introduced.
+
+## Best Practices
+
+- Keep DNS, CDN, bucket policy, and geospatial configuration separated by environment.
+- Document cache policy assumptions so releases do not accidentally serve stale assets.
+- Monitor CloudFront cache hit ratio and WAF block counts as leading indicators of edge behavior.
+- Use TLS everywhere on the public path and keep certificates rotated and validated.
 
 ## What to Verify
 

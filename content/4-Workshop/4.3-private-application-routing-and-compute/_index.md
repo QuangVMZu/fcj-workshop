@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Private Application Routing and Compute"
 date: 2026-04-04
 weight: 3
@@ -80,6 +80,14 @@ pre: " <b> 4.3. </b> "
    What happens: The ALB completes the HTTP request lifecycle.
    Why it matters: Clients never communicate with EC2 instances directly.
 
+## Internal Logic and Request Behavior
+
+- The ALB is the public HTTP boundary for the backend. It decides which requests reach the application fleet and which targets are healthy enough to receive them.
+- EC2 instances represent the long-running application runtime. They are expected to process requests, maintain connection pools, and use private networking for downstream dependencies.
+- Auto Scaling manages fleet size, while the ALB manages request routing. These are related controls, but they solve different problems.
+- NAT Gateway handles controlled egress for private instances. It is not part of the inbound request path, but it is often essential for runtime dependency access.
+- Because the architecture does not show API Gateway, Lambda, ECS, or EKS, the operational model here is intentionally instance-centric and network-centric.
+
 ## AWS CLI Walkthrough
 
 ### 1. Inspect the load balancer
@@ -133,6 +141,21 @@ aws ec2 describe-instances \
 - Interval: `30` seconds
 - Healthy threshold: `2` or more
 - Unhealthy threshold: `2` or more
+
+## Scaling and Security Considerations
+
+- Keep backend nodes as stateless as possible so Auto Scaling can replace them without complex session recovery.
+- Restrict EC2 inbound access to the ALB security group instead of opening the application port to public CIDR ranges.
+- Treat NAT as a controlled egress dependency. If outbound availability becomes critical, consider one NAT Gateway per Availability Zone or VPC endpoints for selected AWS services.
+- Health checks should validate application liveness without depending too heavily on downstream services that may fail independently.
+- If the platform later needs richer API governance, API Gateway could front selected endpoints, but that would be an architectural extension rather than a correction to the current model.
+
+## Best Practices
+
+- Use launch templates and immutable deployment artifacts for consistent fleet replacement.
+- Spread the Auto Scaling group across multiple Availability Zones.
+- Keep security groups simple and service-specific so trust boundaries stay clear.
+- Monitor target health and scaling activity together, because a healthy fleet with poor scaling signals can still fail under load.
 
 ## What to Verify
 

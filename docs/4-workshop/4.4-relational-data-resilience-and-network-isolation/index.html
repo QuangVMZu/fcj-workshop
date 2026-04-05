@@ -15,21 +15,21 @@
     <title>Relational Data Resilience and Network Isolation :: Internship Report</title>
 
     
-    <link href="../../css/nucleus.css?1775326934" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/hybrid.css?1775326934" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1775326934" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1775326934" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1775326934" rel="stylesheet">
-    <link href="../../css/theme.css?1775326934" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1775326934" rel="stylesheet">
+    <link href="../../css/nucleus.css?1775386387" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/hybrid.css?1775386387" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1775386387" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1775386387" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1775386387" rel="stylesheet">
+    <link href="../../css/theme.css?1775386387" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1775386387" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1775326934" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1775386387" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1775326934"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1775386387"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -91,14 +91,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1775326934"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1775326934"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1775386387"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1775386387"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/fcj-workshop\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1775326934"></script>
+<script type="text/javascript" src="../../js/search.js?1775386387"></script>
  
   </div>
 
@@ -558,6 +558,24 @@
   </a>
    
 </li>
+    
+             
+<li
+  data-nav-id="/4-workshop/4.7-workshop-architecture-deep-dive/"
+  title="Workshop Architecture Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../4-workshop/4.7-workshop-architecture-deep-dive/">
+     <b> 4.7. </b> Workshop Architecture Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
      
   </ul>
   
@@ -778,8 +796,27 @@
         <li><a href="#ec2-to-rds-connectivity">EC2 to RDS Connectivity</a></li>
       </ul>
     </li>
+    <li><a href="#why-this-design-uses-amazon-rds">Why This Design Uses Amazon RDS</a></li>
     <li><a href="#flow-description">Flow Description</a></li>
+    <li><a href="#request-and-response-behavior">Request and Response Behavior</a></li>
+    <li><a href="#aws-cli-walkthrough">AWS CLI Walkthrough</a>
+      <ul>
+        <li><a href="#1-inspect-the-db-instance">1. Inspect the DB instance</a></li>
+        <li><a href="#2-show-status-multi-az-posture-and-endpoint-details">2. Show status, Multi-AZ posture, and endpoint details</a></li>
+        <li><a href="#3-perform-an-approved-failover-test-in-a-non-production-environment">3. Perform an approved failover test in a non-production environment</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration-example">Configuration Example</a>
+      <ul>
+        <li><a href="#recommended-database-access-model">Recommended database access model</a></li>
+        <li><a href="#example-connection-secret-stored-in-secrets-manager">Example connection secret stored in Secrets Manager</a></li>
+      </ul>
+    </li>
     <li><a href="#key-logic--rules">Key Logic / Rules</a></li>
+    <li><a href="#operational-and-security-considerations">Operational and Security Considerations</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
+    <li><a href="#what-to-verify">What to Verify</a></li>
+    <li><a href="#common-mistakes">Common Mistakes</a></li>
     <li><a href="#notes--assumptions">Notes / Assumptions</a></li>
   </ul>
 </nav></div>
@@ -812,6 +849,7 @@
 <li>This section describes how the platform stores persistent application data while keeping the database tier isolated from public access.</li>
 <li>Its purpose is to provide durable relational storage and support availability in case of database or infrastructure failure.</li>
 <li>It fits behind the application layer as the system of record for the workload.</li>
+<li>It is the right section to review when the team needs to reason about transactional integrity, failover behavior, or the network boundary around the data tier.</li>
 </ul>
 <h2 id="components">Components</h2>
 <h3 id="amazon-rds">Amazon RDS</h3>
@@ -819,48 +857,176 @@
 <ul>
 <li>Managed relational database service for the application data tier.</li>
 <li>Handles provisioning, backups, patching, and failover.</li>
+<li>Reduces operational overhead compared with self-managed database instances on EC2.</li>
 </ul>
 <h3 id="primary-database-instance">Primary Database Instance</h3>
 <p><img src="../../images/4-Workshop/rds-primary.png" alt="RDS Primary Instance"></p>
 <ul>
 <li>Handles the main transactional workload.</li>
 <li>Processes read and write operations from the application.</li>
+<li>Represents the active endpoint for business-critical state changes.</li>
 </ul>
 <h3 id="standby-database-instance">Standby Database Instance</h3>
 <ul>
 <li>Maintains a synchronized replica of the primary instance.</li>
 <li>Automatically takes over during failover scenarios.</li>
+<li>Improves resilience, but is not shown as a user-facing or application-selected endpoint.</li>
 </ul>
 <h3 id="no-public-access-boundary">No Public Access Boundary</h3>
 <ul>
 <li>Ensures the database is not publicly accessible.</li>
 <li>Access is restricted to internal resources within the VPC.</li>
+<li>Reduces attack surface and limits the blast radius of misconfigured public-facing components elsewhere in the system.</li>
 </ul>
 <h3 id="ec2-to-rds-connectivity">EC2 to RDS Connectivity</h3>
 <ul>
 <li>Application servers connect to the database over private networking.</li>
 <li>Typically uses security groups and internal DNS endpoints.</li>
+<li>Keeps the application dependent on a managed database endpoint instead of a single machine identity.</li>
+</ul>
+<h2 id="why-this-design-uses-amazon-rds">Why This Design Uses Amazon RDS</h2>
+<ul>
+<li>The visible workload requires transactional consistency for bookings, charging sessions, payments, and operational records, so a relational database is the natural fit.</li>
+<li>The workshop already models the data layer as Amazon RDS with a primary and standby posture, which aligns with a managed high-availability design.</li>
+<li>No DynamoDB, cache tier, or analytics database is shown in the current architecture, so this section stays focused on the private relational path between EC2 and RDS.</li>
+<li>RDS allows the team to spend less effort on undifferentiated database operations such as backups, maintenance, and failover handling.</li>
 </ul>
 <h2 id="flow-description">Flow Description</h2>
 <ol>
-<li>EC2 instances send database reads and writes to the primary RDS instance.</li>
-<li>The RDS service maintains synchronization between the primary and standby instances.</li>
-<li>If the primary database becomes unavailable, the standby instance likely supports failover continuity.</li>
-<li>Database access remains internal to the application environment and is not exposed directly to internet users.</li>
+<li>EC2 instances send database reads and writes to the primary RDS instance.
+What happens: The application opens a connection to the managed RDS endpoint and issues transactional operations.
+Why it matters: The application should target the managed endpoint rather than pinning itself to a single host.</li>
+<li>The RDS service maintains synchronization between the primary and standby instances.
+What happens: Changes are replicated according to the selected availability mode.
+Why it matters: This is the foundation for better recovery behavior during instance or infrastructure failure.</li>
+<li>If the primary database becomes unavailable, the standby instance likely supports failover continuity.
+What happens: RDS changes the active role behind the managed endpoint.
+Why it matters: The application can recover through reconnect logic instead of through manual infrastructure changes.</li>
+<li>Database access remains internal to the application environment and is not exposed directly to internet users.
+What happens: Only approved VPC-internal paths can reach the database port.
+Why it matters: The most sensitive state in the platform remains behind the strongest network boundary.</li>
 </ol>
-<h2 id="key-logic--rules">Key Logic / Rules</h2>
+<h2 id="request-and-response-behavior">Request and Response Behavior</h2>
+<ul>
+<li>The backend sends SQL requests as part of synchronous business workflows.</li>
+<li>The primary database processes normal reads and writes, while the standby improves resilience rather than serving direct traffic.</li>
+<li>The application receives query results, commit acknowledgments, or database errors that it must handle cleanly.</li>
+<li>During maintenance or failover, connection pooling and retry behavior become part of the application contract.</li>
+</ul>
+<h2 id="aws-cli-walkthrough">AWS CLI Walkthrough</h2>
+<h3 id="1-inspect-the-db-instance">1. Inspect the DB instance</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds describe-db-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h3 id="2-show-status-multi-az-posture-and-endpoint-details">2. Show status, Multi-AZ posture, and endpoint details</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds describe-db-instances <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --query <span style="color:#e6db74">&#39;DBInstances[0].[DBInstanceStatus,MultiAZ,Endpoint.Address,Endpoint.Port]&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --output table
+</span></span></code></pre></div><h3 id="3-perform-an-approved-failover-test-in-a-non-production-environment">3. Perform an approved failover test in a non-production environment</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws rds reboot-db-instance <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --db-instance-identifier <span style="color:#e6db74">${</span>DB_INSTANCE_ID<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --force-failover <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --region <span style="color:#e6db74">${</span>AWS_REGION<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><p>Use the failover command only when:</p>
+<ul>
+<li>Multi-AZ or an equivalent standby mode is actually enabled,</li>
+<li>the environment owner has approved the test,</li>
+<li>the application team is ready to observe reconnect behavior.</li>
+</ul>
+<h2 id="configuration-example">Configuration Example</h2>
+<h3 id="recommended-database-access-model">Recommended database access model</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Item</th>
+          <th>Recommended setting</th>
+          <th>Why it matters</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DB subnet group</td>
+          <td>Private subnets in at least two Availability Zones</td>
+          <td>Supports isolation and standby placement</td>
+      </tr>
+      <tr>
+          <td>Public accessibility</td>
+          <td>Disabled</td>
+          <td>Prevents direct internet access</td>
+      </tr>
+      <tr>
+          <td>Source access</td>
+          <td>Only from the EC2 application security group</td>
+          <td>Limits who can open sessions</td>
+      </tr>
+      <tr>
+          <td>Database port</td>
+          <td><code>${DB_PORT}</code> for the actual engine</td>
+          <td>Makes rules explicit and auditable</td>
+      </tr>
+      <tr>
+          <td>Connection target</td>
+          <td>RDS DNS endpoint, not an instance IP</td>
+          <td>Supports maintenance and failover without app reconfiguration</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="example-connection-secret-stored-in-secrets-manager">Example connection secret stored in Secrets Manager</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;ev-prod-rds.xxxxxx.ap-southeast-1.rds.amazonaws.com&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">1433</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;database&#34;</span>: <span style="color:#e6db74">&#34;evcharging&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;app_user&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;change-me&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="key-logic--rules">Key Logic / Rules</h2>
 <ul>
 <li>The primary database is the main endpoint for normal application transactions.</li>
 <li>The standby database improves resilience but is not shown as a user-facing endpoint.</li>
 <li>Network isolation is a core rule of the design, as the diagram explicitly marks the data tier with no public access.</li>
 <li>Keeping the data tier private reduces attack surface and limits unintended connectivity paths.</li>
 <li>Application-layer control is required for all database interactions.</li>
+<li>Secrets should provide connection details so credentials and hostnames are not hardcoded in the application artifact.</li>
+</ul>
+<h2 id="operational-and-security-considerations">Operational and Security Considerations</h2>
+<ul>
+<li>Keep database access limited to the application security group instead of broad CIDR ranges.</li>
+<li>Confirm backup retention, snapshot policy, and maintenance windows as part of routine operational review.</li>
+<li>Use encryption at rest and in transit, especially when regulatory or financial data is involved.</li>
+<li>Make sure connection pools, timeouts, and retry logic are tested against actual failover behavior.</li>
+<li>If read-heavy reporting grows later, introduce read replicas or reporting isolation intentionally instead of overloading the primary path.</li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li>Use engine-specific parameter groups and controlled schema migration processes.</li>
+<li>Document recovery expectations, including typical failover time and application reconnect behavior.</li>
+<li>Validate point-in-time recovery and backup restore procedures instead of assuming they work.</li>
+<li>Store connection metadata in Secrets Manager and rotate credentials according to environment policy.</li>
+</ul>
+<h2 id="what-to-verify">What to Verify</h2>
+<ul>
+<li>The RDS instance is not publicly accessible.</li>
+<li>The application connects by using the RDS endpoint, not a fixed private IP.</li>
+<li>The DB subnet group uses private subnets.</li>
+<li>Only the application security group is allowed to reach the database port.</li>
+<li>Failover behavior has been tested outside production and documented.</li>
+</ul>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li>Opening the database to a broad CIDR range instead of only the application security group.</li>
+<li>Hardcoding the database hostname in source code instead of using a managed secret.</li>
+<li>Treating the standby as a read endpoint when the diagram only shows a primary and standby pair.</li>
+<li>Running failover drills without coordinating with the application team.</li>
+<li>Assuming relational persistence will scale indefinitely without later introducing query tuning or read isolation.</li>
 </ul>
 <h2 id="notes--assumptions">Notes / Assumptions</h2>
 <ul>
 <li>The primary and standby layout strongly suggests a Multi-AZ or equivalent high-availability configuration, but the exact mode is not labeled.</li>
 <li>Backup retention, point-in-time recovery, and encryption settings are not visible in the diagram.</li>
 <li>No read replica, cache, or analytics database is shown, so those patterns are not assumed here.</li>
+<li>DynamoDB and Aurora are intentionally out of scope for the currently documented architecture.</li>
 </ul>
 
 
@@ -1311,6 +1477,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1368,19 +1550,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1775326934"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1775326934"></script>
-    <script src="../../js/jquery.sticky.js?1775326934"></script>
-    <script src="../../js/featherlight.min.js?1775326934"></script>
-    <script src="../../js/highlight.pack.js?1775326934"></script>
+    <script src="../../js/clipboard.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1775386387"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1775386387"></script>
+    <script src="../../js/jquery.sticky.js?1775386387"></script>
+    <script src="../../js/featherlight.min.js?1775386387"></script>
+    <script src="../../js/highlight.pack.js?1775386387"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1775326934"></script>
-    <script src="../../js/learn.js?1775326934"></script>
-    <script src="../../js/hugo-learn.js?1775326934"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1775386387"></script>
+    <script src="../../js/learn.js?1775386387"></script>
+    <script src="../../js/hugo-learn.js?1775386387"></script>
 
-    <link href="../../mermaid/mermaid.css?1775326934" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1775326934"></script>
+    <link href="../../mermaid/mermaid.css?1775386387" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1775386387"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
